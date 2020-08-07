@@ -1,0 +1,52 @@
+BaseURL = "http://liuao.tech"
+LanguageCode = "zh-CN"
+title = "月光晒谷"
+theme = "hugo-nuo"
+enableRobotsTXT = true
+PygmentsCodeFences = true
+canonifyurls = true
+
+# Disqus Username
+#disqusShortname = "disqus_shortname"
+
+# Google Analytics UA number
+#googleAnalytics = "UA-XXXXXXXX-X"
+
+# Copyright of your post
+copyright = "©2019 | liuao.tech | All rights reserved. "
+
+# Initial site menu, you can extend menu with content.
+[[menu.main]]
+  name = "Home"
+  weight = 10
+  identifier = "home"
+  url = "/"
+
+
+[[menu.main]]
+  name = "Tags"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
+
+# Add your own params here
+[params]
+  author = "月光晒谷"
+  bg = "images/grey-prism.svg"
+  avatar = "images/avatar.png"
+  seotitle = "liuao.tech"
+  subtitle = "Keep It Simple, Stupid !"
+  description = "Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again."
+  paginate = 13
+
+  # Choose your social networks
+  email = "alants56@163.com"
+  github = "alants56"
+  weibo = "yueguangshaigu"
+  wechat= "images/qrcode.jpg"
+
+
+
+
+
+
