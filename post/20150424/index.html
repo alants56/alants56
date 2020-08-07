@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>libusb-win32学习笔记</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="月光晒谷">
+  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 最近在做毕设，一个U盾相关的题目。需要用到USB2.0协议，实现PC和一个硬件平台通信。硬件平台的USB驱动使用内置的函数就可以完成，但PC端的驱动，比较让人头疼，因为没接触过Windows下的驱动开发。通过查找相关的USB资料，发现了libusb可以实现USB的无驱化设计。于是，打算配置相关的库。在网上找到了相关的库文件libusb-win32。我下载的文件是libusb-win32-bin-1.2.6.0.zip。将该文件解压缩，会得到几个文件。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="libusb-win32学习笔记">
+    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 最近在做毕设，一个U盾相关的题目。需要用到USB2.0协议，实现PC和一个硬件平台通信。硬件平台的USB驱动使用内置的函数就可以完成，但PC端的驱动，比较让人头疼，因为没接触过Windows下的驱动开发。通过查找相关的USB资料，发现了libusb可以实现USB的无驱化设计。于是，打算配置相关的库。在网上找到了相关的库文件libusb-win32。我下载的文件是libusb-win32-bin-1.2.6.0.zip。将该文件解压缩，会得到几个文件。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="libusb-win32学习笔记">
+  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 最近在做毕设，一个U盾相关的题目。需要用到USB2.0协议，实现PC和一个硬件平台通信。硬件平台的USB驱动使用内置的函数就可以完成，但PC端的驱动，比较让人头疼，因为没接触过Windows下的驱动开发。通过查找相关的USB资料，发现了libusb可以实现USB的无驱化设计。于是，打算配置相关的库。在网上找到了相关的库文件libusb-win32。我下载的文件是libusb-win32-bin-1.2.6.0.zip。将该文件解压缩，会得到几个文件。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20150424/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.53">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20150424/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">libusb-win32学习笔记</h1>
+      <p class="post-meta">@月光晒谷 · Apr 24, 2015 · 2 min read</p>
+    </header>
+    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp; 最近在做毕设，一个U盾相关的题目。需要用到USB2.0协议，实现PC和一个硬件平台通信。硬件平台的USB驱动使用内置的函数就可以完成，但PC端的驱动，比较让人头疼，因为没接触过Windows下的驱动开发。通过查找相关的USB资料，发现了libusb可以实现USB的无驱化设计。于是，打算配置相关的库。在网上找到了相关的库文件<a href="http://sourceforge.net/projects/libusb-win32/files/">libusb-win32</a>。我下载的文件是libusb-win32-bin-1.2.6.0.zip。将该文件解压缩，会得到几个文件。</p>
+
+<p><img src="http://liuao.tech/images/2015042401.png" alt="images1" /></p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;首先是bin文件夹，该文件夹中的inf-wizard.exe是设备第一次连接PC时，需要通过该应用程序安装一些文件。打开该应用程序，找到自己的设备(通过两个ID确定是哪个设备，我的是0x1122 0x3344)，点击下一步，然后保存信息，最后安装。这样当自己编写libusb-win32代码时就可以找到该设备。</p>
+
+<p><img src="http://liuao.tech/images/2015042402.png" alt="images1" /></p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;其次是include和lib文件夹，工程配置时需要用到，我是在code::blocks下进行代码的编写。建立好工程后，依次点击Project -&gt; Properties   -&gt;Project Build options-&gt;Linker settings。然后点击Add添加库，添加lib文件夹下的gcc中(需要根据你的编译器类型选择)的libusb.a。并且 将include文件夹下的libusb0_usb.h头文件复制到工程中。这样就配置成功，接着就可以编写代码了。</p>
+
+<p><img src="http://liuao.tech/images/2015042403.png" alt="images1" /></p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;当完成配置工作后，就可以进行代码的编写（需要了解一些基本的USB协议的知识）。对于一个库的使用，其帮助文档是非常重要的，可以去找<a href="http://sourceforge.net/p/libusb-win32/wiki/Documentation/">libusb-win32开发文档</a></p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;接下来分析一下使用bulk进行数据传输的代码。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;编写代码时，首先要确定IDVendor和IDProduct，接着要确定bulk端点的输入输出的端口EP_IN和EP_OUT（PC端与USB设备是相反的）：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define IDVendor        0x1122
+</span><span style="color:#75715e">#define IDProduct       0x3344
+</span><span style="color:#75715e">#define EP_OUT          0x04
+</span><span style="color:#75715e">#define EP_IN           0x83
+</span><span style="color:#75715e">#define MY_CONFIG     　0x01
+</span><span style="color:#75715e">#define MY_INT          0x00
+</span><span style="color:#75715e">#define BUFFER_SIZE     64            </span></code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 接着是初始化，以及查找自己的设备：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> usb_bus <span style="color:#f92672">*</span>bus;
+<span style="color:#66d9ef">struct</span> usb_device <span style="color:#f92672">*</span>dev;
+<span style="color:#66d9ef">struct</span> usb_dev_handle <span style="color:#f92672">*</span>hdev;
+<span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">char</span> buffer2[BUFFER_SIZE] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;USBKEY by libusb-win32&#34;</span>;
+
+usb_init();
+usb_find_busses();
+usb_find_devices();
+<span style="color:#66d9ef">for</span> (bus <span style="color:#f92672">=</span> usb_get_busses(); bus; bus <span style="color:#f92672">=</span> bus<span style="color:#f92672">-&gt;</span>next) {
+     <span style="color:#66d9ef">for</span> (dev <span style="color:#f92672">=</span> bus<span style="color:#f92672">-&gt;</span>devices; dev; dev <span style="color:#f92672">=</span> dev<span style="color:#f92672">-&gt;</span>next) {
+               <span style="color:#66d9ef">if</span> (dev<span style="color:#f92672">-&gt;</span>descriptor.idVendor <span style="color:#f92672">==</span> IDVendor 
+                   <span style="color:#f92672">&amp;&amp;</span> dev<span style="color:#f92672">-&gt;</span>descriptor.idProduct <span style="color:#f92672">==</span> IDProduct) {
+　　　　　　　　　　<span style="color:#75715e">/*
+</span><span style="color:#75715e">                **
+</span><span style="color:#75715e">                */</span>
+　　　　　　}
+　　　}
+}</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;通过idVendor和idProduct找到自己的设备之后就可以打开设备，得到一个设备的句柄hdev，通过该句柄就可以进行传输控制等操作了:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">hdev <span style="color:#f92672">=</span> usb_open(dev);
+<span style="color:#66d9ef">if</span> (hdev <span style="color:#f92672">==</span> NULL) {
+     printf(<span style="color:#e6db74">&#34;open error!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+}</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;要进行数据的传输，必须先调用下面两个函数，进行配置和注册（可以查看帮助文档了解到）:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">if</span> (usb_set_configuration(hdev, MY_CONFIG) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+　　printf(<span style="color:#e6db74">&#34;error setting config #%d: %s&#34;</span>, MY_CONFIG, usb_strerror());
+　　<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">if</span> (usb_claim_interface(hdev, MY_INT) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+　　printf(<span style="color:#e6db74">&#34;error claiming interface #%d:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">%s&#34;</span>, MY_INT, usb_strerror());
+　　<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+}</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;其中MY_CONFIG和MY_INT分别由descriptor 中的 bConfigurationValue字段和 descriptor 中的bInterfaceNumber（关于这两个字段在USB协议中有介绍）。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;接着就可以使用函数进行bulk端点读写操作：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">ret <span style="color:#f92672">=</span> usb_bulk_write(hdev,EP_OUT,buffer2,BUFFER_SIZE,<span style="color:#ae81ff">1000</span>);
+<span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+       printf(<span style="color:#e6db74">&#34;ret = %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,ret);
+       printf(<span style="color:#e6db74">&#34;write error: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,usb_strerror()); 
+} <span style="color:#66d9ef">else</span> {
+         printf(<span style="color:#e6db74">&#34;SED: %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,ret);
+         printf(<span style="color:#e6db74">&#34;SED: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,buffer2);
+}
+ret <span style="color:#f92672">=</span> usb_bulk_read(hdev,EP_IN,buffer2,BUFFER_SIZE,<span style="color:#ae81ff">1000</span>);
+<span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+        printf(<span style="color:#e6db74">&#34;ret = %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,ret);        
+        printf(<span style="color:#e6db74">&#34;read error: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,usb_strerror());
+} <span style="color:#66d9ef">else</span> {        
+        printf(<span style="color:#e6db74">&#34;REC: %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,ret);
+        printf(<span style="color:#e6db74">&#34;REC: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,buffer2);
+}
+ret <span style="color:#f92672">=</span> usb_bulk_read(hdev,EP_IN,buffer2,BUFFER_SIZE,<span style="color:#ae81ff">1000</span>);
+<span style="color:#66d9ef">if</span> (ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+         printf(<span style="color:#e6db74">&#34;ret = %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,ret);         
+         printf(<span style="color:#e6db74">&#34;read error: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,usb_strerror());
+} <span style="color:#66d9ef">else</span> {
+         printf(<span style="color:#e6db74">&#34;REC: %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,ret);         
+         printf(<span style="color:#e6db74">&#34;REC: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,buffer2);
+}</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;读写结束后关闭设备：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">    usb_close(hdev);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;USB硬件设备的部分代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> buffer[BUFFER_SIZE];
+USB_Init();
+<span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>) {
+　　USB_Bulk_Gets( buffer, <span style="color:#ae81ff">64</span> );
+　　USB_Bulk_Puts( buffer, <span style="color:#ae81ff">64</span> );
+　　USB_Bulk_Puts( <span style="color:#e6db74">&#34;USBKEY IN A980&#34;</span>, <span style="color:#ae81ff">64</span> );
+}</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;程序运行结果：</p>
+
+<p><img src="http://liuao.tech/images/2015042404.png" alt="images1" /></p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/usb"><span class="tag">USB</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/%E9%A9%B1%E5%8A%A8"><span class="tag">驱动</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1890</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2020 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

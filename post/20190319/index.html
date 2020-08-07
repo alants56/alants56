@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>极大似然估计与贝叶斯估计</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="月光晒谷">
+  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="极大似然估计与贝叶斯估计">
+    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="极大似然估计与贝叶斯估计">
+  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20190319/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.53">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20190319/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">极大似然估计与贝叶斯估计</h1>
+      <p class="post-meta">@月光晒谷 · Mar 19, 2019 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp;通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;极大似然估计的主要思想是：把待估计的参数看为确定的量，只是取值未知，其最佳估计是使得产生已知样本的概率值最大时的参数取值。贝叶斯估计的主要思想是：把待估计的参数看成是符合某种先验概率分布的随机变量，对样本进行观测的过程就是把先验概率转化为后验概率密度的过程，这样通过现有的样本信息修正对于参数的估计值。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;接下来通过一个实例来阐述极大似然估计和贝叶斯估计。设样本为$T=\{(x_1,y_1),$ $(x_2,y_2),&hellip;, $ $(x_N,y_N)\}$，其中$x_i \in R$，$y_i \in \{+1, -1\}$，$i=1,2,&hellip;,N$。使用贝叶斯作为分类器，则需要求如下后验概率：</p>
+
+<p>$$P(y^{(k)}|x)= \frac {p(x|y^{(k)})P(y^{(k)})}{\sum_{j} p(x|y^{(j)})P(y^{(j)})} \quad $$</p>
+
+<p>注：$P(y^{(k)})$表示$P(y=y^{(k)})$的概率，$y^{(k)}$表示具体分类，可以为$+1$或$-1$，$p(x)$表示$x$点的概率密度</p>
+
+<p>要求解上式的后验概率$P(y^{(k)}|x)$则需要先求类条件概率密度$p(x|y^{(k)})$。若预先知道$p(x|y^{(k)})$ $ \sim $ $ N(\mu ,\sigma^{2}_{0} )$（或假设其服从某个分布，参数未知），并且仅有参数$\mu$未知（两个参数都未知的情况类似）。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;若使用<strong>极大似然估计</strong>，设$\mu$为一个确定的量，它的最佳估计值是使得出现样本情况时的最大概率时的取值。最大概率用一个如下的似然函数来表示：</p>
+
+<p>$$L(\mu) = \prod _{i=1} ^{n} p(x_i|y^{(k)})\quad $$</p>
+
+<p>其中上式中$n$表示标签为$y^{(k)}$的样本数，$x_i$表示标签为$y^{(k)}$时的样本。我们要求上式最大时参数$\mu$的取值，由于上式为多项相乘，可以请先取对数，然后求极值。</p>
+
+<p>$$ln L(\mu) = \sum _{i=1} ^{n} ln p(x_i|y^{(k)})= \sum _{i=1} ^{n}[-ln \sqrt{2\pi}\sigma_{0}-\frac{(x_i - \mu)^{2}}{2\sigma^{2}_{0}}]$$</p>
+
+<p>由于上式为凸函数，可以通过求导，并令导数为0得到极值点。因此有如下等式：</p>
+
+<p>$$\frac{\partial lnL(\mu)}{\partial \mu}=- \frac{1}{\sigma^{2}_{0}} \sum_{i=1}^{n}(x_i - \mu) = \frac{1}{\sigma^{2}_{0}}(n\mu-\sum_{i=1}^{n}x_i) = \frac{1}{\sigma^{2}_{0}}(n\mu-n\overline{x}^{(k)})=0$$</p>
+
+<p>最终得到$\mu$的最佳估计值为$\hat \mu = \overline{x}^{(k)}$，由此可以得到类条件概率密度函数$p(x|y^{(k)})$ $ \sim $ $ N( \overline{x}^{(k)},\sigma^{2}_{0} )$。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;若使用<strong>贝叶斯估计</strong>，设$\mu$为一个随机变量，则$p(x|\mu)$ $\sim$ $N(\mu,\sigma_{0}^{2})$，它的概率密度函数已知（或假设其服从某个已知分布）：$p(\mu)$ $\sim$ $N(\mu _{1}, \sigma _{1} ^{2})$，其中$\mu _{1}$与$ \sigma _{1}^{2}$为已知量。。由贝叶斯公式可以由如下等式：</p>
+
+<p>$$p(\mu|(x_1,x_2,&hellip;,x_n))= \frac{p((x_1,x_2,&hellip;,x_n)|\mu)p(\mu)}{\int p((x_1,x_2,&hellip;,x_n)|\mu)p(\mu)du}$$</p>
+
+<p>其中上式中$x_1,x_2,&hellip;,x_n$表示标签为$y^{(k)}$时的样本，上式的分母为一个不依赖于参数的值，可将其计为$\lambda$，由于样本是独立同分布，则可将概率密度函数带入得到如下等式：</p>
+
+<p>$$
+\begin{align}
+p(\mu|(x_1,x_2,&hellip;,x_n))
+&amp;= \lambda p((x_1,x_2,&hellip;,x_n)|\mu)p(\mu) \\\<br />
+&amp;= \lambda \prod _{i=1} ^{n}p(x_{i}|\mu)p(\mu) \\\<br />
+&amp;=\lambda&rsquo; exp(-\frac{1}{2}((\frac{n}{\sigma_{0} ^{2}} + \frac{1}{\sigma_{1} ^{2}}) \mu ^{2}- 2(\frac{1}{\sigma_{0} ^{2}} \sum _{i=1} ^{n} x_{i} + \frac{\mu_{1}}{\sigma_{1}^{2}})\mu ))
+\end{align}
+$$</p>
+
+<p>由上式可知$p(\mu|(x_1,x_2,&hellip;,x_n))$ 服从正态分布，设$p(\mu|(x_1,x_2,&hellip;,x_n))$ $\sim$ $N(\mu_{k} , \sigma_{k}^{2})$，则：</p>
+
+<p>$$
+\begin{align}
+p(\mu|(x_1,x_2,&hellip;,x_n)) &amp;= \frac{1}{\sqrt{(2 \pi)} \sigma_{k}} exp (-\frac{(\mu - \mu_{k})^{2}}{2 \sigma_{k} ^{2}}) \\\<br />
+&amp;= \lambda&rsquo; exp(-\frac{1}{2} (\frac{1}{\sigma_{k} ^{2}}\mu^{2} - 2\frac{\mu_{k}}{\sigma_{k} ^{2}}\mu))
+\end{align}
+$$</p>
+
+<p>以上两个等式对应项相等可得：</p>
+
+<p>$$\mu_{k} = (\frac{n \sigma_{1}^{2}}{n \sigma_{1}^{2} + \sigma_{0}^{2}}) \overline{x}^{(k)} + \frac{\sigma_{0}^{2}}{n\sigma_{1}^{2} + \sigma_{0}^{2}}\mu_{1}$$</p>
+
+<p>$$\sigma_{k}^{2} =  \frac{\sigma_{1}^{2}\sigma_{0}^{2}}{n\sigma_{1}^{2} + \sigma_{0}^{2}}$$</p>
+
+<p>接下来我们可以通过如下等式求得类条件概率密度：</p>
+
+<p>$$p(x|y^{(k)}) = \int p(x|\mu)p(\mu|(x_1,x_2,&hellip;,x_n))d\mu$$</p>
+
+<hr />
+
+<p>1.参考文档：</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;[1]. 模式分类&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Richard O.Duda 等著&nbsp; &nbsp; &nbsp; &nbsp;李宏东 等译</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/machine-learning"><span class="tag">Machine Learning</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>465</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2020 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

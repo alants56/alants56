@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tensorflow on 月光晒谷</title>
+    <link>http://liuao.tech/tags/tensorflow/</link>
+    <description>Recent content in Tensorflow on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TensorFlow学习笔记——Tensor</title>
+      <link>http://liuao.tech/post/20190529/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20190529/</guid>
+      <description>&lt;h2 id=&#34;tensor&#34;&gt;Tensor&lt;/h2&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;code&gt;Tensor&lt;/code&gt;是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用&lt;code&gt;tf.Tensor&lt;/code&gt;来定义，&lt;code&gt;tf.Tensor&lt;/code&gt;有两个很重要的属性：数据类型（&lt;code&gt;dtype&lt;/code&gt;, 例如 &lt;code&gt;tf.float32&lt;/code&gt;、&lt;code&gt;tf.int32&lt;/code&gt;或&lt;code&gt;tf.string&lt;/code&gt;）和形状（&lt;code&gt;shape&lt;/code&gt;，例如&lt;code&gt;shape=(2,2)&lt;/code&gt;）。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

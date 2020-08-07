@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Linux设备模型小结——总线</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="月光晒谷">
+  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;最近一直在读Linux设备模型相关的内容，包括LKD和LDD相关的章节，也在读相关的内核源码（2.6.35）。从一开始的迷迷糊糊，到现在似乎看到了一些轮廓，因为这部分对于我来说有些抽象，决定写下目前的理解作为阶段总结。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="Linux设备模型小结——总线">
+    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;最近一直在读Linux设备模型相关的内容，包括LKD和LDD相关的章节，也在读相关的内核源码（2.6.35）。从一开始的迷迷糊糊，到现在似乎看到了一些轮廓，因为这部分对于我来说有些抽象，决定写下目前的理解作为阶段总结。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Linux设备模型小结——总线">
+  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;最近一直在读Linux设备模型相关的内容，包括LKD和LDD相关的章节，也在读相关的内核源码（2.6.35）。从一开始的迷迷糊糊，到现在似乎看到了一些轮廓，因为这部分对于我来说有些抽象，决定写下目前的理解作为阶段总结。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20170131/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.53">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20170131/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Linux设备模型小结——总线</h1>
+      <p class="post-meta">@月光晒谷 · Jan 31, 2017 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp;最近一直在读Linux设备模型相关的内容，包括LKD和LDD相关的章节，也在读相关的内核源码（2.6.35）。从一开始的迷迷糊糊，到现在似乎看到了一些轮廓，因为这部分对于我来说有些抽象，决定写下目前的理解作为阶段总结。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;Linux设备模型是从2.6版本开始抽象出来的，目的是更加方便有效地管理各种日益增多的设备。Linux设备模型是将内核和设备之间的关系通过总线的形式表示出来，这似乎是对硬件中CPU和各种外设之间相互连接总线的一种抽象，即使是那些没有通过物理总线相连的设备，Linux设备模型中也抽象出“platform bus”(平台总线)。在Linux设备模型中，一条总线是由设备和驱动两部分组成。每一个总线上的设备对应于一个硬件设备，它包含了该硬件设备相关的所有数据结构。而每一个驱动对应于硬件中一类设备的相关操作。Linux设备模型中这样的设计应该是将数据和操作尽可能的进行分离，降低数据与操作之间的耦合。设备用于描述硬件设备相关的数据，但不提供对于设备的任何操作；而驱动则只是提供相同设备的所有操作，但其操作所需要的数据都是由对应的设备提供。</p>
+
+<p><img src="http://liuao.tech/images/platform.png" alt="platform" /></p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;在总线、设备和驱动中，内核是通过其数据结构中的变量name进行区分的。即每个总线有唯一的name，设备和驱动的name相同，则表示设备与驱动相互匹配。由于驱动是相同类型的设备，而设备则单独指一个硬件设备，则设备中需要有一个用于表示具体设备编号的变量id。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;Linux内核是支持运行时加载的，因此当有设备（驱动）添加到总线中时，总线会通过match()函数进行设备与驱动的匹配查询，当新添加的设备（驱动）有匹配的驱动（设备）时，会调用驱动中的probe()函数，进行设备的初始化相关的工作。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;Linux设备模型使用了类似于面向对象的思想，由于C语言在语法上不支持面向对象，Linux内核使用了特殊的设计实现了面向对象。从我目前的理解来看，这样的设计似乎与C++语法中的面向对象有一些区别，例如，C++中对于是继承关系和包含关系描述的很清晰，通过不同的形式表现出来；但在Linux内核中继承与包含都是通过内嵌相关的数据来实现的。在我一开始阅读Linux内核设备模型相关内容时，总想着通过将其用类似C++中的描述进行理解，这样越想越糊涂。并且由于源码的结构复杂，LKD和LDD中也没有很通俗的将Linux设备模型描述出来，所以理解Linux设备模型时是有一些难度的。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;目前我所理解的Linux设备模型还是比较浅显的，可能其中还有不正确的地方。一方面是读过的代码很少，另一方面使用设备模型写过的驱动更少，仅仅是用平台总线为开发板写了led的驱动。之后还需要多读源码多写驱动，才能真正明白Linux设备驱动模型。</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/linux"><span class="tag">Linux</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/%E5%86%85%E6%A0%B8"><span class="tag">内核</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1241</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2020 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

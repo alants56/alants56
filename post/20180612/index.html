@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>统计学习方法——学习笔记之概论</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  <meta name="description" content="1.统计学习 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;赫尔伯特·西蒙曾对学习给出以下定义：
+ 如果一个系统能够通过执行某个过程改进它的性能，这就是学习。
+ 统计学习就是计算机系统通过运用数据及统计方法提高系统性能的机器学习。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="统计学习方法——学习笔记之概论">
+    <meta name="twitter:description" content="1.统计学习 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;赫尔伯特·西蒙曾对学习给出以下定义：
+ 如果一个系统能够通过执行某个过程改进它的性能，这就是学习。
+ 统计学习就是计算机系统通过运用数据及统计方法提高系统性能的机器学习。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="统计学习方法——学习笔记之概论">
+  <meta property="og:description" content="1.统计学习 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;赫尔伯特·西蒙曾对学习给出以下定义：
+ 如果一个系统能够通过执行某个过程改进它的性能，这就是学习。
+ 统计学习就是计算机系统通过运用数据及统计方法提高系统性能的机器学习。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20180612/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.53">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20180612/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">统计学习方法——学习笔记之概论</h1>
+      <p class="post-meta">@月光晒谷 · Jun 12, 2018 · 1 min read</p>
+    </header>
+    <article class="post-content"><h4 id="1-统计学习">1.统计学习</h4>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;赫尔伯特·西蒙曾对学习给出以下定义：</p>
+
+<blockquote>
+<p>如果一个系统能够通过执行某个过程改进它的性能，这就是学习。</p>
+</blockquote>
+
+<p>统计学习就是计算机系统通过运用数据及统计方法提高系统性能的机器学习。</p>
+
+<h4 id="2-统计学习三要素">2.统计学习三要素</h4>
+
+<ul>
+<li>模型</li>
+<li>策略</li>
+<li>算法</li>
+</ul>
+
+<h4 id="3-实现统计学习方法的步骤">3.实现统计学习方法的步骤</h4>
+
+<ul>
+<li>1.获取一个有限的训练数据集合；</li>
+<li>2.确定包含所有可能模型的假设空间（学习模型的集合）；</li>
+<li>3.确定模型选择的准则（策略）；</li>
+<li>4.实现求解模型的算法（算法）；</li>
+<li>5.通过学习方法选择最优模型；</li>
+<li>6.利用学习的最优模型对新数据进行预测或分析。</li>
+</ul>
+
+<h4 id="4-统计学习的分类">4.统计学习的分类</h4>
+
+<ul>
+<li>监督学习</li>
+<li>非监督学习</li>
+<li>半监督学习</li>
+<li>强化学习</li>
+</ul>
+
+<h4 id="5-一些基本概念">5.一些基本概念</h4>
+
+<ul>
+<li>输入空间：输入所有可能的取值。</li>
+<li>输出空间：输出所有可能的取值。</li>
+<li>特征向量：每个具体的输入是一个实例，通常是由特征向量表示。</li>
+<li>特征空间：特征向量存在的空间。</li>
+<li>联合概率分布：监督学习假设输入与输出的随机变量X和Y遵循联合概率分布P(X,Y)，它是监督学习关于数据的基本假设。</li>
+<li>假设空间：输入空间到输出空间的映射集合。</li>
+<li>过拟合：学习时选择的模型包含的参数过多，以至于出现这一模型对已知数据预测得很好，但对未知数据预测得很差的现象。</li>
+<li>泛化能力：学习到的模型对位置数据的预测能力。</li>
+<li>泛化误差：所学习到的模型的期望风险。</li>
+</ul>
+
+<h4 id="6-损失函数">6.损失函数</h4>
+
+<p>损失函数或代价函数用来度量模型一次预测的好坏，常用的损失函数有如下几种：</p>
+
+<p><img src="http://liuao.tech/images/sl1_lossf.png" alt="sl1_lossf" /></p>
+
+<p>损失函数越小，模型就越好。</p>
+
+<h4 id="7-风险">7.风险</h4>
+
+<p>学习的目标是选择期望风险最小的模型。根据大数定律，当样本容量N趋于无穷时，经验风险趋于期望风险。</p>
+
+<p><img src="http://liuao.tech/images/sl1_risk1.png" alt="sl1_risk1" /></p>
+
+<p>但实际中样本数量有限，甚至很小。因此需要对经验进行一定的矫正，这就关系到监督学习的两个基本策略：经验风险最小化和结构风险最小化。</p>
+
+<p><img src="http://liuao.tech/images/sl1_risk2.png" alt="sl1_risk2" /></p>
+
+<h4 id="8-正则化">8.正则化</h4>
+
+<p>正则化是结构风险最小化策略的实现，是在经验风险上加一个正则化会罚项。正则化项一般是模型复杂度的单调递增函数，模型越复杂，正则化值就越大。如，回归问题中，损失函数是平方损失，正则化项的参数向量的L1和L2范数表示：</p>
+
+<p><img src="http://liuao.tech/images/sl1_regularization.png" alt="sl1_regularization" /></p>
+
+<h4 id="9-交叉验证">9.交叉验证</h4>
+
+<p>交叉验证是一种模型选择方法，基本思想是重复的使用数据。</p>
+
+<ul>
+<li>简单交叉验证：随机将数据分为两部分，一部分作为训练集，另一部分作为测试集。</li>
+<li>S折交叉验证：将数据随机地分为S个大小相同互不相交的子集，然后利用S-1个子集的数据进行训练，利用余下的子集测试模型，将这一过程对可能的S种选择城府进行，最后选出S次评测中平均误差最小的模型。</li>
+<li>留一交叉验证：S=N，N为给定数据集的容量，称为留一交叉验证。</li>
+</ul>
+
+<h4 id="10-生成模型与判别模型">10.生成模型与判别模型</h4>
+
+<p>生成模型：</p>
+
+<ul>
+<li>生成方法：由数据学习联合概率分布P(X,Y)，然后求出条件概率分布P(Y|X)作为预测的模型，即生成模型。</li>
+<li>典型的模型：朴素贝叶斯法和隐马尔可夫模型。</li>
+<li>生成方法特点：
+
+<ul>
+<li>可以还原出联合概率分布P(X,Y)；</li>
+<li>学习收敛速度更快；</li>
+<li>当存在隐变量时，仍可以用生成方法。</li>
+</ul></li>
+</ul>
+
+<p>判别模型：</p>
+
+<ul>
+<li>判别方法：由数据直接学习决策函数f(X)或者条件概率分布P(Y|X)作为预测的模型，即为判别模型。</li>
+<li>典型的模型：k邻近法、感知机、决策树，logistics regression、最大熵模型、支持向量机、提升方法和条件随机场等。</li>
+<li>判别方法的特点：
+
+<ul>
+<li>直接学习的是决策函数f(X)或者条件概率分布P(Y|X)，直接面对预测，往往学习的准确率更高；</li>
+<li>由于直接学习f(X)或者P(Y|X)，可以对数据进行各种程度上的抽象、定义特征并使用特征，可以简化学习问题。</li>
+</ul></li>
+</ul>
+
+<hr />
+
+<p>参考文档：</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;1. 统计学习方法&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;李航 著</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/machine-learning"><span class="tag">Machine Learning</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/statistical-learning"><span class="tag">Statistical Learning</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>745</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2020 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

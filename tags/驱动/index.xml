@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>驱动 on 月光晒谷</title>
+    <link>http://liuao.tech/tags/%E9%A9%B1%E5%8A%A8/</link>
+    <description>Recent content in 驱动 on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Sat, 10 Dec 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/%E9%A9%B1%E5%8A%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux字符设备驱动实现——scull</title>
+      <link>http://liuao.tech/post/20161210/</link>
+      <pubDate>Sat, 10 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161210/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在Linux Device Driver这本书中讲述了一个scull驱动的实现，虽然这个例子是一个很简单的字符驱动程序，但对于初学者者来说，还是有些复杂。我将其修改了一下：将该设备模型改为在内存中固定大小且连续的区域（去掉原书中复杂的数据结构），可以对其进行打开、写入数据、读出数据等操作。接下来将描述该字符设备驱动的实现过程，以及如何使用该设备。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>libusb-win32学习笔记</title>
+      <link>http://liuao.tech/post/20150424/</link>
+      <pubDate>Fri, 24 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20150424/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 最近在做毕设，一个U盾相关的题目。需要用到USB2.0协议，实现PC和一个硬件平台通信。硬件平台的USB驱动使用内置的函数就可以完成，但PC端的驱动，比较让人头疼，因为没接触过Windows下的驱动开发。通过查找相关的USB资料，发现了libusb可以实现USB的无驱化设计。于是，打算配置相关的库。在网上找到了相关的库文件&lt;a href=&#34;http://sourceforge.net/projects/libusb-win32/files/&#34;&gt;libusb-win32&lt;/a&gt;。我下载的文件是libusb-win32-bin-1.2.6.0.zip。将该文件解压缩，会得到几个文件。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

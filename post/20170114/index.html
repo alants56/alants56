@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>vim练级攻略</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="月光晒谷">
+  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;vim（vi improved）是一款功能强大并且高效的文本编辑与文本查看工具，算得上是Unix/Linux中的上古神器。vim特有的输入模式，可以通过全键盘操作完成各种编辑工作。现在的我算是一个初级的vim党，在Linux下完全使用vim；而在Windows下一般也会使用GVim作为编辑工具，阅读代码会使用SourceInsight&#43;GVim。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="vim练级攻略">
+    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;vim（vi improved）是一款功能强大并且高效的文本编辑与文本查看工具，算得上是Unix/Linux中的上古神器。vim特有的输入模式，可以通过全键盘操作完成各种编辑工作。现在的我算是一个初级的vim党，在Linux下完全使用vim；而在Windows下一般也会使用GVim作为编辑工具，阅读代码会使用SourceInsight&#43;GVim。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="vim练级攻略">
+  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;vim（vi improved）是一款功能强大并且高效的文本编辑与文本查看工具，算得上是Unix/Linux中的上古神器。vim特有的输入模式，可以通过全键盘操作完成各种编辑工作。现在的我算是一个初级的vim党，在Linux下完全使用vim；而在Windows下一般也会使用GVim作为编辑工具，阅读代码会使用SourceInsight&#43;GVim。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20170114/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.53">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20170114/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">vim练级攻略</h1>
+      <p class="post-meta">@月光晒谷 · Jan 15, 2017 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp;vim（vi improved）是一款功能强大并且高效的文本编辑与文本查看工具，算得上是Unix/Linux中的上古神器。vim特有的输入模式，可以通过全键盘操作完成各种编辑工作。现在的我算是一个初级的vim党，在Linux下完全使用vim；而在Windows下一般也会使用GVim作为编辑工具，阅读代码会使用SourceInsight+GVim。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;vim的高效是对熟练应用vim的人来说的，例如在写代码时，一开始将某个库函数xxx_destroy函数写成了xxx_destory（我经常会将destroy写错）。当make编译时，发现显示当前文件中未定义xxx_destory,仔细检查发现函数名写错了，此时只需要打开文件在命令模式输入&rdquo;:%s/destory/destroy/g&rdquo;,就可以将该文件下所有的函数名修改正确。但是对于刚接触vim的初学者来说，vim是“极其不友好”的，难以记忆的命令以及复杂的操作方式。虽然vim对于初学者来说，掌握起来需要一段时间，但当你真正的熟练运用vim时，你会发现假如没有vim，编辑文本简直太难受了。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;那初学着来说如何学习vim呢？在我看来对于vim使用者可以分为三个阶段：入门级，初级和高级（三个阶段使用vim进行编辑时的效率如下图）。</p>
+
+<p><img src="http://liuao.tech/images/state.png" alt="vim1" /></p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;在入门阶段，你会发现使用vim时效率并没有一般的编辑器高，并且花费了一段时间效率也并没有多少提升。原因是与一般的编辑器相比，vim并不提倡使用鼠标（即使通过设置可以支持一些鼠标操作），并且vim中有一些基本的命令以及基本的操作需要熟练，因此你需要花费一段时间进行肌肉练习。具体的方法分为两方面进行：一方面你需要每天坚持花费20分钟左右的时间练习vimtutor（vim的操作指导，在linux中装好vim后，输入命令vimtutor就会打开），每次从头开始进行操作，通过练习，使每次完成一次所有练习的时间逐渐减少；另一方面在平时的编辑文本或代码时坚持使用vim。当你可以使用不加思索的使用“hjkl、iI、oO、cw、x与dd、gg与G、vyp等”常用的命令时，就完成了入门阶段练习。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;在初级阶段，就需要配合使用一些简单的插件了并且要开始学会配置。使用这些插件可以更方便的进行文件的操作，如MiniBufExplorer、taglist、winmadager以及ctags,通过这几个插件可以更加方便的编辑和阅读文本（代码）。关于插件的安装，是非常简单的，在网上插件下载成功放到指定的路径就可以了。而vim的配置，只需要更改.vimrc中的内容，具体如何配置，一方面根据自己的喜好，如是否默认显示行号，TAB键用几个空格表示等待，另一方面也需要根据你自己使用的vim插件来配置。因为vim的插件是类似脚本文件与系统无关，并且配置文件中的内容大部分也是与系统无关的，这样可以很方便的完成Linux下的vim和Windows下的GVim插件的安装以及相关的配置（我所使用的插件与相关配置已经push到了<a href="https://github.com/alants56/vim-alants">github</a>上）。</p>
+
+<p>Linux下的vim：
+<img src="http://liuao.tech/images/20161106vim.png" alt="vim2" /></p>
+
+<p>Windows下的GVIM：
+<img src="http://liuao.tech/images/20161106gvim.png" alt="vim3" /></p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;接下来是高级阶段了，这也是我当前要努力的阶段，在该阶段时，一些编辑修改，可能需要许多命令和步骤完成，此时就要考虑如何选择使用一种更简单的方式完成。另外可以找一些相关的书籍进行学习，例如“Practical Vim: Edit Text at the Speed of Thought”，书中详细描述了一些高级的操作。当然找一些更加适合自己的插件也是必不可少的。鉴于目前个人水平有限，对于该阶段就不多谈了。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;vim的强大之处是需要你不断去学习体会的，而当你真正地熟悉vim后，相信你会喜欢上它。</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/vim"><span class="tag">Vim</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1258</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2020 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

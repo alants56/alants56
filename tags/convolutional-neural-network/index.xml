@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Convolutional Neural Network on 月光晒谷</title>
+    <link>http://liuao.tech/tags/convolutional-neural-network/</link>
+    <description>Recent content in Convolutional Neural Network on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Fri, 04 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/convolutional-neural-network/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>手写数字识别（一）</title>
+      <link>http://liuao.tech/post/20180504/</link>
+      <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180504/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;手写数字识别是属于机器学习中的分类问题，它有许多的机器学习的算法可以解决，如SVM，CNN等。最近在&lt;a href=&#34;https://www.kaggle.com&#34;&gt;Kaggle&lt;/a&gt;上看到这一问题，并且恰巧之前有学过一些卷积神经网络（Convolutional Neural Network），于是打算用Python写一个简单CNN，实现手写数字识别器。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

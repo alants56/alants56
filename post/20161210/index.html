@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Linux字符设备驱动实现——scull</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在Linux Device Driver这本书中讲述了一个scull驱动的实现，虽然这个例子是一个很简单的字符驱动程序，但对于初学者者来说，还是有些复杂。我将其修改了一下：将该设备模型改为在内存中固定大小且连续的区域（去掉原书中复杂的数据结构），可以对其进行打开、写入数据、读出数据等操作。接下来将描述该字符设备驱动的实现过程，以及如何使用该设备。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="Linux字符设备驱动实现——scull">
+    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在Linux Device Driver这本书中讲述了一个scull驱动的实现，虽然这个例子是一个很简单的字符驱动程序，但对于初学者者来说，还是有些复杂。我将其修改了一下：将该设备模型改为在内存中固定大小且连续的区域（去掉原书中复杂的数据结构），可以对其进行打开、写入数据、读出数据等操作。接下来将描述该字符设备驱动的实现过程，以及如何使用该设备。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Linux字符设备驱动实现——scull">
+  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在Linux Device Driver这本书中讲述了一个scull驱动的实现，虽然这个例子是一个很简单的字符驱动程序，但对于初学者者来说，还是有些复杂。我将其修改了一下：将该设备模型改为在内存中固定大小且连续的区域（去掉原书中复杂的数据结构），可以对其进行打开、写入数据、读出数据等操作。接下来将描述该字符设备驱动的实现过程，以及如何使用该设备。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20161210/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.53">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20161210/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Linux字符设备驱动实现——scull</h1>
+      <p class="post-meta">@月光晒谷 · Dec 10, 2016 · 4 min read</p>
+    </header>
+    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp;在Linux Device Driver这本书中讲述了一个scull驱动的实现，虽然这个例子是一个很简单的字符驱动程序，但对于初学者者来说，还是有些复杂。我将其修改了一下：将该设备模型改为在内存中固定大小且连续的区域（去掉原书中复杂的数据结构），可以对其进行打开、写入数据、读出数据等操作。接下来将描述该字符设备驱动的实现过程，以及如何使用该设备。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;Linux对于设备是通过面向对象思想实现的。对于一个字符设备，通过数据结构struct cdev来描述，而我们实现的scull通过数据结构struct scull_dev表示，scull_dev类是继承cdev类。因C语言没有定义面向对象的语法，在这里使用嵌套实现。这样就得到我们的设备模型struct scull_dev,data表示我们的硬件设备的起始地址，而size则表示这个硬件设备最大的存储空间。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#f92672">&lt;</span>linux<span style="color:#f92672">/</span>cdev.h<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">struct</span> scull_dev {
+    <span style="color:#66d9ef">int</span> size;
+    <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>data;
+    <span style="color:#66d9ef">struct</span> cdev cdev;
+};</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;scull_dev的属性已经定义好了，接下来要定义其方法，即如何操作该设备。对于字符设备Linux，在struct file_operations已经定义好了操作字符设备的接口，通过提供统一的接口可以实现Unix一切皆文件的思想（网络设备除外）。对于我们要实现的scull，需要提供open、write、read、lseek等操作。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#f92672">&lt;</span>linux<span style="color:#f92672">/</span>fs.h<span style="color:#f92672">&gt;</span>
+<span style="color:#66d9ef">struct</span> file_operations {
+    <span style="color:#66d9ef">struct</span> module <span style="color:#f92672">*</span>owner;
+    loff_t (<span style="color:#f92672">*</span>llseek) (<span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>, loff_t, <span style="color:#66d9ef">int</span>);
+    ssize_t (<span style="color:#f92672">*</span>read) (<span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>, <span style="color:#66d9ef">char</span> __user <span style="color:#f92672">*</span>, size_t, loff_t <span style="color:#f92672">*</span>);
+    ssize_t (<span style="color:#f92672">*</span>write) (<span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> __user <span style="color:#f92672">*</span>, size_t, loff_t <span style="color:#f92672">*</span>);
+    <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>open) (<span style="color:#66d9ef">struct</span> inode <span style="color:#f92672">*</span>, <span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>);
+    <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>release) (<span style="color:#66d9ef">struct</span> inode <span style="color:#f92672">*</span>, <span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>);
+    ...
+};</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;open函数有两个参数，一个指向inode的指针，一个指向file的指针。inode表示期望打开的设备节点，在其成员中有个一个指向字符设备cdev的指针i_cdev，我们可以通过该指针得到指向scull设备的指针（借助container_of宏实现）。而file用于表示将要打开的设备描述，包含期望打开文件的标志f_flags（读写标志）。我们需要使用指向设备的指针，初始化file成员private_data，该成员指向的是将要打开的设备。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>open) (<span style="color:#66d9ef">struct</span> inode <span style="color:#f92672">*</span>, <span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;release函数参数与open相同，由于我们要实现的scull设备一直存在于内存中，无需任何释放动作，因此只需要返回0即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>release) (<span style="color:#66d9ef">struct</span> inode <span style="color:#f92672">*</span>, <span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;wirte函数，用于向设备写入数据。第一个参数表示打开的文件（即open中的file）。第二个参数是指向用户空间，期望写入数据的初始地址。第三个指针是期望写入的数据长度。第四个指针是当前写的位置，write结束时，需要更新该指针指向的数据。write函数的返回值为实际写入数据的长度。由于驱动程序处在内核空间，内核空间是不能直接读取用户地址空间的数据（用户空间也不能读取内核地址空间的数据），我们需要借用函数copy_from_user()，从用户空间将数据拷贝的内核空间。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">ssize_t (<span style="color:#f92672">*</span>write) (<span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> __user <span style="color:#f92672">*</span>, size_t, loff_t <span style="color:#f92672">*</span>);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;read函数，用于读取设备中的数据，参数与write相类似，同样需要借助copy_to_user()函数，将数据从内核空间拷贝的用户空间。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">ssize_t (<span style="color:#f92672">*</span>read) (<span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>, <span style="color:#66d9ef">char</span> __user <span style="color:#f92672">*</span>, size_t, loff_t <span style="color:#f92672">*</span>);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;llseek函数，用于设置当前读写的位置。第一个参数为file，第二个参数为偏移量，第三个参数是描述第二个参数偏移量的参考位置。第三个参数只有三种有效值：SEEK_SET（0，相对于文件起始位置的偏移量）,SEEK_CUR（1，相对于当前所处位置的偏移量）,SEEK_END（1，相对于文件末的偏移量）。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">loff_t (<span style="color:#f92672">*</span>llseek) (<span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>, loff_t, <span style="color:#66d9ef">int</span>);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;scull_dev设备的类已经构造完成，接下来就需要使用该类构建设备驱动模块。首先我们需要定义设备驱动模块的初始化函数al_scull_init()。通过宏控module_init告诉内核指定模块的初始化函数。初始化函数需要完成如下操作：</p>
+
+<ol>
+<li>为字符设备注册一个可用的设备号，内核设通过设备号dev_t来区分不同的设备，因此我们需要首先注册或者分配一个可用的设备号。当已经知道一个可用的设备号时，可以直接通过register_chrdev_region()，为设备注册该设备号。但一般情况是为设备动态的分配一个或多个连续的设备号，则需要通过alloc_chrdev_region()来实现。</li>
+<li>定义一个scull_dev设备，并对其初始化；我们动态分配一个scull_dev对象，初始化其成员data与size，对于cdev成员，需要初始化其成员ops，该成员是指向struct file_operations，即包含了操作该设备方法的指针。</li>
+<li>将该设备添加到设备列表中。我们通过cdev_add()函数，将scull_dev和它对应的设备号添加到设备列表中。</li>
+</ol>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;当然有初始化，就应该有清除函数al_scull_exit()，类似的，通过宏控module_exit告诉内核模块清除函数。清除函数需要将设备从设备列表中移除，释放动态分配的内存以及注销使用的设备号。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;至此，我们的设备驱动程序已经设计完成，接下来通过如下makefile文件编译好驱动程序scull.ko（编译scull驱动程序需要首先在<a href="http://www.yueguangshaigu.com/post/20150323/">Linux下构建内核源码树</a>）。由于Linux内核可以动态的加载和移除模块，因此可以通过下述指令加载和移除我们的驱动程序：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#Makefile
+</span><span style="color:#75715e"></span>ifneq (<span style="color:#960050;background-color:#1e0010">$</span>(KERNELRELEASE),)
+    obj<span style="color:#f92672">-</span>m :<span style="color:#f92672">=</span> scull.o
+<span style="color:#66d9ef">else</span>
+    KERNELDIR <span style="color:#f92672">?=</span> <span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>modules<span style="color:#f92672">/</span><span style="color:#960050;background-color:#1e0010">$</span>(shell uname <span style="color:#f92672">-</span>r)<span style="color:#f92672">/</span>build
+    PWD :<span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">$</span>(shell pwd)
+<span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+    <span style="color:#960050;background-color:#1e0010">$</span>(MAKE) <span style="color:#f92672">-</span>C <span style="color:#960050;background-color:#1e0010">$</span>(KERNELDIR) M<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">$</span>(PWD) modules
+endif 
+
+
+
+<span style="color:#75715e">#加载scull模块
+</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">$</span>sudo insmod scull.ko
+
+<span style="color:#75715e">#移除scull模块
+</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">$</span>sudo rmmod scull
+
+<span style="color:#75715e">#在内核中需要使用printk函数输出，在Ubuntu下不会在控制台显示，需要使用下述命令查看打印的log
+</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">$</span>dmesg</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;当我们加载了scull模块驱动程序后,可以在/proc/devices文件中查找到我们的字符设备scull。加载驱动后系统不会自动创建一个设备，接下来我们需要使用如下命令创建一个scull设备。创建好设备后，就可以在用户空间对scull设备进行操作（test.c）。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#在/dev/scull 创建一个字符设备c，主设备号为major，从设备号为0
+</span><span style="color:#75715e">#scull的主设备号可以在/proc/devices中查找到
+</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">$</span>sudo mknod <span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>scull c major <span style="color:#ae81ff">0</span></code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;最后需要注意的是该设备驱动程序并没有考虑多线程的安全性，也未实现对scull的一些高级操作，这些会考虑在之后的scull驱动程序版本中添加。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>
+
+<hr />
+
+<p>完整源码：</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;scull.c</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/module.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/init.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/fs.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/kernel.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/device.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/cdev.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;asm/uaccess.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/slab.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> * scull device driver
+</span><span style="color:#75715e"> **/</span>    
+ 
+MODULE_LICENSE(<span style="color:#e6db74">&#34;GPL&#34;</span>);
+MODULE_AUTHOR(<span style="color:#e6db74">&#34;alants&#34;</span>);
+    
+
+<span style="color:#66d9ef">struct</span> scull_dev {
+        <span style="color:#66d9ef">int</span> size;
+        <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>data;
+        <span style="color:#66d9ef">struct</span> cdev cdev;
+};
+
+
+<span style="color:#75715e">#define SCULL_SIZE 1024
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> major <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> minor <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">static</span> dev_t dev;
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>scull_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;scull&#34;</span>;
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> scull_dev <span style="color:#f92672">*</span>scull_device;
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">clean_up_scull_data</span>(<span style="color:#66d9ef">struct</span> scull_dev <span style="color:#f92672">*</span>sdev)
+{
+        kfree(sdev<span style="color:#f92672">-&gt;</span>data);
+        sdev<span style="color:#f92672">-&gt;</span>data <span style="color:#f92672">=</span> NULL;
+}
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">al_scull_open</span>(<span style="color:#66d9ef">struct</span> inode <span style="color:#f92672">*</span>inode, <span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>fp)
+{
+
+        <span style="color:#66d9ef">struct</span> scull_dev <span style="color:#f92672">*</span>sdev <span style="color:#f92672">=</span> container_of(inode<span style="color:#f92672">-&gt;</span>i_cdev, <span style="color:#66d9ef">struct</span> scull_dev, cdev);
+
+        <span style="color:#66d9ef">if</span> ((fp<span style="color:#f92672">-&gt;</span>f_flags <span style="color:#f92672">&amp;</span>O_ACCMODE) <span style="color:#f92672">==</span> O_WRONLY) {
+                clean_up_scull_data(sdev);
+        }
+
+        fp<span style="color:#f92672">-&gt;</span>private_data <span style="color:#f92672">=</span> sdev;
+
+        printk(KERN_ALERT <span style="color:#e6db74">&#34;scull open!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">al_scull_write</span>(<span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>fp, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> __user <span style="color:#f92672">*</span>buffer, size_t st, loff_t <span style="color:#f92672">*</span> pos)
+{
+        <span style="color:#66d9ef">struct</span> scull_dev <span style="color:#f92672">*</span>sdev <span style="color:#f92672">=</span> fp<span style="color:#f92672">-&gt;</span>private_data;
+        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>ENOMEM;
+      
+        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>sdev<span style="color:#f92672">-&gt;</span>data) {
+                sdev<span style="color:#f92672">-&gt;</span>data <span style="color:#f92672">=</span> kmalloc(SCULL_SIZE,GFP_KERNEL);
+                <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>sdev<span style="color:#f92672">-&gt;</span>data) {
+                        <span style="color:#66d9ef">goto</span> nomem;
+                }
+        }
+        
+        result <span style="color:#f92672">=</span> (sdev<span style="color:#f92672">-&gt;</span>size <span style="color:#f92672">-</span> <span style="color:#f92672">*</span>pos) <span style="color:#f92672">&gt;</span> st <span style="color:#f92672">?</span> st : (sdev<span style="color:#f92672">-&gt;</span>size <span style="color:#f92672">-</span> <span style="color:#f92672">*</span>pos);
+        printk(KERN_ALERT <span style="color:#e6db74">&#34;scull_write : result = %d st = %d pos = %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, result, st, <span style="color:#f92672">*</span>pos);
+        copy_from_user((sdev<span style="color:#f92672">-&gt;</span>data <span style="color:#f92672">+</span> <span style="color:#f92672">*</span>pos), buffer, result);
+
+        <span style="color:#f92672">*</span>pos <span style="color:#f92672">+=</span> result; 
+nomem:
+        printk(KERN_ALERT <span style="color:#e6db74">&#34;scull_write char: %d!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, result);
+        <span style="color:#66d9ef">return</span> result;
+}
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">al_scull_read</span>(<span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>fp, <span style="color:#66d9ef">char</span> __user <span style="color:#f92672">*</span>buffer, size_t st, loff_t <span style="color:#f92672">*</span>pos)
+{
+        <span style="color:#66d9ef">struct</span> scull_dev <span style="color:#f92672">*</span>sdev <span style="color:#f92672">=</span> fp<span style="color:#f92672">-&gt;</span>private_data;
+        <span style="color:#66d9ef">int</span> result;
+
+        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>sdev<span style="color:#f92672">-&gt;</span>data) {
+                result <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+                <span style="color:#66d9ef">goto</span> nodata;
+        }
+
+
+        result <span style="color:#f92672">=</span> (sdev<span style="color:#f92672">-&gt;</span>size <span style="color:#f92672">-</span> <span style="color:#f92672">*</span>pos) <span style="color:#f92672">&gt;</span> st <span style="color:#f92672">?</span> st : (sdev<span style="color:#f92672">-&gt;</span>size <span style="color:#f92672">-</span> <span style="color:#f92672">*</span>pos);
+        printk(KERN_ALERT <span style="color:#e6db74">&#34;scull_read : result = %d st = %d pos = %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, result, st, <span style="color:#f92672">*</span>pos);
+        copy_to_user(buffer, (sdev<span style="color:#f92672">-&gt;</span>data <span style="color:#f92672">+</span> <span style="color:#f92672">*</span>pos), result);
+
+        <span style="color:#f92672">*</span>pos <span style="color:#f92672">+=</span> result;
+         
+nodata:
+        printk(KERN_ALERT <span style="color:#e6db74">&#34;scull_read char: %d!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, result);
+        <span style="color:#66d9ef">return</span> result;
+}
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">al_scull_release</span>(<span style="color:#66d9ef">struct</span> inode <span style="color:#f92672">*</span>inode, <span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>fp)
+{
+        printk(KERN_ALERT <span style="color:#e6db74">&#34;scull release!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+
+<span style="color:#66d9ef">static</span> loff_t <span style="color:#a6e22e">al_scull_llseek</span>(<span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>fp, loff_t off, <span style="color:#66d9ef">int</span> whence)
+{
+        loff_t result;
+        <span style="color:#66d9ef">struct</span> scull_dev <span style="color:#f92672">*</span>sdev <span style="color:#f92672">=</span> fp<span style="color:#f92672">-&gt;</span>private_data;
+
+        <span style="color:#66d9ef">switch</span>(whence) {
+        <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span>
+                result <span style="color:#f92672">=</span> off;
+                <span style="color:#66d9ef">break</span>;
+        <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>
+                result <span style="color:#f92672">=</span> fp<span style="color:#f92672">-&gt;</span>f_pos <span style="color:#f92672">+</span> off;
+                <span style="color:#66d9ef">break</span>;
+        <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span>
+                result <span style="color:#f92672">=</span> sdev<span style="color:#f92672">-&gt;</span>size <span style="color:#f92672">+</span> off;
+                <span style="color:#66d9ef">break</span>;
+        <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>EINVAL;
+        }
+
+        <span style="color:#66d9ef">if</span> (result <span style="color:#f92672">&gt;</span> SCULL_SIZE) {
+                <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>EINVAL;
+        }
+
+        fp<span style="color:#f92672">-&gt;</span>f_pos <span style="color:#f92672">=</span> result;
+
+        printk(KERN_ALERT <span style="color:#e6db74">&#34;scull llseek!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        <span style="color:#66d9ef">return</span> result;
+}
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> file_operations fops <span style="color:#f92672">=</span> {
+        .owner <span style="color:#f92672">=</span> THIS_MODULE,
+        .open <span style="color:#f92672">=</span> al_scull_open,
+        .write <span style="color:#f92672">=</span> al_scull_write,
+        .read <span style="color:#f92672">=</span> al_scull_read,
+        .release <span style="color:#f92672">=</span> al_scull_release,
+        .llseek <span style="color:#f92672">=</span> al_scull_llseek,
+};
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">scull_setup_dev</span>(<span style="color:#66d9ef">struct</span> scull_dev <span style="color:#f92672">*</span>sdev, <span style="color:#66d9ef">int</span> index) 
+{
+        dev_t dt <span style="color:#f92672">=</span> MKDEV(major, index);
+
+        cdev_init(<span style="color:#f92672">&amp;</span>sdev<span style="color:#f92672">-&gt;</span>cdev, <span style="color:#f92672">&amp;</span>fops);
+        sdev<span style="color:#f92672">-&gt;</span>cdev.owner <span style="color:#f92672">=</span> THIS_MODULE;
+        sdev<span style="color:#f92672">-&gt;</span>cdev.ops <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>fops;
+        <span style="color:#66d9ef">if</span> (cdev_add(<span style="color:#f92672">&amp;</span>sdev<span style="color:#f92672">-&gt;</span>cdev, dt, <span style="color:#ae81ff">1</span>)) {
+                printk(KERN_ALERT <span style="color:#e6db74">&#34;ERROR: cdev_add %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, index);
+        }
+}
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">al_scull_init</span>(<span style="color:#66d9ef">void</span>)
+{
+        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+        <span style="color:#66d9ef">if</span> (major) {
+                dev <span style="color:#f92672">=</span> MKDEV(major, minor);
+                result <span style="color:#f92672">=</span> register_chrdev_region(dev, <span style="color:#ae81ff">1</span>, scull_name);
+        } <span style="color:#66d9ef">else</span> {
+                result <span style="color:#f92672">=</span> alloc_chrdev_region(<span style="color:#f92672">&amp;</span>dev, minor, <span style="color:#ae81ff">1</span>, scull_name);
+                major <span style="color:#f92672">=</span> MAJOR(dev);
+        }
+        
+        <span style="color:#66d9ef">if</span> (result <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+                printk(KERN_ALERT <span style="color:#e6db74">&#34;register dev error!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+                <span style="color:#66d9ef">return</span> result;
+        }
+
+        scull_device <span style="color:#f92672">=</span> kmalloc(<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> scull_dev), GFP_KERNEL);
+        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>scull_device) {
+                printk(KERN_ALERT <span style="color:#e6db74">&#34;no memory!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+                result <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>ENOMEM;
+                <span style="color:#66d9ef">goto</span> malloc_fail;
+        }
+
+        memset(scull_device, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> scull_dev));
+        scull_device<span style="color:#f92672">-&gt;</span>size <span style="color:#f92672">=</span> SCULL_SIZE;
+        scull_setup_dev(scull_device, <span style="color:#ae81ff">0</span>);
+
+        printk(KERN_ALERT <span style="color:#e6db74">&#34;%s init, major = %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, scull_name, major);
+        <span style="color:#66d9ef">return</span> result;
+
+malloc_fail:
+        unregister_chrdev_region(dev, <span style="color:#ae81ff">1</span>);
+        <span style="color:#66d9ef">return</span> result;
+
+}
+
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">al_scull_exit</span>(<span style="color:#66d9ef">void</span>)
+{
+        
+        cdev_del(<span style="color:#f92672">&amp;</span>scull_device<span style="color:#f92672">-&gt;</span>cdev);
+        clean_up_scull_data(scull_device);
+        kfree(scull_device);
+        scull_device <span style="color:#f92672">=</span> NULL;
+        unregister_chrdev_region(dev, <span style="color:#ae81ff">1</span>);
+
+        printk(KERN_ALERT <span style="color:#e6db74">&#34;%s exit!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, scull_name);
+}
+
+
+module_init(al_scull_init);
+module_exit(al_scull_exit);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;test.c</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/types.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/stat.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fcntl.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> * 测试程序：打开/dev/scull设备，并写入和读取该字符设备中的数据。
+</span><span style="color:#75715e"> * 
+</span><span style="color:#75715e"> * 运行: sudo ./test
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> **/</span>    
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+{
+        <span style="color:#66d9ef">int</span> fd;
+        <span style="color:#66d9ef">int</span> res;
+        <span style="color:#66d9ef">char</span> buf[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;This is a test code by alants!&#34;</span>;
+        <span style="color:#66d9ef">char</span> buf2[<span style="color:#ae81ff">100</span>];
+        <span style="color:#66d9ef">char</span> buf3[<span style="color:#ae81ff">100</span>];
+        fd <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;/dev/scull&#34;</span>, O_RDWR);
+        <span style="color:#66d9ef">if</span> (fd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+                printf(<span style="color:#e6db74">&#34;can&#39;t open</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        }
+
+        res <span style="color:#f92672">=</span> write(fd, buf, <span style="color:#ae81ff">15</span>);
+        printf(<span style="color:#e6db74">&#34;write : %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, res);
+
+        lseek(fd, <span style="color:#ae81ff">0</span>, SEEK_SET);
+
+        res <span style="color:#f92672">=</span> read(fd, buf2, <span style="color:#ae81ff">15</span>);
+        buf2[<span style="color:#ae81ff">15</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
+        printf(<span style="color:#e6db74">&#34;read : %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, res);
+        printf(<span style="color:#e6db74">&#34;buf2 = %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buf2);
+
+        close(fd);
+        fd <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;/dev/scull&#34;</span>, O_RDWR);
+        <span style="color:#66d9ef">if</span> (fd <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+                printf(<span style="color:#e6db74">&#34;can&#39;t open</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        }
+
+        res <span style="color:#f92672">=</span> read(fd, buf3, <span style="color:#ae81ff">15</span>);
+        buf3[<span style="color:#ae81ff">15</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\0&#39;</span>;
+        printf(<span style="color:#e6db74">&#34;read : %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, res);
+        printf(<span style="color:#e6db74">&#34;buf3 = %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, buf3);
+        
+        close(fd);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/linux"><span class="tag">Linux</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/%E9%A9%B1%E5%8A%A8"><span class="tag">驱动</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1294</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2020 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

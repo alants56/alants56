@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技术文章 on 月光晒谷</title>
+    <link>http://liuao.tech/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/</link>
+    <description>Recent content in 技术文章 on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Fri, 22 Feb 2019 20:20:20 +0800</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>支持向量机SVM(一)</title>
+      <link>http://liuao.tech/post/20190222/</link>
+      <pubDate>Fri, 22 Feb 2019 20:20:20 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20190222/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;支持向量机（Support Vector Machines SVM）是一种二分类模型，它的目标是在特征空间中寻找对于所有样本距离最大的超平面。与感知机不同的是，在线性可分的情况下，SVM可以得到唯一的解。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>分支定界</title>
+      <link>http://liuao.tech/post/20190128/</link>
+      <pubDate>Mon, 28 Jan 2019 12:12:12 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20190128/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;分支定界法（branch and bound）是一种求解离散数据组合的最优化问题。该算法执行的效率取决于你所找的问题解空间的上下界，如果找到一个很紧凑的上下界进行剪枝操作，该算法的执行效率会非常高，因此它是最有可能在多项式时间内求解NP问题的算法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>王者荣耀评分机制之梯度下降算法分析(二)</title>
+      <link>http://liuao.tech/post/20171229/</link>
+      <pubDate>Fri, 29 Dec 2017 23:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20171229/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 通过上一篇文章，我们可以发现游戏的评分机制不仅和KDA有关，还受其它因素影响。于是重新定义一个模型如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>王者荣耀评分机制之梯度下降算法分析(一)</title>
+      <link>http://liuao.tech/post/20171225/</link>
+      <pubDate>Mon, 25 Dec 2017 23:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20171225/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 当一局游戏结束，总有一些疑问：为什么我的评分这么低，为什么不是我的MVP？虽然菜是原罪，但游戏具体的评分仅仅是根据KDA(KILL,DEATH,ASSIST)计算出来或是还有其它参数，另外具体的算法又是如何？因为之前有看过一个老师使用梯度下降算法来分析Pokemon的CP(combat power)值是如何进化的，于是也想借用该算法来分析王者荣耀的评分机制。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>英语学习笔记之语句分析</title>
+      <link>http://liuao.tech/post/20170530/</link>
+      <pubDate>Mon, 05 Jun 2017 17:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170530/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在之前，读一句英文时，我所采用的基本步骤：首先把自己能够“认识”的单词找出来；然后根据这些类似关键词的提示联想这句话应该是讲什么的；最后根据自己的想法理解这句英文。显然这种做法基本上都会理解有误，还记得大学某次英语考试的翻译，最后写下的译文自己都不忍再看，更别说阅卷老师了，最终的分数肯定是有些惨不忍睹。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>模式匹配算法KMP</title>
+      <link>http://liuao.tech/post/20170519/</link>
+      <pubDate>Thu, 25 May 2017 17:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170519/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LAMP&#43;Wordpress环境搭建</title>
+      <link>http://liuao.tech/post/20170516/</link>
+      <pubDate>Tue, 16 May 2017 17:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170516/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;对于一个新手来说，要建立一个小型的网站，LAMP+Wordpress是一个很不错的选择。LAMP指的是Linux、Apache、MySQL与PHP，搭建好LAMP+Wordpress的环境后，就可以通过Wordpress来在线建立并管理网站。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>bmp图片的编码规则</title>
+      <link>http://liuao.tech/post/20170402/</link>
+      <pubDate>Sun, 02 Apr 2017 01:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170402/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;前些天看到一幅gif图片，大致是一个程序员通过绘图工具绘出一幅bmp图片，然后用文本文件打开，可以看出其实他是写的C++版的helloworld程序。当真正了解了bmp图片的编码规则时，就可以很清楚知道这是如何实现的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux中断上下部</title>
+      <link>http://liuao.tech/post/20170215/</link>
+      <pubDate>Wed, 15 Feb 2017 23:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170215/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux设备模型小结——模块与框架</title>
+      <link>http://liuao.tech/post/20170207/</link>
+      <pubDate>Wed, 08 Feb 2017 23:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170207/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在Linux内核中，模块化的设计是非常普遍的。Linux内核的一大优点就是支持模块的动态加载与移除。这让驱动的开发和调试变得相当容易，并且在实际的使用中也是非常方便的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux设备模型小结——总线</title>
+      <link>http://liuao.tech/post/20170131/</link>
+      <pubDate>Tue, 31 Jan 2017 23:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170131/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;最近一直在读Linux设备模型相关的内容，包括LKD和LDD相关的章节，也在读相关的内核源码（2.6.35）。从一开始的迷迷糊糊，到现在似乎看到了一些轮廓，因为这部分对于我来说有些抽象，决定写下目前的理解作为阶段总结。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>vim练级攻略</title>
+      <link>http://liuao.tech/post/20170114/</link>
+      <pubDate>Sun, 15 Jan 2017 01:15:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170114/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;vim（vi improved）是一款功能强大并且高效的文本编辑与文本查看工具，算得上是Unix/Linux中的上古神器。vim特有的输入模式，可以通过全键盘操作完成各种编辑工作。现在的我算是一个初级的vim党，在Linux下完全使用vim；而在Windows下一般也会使用GVim作为编辑工具，阅读代码会使用SourceInsight+GVim。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>三阶魔方盲解</title>
+      <link>http://liuao.tech/post/20170107/</link>
+      <pubDate>Sat, 07 Jan 2017 12:12:12 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170107/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;最近看了一段别人盲解三阶魔方的视频，学习了一番，目前可以使用盲解的方式进行还原，但距离真正盲解还有段距离。在未学习盲解之前，感觉三阶魔方那么多方块，盲解时，很难记清楚各种情况。但真正将其进行分解开，然后记忆，发现其实并没有想象中那么难。接下来就谈一下我自己的一些理解。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

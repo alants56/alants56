@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>bmp图片的编码规则</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="月光晒谷">
+  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;前些天看到一幅gif图片，大致是一个程序员通过绘图工具绘出一幅bmp图片，然后用文本文件打开，可以看出其实他是写的C&#43;&#43;版的helloworld程序。当真正了解了bmp图片的编码规则时，就可以很清楚知道这是如何实现的。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="bmp图片的编码规则">
+    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;前些天看到一幅gif图片，大致是一个程序员通过绘图工具绘出一幅bmp图片，然后用文本文件打开，可以看出其实他是写的C&#43;&#43;版的helloworld程序。当真正了解了bmp图片的编码规则时，就可以很清楚知道这是如何实现的。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="bmp图片的编码规则">
+  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;前些天看到一幅gif图片，大致是一个程序员通过绘图工具绘出一幅bmp图片，然后用文本文件打开，可以看出其实他是写的C&#43;&#43;版的helloworld程序。当真正了解了bmp图片的编码规则时，就可以很清楚知道这是如何实现的。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20170402/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.53">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20170402/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">bmp图片的编码规则</h1>
+      <p class="post-meta">@月光晒谷 · Apr 2, 2017 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp;前些天看到一幅gif图片，大致是一个程序员通过绘图工具绘出一幅bmp图片，然后用文本文件打开，可以看出其实他是写的C++版的helloworld程序。当真正了解了bmp图片的编码规则时，就可以很清楚知道这是如何实现的。</p>
+
+<p><img src="http://liuao.tech/images/helloworld.gif" alt="helloworld" /></p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;bmp（bitmap）一种没有进行压缩的图片格式，它是一种二进制的格式。可以通过如下的数据结构struct bmp_data来了解该格式中的各个数据位表示的具体含义。首先是两个字节bmp_type，bmp格式这两个字节固定为0x4248，它其实也是&rdquo;BM&rdquo;这两个字符的ASII码；其次是bmp_head,表示bmp的头部，其中有整个bmp文件的大小、保留位以偏移量；接着是bmp_info,表示该bmp图片相关的一些信息，如宽度和高度、bpp等信息；最后是data，即具体的图像完整的编码数据，对于常用的24位bmp格式，就是通过RGB格式表示每个像素点的颜色。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">/*
+</span><span style="color:#75715e">**    这里的long型表示32位整数即4字节，short和char表示8位整数即1字节
+</span><span style="color:#75715e">*/</span>
+<span style="color:#66d9ef">struct</span> bmp_head {
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> size;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> reserved;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> offset;
+};
+
+<span style="color:#66d9ef">struct</span> bmp_info {
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> size;
+        <span style="color:#66d9ef">long</span> width;
+        <span style="color:#66d9ef">long</span> height;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">short</span> planes;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">short</span> bpp;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> compression;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> image_size;
+        <span style="color:#66d9ef">long</span> x_ppm;
+        <span style="color:#66d9ef">long</span> y_ppm;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> used;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> important;
+};
+
+<span style="color:#66d9ef">struct</span> bmp_type {
+        <span style="color:#66d9ef">char</span> type[<span style="color:#ae81ff">2</span>];
+};
+
+<span style="color:#66d9ef">struct</span> bmp_data {
+        <span style="color:#66d9ef">struct</span> bmp_type type;
+        <span style="color:#66d9ef">struct</span> bmp_head head;
+        <span style="color:#66d9ef">struct</span> bmp_info info;
+        <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>data;
+};</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;当明白以上的数据结构，就不难理解gif图片中是如何实现的：首先写出helloworld，然后将其按照对应ASII码转化为相应的RGB绘制出来，之后只要通过文本方式打开就可以得到gif中的效果。如下图，是我自己实现的gif中的效果。当然逆向制作会非常简单，首先用绘图软件任意绘制一幅大小为4X10像素的bmp图片（可任意选择大小）并保存；然后使用二进制查看工具UE打开，并通过UE将helloworld程序复制到该图片的bmp_data中的data域，除了helloworld程序代码外，其它用0x0D0A代替（即回车符与换行符）；最后保存好数据，用绘图工具重新打开该文件，就可以看到helloworld版本的图像（注意：要保证该图经过修改后数据长度一致，即bmp_size中的size大小与整个文件大小一致）。</p>
+
+<p><img src="http://liuao.tech/images/20170401.png" alt="helloworld" /></p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/bmp"><span class="tag">Bmp</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1181</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2020 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

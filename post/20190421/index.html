@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Python读写TXT、CSV、XLS文件</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="月光晒谷">
+  <meta name="description" content="1.Python读写TXT文件 1.1 写txt文件： 使用open(&#39;output.txt&#39;, &#39;w&#39;)以写的方式打开文件（若文件不存在则创建该文件），使用file.write()写入文件，其中参数必须为str字符串。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="Python读写TXT、CSV、XLS文件">
+    <meta name="twitter:description" content="1.Python读写TXT文件 1.1 写txt文件： 使用open(&#39;output.txt&#39;, &#39;w&#39;)以写的方式打开文件（若文件不存在则创建该文件），使用file.write()写入文件，其中参数必须为str字符串。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Python读写TXT、CSV、XLS文件">
+  <meta property="og:description" content="1.Python读写TXT文件 1.1 写txt文件： 使用open(&#39;output.txt&#39;, &#39;w&#39;)以写的方式打开文件（若文件不存在则创建该文件），使用file.write()写入文件，其中参数必须为str字符串。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20190421/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.53">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20190421/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Python读写TXT、CSV、XLS文件</h1>
+      <p class="post-meta">@月光晒谷 · Apr 21, 2019 · 2 min read</p>
+    </header>
+    <article class="post-content"><h3 id="1-python读写txt文件">1.Python读写TXT文件</h3>
+
+<h4 id="1-1-写txt文件">1.1 写txt文件：</h4>
+
+<p>使用<code>open('output.txt', 'w')</code>以写的方式打开文件（若文件不存在则创建该文件），使用<code>file.write()</code>写入文件，其中参数必须为<code>str</code>字符串。</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;output.txt&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> file:
+    data <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;12</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">23 34</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">45 56 67&#39;</span>
+    file<span style="color:#f92672">.</span>write(data)</code></pre></div>
+<h4 id="1-2-读txt文件">1.2 读txt文件：</h4>
+
+<p>使用<code>open('input.txt', 'r')</code>以读的方式打开.txt文件。使用 <code>file.readlines()</code>逐行读取文件,每一行为一个字符串，将读取结果放在一个list中返回。使用<code>with</code>语句，可以在该语块结束后自动关闭文件，即相当于<code>open()</code>与<code>close()</code>语句。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;input.txt&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> file:
+    data <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>readlines()
+<span style="color:#66d9ef">print</span>(data)
+<span style="color:#66d9ef">print</span>(type(data))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#e6db74">&#39;&#39;&#39;输出结果&#39;&#39;&#39;</span>
+[<span style="color:#e6db74">&#39;12</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;23 34</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;45 56 67&#39;</span>]
+<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">list</span><span style="color:#e6db74">&#39;&gt;</span></code></pre></div>
+<p>使用 <code>file.read()</code>一次读取完整的文件，结果为一个<code>str</code>字符串。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;input.txt&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> file:
+    data <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>read()
+<span style="color:#66d9ef">print</span>(data)
+<span style="color:#66d9ef">print</span>(type(data))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#e6db74">&#39;&#39;&#39;输出结果&#39;&#39;&#39;</span>
+<span style="color:#ae81ff">12</span>
+<span style="color:#ae81ff">23</span> <span style="color:#ae81ff">34</span>
+<span style="color:#ae81ff">45</span> <span style="color:#ae81ff">56</span> <span style="color:#ae81ff">67</span>
+<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">str</span><span style="color:#e6db74">&#39;&gt;</span></code></pre></div>
+<h3 id="2-python读写csv文件">2.Python读写CSV文件</h3>
+
+<p>.csv格式的文件经常用于保存机器学习相关的数据集，比如MNIST等数据集。读写该格式的文件可以借用Pandas库。</p>
+
+<h4 id="2-1-写csv文件">2.1 写csv文件：</h4>
+
+<p>向.csv文件中写入数据时，首先需要构造一个<code>DataFrame</code>类型的数据，如下代码所示，通过传入一个<code>dict</code>类型的数据。由于传入的是一个<code>dict</code>类型，你所得到的数据的列的顺序可能不否和你的预期，此时可以通过<code>save[['id', 'name', 'age']]</code>设置顺序。当得到一个<code>DataFrame</code>类型数据上，则可以使用<code>to_csv()</code>将其输出，其中参数<code>index=False</code>指的是不需要行号。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> pandas
+id <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
+name <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Bob&#39;</span>, <span style="color:#e6db74">&#39;Tom&#39;</span>, <span style="color:#e6db74">&#39;Ada&#39;</span>]
+age <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;11&#39;</span>, <span style="color:#e6db74">&#39;12&#39;</span>, <span style="color:#e6db74">&#39;13&#39;</span>]
+save <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</span>DataFrame({<span style="color:#e6db74">&#39;id&#39;</span>: id, <span style="color:#e6db74">&#39;name&#39;</span>: name, <span style="color:#e6db74">&#39;age&#39;</span> : age})
+save <span style="color:#f92672">=</span> save[[<span style="color:#e6db74">&#39;id&#39;</span>, <span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#e6db74">&#39;age&#39;</span>]]
+save<span style="color:#f92672">.</span>to_csv(<span style="color:#e6db74">&#39;output.csv&#39;</span>,index <span style="color:#f92672">=</span> False)</code></pre></div>
+<p>打开文件&rsquo;output.csv&rsquo;可以看到如下样式的表格。</p>
+
+<table class="is-centered is-striped is-bordered is-narrow">
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>age</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Bob</td>
+    <td>11</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Tom</td>
+    <td>12</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Ada</td>
+    <td>12</td>
+  </tr>
+</table>
+
+<h4 id="2-2-读csv文件">2.2 读csv文件：</h4>
+
+<p>使用<code>read_csv('input.csv')</code>读取.csv文件，其中第一个参数为.csv文件的路径,读取出来的数据以DataFrame格式保存。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> pandas
+data <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;input.csv&#39;</span>)
+<span style="color:#66d9ef">print</span>(data)
+<span style="color:#66d9ef">print</span>(type(data))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#e6db74">&#39;&#39;&#39;输出结果&#39;&#39;&#39;</span>
+   id name  age
+<span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">1</span>  Bob   <span style="color:#ae81ff">11</span>
+<span style="color:#ae81ff">1</span>   <span style="color:#ae81ff">2</span>  Tom   <span style="color:#ae81ff">12</span>
+<span style="color:#ae81ff">2</span>   <span style="color:#ae81ff">3</span>  Ada   <span style="color:#ae81ff">13</span>
+<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">pandas</span><span style="color:#f92672">.</span>core<span style="color:#f92672">.</span>frame<span style="color:#f92672">.</span>DataFrame<span style="color:#e6db74">&#39;&gt;</span></code></pre></div>
+<p>可以通过DataFrame中的values属性值得到不带标题数据，该数据是<code>numpy.ndarray</code>类型数据，当然可以再通过<code>tolist()</code>方法返回<code>list</code>类型数据。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">values <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>values
+<span style="color:#66d9ef">print</span>(values)
+<span style="color:#66d9ef">print</span>(type(values))
+vlist <span style="color:#f92672">=</span> values<span style="color:#f92672">.</span>tolist()
+<span style="color:#66d9ef">print</span>(type(vlist))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#e6db74">&#39;&#39;&#39;输出结果&#39;&#39;&#39;</span>
+[[<span style="color:#ae81ff">1</span> <span style="color:#e6db74">&#39;Bob&#39;</span> <span style="color:#ae81ff">11</span>]
+ [<span style="color:#ae81ff">2</span> <span style="color:#e6db74">&#39;Tom&#39;</span> <span style="color:#ae81ff">12</span>]
+ [<span style="color:#ae81ff">3</span> <span style="color:#e6db74">&#39;Ada&#39;</span> <span style="color:#ae81ff">13</span>]]
+<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">numpy</span><span style="color:#f92672">.</span>ndarray<span style="color:#e6db74">&#39;&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#e6db74">&lt;class &#39;</span>list<span style="color:#e6db74">&#39;&gt;</span></code></pre></div>
+<h3 id="3-python读写xls文件-excel文件">3.Python读写XLS文件（Excel文件）</h3>
+
+<h4 id="3-1-写xls文件">3.1 写xls文件：</h4>
+
+<p>Pandas将xlrd和xlwt进行了封装，使得读写xls文件与读写csv文件类似。如下代码，是对.xls文件写入，使用<code>pandas.ExcelWriter()</code>打开一个要写入的.xls文件,然后将<code>DataFrame</code>格式的数据保存在打开的.xls文件中，其中<code>sheet_name</code>表示写入的sheet的名字。类似的with语句保证了在操作完文件后关闭该文件。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> pandas
+id <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
+name <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Bob&#39;</span>, <span style="color:#e6db74">&#39;Tom&#39;</span>, <span style="color:#e6db74">&#39;Ada&#39;</span>]
+age <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;11&#39;</span>, <span style="color:#e6db74">&#39;12&#39;</span>, <span style="color:#e6db74">&#39;13&#39;</span>]
+save <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</span>DataFrame({<span style="color:#e6db74">&#39;id&#39;</span>: id, <span style="color:#e6db74">&#39;name&#39;</span>: name, <span style="color:#e6db74">&#39;age&#39;</span> : age})
+save <span style="color:#f92672">=</span> save[[<span style="color:#e6db74">&#39;id&#39;</span>, <span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#e6db74">&#39;age&#39;</span>]]
+
+<span style="color:#66d9ef">with</span> pandas<span style="color:#f92672">.</span>ExcelWriter(<span style="color:#e6db74">&#39;output.xls&#39;</span>) <span style="color:#66d9ef">as</span> writer:
+    save<span style="color:#f92672">.</span>to_excel(writer, index <span style="color:#f92672">=</span> False, sheet_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Sheet1&#39;</span>)</code></pre></div>
+<h4 id="3-2-读xls文件">3.2 读xls文件</h4>
+
+<p>使用pandas读取.xls，也很方便，通过<code>pandas.read_excel()</code>实现对xls文件读取，其中<code>sheet_name</code>指定要读取的sheet。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> pandas
+data <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</span>read_excel(<span style="color:#e6db74">&#39;input.xls&#39;</span>, sheet_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Sheet1&#39;</span>)
+<span style="color:#66d9ef">print</span>(data)
+<span style="color:#66d9ef">print</span>(type(data))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">   id name  age
+<span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">1</span>  Bob   <span style="color:#ae81ff">11</span>
+<span style="color:#ae81ff">1</span>   <span style="color:#ae81ff">2</span>  Tom   <span style="color:#ae81ff">12</span>
+<span style="color:#ae81ff">2</span>   <span style="color:#ae81ff">3</span>  Ada   <span style="color:#ae81ff">13</span>
+<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">pandas</span><span style="color:#f92672">.</span>core<span style="color:#f92672">.</span>frame<span style="color:#f92672">.</span>DataFrame<span style="color:#e6db74">&#39;&gt;</span></code></pre></div>
+<p>若想一次读取xls文件中所有sheet时，可以通过将<code>sheet_name</code>设置为<code>None</code>来实现。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> pandas
+data <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</span>read_excel(<span style="color:#e6db74">&#39;input.xls&#39;</span>, sheet_name<span style="color:#f92672">=</span>None)
+<span style="color:#66d9ef">print</span>(type(data))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">collections</span><span style="color:#f92672">.</span>OrderedDict<span style="color:#e6db74">&#39;&gt;</span></code></pre></div>
+<p>此时可以通过类似遍历字典的方式遍历所有的sheet</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">for</span> d <span style="color:#f92672">in</span> data :
+  <span style="color:#66d9ef">print</span>(data[d])</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">   id name  age
+<span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">1</span>  Bob   <span style="color:#ae81ff">11</span>
+<span style="color:#ae81ff">1</span>   <span style="color:#ae81ff">2</span>  Tom   <span style="color:#ae81ff">12</span>
+<span style="color:#ae81ff">2</span>   <span style="color:#ae81ff">3</span>  Ada   <span style="color:#ae81ff">13</span></code></pre></div>
+<hr />
+
+<p>1.参考文档：</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;[1]. <a href="http://pandas.pydata.org/pandas-docs/version/0.24/pandas.pdf">http://pandas.pydata.org/pandas-docs/version/0.24/pandas.pdf</a></p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/python"><span class="tag">Python</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>432</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2020 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Logistic Regression on 月光晒谷</title>
+    <link>http://liuao.tech/tags/logistic-regression/</link>
+    <description>Recent content in Logistic Regression on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Tue, 08 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/logistic-regression/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Logistic Regression</title>
+      <link>http://liuao.tech/post/20180508/</link>
+      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180508/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;虽然logistic regression名为回归，但却是一个机器学习中的分类方法。我们先用它来处理二分类问题，基本模型如下，定义出了Y=1和Y=0的概率。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

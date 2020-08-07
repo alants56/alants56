@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Linux内核数据结构之链表</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  <meta name="description" content="之所以要写本文，主要是当我看到Linux内核中链表的设计，让我叹为观止。Linux实现的方式与众不同，它不是将数据结构塞入链表中，而是将链表节点塞入数据结构中。在Linux源码中，链表在头文 中声明。它的节点的原型如下：
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="Linux内核数据结构之链表">
+    <meta name="twitter:description" content="之所以要写本文，主要是当我看到Linux内核中链表的设计，让我叹为观止。Linux实现的方式与众不同，它不是将数据结构塞入链表中，而是将链表节点塞入数据结构中。在Linux源码中，链表在头文 中声明。它的节点的原型如下：
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Linux内核数据结构之链表">
+  <meta property="og:description" content="之所以要写本文，主要是当我看到Linux内核中链表的设计，让我叹为观止。Linux实现的方式与众不同，它不是将数据结构塞入链表中，而是将链表节点塞入数据结构中。在Linux源码中，链表在头文 中声明。它的节点的原型如下：
+">
+  <meta property="og:url" content="http://liuao.tech/post/20150404/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.53">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20150404/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Linux内核数据结构之链表</h1>
+      <p class="post-meta">@月光晒谷 · Apr 4, 2015 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>之所以要写本文，主要是当我看到Linux内核中链表的设计，让我叹为观止。Linux实现的方式与众不同，它不是将数据结构塞入链表中，而是将链表节点塞入数据结构中。在Linux源码中，链表在头文<linux/list.h>  中声明。它的节点的原型如下：</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> list_head {
+        <span style="color:#66d9ef">struct</span> list_head <span style="color:#f92672">*</span>next, <span style="color:#f92672">*</span>prev;              
+};</code></pre></div>
+<p>如果让我使用这个数据结构构造链表，以我对C语言的理解，我会这样构造：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> alants_list {
+        <span style="color:#66d9ef">struct</span> list_head node;
+        <span style="color:#66d9ef">int</span> data1;
+        <span style="color:#66d9ef">int</span> data2;    
+};</code></pre></div>
+<p>这样当我得到一个struct list_head *p_list的指针时，要遍历它指向的节点的数据时，可以通过强制类型转换，得到一个struct alants_list *的指针。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">((<span style="color:#66d9ef">struct</span> alants_list <span style="color:#f92672">*</span>)(p_list))<span style="color:#f92672">-&gt;</span>data1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+((<span style="color:#66d9ef">struct</span> alants_list <span style="color:#f92672">*</span>)(p_list))<span style="color:#f92672">-&gt;</span>data2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;</code></pre></div>
+<p>原因是struct list_head node位于struct alants_list最开始的位置，指向struct list_head node的指针，其实也指向struct alants_list的起始位置。这样通过强制类型转换就可以达到目的。</p>
+
+<p>这种方式显然是有前提的，就是struct list_head必须位于需要构造数据结构的开始位置。这显然非常的不方便，也不是很美观。</p>
+
+<p>那内核是怎样实现链表的构造呢？在内核中，可以任意的放置struct list_head的位置，它通过一种特殊的技巧来计算由struct list_head*到struct alants_list*的转换。</p>
+
+<p>在内核中，定义了一个名为container_of()的宏，就是通过它来计算的，该宏定义在&lt;linux/kernel.h&gt;中定义。该定义如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define container_of(ptr, type, member) ({                      \
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">typeof</span>( ((type <span style="color:#f92672">*</span>)<span style="color:#ae81ff">0</span>)<span style="color:#f92672">-&gt;</span>member ) <span style="color:#f92672">*</span>__mptr <span style="color:#f92672">=</span> (ptr);    \
+        (type <span style="color:#f92672">*</span>)( (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)__mptr <span style="color:#f92672">-</span> offsetof(type,member) );})</code></pre></div>
+<p>要想看懂它需要花费一点时间，首先你要知道typeof()，它是一种求变量类型的运算。即：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+typeof(a) b <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;</code></pre></div>
+<p>定义了变量b，b与a的类型一样，都是int类型。</p>
+
+<p>然后要了解另一个宏offsetof(),该宏定义在&lt;linux/stddef.h&gt;中定义。该定义如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define offsetof(TYPE, MEMBER) ((size_t) &amp;((TYPE *)0)-&gt;MEMBER)</span></code></pre></div>
+<p>先将上述的offsetof()宏拆分开（要注意符号的优先级顺序），首先，令 (TYPE *)0，它将一个空指针转换为TYPE*的类型；然后是((TYPE *)0)-&gt;MEMBER,取出结构体中的成员；然后是&amp;((TYPE *)0)-&gt;MEMBER，取出成员MEMBER的地址；接着最后一步(size_t)&amp;((TYPE *)0)-&gt;MEMBER，将其转化为size_t类型。这不难理解，当一个结构体的起始位置为0，则它的成员的地址就是相对于起始位置的偏移量，而offsetof()宏的作用就是，在结构体TYPE中，计算成员MEMBER相对于起始位置的偏移量。</p>
+
+<p>现在可以去理解container_of()宏的意义了，首先是const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr)，定义一个指向member的指针__mptr并初始化为ptr，然后计算member相对于起始位置的偏移量，然后__mptr减去该偏移量就得到了指向结构体起始位置的指针，即指向结构体的指针。</p>
+
+<p>而在&lt;linux/list.h&gt;，内核将container_of()宏定义了另一个名字list_entry()。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#define list_entry(ptr, type, member) \
+</span><span style="color:#75715e"></span>        container_of(ptr, type, member)</code></pre></div>
+<p>对于链表的添加，删除，查找，遍历等都是建立在list_entry()宏之上。具体就不多谈了，这些操作都定义在&lt;linux/list.h&gt;头文件中。</p>
+
+<p>通过如此的实现，很方便的实现了泛型编程，对此只能说一句：车轮已造好，请使用。</p>
+
+<p>(注：本文是自己的一些感想，需要C语言以及数据结构方面的知识。)</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/linux"><span class="tag">Linux</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/%E5%86%85%E6%A0%B8"><span class="tag">内核</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="tag">数据结构</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1910</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2020 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

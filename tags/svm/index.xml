@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Svm on 月光晒谷</title>
+    <link>http://liuao.tech/tags/svm/</link>
+    <description>Recent content in Svm on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Fri, 22 Feb 2019 20:20:20 +0800</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/svm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>支持向量机SVM(一)</title>
+      <link>http://liuao.tech/post/20190222/</link>
+      <pubDate>Fri, 22 Feb 2019 20:20:20 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20190222/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;支持向量机（Support Vector Machines SVM）是一种二分类模型，它的目标是在特征空间中寻找对于所有样本距离最大的超平面。与感知机不同的是，在线性可分的情况下，SVM可以得到唯一的解。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

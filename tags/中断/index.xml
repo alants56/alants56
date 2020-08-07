@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>中断 on 月光晒谷</title>
+    <link>http://liuao.tech/tags/%E4%B8%AD%E6%96%AD/</link>
+    <description>Recent content in 中断 on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Wed, 15 Feb 2017 23:59:59 +0800</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/%E4%B8%AD%E6%96%AD/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux中断上下部</title>
+      <link>http://liuao.tech/post/20170215/</link>
+      <pubDate>Wed, 15 Feb 2017 23:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170215/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

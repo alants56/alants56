@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>月光晒谷</title>
+    <link>http://liuao.tech/</link>
+    <description>Recent content on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Wed, 24 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Links</title>
+      <link>http://liuao.tech/links/</link>
+      <pubDate>Wed, 24 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/links/</guid>
+      <description>友情链接：</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://liuao.tech/about/</link>
+      <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/about/</guid>
+      <description>关于我： 一个理想主义者，一个开源主义者。目前正在读研，研究方向为差分隐私保护与数据挖掘。
+一些足迹：  2011-2015&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;西安电子科技大学通信工程专业（本科） 2015-2016&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;vivo软件开发（网络适应性工程师） 2018-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;北京航空航天大学网络空间安全专业（研究生）  一些技能：  C&amp;amp;Python 略懂移动通信2G、3G、4G协议 略懂Linux内核与Linux驱动开发 机器学习菜鸟级  一些链接：  blog： http://liuao.tech GitHub： https://github.com/alants56 Weibo： https://weibo.com/yueguangshaigu Kaggle： https://www.kaggle.com/al4win Email： alants56@163.com  关于本站： 本站主要是分享自己的一些学习、工作以及生活方面的内容。借用文章《月光晒谷》中的话来说：虽然我所写下的文章微不足道，但也毕竟接近我的理想，我希望我的文章可以给看过的读者一些灵感或者一些启发。当然这也是自我提升的一种方式，因为我坚信分享即所得。</description>
+    </item>
+    
+    <item>
+      <title>我的2019</title>
+      <link>http://liuao.tech/post/20200105/</link>
+      <pubDate>Sun, 05 Jan 2020 10:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20200105/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;2019年似乎没有很努力的学习，所有立下的Flag，不出意外都没有实现。虽然如此，但也并不是完全没有什么收获。在这一年，无论是在学术、生活等方面都取得了一些进展。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据挖掘比赛总结（10.17）</title>
+      <link>http://liuao.tech/post/20191017/</link>
+      <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20191017/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;从七月份到九月底，主要参加了三个比赛：（1）安泰杯——跨境电商智能算法大赛；（2）全球数据智能大赛——广西水稻预测；（3）IEEE-CIS Fraud Detection。虽然最终的成绩都不是很好，但这几个比赛有值的总结的地方。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>随笔（9.14）</title>
+      <link>http://liuao.tech/post/20190914/</link>
+      <pubDate>Sat, 14 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20190914/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;一晃一个假期过去了。原本打算在假期专心写论文，在六月份的时候在天池上看到一个比赛，就想尝试去做一下，就先把论文放一放。一开始，并没有什么思路，用了简单的逻辑回归，发现数据量很大，算法几乎要跑一天，也不能保证输出结果的正确率。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Pandas.DataFrame 数据处理</title>
+      <link>http://liuao.tech/post/20190801/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20190801/</guid>
+      <description>&lt;h4 id=&#34;1-创建pandas-dataframe&#34;&gt;1. 创建pandas.DataFrame&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;(1) 创建空的df，然后进行填充&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>TensorFlow学习笔记——Tensor</title>
+      <link>http://liuao.tech/post/20190529/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20190529/</guid>
+      <description>&lt;h2 id=&#34;tensor&#34;&gt;Tensor&lt;/h2&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;code&gt;Tensor&lt;/code&gt;是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用&lt;code&gt;tf.Tensor&lt;/code&gt;来定义，&lt;code&gt;tf.Tensor&lt;/code&gt;有两个很重要的属性：数据类型（&lt;code&gt;dtype&lt;/code&gt;, 例如 &lt;code&gt;tf.float32&lt;/code&gt;、&lt;code&gt;tf.int32&lt;/code&gt;或&lt;code&gt;tf.string&lt;/code&gt;）和形状（&lt;code&gt;shape&lt;/code&gt;，例如&lt;code&gt;shape=(2,2)&lt;/code&gt;）。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>随笔（5.14）</title>
+      <link>http://liuao.tech/post/20190514/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20190514/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在博客园看到一篇关于刷Leetcode的文章，然后就浏览了该博主其它文章，发现她也是从2015年开始在博客园上发文章，这不禁让我想起多年前立志要写好博客的自己。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Local Differential Privacy 相关论文</title>
+      <link>http://liuao.tech/post/20190422/</link>
+      <pubDate>Mon, 22 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20190422/</guid>
+      <description>&lt;h2 id=&#34;1-ldp相关基础论文&#34;&gt;1. LDP相关基础论文&lt;/h2&gt;
+
+&lt;h4 id=&#34;1-1-rappor&#34;&gt;1.1 RAPPOR&lt;/h4&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python读写TXT、CSV、XLS文件</title>
+      <link>http://liuao.tech/post/20190421/</link>
+      <pubDate>Sun, 21 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20190421/</guid>
+      <description>&lt;h3 id=&#34;1-python读写txt文件&#34;&gt;1.Python读写TXT文件&lt;/h3&gt;
+
+&lt;h4 id=&#34;1-1-写txt文件&#34;&gt;1.1 写txt文件：&lt;/h4&gt;
+
+&lt;p&gt;使用&lt;code&gt;open(&#39;output.txt&#39;, &#39;w&#39;)&lt;/code&gt;以写的方式打开文件（若文件不存在则创建该文件），使用&lt;code&gt;file.write()&lt;/code&gt;写入文件，其中参数必须为&lt;code&gt;str&lt;/code&gt;字符串。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Apriori算法</title>
+      <link>http://liuao.tech/post/20190406/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20190406/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Apriori是一种频繁数据挖掘算法，它在2006年入选由IEEE International Conference on Data Mining所评选的数据挖掘领域的十大经典算法。该算法的主要目的是找出数据集的数据项中频繁出现的项集。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>极大似然估计与贝叶斯估计</title>
+      <link>http://liuao.tech/post/20190319/</link>
+      <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20190319/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>非参数估计——Parzen窗方法与k近邻估计</title>
+      <link>http://liuao.tech/post/20190317/</link>
+      <pubDate>Sun, 17 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20190317/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在做分类问题时，有时候需要使用样本的概率密度函数来求其后验概率。但是很多情况下并不知道其概率密度函数的形式（即样本的分布未知），此时就需要对样本进行非参数估计，来求解其概率密度函数。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>支持向量机SVM(一)</title>
+      <link>http://liuao.tech/post/20190222/</link>
+      <pubDate>Fri, 22 Feb 2019 20:20:20 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20190222/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;支持向量机（Support Vector Machines SVM）是一种二分类模型，它的目标是在特征空间中寻找对于所有样本距离最大的超平面。与感知机不同的是，在线性可分的情况下，SVM可以得到唯一的解。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>分支定界</title>
+      <link>http://liuao.tech/post/20190128/</link>
+      <pubDate>Mon, 28 Jan 2019 12:12:12 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20190128/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;分支定界法（branch and bound）是一种求解离散数据组合的最优化问题。该算法执行的效率取决于你所找的问题解空间的上下界，如果找到一个很紧凑的上下界进行剪枝操作，该算法的执行效率会非常高，因此它是最有可能在多项式时间内求解NP问题的算法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>迟到的年总结</title>
+      <link>http://liuao.tech/post/20190122/</link>
+      <pubDate>Tue, 22 Jan 2019 14:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20190122/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;2018年充满了得与失，得到了许多，失去的更多，但总的来说成长了。年初的时候，体会了面对生死的无可奈何，明白了人生总有些事情是努力无法改变的，所以应该珍惜现在所拥有的一切。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>随笔（9.12）</title>
+      <link>http://liuao.tech/post/20180912/</link>
+      <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180912/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;来北京已经一周多了，虽然没怎么上课，但一直在学校待着，也没打算出去逛。报名的那天来的相对晚一些，急匆匆地报完名，然后去了超市买了些日用品，有些后悔没有带个枕头过来。晚上去了实验室，找了老师。老师安排了一个临时座位，之后的大部分时间应该会在实验室待着吧。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>差分隐私相关文章索引</title>
+      <link>http://liuao.tech/post/20180907/</link>
+      <pubDate>Fri, 07 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180907/</guid>
+      <description>百度安全实验室：
+大数据时代下的隐私保护（一）
+大数据时代下的隐私保护（二）
+大数据时代下的隐私保护（三）
+PATE相关:
+隐私与机器学习，二者可以兼得吗？
+ICLR-17最佳论文作者Nicolas Papernot现场演讲：如何用PATE框架有效保护隐私训练数据？</description>
+    </item>
+    
+    <item>
+      <title>Python简明教程</title>
+      <link>http://liuao.tech/post/20180905/</link>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180905/</guid>
+      <description>&lt;h3 id=&#34;1-内置类型&#34;&gt;1.内置类型&lt;/h3&gt;
+
+&lt;p&gt;1）整数&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;123&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(a)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(type(a))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>差分隐私算法基础——基本术语</title>
+      <link>http://liuao.tech/post/20180812/</link>
+      <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180812/</guid>
+      <description>&lt;h2 id=&#34;2-基本术语&#34;&gt;2. 基本术语&lt;/h2&gt;
+
+&lt;p&gt;这一部分正式开始，给出了差分隐私的正式定义，并且列举了一些它的关键性质。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>差分隐私算法基础——差分隐私的承诺</title>
+      <link>http://liuao.tech/post/20180706/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180706/</guid>
+      <description>&lt;h2 id=&#34;1-差分隐私的承诺&#34;&gt;1. 差分隐私的承诺&lt;/h2&gt;
+
+&lt;p&gt;“差分隐私”描述的是一种由数据持有者或监管者所作出的对于数据学科的承诺：“允许你的数据应用于任意的研究或分析，即使是可以获取到其他的研究成果，数据集或是信息资源，你也不会因此而受到负面或其他方面的影响。”在最好的情况下，不需要借助于数据清洗空间，数据使用协议，数据保护计划，或其他受限制的查看，差分隐私数据库机制能够使得机密的数据被广泛地应用于精确的数据分析中。尽管如此，数据的有用性也会减少：信息恢复的基础规则表明对于许多问题过于精确的回答将会以一种特殊的方式泄漏隐私。基于差分隐私算法研究的目标是尽可能降低这种不可避免性。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>关于机器学习的一些杂谈</title>
+      <link>http://liuao.tech/post/20180625/</link>
+      <pubDate>Mon, 25 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180625/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;晚上睡不着，突然想了一些机器学习中的问题，发现似乎可以类比于生活。因为从某种程度来说，机器学习是模仿人类学习，那么反推回去，机器学习似乎也可以给生活或学习一些启示。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>统计学习方法——学习笔记之感知机</title>
+      <link>http://liuao.tech/post/20180613/</link>
+      <pubDate>Wed, 13 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180613/</guid>
+      <description>&lt;h4 id=&#34;1-感知机模型&#34;&gt;1.感知机模型&lt;/h4&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;感知机：假设输入空间为X，输出空间为Y，其中Y=｛+1，-1｝。由输入空间到输出空间的如下函数f(x),称为感知机。其中，w和b为感知机模型参数，w为权重值，b为偏置，sign为符号函数。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>统计学习方法——学习笔记之概论</title>
+      <link>http://liuao.tech/post/20180612/</link>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180612/</guid>
+      <description>&lt;h4 id=&#34;1-统计学习&#34;&gt;1.统计学习&lt;/h4&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;赫尔伯特·西蒙曾对学习给出以下定义：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;如果一个系统能够通过执行某个过程改进它的性能，这就是学习。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;统计学习就是计算机系统通过运用数据及统计方法提高系统性能的机器学习。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>朴素贝叶斯</title>
+      <link>http://liuao.tech/post/20180601/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180601/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;朴素贝叶斯是基于贝叶斯公式和属性条件独立假设的一种分类方式。它是一种“生成式模型”，先通过样本估计先验概率，然后用它来求出后验概率。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>吐槽自己</title>
+      <link>http://liuao.tech/post/20180512/</link>
+      <pubDate>Sat, 12 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180512/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;从大学时就很喜欢看《今晚80后脱口秀》，再到之后喜欢上了《吐槽大会》和《脱口秀大会》。 “吐槽是门手艺，笑对需要勇气”，就源自于《吐槽大会》中的一句开场，也是我非常喜欢的一句话。大概是看到脱口秀演员吐槽了太多人（当然也包括他们自己），比如，李蛋经常嘲讽观众或是思文经常调侃她睡在上铺的兄弟，我也慢慢的接受了这种吐槽与自嘲的方式，也渐渐的用类似于吐槽的方式去看待自己的一些生活，当然我写出来的并是搞笑的段子，只是一些对自己的审视。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Logistic Regression</title>
+      <link>http://liuao.tech/post/20180508/</link>
+      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180508/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;虽然logistic regression名为回归，但却是一个机器学习中的分类方法。我们先用它来处理二分类问题，基本模型如下，定义出了Y=1和Y=0的概率。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>手写数字识别（一）</title>
+      <link>http://liuao.tech/post/20180504/</link>
+      <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180504/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;手写数字识别是属于机器学习中的分类问题，它有许多的机器学习的算法可以解决，如SVM，CNN等。最近在&lt;a href=&#34;https://www.kaggle.com&#34;&gt;Kaggle&lt;/a&gt;上看到这一问题，并且恰巧之前有学过一些卷积神经网络（Convolutional Neural Network），于是打算用Python写一个简单CNN，实现手写数字识别器。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>线性回归</title>
+      <link>http://liuao.tech/post/20180502/</link>
+      <pubDate>Wed, 02 May 2018 14:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20180502/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;线性模型，是通过相关数据的线性组合来构成的模型（如下式）。而线性回归是机器学习中的一类问题，它试图通过学习已有数据而获得一个线性的模型，以此来预测某一个问题的实际输出值。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>英语中常见的连读（笔记）</title>
+      <link>http://liuao.tech/post/20180302/</link>
+      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180302/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;1. 辅音+辅音&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>2017：一路坎坷，但却充实</title>
+      <link>http://liuao.tech/post/20171231/</link>
+      <pubDate>Sun, 31 Dec 2017 23:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20171231/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;2017，一路坎坷，经历了许多让人很烦的事情（比如手机丢了等等），但是自己的心态在慢慢变好。虽然现在还不能做到“不以物喜，不以己悲”，但已经可以做到“不过分欢喜，也不过于忧愁”。当然2017也学到了许多东西，于是就在年末通过如下几个关键词总结一下。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>2017考研总结</title>
+      <link>http://liuao.tech/post/20171230/</link>
+      <pubDate>Sun, 31 Dec 2017 14:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20171230/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 2017年，没有做多少事情，唯一一件就是考研。一开始决定要去考研是一时冲动，并没有考虑太多。等到了学校开始复习时，说实话有些后悔。一方面是看到要考的科目，基本上忘得差不多了；另一方面，也没有想好方向和学校。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>王者荣耀评分机制之梯度下降算法分析(二)</title>
+      <link>http://liuao.tech/post/20171229/</link>
+      <pubDate>Fri, 29 Dec 2017 23:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20171229/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 通过上一篇文章，我们可以发现游戏的评分机制不仅和KDA有关，还受其它因素影响。于是重新定义一个模型如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>王者荣耀评分机制之梯度下降算法分析(一)</title>
+      <link>http://liuao.tech/post/20171225/</link>
+      <pubDate>Mon, 25 Dec 2017 23:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20171225/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 当一局游戏结束，总有一些疑问：为什么我的评分这么低，为什么不是我的MVP？虽然菜是原罪，但游戏具体的评分仅仅是根据KDA(KILL,DEATH,ASSIST)计算出来或是还有其它参数，另外具体的算法又是如何？因为之前有看过一个老师使用梯度下降算法来分析Pokemon的CP(combat power)值是如何进化的，于是也想借用该算法来分析王者荣耀的评分机制。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Resume</title>
+      <link>http://liuao.tech/resume/</link>
+      <pubDate>Fri, 01 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/resume/</guid>
+      <description>This is my resume.</description>
+    </item>
+    
+    <item>
+      <title>一种简单的时间管理方法——番茄工作法</title>
+      <link>http://liuao.tech/post/20171015/</link>
+      <pubDate>Sun, 29 Oct 2017 23:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20171015/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;第一次了解到番茄工作法是两年前在别人写的一篇博客里，当时只是大致读了一下文章，没有想过要去尝试。直到上个月的某天，走在路上思考着自己每天的时间都没有什么规划，总感觉一天糊里糊涂的就结束了。或许是路旁边有个菜铺的缘故，突然想起了番茄工作法，于是就想尝试一下用它管理自己现阶段的时间。从开始使用到现在大概有两个月的时间，总的来说这种时间管理方法一定程度上是有效的。接下来谈一下有关番茄工作法的内容以及自己的一些看法吧。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>生活不易</title>
+      <link>http://liuao.tech/post/20170903/</link>
+      <pubDate>Sun, 03 Sep 2017 16:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170903/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;最近对一些东西或是有了新的认识，或是有一种还有这种操作的感觉。并且最近一段时间的状态比起六月份好太多了，应该是因为自己的格局在慢慢打开。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>荒废的六月</title>
+      <link>http://liuao.tech/post/20170630/</link>
+      <pubDate>Fri, 30 Jun 2017 23:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170630/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;最近几周，貌似有些不在状态。每天上午，很难起床，几乎有一半都是在八点之后才醒的。有几次起的比较早，然后在图书馆又不在状态。中午的时候，很少睡午觉，一方面是因为睡了又很难起床；更重要的一方面是，如果中午睡觉，晚上很难睡着。到了晚上，很难入睡，平均都是在两点以后。可能是盯着电脑或手机的屏幕太长时间，或是白天起太晚，总之躺在床上一两个小时才能睡着。有一次实在睡不着，就起床看了会英语，结果看了一个小时后，饿了……&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>英语学习笔记之语句分析</title>
+      <link>http://liuao.tech/post/20170530/</link>
+      <pubDate>Mon, 05 Jun 2017 17:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170530/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在之前，读一句英文时，我所采用的基本步骤：首先把自己能够“认识”的单词找出来；然后根据这些类似关键词的提示联想这句话应该是讲什么的；最后根据自己的想法理解这句英文。显然这种做法基本上都会理解有误，还记得大学某次英语考试的翻译，最后写下的译文自己都不忍再看，更别说阅卷老师了，最终的分数肯定是有些惨不忍睹。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>模式匹配算法KMP</title>
+      <link>http://liuao.tech/post/20170519/</link>
+      <pubDate>Thu, 25 May 2017 17:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170519/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LAMP&#43;Wordpress环境搭建</title>
+      <link>http://liuao.tech/post/20170516/</link>
+      <pubDate>Tue, 16 May 2017 17:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170516/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;对于一个新手来说，要建立一个小型的网站，LAMP+Wordpress是一个很不错的选择。LAMP指的是Linux、Apache、MySQL与PHP，搭建好LAMP+Wordpress的环境后，就可以通过Wordpress来在线建立并管理网站。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>手机之后</title>
+      <link>http://liuao.tech/post/20170414/</link>
+      <pubDate>Fri, 14 Apr 2017 22:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170414/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;电视之后是个人电脑的兴起，而现在又被智能手机夺取了我们的视线。那之后又会是什么设备来让我们放下手机？前两天看了罗永浩和罗振宇的会谈，其中罗永浩有谈到当时为什么选择智能手机作为创业的方向。主要的原因是：他认为手机是当前最主要的计算平台，而当下一次平台革命时，他可以有资格（具有足够的人才和资金储备）直接进入游戏圈。还有谈到关于下一代计算平台，他认为可能是VR设备。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>bmp图片的编码规则</title>
+      <link>http://liuao.tech/post/20170402/</link>
+      <pubDate>Sun, 02 Apr 2017 01:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170402/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;前些天看到一幅gif图片，大致是一个程序员通过绘图工具绘出一幅bmp图片，然后用文本文件打开，可以看出其实他是写的C++版的helloworld程序。当真正了解了bmp图片的编码规则时，就可以很清楚知道这是如何实现的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>早起的鸟儿到底有没有虫子吃？</title>
+      <link>http://liuao.tech/post/20170315/</link>
+      <pubDate>Wed, 15 Mar 2017 01:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170315/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;早起的鸟儿到底有没有虫子吃？大概只有鸟自己知道吧。最近在看一些英语相关的视频讲解，授课的老师谈起了拿破仑的一个观点：最悲哀的大概是那种愚蠢而又勤奋的人，在错误的道路上努力着，离自己的目标越来越远。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux中断上下部</title>
+      <link>http://liuao.tech/post/20170215/</link>
+      <pubDate>Wed, 15 Feb 2017 23:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170215/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux设备模型小结——模块与框架</title>
+      <link>http://liuao.tech/post/20170207/</link>
+      <pubDate>Wed, 08 Feb 2017 23:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170207/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在Linux内核中，模块化的设计是非常普遍的。Linux内核的一大优点就是支持模块的动态加载与移除。这让驱动的开发和调试变得相当容易，并且在实际的使用中也是非常方便的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux设备模型小结——总线</title>
+      <link>http://liuao.tech/post/20170131/</link>
+      <pubDate>Tue, 31 Jan 2017 23:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170131/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;最近一直在读Linux设备模型相关的内容，包括LKD和LDD相关的章节，也在读相关的内核源码（2.6.35）。从一开始的迷迷糊糊，到现在似乎看到了一些轮廓，因为这部分对于我来说有些抽象，决定写下目前的理解作为阶段总结。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>vim练级攻略</title>
+      <link>http://liuao.tech/post/20170114/</link>
+      <pubDate>Sun, 15 Jan 2017 01:15:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170114/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;vim（vi improved）是一款功能强大并且高效的文本编辑与文本查看工具，算得上是Unix/Linux中的上古神器。vim特有的输入模式，可以通过全键盘操作完成各种编辑工作。现在的我算是一个初级的vim党，在Linux下完全使用vim；而在Windows下一般也会使用GVim作为编辑工具，阅读代码会使用SourceInsight+GVim。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>三阶魔方盲解</title>
+      <link>http://liuao.tech/post/20170107/</link>
+      <pubDate>Sat, 07 Jan 2017 12:12:12 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170107/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;最近看了一段别人盲解三阶魔方的视频，学习了一番，目前可以使用盲解的方式进行还原，但距离真正盲解还有段距离。在未学习盲解之前，感觉三阶魔方那么多方块，盲解时，很难记清楚各种情况。但真正将其进行分解开，然后记忆，发现其实并没有想象中那么难。接下来就谈一下我自己的一些理解。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>再见2016</title>
+      <link>http://liuao.tech/post/20161223/</link>
+      <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161223/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;2016，很忙碌的一年，经历了很多，也改变了许多。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C语言可变参函数</title>
+      <link>http://liuao.tech/post/20161216/</link>
+      <pubDate>Fri, 16 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161216/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在C语言中，函数的参数是可变长的。虽然在一般的应用程序中不会去定义可变参数的函数，但是我们经常会使用标准库提供的可变参数函数。最典型的就是printf函数，它的声明如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux字符设备驱动实现——scull</title>
+      <link>http://liuao.tech/post/20161210/</link>
+      <pubDate>Sat, 10 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161210/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在Linux Device Driver这本书中讲述了一个scull驱动的实现，虽然这个例子是一个很简单的字符驱动程序，但对于初学者者来说，还是有些复杂。我将其修改了一下：将该设备模型改为在内存中固定大小且连续的区域（去掉原书中复杂的数据结构），可以对其进行打开、写入数据、读出数据等操作。接下来将描述该字符设备驱动的实现过程，以及如何使用该设备。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LKD学习笔记——内核同步</title>
+      <link>http://liuao.tech/post/20161208/</link>
+      <pubDate>Thu, 08 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161208/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;由于Linux内核支持对称多处理器(SMP)，并且支持内核抢占，这样可以让多个进程并发的执行。当然这也带来了一些影响，就是当多个进程可以对相同的数据进行访问和操作时，会产生一些意料之外的结果。例如，在火车站的售票系统中，多个窗口发售相同车次的车票。当只有最后一张票时，多个窗口同时查询数据库（类似多处理器），发现有一张票，若此时同时出售，就会出现一张票被出售多次的现象。通常称这为竞争条件，而火车票的剩余数则为临界区。那内核如何避免这种现象发生，即防止竞争条件，就是解决内核同步问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用C语言实现面向对象编程</title>
+      <link>http://liuao.tech/post/20161202/</link>
+      <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161202/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;当对C与C++有一定的理解之后，很容易明白：C++是一门面向对象的语言，而C语言则是面向过程的语言。那什么是面向对象、什么是面向过程？其实面向对象与面向过程，只是一种将要模拟的事件抽象出来进行编程的思想。面向过程，主要关注的是事件如何发展；面向对象，主要关注事件中存在的事物以及如何操作这些事物来模拟事件。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LKD学习笔记——进程管理02</title>
+      <link>http://liuao.tech/post/20161120/</link>
+      <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161120/</guid>
+      <description>&lt;p&gt;1.进程创建&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LKD学习笔记——进程管理01</title>
+      <link>http://liuao.tech/post/20161119/</link>
+      <pubDate>Sat, 19 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161119/</guid>
+      <description>&lt;p&gt;1.进程&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;进程是处于执行期间的程序以及执行该程序需要资源的总称。在操作系统中，提供了两种虚拟机制：虚拟处理器和虚拟内存。这两种抽象机制目的是让进程&amp;rdquo;独立&amp;rdquo;享有处理器以及整个内存资源。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LKD学习笔记——基础知识学习</title>
+      <link>http://liuao.tech/post/20161113/</link>
+      <pubDate>Sun, 13 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161113/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;虽然LKD这本书非常适合初学者学习Linux内核，但要读懂它，还是需要一些基础知识的。如果仅是了解一些Linux命令，以及一些计算机的基本知识，学习这本书时也是会很吃力的。接下来要分享我个人认为需要的基础知识，以及自己的学习路线。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LKD学习笔记——工欲善其事必先利其器</title>
+      <link>http://liuao.tech/post/20161106/</link>
+      <pubDate>Sun, 06 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161106/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;LKD即Linux Kernel Development，一本介绍Linux内核的经典入门之作。大学期间，曾经多次研读该书，但总感觉自己没有真正理解其中的内容。究其原因主要是当时是以了解知道为目的，而不是理解运用为目的；另外只是在图书馆或自习室去读书，而未对照着源码进行通读。一直想着有一天可以读懂Linux内核，因此现在计划从LKD开始，每周会抽出一点时间，从零开始去学习linux内核，也会将自己的学习过程以及心得记录下来。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Make The Change</title>
+      <link>http://liuao.tech/post/20161004/</link>
+      <pubDate>Tue, 04 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161004/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;某天突然开始又有些迷茫，感觉生活突然没有了目标，也没有了动力。每一周都是以相同的模式度过，固定的时间做固定的事情，没有任何变化，也没有任何起伏。究其原因，感觉生活没有了成就感，还有自己的努力无法解决问题，太过强依赖于别人。每天只能等待别人，由于自己的性格原因，这样的结果是内心产生了焦虑。为了减缓这种焦虑，只能去转移一些注意力。每天会很晚才去睡觉，这样每天上午起床都是闹钟响起时，而不是因为想一些事情自己醒来。每天留给自己的睡眠时间少一些，可以很快的入睡，并且睡的会很死。这样感觉可以保证睡眠的质量。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>拖延症</title>
+      <link>http://liuao.tech/post/20161003/</link>
+      <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161003/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;前些天，看到某论坛上一份关于谈论拖延的帖子，感觉写的挺好的。于是乎反思了一下自己，发现自己是一名中度“拖延症患者”。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux内核代码风格【转自linux源码文档】</title>
+      <link>http://liuao.tech/post/20160306/</link>
+      <pubDate>Sun, 06 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20160306/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;这是一个简短的文档，描述了linux内核的首选代码风格。代码风格是因人而异的，而且我
+不愿意把我的观点强加给任何人，不过这里所讲述的是我必须要维护的代码所遵守的风格，
+并且我也希望绝大多数其他代码也能遵守这个风格。请在写代码时至少考虑一下本文所述的
+风格。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>回家那些天</title>
+      <link>http://liuao.tech/post/20160221/</link>
+      <pubDate>Sun, 21 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20160221/</guid>
+      <description>&lt;p&gt;由于买到的是腊月二十八的票，因此注定要到除夕才能到家。坐了差不多九个多小时的高铁，终于在晚上十点四十到达了西安北站，通过询问得知地铁晚上十一点十分最后一趟，算是能坐上地铁，不然只能打的了。下了高铁，坐上地铁直奔钟楼站。其实在放假的前几天已经想好了，找一家网咖玩一晚上。钟楼的地下通道是比较复杂的，看了好久的地图才找到前往网鱼网咖的方向。团了一张会员，找了个相对安静的位置。因为到网咖时已经将近十二点了，没有找到一起玩的小伙伴，自己人机了一晚上dota2。一晚上也只玩了两个英雄：影魔和卡尔，差点冲动地买个至宝影魔。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>再论container_of宏</title>
+      <link>http://liuao.tech/post/20160116/</link>
+      <pubDate>Sat, 16 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20160116/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;曾经写过一篇关&lt;a href=&#34;http://liuao.tech/post/20150404/index.html&#34;&gt;《Linux数据结构之链表》&lt;/a&gt;的文章，在这篇文章中，只是简单的分析了如何通过链表内元素的指针获取链表的指针，并没有深究。关于这个&lt;code&gt;contain_of&lt;/code&gt;宏，我有一些想法和疑问，这也是我写这篇文章的原因。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>我的2015与2016</title>
+      <link>http://liuao.tech/post/20160101/</link>
+      <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20160101/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;2015年算是一个人生的转折点，告别了大学来到了深圳，开始了工作之旅。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>本站的搭建之路</title>
+      <link>http://liuao.tech/post/20151004/</link>
+      <pubDate>Sun, 04 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20151004/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;从注册到域名到真正把它构建好，差不多用了两个多月的时间。一方面是因为刚入职，需要花费很大的精力在工作上，没有太多的时间去写网页；另一方面是一直没有想好用什么工具来构建网页，期间换了好几套方案。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>FTD</title>
+      <link>http://liuao.tech/post/20150823/</link>
+      <pubDate>Sun, 23 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20150823/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;   最近三个多月没有写博客，真是罪过啊！一方面是比较忙，另一方面是没有学太多新东西，不知道该写些什么。今天周末，是来部门的第一个星期天。好久没写了，也不知道该起个什么标题，就借用最近我酒正准备组建的战队名。现在算是完成了一次转变，从学生到职场的转变，虽还没有完全褪去学生的青涩，但已习惯现在的生活。每天早起去挤地铁，每天晚上回来继续挤地铁。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>libusb-win32学习笔记</title>
+      <link>http://liuao.tech/post/20150424/</link>
+      <pubDate>Fri, 24 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20150424/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 最近在做毕设，一个U盾相关的题目。需要用到USB2.0协议，实现PC和一个硬件平台通信。硬件平台的USB驱动使用内置的函数就可以完成，但PC端的驱动，比较让人头疼，因为没接触过Windows下的驱动开发。通过查找相关的USB资料，发现了libusb可以实现USB的无驱化设计。于是，打算配置相关的库。在网上找到了相关的库文件&lt;a href=&#34;http://sourceforge.net/projects/libusb-win32/files/&#34;&gt;libusb-win32&lt;/a&gt;。我下载的文件是libusb-win32-bin-1.2.6.0.zip。将该文件解压缩，会得到几个文件。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux内核数据结构之链表</title>
+      <link>http://liuao.tech/post/20150404/</link>
+      <pubDate>Sat, 04 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20150404/</guid>
+      <description>&lt;p&gt;之所以要写本文，主要是当我看到Linux内核中链表的设计，让我叹为观止。Linux实现的方式与众不同，它不是将数据结构塞入链表中，而是将链表节点塞入数据结构中。在Linux源码中，链表在头文&lt;linux/list.h&gt;  中声明。它的节点的原型如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>配置Linux内核源码树</title>
+      <link>http://liuao.tech/post/20150323/</link>
+      <pubDate>Mon, 23 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20150323/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 最近正准备学习《Linux设备驱动程序》，需要搭建内核源码树。
+配置内核首先要下载源码，使用命令apt-cache  search linux-source查找源码（所有截图是在win7下的VirtualBox下）。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux新手应该了解的一些技巧</title>
+      <link>http://liuao.tech/post/20150126/</link>
+      <pubDate>Mon, 26 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20150126/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 对于任意一门学科，作为一名新手，我认为首先要学会最重要的一个技巧就是查找帮助文档。通过查找帮助，独立的解决问题，会很快的入门到一门学科里。当然对与linux来说，也不例外，帮助文档是很重要的一份学习资料。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用kylin系统的一些感受</title>
+      <link>http://liuao.tech/post/20150125/</link>
+      <pubDate>Sun, 25 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20150125/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;从开始接触到使用&lt;code&gt;ubuntu&lt;/code&gt;有一年半的时间，而使用&lt;code&gt;kylin&lt;/code&gt;系统有差不多半年的时间了。现在我的电脑只装了&lt;code&gt;kylin14.04&lt;/code&gt;系统，对这个系统确实有所期待，希望能够做的更好一些。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>找工作（三）</title>
+      <link>http://liuao.tech/post/20150123/</link>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20150123/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 本文算是我对自己近两个月找工作的一个自我总结，也算是对以后工作生活的一种勉励吧。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>找工作（二）</title>
+      <link>http://liuao.tech/post/20150122/</link>
+      <pubDate>Thu, 22 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20150122/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;国庆过后，开始认真对待找工作了。每天会留意学校发布招聘信息的网站，每天也会去逛逛睿思，看上面有没有有用的信息。当然自习还是得继续，不过国庆期间想通了以后只找软件相关的工作。国庆前投了一份简历给YY，一直没有信息。其实一开始很看重YY的一个关于C++开发的岗位，因为自己比较喜欢C++，感觉其非常的强大。当然在大学期间也花费了相当长的时间去学习C++，对自己的C++水平还是有一定的自信的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>找工作（一）</title>
+      <link>http://liuao.tech/post/20150121/</link>
+      <pubDate>Wed, 21 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20150121/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 真正开始决定找工作是大约去年八月中旬，是六级成绩出来的那一天。因为六级只考了400分，没能通过，没法保研，也不想去考，最终决定找工作。也是那天去了学校，本打算去学校先去准备一下，做做简历，还有就是复习一下基础知识。刚到学校没有心情去学习，最终开学前的几天都在宿舍呆着，只去了一次图书管。其余的时间就是上上网打打游戏，忘了要去找工作。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月光晒谷【转载】</title>
+      <link>http://liuao.tech/post/20080101/</link>
+      <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20080101/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 有句话叫“月光晒谷”，其实月光是晒不了谷的，可是却能够晾晒人的灵魂。在现代社会里，我们需要钢铁般的意志，求得生存发展;同时，也需要温柔的月光，去爱、去体恤……&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

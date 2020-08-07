@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Mining on 月光晒谷</title>
+    <link>http://liuao.tech/tags/data-mining/</link>
+    <description>Recent content in Data Mining on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/data-mining/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Apriori算法</title>
+      <link>http://liuao.tech/post/20190406/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20190406/</guid>
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Apriori是一种频繁数据挖掘算法，它在2006年入选由IEEE International Conference on Data Mining所评选的数据挖掘领域的十大经典算法。该算法的主要目的是找出数据集的数据项中频繁出现的项集。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
