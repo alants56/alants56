@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-=======
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据结构 on 月光晒谷</title>
@@ -11,26 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
-<<<<<<< HEAD
     <lastBuildDate>Sat, 16 Jan 2016 00:00:00 +0000</lastBuildDate><atom:link href="http://liuao.tech/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
-=======
-    <lastBuildDate>Sat, 16 Jan 2016 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://liuao.tech/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
-    
-    
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>再论container_of宏</title>
       <link>http://liuao.tech/post/20160116/</link>
       <pubDate>Sat, 16 Jan 2016 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20160116/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       曾经写过一篇关&lt;a href=&#34;http://liuao.tech/post/20150404/index.html&#34;&gt;《Linux数据结构之链表》&lt;/a&gt;的文章，在这篇文章中，只是简单的分析了如何通过链表内元素的指针获取链表的指针，并没有深究。关于这个&lt;code&gt;contain_of&lt;/code&gt;宏，我有一些想法和疑问，这也是我写这篇文章的原因。&lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;曾经写过一篇关&lt;a href=&#34;http://liuao.tech/post/20150404/index.html&#34;&gt;《Linux数据结构之链表》&lt;/a&gt;的文章，在这篇文章中，只是简单的分析了如何通过链表内元素的指针获取链表的指针，并没有深究。关于这个&lt;code&gt;contain_of&lt;/code&gt;宏，我有一些想法和疑问，这也是我写这篇文章的原因。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -39,16 +23,8 @@
       <pubDate>Sat, 04 Apr 2015 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20150404/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;之所以要写本文，主要是当我看到Linux内核中链表的设计，让我叹为观止。Linux实现的方式与众不同，它不是将数据结构塞入链表中，而是将链表节点塞入数据结构中。在Linux源码中，链表在头文&amp;lt;linux/list.h&amp;gt;  中声明。它的节点的原型如下：&lt;/p&gt;</description>
     </item>
     
   </channel>
 </rss>
-=======
-      <description>&lt;p&gt;之所以要写本文，主要是当我看到Linux内核中链表的设计，让我叹为观止。Linux实现的方式与众不同，它不是将数据结构塞入链表中，而是将链表节点塞入数据结构中。在Linux源码中，链表在头文&lt;linux/list.h&gt;  中声明。它的节点的原型如下：&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

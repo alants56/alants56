@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-=======
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>学习笔记 on 月光晒谷</title>
@@ -11,26 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
-<<<<<<< HEAD
     <lastBuildDate>Thu, 08 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="http://liuao.tech/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
-=======
-    <lastBuildDate>Thu, 08 Dec 2016 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://liuao.tech/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
-    
-    
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>LKD学习笔记——内核同步</title>
       <link>http://liuao.tech/post/20161208/</link>
       <pubDate>Thu, 08 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20161208/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       由于Linux内核支持对称多处理器(SMP)，并且支持内核抢占，这样可以让多个进程并发的执行。当然这也带来了一些影响，就是当多个进程可以对相同的数据进行访问和操作时，会产生一些意料之外的结果。例如，在火车站的售票系统中，多个窗口发售相同车次的车票。当只有最后一张票时，多个窗口同时查询数据库（类似多处理器），发现有一张票，若此时同时出售，就会出现一张票被出售多次的现象。通常称这为竞争条件，而火车票的剩余数则为临界区。那内核如何避免这种现象发生，即防止竞争条件，就是解决内核同步问题。&lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;由于Linux内核支持对称多处理器(SMP)，并且支持内核抢占，这样可以让多个进程并发的执行。当然这也带来了一些影响，就是当多个进程可以对相同的数据进行访问和操作时，会产生一些意料之外的结果。例如，在火车站的售票系统中，多个窗口发售相同车次的车票。当只有最后一张票时，多个窗口同时查询数据库（类似多处理器），发现有一张票，若此时同时出售，就会出现一张票被出售多次的现象。通常称这为竞争条件，而火车票的剩余数则为临界区。那内核如何避免这种现象发生，即防止竞争条件，就是解决内核同步问题。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -40,12 +24,7 @@
       
       <guid>http://liuao.tech/post/20161120/</guid>
       <description>&lt;p&gt;1.进程创建&lt;/p&gt;
-<<<<<<< HEAD
 &lt;p&gt;       Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。&lt;/p&gt;</description>
-=======
-
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -55,12 +34,7 @@
       
       <guid>http://liuao.tech/post/20161119/</guid>
       <description>&lt;p&gt;1.进程&lt;/p&gt;
-<<<<<<< HEAD
 &lt;p&gt;       进程是处于执行期间的程序以及执行该程序需要资源的总称。在操作系统中，提供了两种虚拟机制：虚拟处理器和虚拟内存。这两种抽象机制目的是让进程&amp;quot;独立&amp;quot;享有处理器以及整个内存资源。&lt;/p&gt;</description>
-=======
-
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;进程是处于执行期间的程序以及执行该程序需要资源的总称。在操作系统中，提供了两种虚拟机制：虚拟处理器和虚拟内存。这两种抽象机制目的是让进程&amp;rdquo;独立&amp;rdquo;享有处理器以及整个内存资源。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -69,11 +43,7 @@
       <pubDate>Sun, 13 Nov 2016 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20161113/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       虽然LKD这本书非常适合初学者学习Linux内核，但要读懂它，还是需要一些基础知识的。如果仅是了解一些Linux命令，以及一些计算机的基本知识，学习这本书时也是会很吃力的。接下来要分享我个人认为需要的基础知识，以及自己的学习路线。&lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;虽然LKD这本书非常适合初学者学习Linux内核，但要读懂它，还是需要一些基础知识的。如果仅是了解一些Linux命令，以及一些计算机的基本知识，学习这本书时也是会很吃力的。接下来要分享我个人认为需要的基础知识，以及自己的学习路线。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -82,16 +52,8 @@
       <pubDate>Sun, 06 Nov 2016 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20161106/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       LKD即Linux Kernel Development，一本介绍Linux内核的经典入门之作。大学期间，曾经多次研读该书，但总感觉自己没有真正理解其中的内容。究其原因主要是当时是以了解知道为目的，而不是理解运用为目的；另外只是在图书馆或自习室去读书，而未对照着源码进行通读。一直想着有一天可以读懂Linux内核，因此现在计划从LKD开始，每周会抽出一点时间，从零开始去学习linux内核，也会将自己的学习过程以及心得记录下来。&lt;/p&gt;</description>
     </item>
     
   </channel>
 </rss>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;LKD即Linux Kernel Development，一本介绍Linux内核的经典入门之作。大学期间，曾经多次研读该书，但总感觉自己没有真正理解其中的内容。究其原因主要是当时是以了解知道为目的，而不是理解运用为目的；另外只是在图书馆或自习室去读书，而未对照着源码进行通读。一直想着有一天可以读懂Linux内核，因此现在计划从LKD开始，每周会抽出一点时间，从零开始去学习linux内核，也会将自己的学习过程以及心得记录下来。&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

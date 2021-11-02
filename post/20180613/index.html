@@ -26,11 +26,7 @@
 
   
   
-<<<<<<< HEAD
   <meta name="description" content="1.感知机模型  感知机：假设输入空间为X，输出空间为Y，其中Y=｛&#43;1，-1｝。由输入空间到输出空间的如下函数f(x),称为感知机。其中，w和b为感知机模型参数，w为权重值，b为偏置，sign为符号函数。
-=======
-  <meta name="description" content="1.感知机模型 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;感知机：假设输入空间为X，输出空间为Y，其中Y=｛&#43;1，-1｝。由输入空间到输出空间的如下函数f(x),称为感知机。其中，w和b为感知机模型参数，w为权重值，b为偏置，sign为符号函数。
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
 
   
@@ -38,11 +34,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@gohugoio">
     <meta name="twitter:title" content="统计学习方法——学习笔记之感知机">
-<<<<<<< HEAD
     <meta name="twitter:description" content="1.感知机模型  感知机：假设输入空间为X，输出空间为Y，其中Y=｛&#43;1，-1｝。由输入空间到输出空间的如下函数f(x),称为感知机。其中，w和b为感知机模型参数，w为权重值，b为偏置，sign为符号函数。
-=======
-    <meta name="twitter:description" content="1.感知机模型 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;感知机：假设输入空间为X，输出空间为Y，其中Y=｛&#43;1，-1｝。由输入空间到输出空间的如下函数f(x),称为感知机。其中，w和b为感知机模型参数，w为权重值，b为偏置，sign为符号函数。
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
     <meta name="twitter:image" content="/images/avatar.png">
   
@@ -50,11 +42,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="统计学习方法——学习笔记之感知机">
-<<<<<<< HEAD
   <meta property="og:description" content="1.感知机模型  感知机：假设输入空间为X，输出空间为Y，其中Y=｛&#43;1，-1｝。由输入空间到输出空间的如下函数f(x),称为感知机。其中，w和b为感知机模型参数，w为权重值，b为偏置，sign为符号函数。
-=======
-  <meta property="og:description" content="1.感知机模型 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;感知机：假设输入空间为X，输出空间为Y，其中Y=｛&#43;1，-1｝。由输入空间到输出空间的如下函数f(x),称为感知机。其中，w和b为感知机模型参数，w为权重值，b为偏置，sign为符号函数。
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
   <meta property="og:url" content="http://liuao.tech/post/20180613/">
   <meta property="og:image" content="/images/avatar.png">
@@ -62,11 +50,7 @@
 
 
 
-<<<<<<< HEAD
 <meta name="generator" content="Hugo 0.83.1">
-=======
-<meta name="generator" content="Hugo 0.53">
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 
 
 <link rel="canonical" href="http://liuao.tech/post/20180613/">
@@ -226,7 +210,6 @@
   <section class="main post-detail">
     <header class="post-header">
       <h1 class="post-title">统计学习方法——学习笔记之感知机</h1>
-<<<<<<< HEAD
       <p class="post-meta">@月光晒谷 · Jun 13, 2018 · 1 min read</p>
     </header>
     <article class="post-content"><h4 id="1感知机模型">1.感知机模型</h4>
@@ -252,56 +235,6 @@
 <p>1.参考文档：</p>
 <p>       [1]. 统计学习方法              李航 著</p>
 <p>2.代码实现</p>
-=======
-      <p class="post-meta">@月光晒谷 · Jun 13, 2018 · 2 min read</p>
-    </header>
-    <article class="post-content"><h4 id="1-感知机模型">1.感知机模型</h4>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;感知机：假设输入空间为X，输出空间为Y，其中Y=｛+1，-1｝。由输入空间到输出空间的如下函数f(x),称为感知机。其中，w和b为感知机模型参数，w为权重值，b为偏置，sign为符号函数。</p>
-
-<p><img src="http://liuao.tech/images/sl2_f.png" alt="sl2_f" /></p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;感知机是一种线性分类模型，属于判别模式。感知机模型的假设空间是定义在特征空间中的所有线性分类模型或线性分类器的集合，即函数的集合｛f|f(x)=w*x+b｝。</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;感知机的几何解释：线性方程w*x+b=0，它代表了法向量为w，截距为b的超平面S，这个超平面将特征空间分为两个部分，分别对应正类和负类（+1和-1）。</p>
-
-<h4 id="2-感知机学习策略">2.感知机学习策略</h4>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;对于一个数据集，若存在一个超平面S能将该数据集的正实例点和负实例点完全正确的划分到超平面两侧，则该数据集就是线性可分的。</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;感知学习的目标就是求得一个超平面S将数据集完全分为征服两类。那么就可以定义损失函数为误分类点的总数，但是这样的损失函数并不是关于w和b连续可导，不易进行优化求解。感知机的损失函数选择的是误分类点到超平面S的距离总和，然后忽略其中的分母得到最终的损失函数。</p>
-
-<p><img src="http://liuao.tech/images/sl2_lossf.png" alt="sl2_lossf" /></p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;之所以可以忽略分母，个人理解为：由于超平面S的方程w*x+b=0，等式两边可以任意缩放，则可以不考虑上式分母。这样也可以简化之后的计算。</p>
-
-<h4 id="3-求解算法">3.求解算法</h4>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;感知学习求解算法，就是求解参数w和b，使得上述损失函数最小。感知机学习算法是误分类驱动的，可以采用随机梯度下降法。</p>
-
-<p><img src="http://liuao.tech/images/sl2_sgd.png" alt="sl2_sgd" /></p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;这种学习算法直观解释为：初始化一个超平面S，然后不断的移动S向误分类点的一侧移动，直至超平面最终对数据集正确分类。</p>
-
-<h4 id="4-对偶问题">4.对偶问题</h4>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;假设w和b初始值设为0，一共迭代了m次得到最终的w和b，则有以下关系式。其中N表示输入空间共有N个实例，ni代表第i个实例在迭代中因为误分类而更新的次数，即若某个实例一直处于正确的分类，则其对应的ni值为0。</p>
-
-<p><img src="http://liuao.tech/images/sl2_1.png" alt="sl2_1" /></p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;将上述关于参数w的等式带入到感知机的一般模型中就可以得出新的模型。求解新模型就是求解原问题的对偶问题，具体过程参考原问题。</p>
-
-<p><img src="http://liuao.tech/images/sl2_2.png" alt="sl2_2" /></p>
-
-<hr />
-
-<p>1.参考文档：</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;[1]. 统计学习方法&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;李航 著</p>
-
-<p>2.代码实现</p>
-
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <p>一维输入的感知机：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">perceptron</span> (object) :
         <span style="color:#66d9ef">def</span> __init__(self, w, b, lr) :
@@ -353,12 +286,8 @@
         per<span style="color:#f92672">.</span>output_S()
         <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Predict:&#34;</span>)
         <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;x = 1 &#34;</span>, <span style="color:#e6db74">&#34;y = &#34;</span>,per<span style="color:#f92672">.</span>test(<span style="color:#ae81ff">1</span>))
-<<<<<<< HEAD
         <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;x = 7 &#34;</span>, <span style="color:#e6db74">&#34;y = &#34;</span>,per<span style="color:#f92672">.</span>test(<span style="color:#ae81ff">7</span>))
 </code></pre></div></article>
-=======
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;x = 7 &#34;</span>, <span style="color:#e6db74">&#34;y = &#34;</span>,per<span style="color:#f92672">.</span>test(<span style="color:#ae81ff">7</span>))</code></pre></div></article>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -370,11 +299,7 @@
       </ul>
       
       <p class="post-copyright">
-<<<<<<< HEAD
-        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1233</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
-=======
-        ©2019 | liuao.tech | All rights reserved. This post was published <strong>876</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1238</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -383,11 +308,7 @@
   </section>
   
 <footer class="site-footer">
-<<<<<<< HEAD
   <p>© 2017-2021 月光晒谷</p>
-=======
-  <p>© 2017-2020 月光晒谷</p>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>

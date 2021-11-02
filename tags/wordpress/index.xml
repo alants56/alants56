@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -9,38 +8,14 @@
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
     <lastBuildDate>Tue, 16 May 2017 17:00:00 +0800</lastBuildDate><atom:link href="http://liuao.tech/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
-=======
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Wordpress on 月光晒谷</title>
-    <link>http://liuao.tech/tags/wordpress/</link>
-    <description>Recent content in Wordpress on 月光晒谷</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
-    <lastBuildDate>Tue, 16 May 2017 17:00:00 +0800</lastBuildDate>
-    
-	<atom:link href="http://liuao.tech/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
-    
-    
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>LAMP&#43;Wordpress环境搭建</title>
       <link>http://liuao.tech/post/20170516/</link>
       <pubDate>Tue, 16 May 2017 17:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20170516/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       对于一个新手来说，要建立一个小型的网站，LAMP+Wordpress是一个很不错的选择。LAMP指的是Linux、Apache、MySQL与PHP，搭建好LAMP+Wordpress的环境后，就可以通过Wordpress来在线建立并管理网站。&lt;/p&gt;</description>
     </item>
     
   </channel>
 </rss>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;对于一个新手来说，要建立一个小型的网站，LAMP+Wordpress是一个很不错的选择。LAMP指的是Linux、Apache、MySQL与PHP，搭建好LAMP+Wordpress的环境后，就可以通过Wordpress来在线建立并管理网站。&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

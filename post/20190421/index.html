@@ -50,11 +50,7 @@
 
 
 
-<<<<<<< HEAD
 <meta name="generator" content="Hugo 0.83.1">
-=======
-<meta name="generator" content="Hugo 0.53">
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 
 
 <link rel="canonical" href="http://liuao.tech/post/20190421/">
@@ -216,7 +212,6 @@
       <h1 class="post-title">Python读写TXT、CSV、XLS文件</h1>
       <p class="post-meta">@月光晒谷 · Apr 21, 2019 · 2 min read</p>
     </header>
-<<<<<<< HEAD
     <article class="post-content"><h3 id="1python读写txt文件">1.Python读写TXT文件</h3>
 <h4 id="11-写txt文件">1.1 写txt文件：</h4>
 <p>使用<code>open('output.txt', 'w')</code>以写的方式打开文件（若文件不存在则创建该文件），使用<code>file.write()</code>写入文件，其中参数必须为<code>str</code>字符串。</p>
@@ -224,24 +219,10 @@
     data <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;12</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">23 34</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">45 56 67&#39;</span>
     file<span style="color:#f92672">.</span>write(data)
 </code></pre></div><h4 id="12-读txt文件">1.2 读txt文件：</h4>
-=======
-    <article class="post-content"><h3 id="1-python读写txt文件">1.Python读写TXT文件</h3>
-
-<h4 id="1-1-写txt文件">1.1 写txt文件：</h4>
-
-<p>使用<code>open('output.txt', 'w')</code>以写的方式打开文件（若文件不存在则创建该文件），使用<code>file.write()</code>写入文件，其中参数必须为<code>str</code>字符串。</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;output.txt&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> file:
-    data <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;12</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">23 34</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">45 56 67&#39;</span>
-    file<span style="color:#f92672">.</span>write(data)</code></pre></div>
-<h4 id="1-2-读txt文件">1.2 读txt文件：</h4>
-
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <p>使用<code>open('input.txt', 'r')</code>以读的方式打开.txt文件。使用 <code>file.readlines()</code>逐行读取文件,每一行为一个字符串，将读取结果放在一个list中返回。使用<code>with</code>语句，可以在该语块结束后自动关闭文件，即相当于<code>open()</code>与<code>close()</code>语句。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;input.txt&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> file:
     data <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>readlines()
 <span style="color:#66d9ef">print</span>(data)
-<<<<<<< HEAD
 <span style="color:#66d9ef">print</span>(type(data))
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#e6db74">&#39;&#39;&#39;输出结果&#39;&#39;&#39;</span>
 [<span style="color:#e6db74">&#39;12</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;23 34</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;45 56 67&#39;</span>]
@@ -259,26 +240,6 @@
 </code></pre></div><h3 id="2python读写csv文件">2.Python读写CSV文件</h3>
 <p>.csv格式的文件经常用于保存机器学习相关的数据集，比如MNIST等数据集。读写该格式的文件可以借用Pandas库。</p>
 <h4 id="21-写csv文件">2.1 写csv文件：</h4>
-=======
-<span style="color:#66d9ef">print</span>(type(data))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#e6db74">&#39;&#39;&#39;输出结果&#39;&#39;&#39;</span>
-[<span style="color:#e6db74">&#39;12</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;23 34</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;45 56 67&#39;</span>]
-<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">list</span><span style="color:#e6db74">&#39;&gt;</span></code></pre></div>
-<p>使用 <code>file.read()</code>一次读取完整的文件，结果为一个<code>str</code>字符串。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;input.txt&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> file:
-    data <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>read()
-<span style="color:#66d9ef">print</span>(data)
-<span style="color:#66d9ef">print</span>(type(data))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#e6db74">&#39;&#39;&#39;输出结果&#39;&#39;&#39;</span>
-<span style="color:#ae81ff">12</span>
-<span style="color:#ae81ff">23</span> <span style="color:#ae81ff">34</span>
-<span style="color:#ae81ff">45</span> <span style="color:#ae81ff">56</span> <span style="color:#ae81ff">67</span>
-<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">str</span><span style="color:#e6db74">&#39;&gt;</span></code></pre></div>
-<h3 id="2-python读写csv文件">2.Python读写CSV文件</h3>
-
-<p>.csv格式的文件经常用于保存机器学习相关的数据集，比如MNIST等数据集。读写该格式的文件可以借用Pandas库。</p>
-
-<h4 id="2-1-写csv文件">2.1 写csv文件：</h4>
-
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <p>向.csv文件中写入数据时，首先需要构造一个<code>DataFrame</code>类型的数据，如下代码所示，通过传入一个<code>dict</code>类型的数据。由于传入的是一个<code>dict</code>类型，你所得到的数据的列的顺序可能不否和你的预期，此时可以通过<code>save[['id', 'name', 'age']]</code>设置顺序。当得到一个<code>DataFrame</code>类型数据上，则可以使用<code>to_csv()</code>将其输出，其中参数<code>index=False</code>指的是不需要行号。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> pandas
 id <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
@@ -286,67 +247,26 @@ name <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Bob&
 age <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;11&#39;</span>, <span style="color:#e6db74">&#39;12&#39;</span>, <span style="color:#e6db74">&#39;13&#39;</span>]
 save <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</span>DataFrame({<span style="color:#e6db74">&#39;id&#39;</span>: id, <span style="color:#e6db74">&#39;name&#39;</span>: name, <span style="color:#e6db74">&#39;age&#39;</span> : age})
 save <span style="color:#f92672">=</span> save[[<span style="color:#e6db74">&#39;id&#39;</span>, <span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#e6db74">&#39;age&#39;</span>]]
-<<<<<<< HEAD
 save<span style="color:#f92672">.</span>to_csv(<span style="color:#e6db74">&#39;output.csv&#39;</span>,index <span style="color:#f92672">=</span> False)
 </code></pre></div><p>打开文件&rsquo;output.csv&rsquo;可以看到如下样式的表格。</p>
 <!-- raw HTML omitted -->
 <h4 id="22-读csv文件">2.2 读csv文件：</h4>
-=======
-save<span style="color:#f92672">.</span>to_csv(<span style="color:#e6db74">&#39;output.csv&#39;</span>,index <span style="color:#f92672">=</span> False)</code></pre></div>
-<p>打开文件&rsquo;output.csv&rsquo;可以看到如下样式的表格。</p>
-
-<table class="is-centered is-striped is-bordered is-narrow">
-  <tr>
-    <th>id</th>
-    <th>name</th>
-    <th>age</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Bob</td>
-    <td>11</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Tom</td>
-    <td>12</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Ada</td>
-    <td>12</td>
-  </tr>
-</table>
-
-<h4 id="2-2-读csv文件">2.2 读csv文件：</h4>
-
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <p>使用<code>read_csv('input.csv')</code>读取.csv文件，其中第一个参数为.csv文件的路径,读取出来的数据以DataFrame格式保存。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> pandas
 data <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;input.csv&#39;</span>)
 <span style="color:#66d9ef">print</span>(data)
-<<<<<<< HEAD
 <span style="color:#66d9ef">print</span>(type(data))
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#e6db74">&#39;&#39;&#39;输出结果&#39;&#39;&#39;</span>
-=======
-<span style="color:#66d9ef">print</span>(type(data))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#e6db74">&#39;&#39;&#39;输出结果&#39;&#39;&#39;</span>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
    id name  age
 <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">1</span>  Bob   <span style="color:#ae81ff">11</span>
 <span style="color:#ae81ff">1</span>   <span style="color:#ae81ff">2</span>  Tom   <span style="color:#ae81ff">12</span>
 <span style="color:#ae81ff">2</span>   <span style="color:#ae81ff">3</span>  Ada   <span style="color:#ae81ff">13</span>
-<<<<<<< HEAD
 <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">pandas</span><span style="color:#f92672">.</span>core<span style="color:#f92672">.</span>frame<span style="color:#f92672">.</span>DataFrame<span style="color:#e6db74">&#39;&gt;</span>
 </code></pre></div><p>可以通过DataFrame中的values属性值得到不带标题数据，该数据是<code>numpy.ndarray</code>类型数据，当然可以再通过<code>tolist()</code>方法返回<code>list</code>类型数据。</p>
-=======
-<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">pandas</span><span style="color:#f92672">.</span>core<span style="color:#f92672">.</span>frame<span style="color:#f92672">.</span>DataFrame<span style="color:#e6db74">&#39;&gt;</span></code></pre></div>
-<p>可以通过DataFrame中的values属性值得到不带标题数据，该数据是<code>numpy.ndarray</code>类型数据，当然可以再通过<code>tolist()</code>方法返回<code>list</code>类型数据。</p>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">values <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>values
 <span style="color:#66d9ef">print</span>(values)
 <span style="color:#66d9ef">print</span>(type(values))
 vlist <span style="color:#f92672">=</span> values<span style="color:#f92672">.</span>tolist()
-<<<<<<< HEAD
 <span style="color:#66d9ef">print</span>(type(vlist))
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#e6db74">&#39;&#39;&#39;输出结果&#39;&#39;&#39;</span>
 [[<span style="color:#ae81ff">1</span> <span style="color:#e6db74">&#39;Bob&#39;</span> <span style="color:#ae81ff">11</span>]
@@ -356,18 +276,6 @@ vlist <span style="color:#f92672">=</span> values<span style="color:#f92672">.</
 <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">list</span><span style="color:#e6db74">&#39;&gt;</span>
 </code></pre></div><h3 id="3python读写xls文件excel文件">3.Python读写XLS文件（Excel文件）</h3>
 <h4 id="31-写xls文件">3.1 写xls文件：</h4>
-=======
-<span style="color:#66d9ef">print</span>(type(vlist))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#e6db74">&#39;&#39;&#39;输出结果&#39;&#39;&#39;</span>
-[[<span style="color:#ae81ff">1</span> <span style="color:#e6db74">&#39;Bob&#39;</span> <span style="color:#ae81ff">11</span>]
- [<span style="color:#ae81ff">2</span> <span style="color:#e6db74">&#39;Tom&#39;</span> <span style="color:#ae81ff">12</span>]
- [<span style="color:#ae81ff">3</span> <span style="color:#e6db74">&#39;Ada&#39;</span> <span style="color:#ae81ff">13</span>]]
-<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">numpy</span><span style="color:#f92672">.</span>ndarray<span style="color:#e6db74">&#39;&gt;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#e6db74">&lt;class &#39;</span>list<span style="color:#e6db74">&#39;&gt;</span></code></pre></div>
-<h3 id="3-python读写xls文件-excel文件">3.Python读写XLS文件（Excel文件）</h3>
-
-<h4 id="3-1-写xls文件">3.1 写xls文件：</h4>
-
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <p>Pandas将xlrd和xlwt进行了封装，使得读写xls文件与读写csv文件类似。如下代码，是对.xls文件写入，使用<code>pandas.ExcelWriter()</code>打开一个要写入的.xls文件,然后将<code>DataFrame</code>格式的数据保存在打开的.xls文件中，其中<code>sheet_name</code>表示写入的sheet的名字。类似的with语句保证了在操作完文件后关闭该文件。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> pandas
 id <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
@@ -377,19 +285,12 @@ save <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</s
 save <span style="color:#f92672">=</span> save[[<span style="color:#e6db74">&#39;id&#39;</span>, <span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#e6db74">&#39;age&#39;</span>]]
 
 <span style="color:#66d9ef">with</span> pandas<span style="color:#f92672">.</span>ExcelWriter(<span style="color:#e6db74">&#39;output.xls&#39;</span>) <span style="color:#66d9ef">as</span> writer:
-<<<<<<< HEAD
     save<span style="color:#f92672">.</span>to_excel(writer, index <span style="color:#f92672">=</span> False, sheet_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Sheet1&#39;</span>)
 </code></pre></div><h4 id="32-读xls文件">3.2 读xls文件</h4>
-=======
-    save<span style="color:#f92672">.</span>to_excel(writer, index <span style="color:#f92672">=</span> False, sheet_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Sheet1&#39;</span>)</code></pre></div>
-<h4 id="3-2-读xls文件">3.2 读xls文件</h4>
-
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <p>使用pandas读取.xls，也很方便，通过<code>pandas.read_excel()</code>实现对xls文件读取，其中<code>sheet_name</code>指定要读取的sheet。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> pandas
 data <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</span>read_excel(<span style="color:#e6db74">&#39;input.xls&#39;</span>, sheet_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Sheet1&#39;</span>)
 <span style="color:#66d9ef">print</span>(data)
-<<<<<<< HEAD
 <span style="color:#66d9ef">print</span>(type(data))
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">   id name  age
 <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">1</span>  Bob   <span style="color:#ae81ff">11</span>
@@ -411,28 +312,6 @@ data <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</s
 </code></pre></div><hr>
 <p>1.参考文档：</p>
 <p>       [1]. <a href="http://pandas.pydata.org/pandas-docs/version/0.24/pandas.pdf">http://pandas.pydata.org/pandas-docs/version/0.24/pandas.pdf</a></p></article>
-=======
-<span style="color:#66d9ef">print</span>(type(data))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">   id name  age
-<span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">1</span>  Bob   <span style="color:#ae81ff">11</span>
-<span style="color:#ae81ff">1</span>   <span style="color:#ae81ff">2</span>  Tom   <span style="color:#ae81ff">12</span>
-<span style="color:#ae81ff">2</span>   <span style="color:#ae81ff">3</span>  Ada   <span style="color:#ae81ff">13</span>
-<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">pandas</span><span style="color:#f92672">.</span>core<span style="color:#f92672">.</span>frame<span style="color:#f92672">.</span>DataFrame<span style="color:#e6db74">&#39;&gt;</span></code></pre></div>
-<p>若想一次读取xls文件中所有sheet时，可以通过将<code>sheet_name</code>设置为<code>None</code>来实现。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> pandas
-data <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</span>read_excel(<span style="color:#e6db74">&#39;input.xls&#39;</span>, sheet_name<span style="color:#f92672">=</span>None)
-<span style="color:#66d9ef">print</span>(type(data))</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">collections</span><span style="color:#f92672">.</span>OrderedDict<span style="color:#e6db74">&#39;&gt;</span></code></pre></div>
-<p>此时可以通过类似遍历字典的方式遍历所有的sheet</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">for</span> d <span style="color:#f92672">in</span> data :
-  <span style="color:#66d9ef">print</span>(data[d])</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">   id name  age
-<span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">1</span>  Bob   <span style="color:#ae81ff">11</span>
-<span style="color:#ae81ff">1</span>   <span style="color:#ae81ff">2</span>  Tom   <span style="color:#ae81ff">12</span>
-<span style="color:#ae81ff">2</span>   <span style="color:#ae81ff">3</span>  Ada   <span style="color:#ae81ff">13</span></code></pre></div>
-<hr />
-
-<p>1.参考文档：</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;[1]. <a href="http://pandas.pydata.org/pandas-docs/version/0.24/pandas.pdf">http://pandas.pydata.org/pandas-docs/version/0.24/pandas.pdf</a></p></article>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -442,11 +321,7 @@ data <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</s
       </ul>
       
       <p class="post-copyright">
-<<<<<<< HEAD
-        ©2019 | liuao.tech | All rights reserved. This post was published <strong>921</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
-=======
-        ©2019 | liuao.tech | All rights reserved. This post was published <strong>564</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>926</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -455,11 +330,7 @@ data <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</s
   </section>
   
 <footer class="site-footer">
-<<<<<<< HEAD
   <p>© 2017-2021 月光晒谷</p>
-=======
-  <p>© 2017-2020 月光晒谷</p>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>

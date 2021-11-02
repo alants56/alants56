@@ -27,11 +27,7 @@
   
   <meta name="author" content="月光晒谷">
   <meta name="description" content="1.进程创建
-<<<<<<< HEAD
  Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。
-=======
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
 
   
@@ -40,11 +36,7 @@
     <meta name="twitter:site" content="@gohugoio">
     <meta name="twitter:title" content="LKD学习笔记——进程管理02">
     <meta name="twitter:description" content="1.进程创建
-<<<<<<< HEAD
  Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。
-=======
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
     <meta name="twitter:image" content="/images/avatar.png">
   
@@ -53,11 +45,7 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="LKD学习笔记——进程管理02">
   <meta property="og:description" content="1.进程创建
-<<<<<<< HEAD
  Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。
-=======
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
   <meta property="og:url" content="http://liuao.tech/post/20161120/">
   <meta property="og:image" content="/images/avatar.png">
@@ -65,11 +53,7 @@
 
 
 
-<<<<<<< HEAD
 <meta name="generator" content="Hugo 0.83.1">
-=======
-<meta name="generator" content="Hugo 0.53">
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 
 
 <link rel="canonical" href="http://liuao.tech/post/20161120/">
@@ -232,18 +216,9 @@
       <p class="post-meta">@月光晒谷 · Nov 20, 2016 · 1 min read</p>
     </header>
     <article class="post-content"><p>1.进程创建</p>
-<<<<<<< HEAD
 <p>       Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。</p>
 <p>       fork采用了写时拷贝(copy-on-write)，即在创建子进程时，并不立即将父进程的数据直接拷贝给子进程，而是父子进程以只读的方式共享一份数据（这里的数据并不是进程描述符）。只有在需要写入数据时，数据才会被复制。如果fork后，立即调用了exec，则无需复制。这样可以减少无意义的拷贝操作。</p>
 <p>       Linux中通过clone实现fork操作，而clone则是调用的do_fork()完成进程的创建。如下是do_fork()实现的伪代码，从代码中可以很直观的看出：thread_info位于栈的底端（顶端），这样可以很方便的通过当前栈的指针获取thread_info的指针，从而确定当前task_struct的指针。</p>
-=======
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;fork采用了写时拷贝(copy-on-write)，即在创建子进程时，并不立即将父进程的数据直接拷贝给子进程，而是父子进程以只读的方式共享一份数据（这里的数据并不是进程描述符）。只有在需要写入数据时，数据才会被复制。如果fork后，立即调用了exec，则无需复制。这样可以减少无意义的拷贝操作。</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;Linux中通过clone实现fork操作，而clone则是调用的do_fork()完成进程的创建。如下是do_fork()实现的伪代码，从代码中可以很直观的看出：thread_info位于栈的底端（顶端），这样可以很方便的通过当前栈的指针获取thread_info的指针，从而确定当前task_struct的指针。</p>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">kernel<span style="color:#f92672">/</span>fork.c
     do_fork() <span style="color:#f92672">:</span>
     <span style="color:#ae81ff">1.</span>copy_process();                                <span style="color:#75715e">/*根据父进程，创建子进程的进程描述符*/</span>
@@ -256,7 +231,6 @@
             <span style="color:#ae81ff">3.</span>copy_xxx();                            <span style="color:#75715e">/*根据传递的参数标志，更新task_struct的flag成员*/</span>
     <span style="color:#ae81ff">2.</span>get_task_pid();                                <span style="color:#75715e">/*获取pid*/</span>
     <span style="color:#ae81ff">3.</span>wake_up_new_task();                            <span style="color:#75715e">/*唤醒子进程*/</span>
-<<<<<<< HEAD
     <span style="color:#ae81ff">4.</span><span style="color:#66d9ef">return</span> pid;                                    <span style="color:#75715e">/*返回pid*/</span>
 </code></pre></div><p>       vfork和fork的功能相同，除了不拷贝父进程的页表项。子进程作为父进程的一个单独的线程在它的地址空间里运行，父进程被阻塞，直到子进程退出或执行exec()。子进程不能向地址空间写入。</p>
 <p>       在linux中，线程其实是一种特殊的进程，它被视为一个与其它进程共享某些资源的进程。线程拥有自己的task_struct，因此在内核中它看起来是一个普通的进程。这样创建一个线程与创建一个进程没有太大区别，通过传递给clone()，不同的参数实现。</p>
@@ -272,25 +246,6 @@ do_exit()
     <span style="color:#ae81ff">2.</span>exit_xxx();			<span style="color:#75715e">/*释放各种资源*/</span>
     <span style="color:#ae81ff">3.</span>exit_notify();		<span style="color:#75715e">/*将子进程的父进程设置为线程组其他线程或init进程，并将进程状态改为TASK_ZOMBIE*/</span>
 </code></pre></div></article>
-=======
-    <span style="color:#ae81ff">4.</span><span style="color:#66d9ef">return</span> pid;                                    <span style="color:#75715e">/*返回pid*/</span></code></pre></div>
-<p>&nbsp; &nbsp; &nbsp; &nbsp;vfork和fork的功能相同，除了不拷贝父进程的页表项。子进程作为父进程的一个单独的线程在它的地址空间里运行，父进程被阻塞，直到子进程退出或执行exec()。子进程不能向地址空间写入。</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;在linux中，线程其实是一种特殊的进程，它被视为一个与其它进程共享某些资源的进程。线程拥有自己的task_struct，因此在内核中它看起来是一个普通的进程。这样创建一个线程与创建一个进程没有太大区别，通过传递给clone()，不同的参数实现。</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;因此可以通过传递给clone()不同的参数，来实现fork(),vfork()、以及线程的创建。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">clone(CLONE_SIGHAND, <span style="color:#ae81ff">0</span>);
-clone(CLONE_VFORK <span style="color:#f92672">|</span> CLONE_VM <span style="color:#f92672">|</span> CLONE_SIGHAND, <span style="color:#ae81ff">0</span>);
-clone(CLONE_VM <span style="color:#f92672">|</span> CLONE_FS <span style="color:#f92672">|</span> CLONE_FILES <span style="color:#f92672">|</span> CLONE_SIGHAND, <span style="color:#ae81ff">0</span>);</code></pre></div>
-<p>2.进程终结</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;进程的终结，一般是通过调用exit结束。而exit则是通过调用do_exit()完成的。要注意的是，进程结束时，需要为其子进程寻找一个父进程（线程组其他进程或init进程），而进程本身会进入TASK_ZOMBIE状态。该进程会等待其父进程调用wait4()，删除其进程描述符以及一些独享的资源。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">kernel<span style="color:#f92672">/</span>exit.c
-do_exit()
-    <span style="color:#ae81ff">1.</span>exit_signals();       <span style="color:#75715e">/*tsk-&gt;flags |= PF_EXITING*/</span>
-    <span style="color:#ae81ff">2.</span>exit_xxx();           <span style="color:#75715e">/*释放各种资源*/</span>
-    <span style="color:#ae81ff">3.</span>exit_notify();        <span style="color:#75715e">/*将子进程的父进程设置为线程组其他线程或init进程，并将进程状态改为TASK_ZOMBIE*/</span></code></pre></div></article>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -304,11 +259,7 @@ do_exit()
       </ul>
       
       <p class="post-copyright">
-<<<<<<< HEAD
-        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1803</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
-=======
-        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1446</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1808</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -317,11 +268,7 @@ do_exit()
   </section>
   
 <footer class="site-footer">
-<<<<<<< HEAD
   <p>© 2017-2021 月光晒谷</p>
-=======
-  <p>© 2017-2020 月光晒谷</p>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>

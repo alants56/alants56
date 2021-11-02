@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-=======
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Mining on 月光晒谷</title>
@@ -11,31 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
-<<<<<<< HEAD
     <lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://liuao.tech/tags/data-mining/index.xml" rel="self" type="application/rss+xml" />
-=======
-    <lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://liuao.tech/tags/data-mining/index.xml" rel="self" type="application/rss+xml" />
-    
-    
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>Apriori算法</title>
       <link>http://liuao.tech/post/20190406/</link>
       <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20190406/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       Apriori是一种频繁数据挖掘算法，它在2006年入选由IEEE International Conference on Data Mining所评选的数据挖掘领域的十大经典算法。该算法的主要目的是找出数据集的数据项中频繁出现的项集。&lt;/p&gt;</description>
     </item>
     
   </channel>
 </rss>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Apriori是一种频繁数据挖掘算法，它在2006年入选由IEEE International Conference on Data Mining所评选的数据挖掘领域的十大经典算法。该算法的主要目的是找出数据集的数据项中频繁出现的项集。&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

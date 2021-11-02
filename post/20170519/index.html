@@ -26,11 +26,7 @@
 
   
   <meta name="author" content="月光晒谷">
-<<<<<<< HEAD
   <meta name="description" content=" 在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：
-=======
-  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
 
   
@@ -38,11 +34,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@gohugoio">
     <meta name="twitter:title" content="模式匹配算法KMP">
-<<<<<<< HEAD
     <meta name="twitter:description" content=" 在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：
-=======
-    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
     <meta name="twitter:image" content="/images/avatar.png">
   
@@ -50,11 +42,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="模式匹配算法KMP">
-<<<<<<< HEAD
   <meta property="og:description" content=" 在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：
-=======
-  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
   <meta property="og:url" content="http://liuao.tech/post/20170519/">
   <meta property="og:image" content="/images/avatar.png">
@@ -62,11 +50,7 @@
 
 
 
-<<<<<<< HEAD
 <meta name="generator" content="Hugo 0.83.1">
-=======
-<meta name="generator" content="Hugo 0.53">
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 
 
 <link rel="canonical" href="http://liuao.tech/post/20170519/">
@@ -228,17 +212,9 @@
       <h1 class="post-title">模式匹配算法KMP</h1>
       <p class="post-meta">@月光晒谷 · May 25, 2017 · 1 min read</p>
     </header>
-<<<<<<< HEAD
     <article class="post-content"><p>       在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：</p>
 <p>       (1)初始化字符串str和sub的两个索引i=0,j=0；(2)比较str和sub中的i和j所索引的字符；（3）若相同，i和j分别加1，继续执行第二步；（4）若不同，则将i赋值为i-j+1，j赋值为0，继续执行第二步（如下图，即将str相对于sub向前移动一位，然后继续重新比较对应的字符）；（5）最终，若索引j到达了sub的末尾时，则字符串str包含子串sub，返回sub在str中的起始位置i-len_sub；（6）否则str字符串中未出现sub子串，返回-1。具体的算法使用C语言实现如下：</p>
 <p><img src="http://liuao.tech/images/nkmp.png" alt="nkmp"></p>
-=======
-    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp;在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;(1)初始化字符串str和sub的两个索引i=0,j=0；(2)比较str和sub中的i和j所索引的字符；（3）若相同，i和j分别加1，继续执行第二步；（4）若不同，则将i赋值为i-j+1，j赋值为0，继续执行第二步（如下图，即将str相对于sub向前移动一位，然后继续重新比较对应的字符）；（5）最终，若索引j到达了sub的末尾时，则字符串str包含子串sub，返回sub在str中的起始位置i-len_sub；（6）否则str字符串中未出现sub子串，返回-1。具体的算法使用C语言实现如下：</p>
-
-<p><img src="http://liuao.tech/images/nkmp.png" alt="nkmp" /></p>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_sub_pos</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>str, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>sub)
 {
         <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
@@ -259,16 +235,9 @@
         } <span style="color:#66d9ef">else</span> {
                 <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
         }
-<<<<<<< HEAD
 }
 </code></pre></div><p>       模式匹配算法KMP是一种预先对子串进行处理而实现优化的算法。KMP算法的思想是：当i=k，j=m，两个索引对应的字符不相同时，不需要回退i，而直接根据子串sub的特性，回退j即可。原因是：此时字符串str第k个索引之前的长度为m的字符串与字符串sub的前m个字符，已经做过比较，并且是相同的，我们只需要在sub字符串的前m-1个字符中找到另一个索引值next，保证字符串str第k个索引之前的长度为next的字符串和字符串sub的前next个字符相同，这样接下来比较i=k，而j=next处的字符即可。这里的next值只与sub字符串以及sub当前的索引值j有关，我们可以预先对sub字符串进行预处理，得到所有next的值，这样可以减少因回退i而增加的比较次数，从而优化匹配算法。</p>
 <p><img src="http://liuao.tech/images/kmp.png" alt="kmp"></p>
-=======
-}</code></pre></div>
-<p>&nbsp; &nbsp; &nbsp; &nbsp;模式匹配算法KMP是一种预先对子串进行处理而实现优化的算法。KMP算法的思想是：当i=k，j=m，两个索引对应的字符不相同时，不需要回退i，而直接根据子串sub的特性，回退j即可。原因是：此时字符串str第k个索引之前的长度为m的字符串与字符串sub的前m个字符，已经做过比较，并且是相同的，我们只需要在sub字符串的前m-1个字符中找到另一个索引值next，保证字符串str第k个索引之前的长度为next的字符串和字符串sub的前next个字符相同，这样接下来比较i=k，而j=next处的字符即可。这里的next值只与sub字符串以及sub当前的索引值j有关，我们可以预先对sub字符串进行预处理，得到所有next的值，这样可以减少因回退i而增加的比较次数，从而优化匹配算法。</p>
-
-<p><img src="http://liuao.tech/images/kmp.png" alt="kmp" /></p>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_sub_pos_kmp</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>str, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>sub)
 {
         <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
@@ -290,13 +259,8 @@
         } <span style="color:#66d9ef">else</span> {
                 <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
         }
-<<<<<<< HEAD
 }
 </code></pre></div><p>       那如何获取sub字符串的next值？可以通过类似递归的方式实现，首先当j=0时，next[j]=-1，表示当比较sub的第0个字符不相同时，无需next[0]值辅助，显然当j=1时，next[j]=0，表示当比较sub第1个字符不相同时，接下来比较sub的第j=next[j]，即j=0的情况。接下来假设当j=m时，next[j]=n,表示sub的前n个字符与索引m之前的前n个字符是相同的，此时：若sub[j+1]==sub[n+1],则sub的前n+1个字符与索引m+1之前的前n+1个字符是相同的，即next[j+1]=n+1;若sub[j+1]！=sub[n+1]，则sub的前n+1个字符与索引m+1之前的前n+1个字符不相同，接下来需要在前n个字符中寻找next[j]的值，即j=next[j],继续寻找。</p>
-=======
-}</code></pre></div>
-<p>&nbsp; &nbsp; &nbsp; &nbsp;那如何获取sub字符串的next值？可以通过类似递归的方式实现，首先当j=0时，next[j]=-1，表示当比较sub的第0个字符不相同时，无需next[0]值辅助，显然当j=1时，next[j]=0，表示当比较sub第1个字符不相同时，接下来比较sub的第j=next[j]，即j=0的情况。接下来假设当j=m时，next[j]=n,表示sub的前n个字符与索引m之前的前n个字符是相同的，此时：若sub[j+1]==sub[n+1],则sub的前n+1个字符与索引m+1之前的前n+1个字符是相同的，即next[j+1]=n+1;若sub[j+1]！=sub[n+1]，则sub的前n+1个字符与索引m+1之前的前n+1个字符不相同，接下来需要在前n个字符中寻找next[j]的值，即j=next[j],继续寻找。</p>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">get_next</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>sub, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>next)
 {
         <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
@@ -312,19 +276,10 @@
                 }
                 
         }
-<<<<<<< HEAD
 }
 </code></pre></div><hr>
 <p>参考文档：</p>
 <p>       1. 数据结构（C语言版） 严蔚敏 吴伟民 著</p></article>
-=======
-}</code></pre></div>
-<hr />
-
-<p>参考文档：</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;1. 数据结构（C语言版） 严蔚敏 吴伟民 著</p></article>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -334,11 +289,7 @@
       </ul>
       
       <p class="post-copyright">
-<<<<<<< HEAD
-        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1616</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
-=======
-        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1259</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1621</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -347,11 +298,7 @@
   </section>
   
 <footer class="site-footer">
-<<<<<<< HEAD
   <p>© 2017-2021 月光晒谷</p>
-=======
-  <p>© 2017-2020 月光晒谷</p>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>

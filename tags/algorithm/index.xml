@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -9,33 +8,13 @@
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
     <lastBuildDate>Mon, 28 Jan 2019 12:12:12 +0800</lastBuildDate><atom:link href="http://liuao.tech/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
-=======
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Algorithm on 月光晒谷</title>
-    <link>http://liuao.tech/tags/algorithm/</link>
-    <description>Recent content in Algorithm on 月光晒谷</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
-    <lastBuildDate>Mon, 28 Jan 2019 12:12:12 +0800</lastBuildDate>
-    
-	<atom:link href="http://liuao.tech/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
-    
-    
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>分支定界</title>
       <link>http://liuao.tech/post/20190128/</link>
       <pubDate>Mon, 28 Jan 2019 12:12:12 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20190128/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       分支定界法（branch and bound）是一种求解离散数据组合的最优化问题。该算法执行的效率取决于你所找的问题解空间的上下界，如果找到一个很紧凑的上下界进行剪枝操作，该算法的执行效率会非常高，因此它是最有可能在多项式时间内求解NP问题的算法。&lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;分支定界法（branch and bound）是一种求解离散数据组合的最优化问题。该算法执行的效率取决于你所找的问题解空间的上下界，如果找到一个很紧凑的上下界进行剪枝操作，该算法的执行效率会非常高，因此它是最有可能在多项式时间内求解NP问题的算法。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -44,16 +23,8 @@
       <pubDate>Thu, 25 May 2017 17:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20170519/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：&lt;/p&gt;</description>
     </item>
     
   </channel>
 </rss>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

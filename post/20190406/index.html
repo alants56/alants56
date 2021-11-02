@@ -26,11 +26,7 @@
 
   
   <meta name="author" content="月光晒谷">
-<<<<<<< HEAD
   <meta name="description" content=" Apriori是一种频繁数据挖掘算法，它在2006年入选由IEEE International Conference on Data Mining所评选的数据挖掘领域的十大经典算法。该算法的主要目的是找出数据集的数据项中频繁出现的项集。
-=======
-  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Apriori是一种频繁数据挖掘算法，它在2006年入选由IEEE International Conference on Data Mining所评选的数据挖掘领域的十大经典算法。该算法的主要目的是找出数据集的数据项中频繁出现的项集。
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
 
   
@@ -38,11 +34,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@gohugoio">
     <meta name="twitter:title" content="Apriori算法">
-<<<<<<< HEAD
     <meta name="twitter:description" content=" Apriori是一种频繁数据挖掘算法，它在2006年入选由IEEE International Conference on Data Mining所评选的数据挖掘领域的十大经典算法。该算法的主要目的是找出数据集的数据项中频繁出现的项集。
-=======
-    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Apriori是一种频繁数据挖掘算法，它在2006年入选由IEEE International Conference on Data Mining所评选的数据挖掘领域的十大经典算法。该算法的主要目的是找出数据集的数据项中频繁出现的项集。
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
     <meta name="twitter:image" content="/images/avatar.png">
   
@@ -50,11 +42,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Apriori算法">
-<<<<<<< HEAD
   <meta property="og:description" content=" Apriori是一种频繁数据挖掘算法，它在2006年入选由IEEE International Conference on Data Mining所评选的数据挖掘领域的十大经典算法。该算法的主要目的是找出数据集的数据项中频繁出现的项集。
-=======
-  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Apriori是一种频繁数据挖掘算法，它在2006年入选由IEEE International Conference on Data Mining所评选的数据挖掘领域的十大经典算法。该算法的主要目的是找出数据集的数据项中频繁出现的项集。
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
   <meta property="og:url" content="http://liuao.tech/post/20190406/">
   <meta property="og:image" content="/images/avatar.png">
@@ -62,11 +50,7 @@
 
 
 
-<<<<<<< HEAD
 <meta name="generator" content="Hugo 0.83.1">
-=======
-<meta name="generator" content="Hugo 0.53">
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 
 
 <link rel="canonical" href="http://liuao.tech/post/20190406/">
@@ -228,15 +212,8 @@
       <h1 class="post-title">Apriori算法</h1>
       <p class="post-meta">@月光晒谷 · Apr 6, 2019 · 1 min read</p>
     </header>
-<<<<<<< HEAD
     <article class="post-content"><p>       Apriori是一种频繁数据挖掘算法，它在2006年入选由IEEE International Conference on Data Mining所评选的数据挖掘领域的十大经典算法。该算法的主要目的是找出数据集的数据项中频繁出现的项集。</p>
 <p>       首先定义频繁项：若某项在数据集中出现次数超过阈值$min\_sup$，则该项为频繁项（其中$min\_sup$可以根据实际情况进行设定）。假设需要得到数据集$D$中的频繁项集$S$，初始时集合$S$为空，则使用Apriori算法的求解的主要步骤为：</p>
-=======
-    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp;Apriori是一种频繁数据挖掘算法，它在2006年入选由IEEE International Conference on Data Mining所评选的数据挖掘领域的十大经典算法。该算法的主要目的是找出数据集的数据项中频繁出现的项集。</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;首先定义频繁项：若某项在数据集中出现次数超过阈值$min\_sup$，则该项为频繁项（其中$min\_sup$可以根据实际情况进行设定）。假设需要得到数据集$D$中的频繁项集$S$，初始时集合$S$为空，则使用Apriori算法的求解的主要步骤为：</p>
-
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <ul>
 <li>1.遍历总的数据集$D$，统计所有数据项在数据集中出现的次数，删除所有出现次数少于$min\_sup$的项，余下的数据项组成长度为1的频繁项集$C_{0}$，令$S=S\cup C_{0}$；</li>
 <li>2.根据之前一步所得到的频繁项集$C_{0}$，生成下一个频繁项的候选集$C_{1}$，候选集中的所有项长度$l_{1}$等于之前一步得到的频繁项长度$l_{0}$加一；</li>
@@ -245,36 +222,17 @@
 <li>5.重复2，3，4步，直至候选集$C_{1}$为空;</li>
 <li>6.返回得到的所有频繁项的集合$S$，以及集合中各项在数据集中出现的次数集合。</li>
 </ul>
-<<<<<<< HEAD
 <p>在上述步骤中求下一个候选集时，Apriori算法依赖于频繁项的一个性质：任意频繁项的子集合也是频繁的。因此，可以通过如下具体步骤来求解候选集：</p>
-=======
-
-<p>在上述步骤中求下一个候选集时，Apriori算法依赖于频繁项的一个性质：任意频繁项的子集合也是频繁的。因此，可以通过如下具体步骤来求解候选集：</p>
-
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <ul>
 <li>1.通过上一步结果得到频繁项集合$C_{0}$，初始化当前候选集合为$C_{1}$;</li>
 <li>2.将集合$C_{0}$中的各个项进行两两求并，若得到一个长度加一的项，则将其添加到后选$C_{1}$中；</li>
 <li>3.返回集合$C_{1}$。</li>
 </ul>
-<<<<<<< HEAD
 <p>上述算法完整Python实现可以在我的<a href="https://github.com/alants56/MachineLearning/tree/master/Apriori">GitHub</a>中获取到。</p>
 <hr>
 <p>1.参考文档：</p>
 <p>       [1]. 数据挖掘（概念与技术）              Jiawei Han 等著       范明 等译</p>
 <p>       [2]. <a href="http://www.cs.uvm.edu/~icdm/algorithms/10Algorithms-08.pdf">Top 10 algorithms in data mining</a></p></article>
-=======
-
-<p>上述算法完整Python实现可以在我的<a href="https://github.com/alants56/MachineLearning/tree/master/Apriori">GitHub</a>中获取到。</p>
-
-<hr />
-
-<p>1.参考文档：</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;[1]. 数据挖掘（概念与技术）&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Jiawei Han 等著&nbsp; &nbsp; &nbsp; &nbsp;范明 等译</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;[2]. <a href="http://www.cs.uvm.edu/~icdm/algorithms/10Algorithms-08.pdf">Top 10 algorithms in data mining</a></p></article>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -284,11 +242,7 @@
       </ul>
       
       <p class="post-copyright">
-<<<<<<< HEAD
-        ©2019 | liuao.tech | All rights reserved. This post was published <strong>936</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
-=======
-        ©2019 | liuao.tech | All rights reserved. This post was published <strong>579</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>941</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -297,11 +251,7 @@
   </section>
   
 <footer class="site-footer">
-<<<<<<< HEAD
   <p>© 2017-2021 月光晒谷</p>
-=======
-  <p>© 2017-2020 月光晒谷</p>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -9,33 +8,13 @@
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
     <lastBuildDate>Tue, 19 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://liuao.tech/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
-=======
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Machine Learning on 月光晒谷</title>
-    <link>http://liuao.tech/tags/machine-learning/</link>
-    <description>Recent content in Machine Learning on 月光晒谷</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
-    <lastBuildDate>Tue, 19 Mar 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://liuao.tech/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
-    
-    
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>极大似然估计与贝叶斯估计</title>
       <link>http://liuao.tech/post/20190319/</link>
       <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20190319/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。&lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -44,11 +23,7 @@
       <pubDate>Sun, 17 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20190317/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       在做分类问题时，有时候需要使用样本的概率密度函数来求其后验概率。但是很多情况下并不知道其概率密度函数的形式（即样本的分布未知），此时就需要对样本进行非参数估计，来求解其概率密度函数。&lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在做分类问题时，有时候需要使用样本的概率密度函数来求其后验概率。但是很多情况下并不知道其概率密度函数的形式（即样本的分布未知），此时就需要对样本进行非参数估计，来求解其概率密度函数。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -57,11 +32,7 @@
       <pubDate>Fri, 22 Feb 2019 20:20:20 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20190222/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       支持向量机（Support Vector Machines SVM）是一种二分类模型，它的目标是在特征空间中寻找对于所有样本距离最大的超平面。与感知机不同的是，在线性可分的情况下，SVM可以得到唯一的解。&lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;支持向量机（Support Vector Machines SVM）是一种二分类模型，它的目标是在特征空间中寻找对于所有样本距离最大的超平面。与感知机不同的是，在线性可分的情况下，SVM可以得到唯一的解。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -70,14 +41,8 @@
       <pubDate>Wed, 13 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20180613/</guid>
-<<<<<<< HEAD
       <description>&lt;h4 id=&#34;1感知机模型&#34;&gt;1.感知机模型&lt;/h4&gt;
 &lt;p&gt;       感知机：假设输入空间为X，输出空间为Y，其中Y=｛+1，-1｝。由输入空间到输出空间的如下函数f(x),称为感知机。其中，w和b为感知机模型参数，w为权重值，b为偏置，sign为符号函数。&lt;/p&gt;</description>
-=======
-      <description>&lt;h4 id=&#34;1-感知机模型&#34;&gt;1.感知机模型&lt;/h4&gt;
-
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;感知机：假设输入空间为X，输出空间为Y，其中Y=｛+1，-1｝。由输入空间到输出空间的如下函数f(x),称为感知机。其中，w和b为感知机模型参数，w为权重值，b为偏置，sign为符号函数。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -86,22 +51,11 @@
       <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20180612/</guid>
-<<<<<<< HEAD
       <description>&lt;h4 id=&#34;1统计学习&#34;&gt;1.统计学习&lt;/h4&gt;
 &lt;p&gt;       赫尔伯特·西蒙曾对学习给出以下定义：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;如果一个系统能够通过执行某个过程改进它的性能，这就是学习。&lt;/p&gt;
 &lt;/blockquote&gt;
-=======
-      <description>&lt;h4 id=&#34;1-统计学习&#34;&gt;1.统计学习&lt;/h4&gt;
-
-&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;赫尔伯特·西蒙曾对学习给出以下定义：&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;如果一个系统能够通过执行某个过程改进它的性能，这就是学习。&lt;/p&gt;
-&lt;/blockquote&gt;
-
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 &lt;p&gt;统计学习就是计算机系统通过运用数据及统计方法提高系统性能的机器学习。&lt;/p&gt;</description>
     </item>
     
@@ -111,11 +65,7 @@
       <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20180601/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;      朴素贝叶斯是基于贝叶斯公式和属性条件独立假设的一种分类方式。它是一种“生成式模型”，先通过样本估计先验概率，然后用它来求出后验概率。&lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;朴素贝叶斯是基于贝叶斯公式和属性条件独立假设的一种分类方式。它是一种“生成式模型”，先通过样本估计先验概率，然后用它来求出后验概率。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -124,11 +74,7 @@
       <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20180508/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;      虽然logistic regression名为回归，但却是一个机器学习中的分类方法。我们先用它来处理二分类问题，基本模型如下，定义出了Y=1和Y=0的概率。&lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;虽然logistic regression名为回归，但却是一个机器学习中的分类方法。我们先用它来处理二分类问题，基本模型如下，定义出了Y=1和Y=0的概率。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -137,11 +83,7 @@
       <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20180504/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;      手写数字识别是属于机器学习中的分类问题，它有许多的机器学习的算法可以解决，如SVM，CNN等。最近在&lt;a href=&#34;https://www.kaggle.com&#34;&gt;Kaggle&lt;/a&gt;上看到这一问题，并且恰巧之前有学过一些卷积神经网络（Convolutional Neural Network），于是打算用Python写一个简单CNN，实现手写数字识别器。&lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;手写数字识别是属于机器学习中的分类问题，它有许多的机器学习的算法可以解决，如SVM，CNN等。最近在&lt;a href=&#34;https://www.kaggle.com&#34;&gt;Kaggle&lt;/a&gt;上看到这一问题，并且恰巧之前有学过一些卷积神经网络（Convolutional Neural Network），于是打算用Python写一个简单CNN，实现手写数字识别器。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -150,11 +92,7 @@
       <pubDate>Wed, 02 May 2018 14:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20180502/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;      线性模型，是通过相关数据的线性组合来构成的模型（如下式）。而线性回归是机器学习中的一类问题，它试图通过学习已有数据而获得一个线性的模型，以此来预测某一个问题的实际输出值。&lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;线性模型，是通过相关数据的线性组合来构成的模型（如下式）。而线性回归是机器学习中的一类问题，它试图通过学习已有数据而获得一个线性的模型，以此来预测某一个问题的实际输出值。&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -163,11 +101,7 @@
       <pubDate>Fri, 29 Dec 2017 23:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20171229/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       通过上一篇文章，我们可以发现游戏的评分机制不仅和KDA有关，还受其它因素影响。于是重新定义一个模型如下：&lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 通过上一篇文章，我们可以发现游戏的评分机制不仅和KDA有关，还受其它因素影响。于是重新定义一个模型如下：&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -176,16 +110,8 @@
       <pubDate>Mon, 25 Dec 2017 23:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20171225/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       当一局游戏结束，总有一些疑问：为什么我的评分这么低，为什么不是我的MVP？虽然菜是原罪，但游戏具体的评分仅仅是根据KDA(KILL,DEATH,ASSIST)计算出来或是还有其它参数，另外具体的算法又是如何？因为之前有看过一个老师使用梯度下降算法来分析Pokemon的CP(combat power)值是如何进化的，于是也想借用该算法来分析王者荣耀的评分机制。&lt;/p&gt;</description>
     </item>
     
   </channel>
 </rss>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 当一局游戏结束，总有一些疑问：为什么我的评分这么低，为什么不是我的MVP？虽然菜是原罪，但游戏具体的评分仅仅是根据KDA(KILL,DEATH,ASSIST)计算出来或是还有其它参数，另外具体的算法又是如何？因为之前有看过一个老师使用梯度下降算法来分析Pokemon的CP(combat power)值是如何进化的，于是也想借用该算法来分析王者荣耀的评分机制。&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

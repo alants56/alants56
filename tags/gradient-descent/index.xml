@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-=======
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gradient Descent on 月光晒谷</title>
@@ -11,26 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
-<<<<<<< HEAD
     <lastBuildDate>Fri, 29 Dec 2017 23:00:00 +0800</lastBuildDate><atom:link href="http://liuao.tech/tags/gradient-descent/index.xml" rel="self" type="application/rss+xml" />
-=======
-    <lastBuildDate>Fri, 29 Dec 2017 23:00:00 +0800</lastBuildDate>
-    
-	<atom:link href="http://liuao.tech/tags/gradient-descent/index.xml" rel="self" type="application/rss+xml" />
-    
-    
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>王者荣耀评分机制之梯度下降算法分析(二)</title>
       <link>http://liuao.tech/post/20171229/</link>
       <pubDate>Fri, 29 Dec 2017 23:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20171229/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       通过上一篇文章，我们可以发现游戏的评分机制不仅和KDA有关，还受其它因素影响。于是重新定义一个模型如下：&lt;/p&gt;</description>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 通过上一篇文章，我们可以发现游戏的评分机制不仅和KDA有关，还受其它因素影响。于是重新定义一个模型如下：&lt;/p&gt;</description>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -39,16 +23,8 @@
       <pubDate>Mon, 25 Dec 2017 23:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20171225/</guid>
-<<<<<<< HEAD
       <description>&lt;p&gt;       当一局游戏结束，总有一些疑问：为什么我的评分这么低，为什么不是我的MVP？虽然菜是原罪，但游戏具体的评分仅仅是根据KDA(KILL,DEATH,ASSIST)计算出来或是还有其它参数，另外具体的算法又是如何？因为之前有看过一个老师使用梯度下降算法来分析Pokemon的CP(combat power)值是如何进化的，于是也想借用该算法来分析王者荣耀的评分机制。&lt;/p&gt;</description>
     </item>
     
   </channel>
 </rss>
-=======
-      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 当一局游戏结束，总有一些疑问：为什么我的评分这么低，为什么不是我的MVP？虽然菜是原罪，但游戏具体的评分仅仅是根据KDA(KILL,DEATH,ASSIST)计算出来或是还有其它参数，另外具体的算法又是如何？因为之前有看过一个老师使用梯度下降算法来分析Pokemon的CP(combat power)值是如何进化的，于是也想借用该算法来分析王者荣耀的评分机制。&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

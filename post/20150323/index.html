@@ -26,11 +26,7 @@
 
   
   
-<<<<<<< HEAD
   <meta name="description" content=" 最近正准备学习《Linux设备驱动程序》，需要搭建内核源码树。 配置内核首先要下载源码，使用命令apt-cache search linux-source查找源码（所有截图是在win7下的VirtualBox下）。
-=======
-  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 最近正准备学习《Linux设备驱动程序》，需要搭建内核源码树。 配置内核首先要下载源码，使用命令apt-cache search linux-source查找源码（所有截图是在win7下的VirtualBox下）。
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
 
   
@@ -38,11 +34,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@gohugoio">
     <meta name="twitter:title" content="配置Linux内核源码树">
-<<<<<<< HEAD
     <meta name="twitter:description" content=" 最近正准备学习《Linux设备驱动程序》，需要搭建内核源码树。 配置内核首先要下载源码，使用命令apt-cache search linux-source查找源码（所有截图是在win7下的VirtualBox下）。
-=======
-    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 最近正准备学习《Linux设备驱动程序》，需要搭建内核源码树。 配置内核首先要下载源码，使用命令apt-cache search linux-source查找源码（所有截图是在win7下的VirtualBox下）。
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
     <meta name="twitter:image" content="/images/avatar.png">
   
@@ -50,11 +42,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="配置Linux内核源码树">
-<<<<<<< HEAD
   <meta property="og:description" content=" 最近正准备学习《Linux设备驱动程序》，需要搭建内核源码树。 配置内核首先要下载源码，使用命令apt-cache search linux-source查找源码（所有截图是在win7下的VirtualBox下）。
-=======
-  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 最近正准备学习《Linux设备驱动程序》，需要搭建内核源码树。 配置内核首先要下载源码，使用命令apt-cache search linux-source查找源码（所有截图是在win7下的VirtualBox下）。
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
   <meta property="og:url" content="http://liuao.tech/post/20150323/">
   <meta property="og:image" content="/images/avatar.png">
@@ -62,11 +50,7 @@
 
 
 
-<<<<<<< HEAD
 <meta name="generator" content="Hugo 0.83.1">
-=======
-<meta name="generator" content="Hugo 0.53">
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 
 
 <link rel="canonical" href="http://liuao.tech/post/20150323/">
@@ -228,7 +212,6 @@
       <h1 class="post-title">配置Linux内核源码树</h1>
       <p class="post-meta">@月光晒谷 · Mar 23, 2015 · 1 min read</p>
     </header>
-<<<<<<< HEAD
     <article class="post-content"><p>        最近正准备学习《Linux设备驱动程序》，需要搭建内核源码树。
 配置内核首先要下载源码，使用命令apt-cache  search linux-source查找源码（所有截图是在win7下的VirtualBox下）。</p>
 <p><img src="http://liuao.tech/images/2015032301.png" alt="images1"></p>
@@ -244,35 +227,6 @@
 <p>       最后使用<code>sudo make modules_install</code>。</p>
 <p>       通过上述的步骤就配置成功了，前后差不多需要花费三个小时左右。</p>
 <p>       接下来就可以加载《Linux设备驱动程序》中的<code>Hello World</code>模块。</p></article>
-=======
-    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp; 最近正准备学习《Linux设备驱动程序》，需要搭建内核源码树。
-配置内核首先要下载源码，使用命令apt-cache  search linux-source查找源码（所有截图是在win7下的VirtualBox下）。</p>
-
-<p><img src="http://liuao.tech/images/2015032301.png" alt="images1" /></p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;使用命令<code>sudo apt-get install linux-source-3.16.0</code>(版本号是找到的源码的版本号)下载源码，在<code>usr/src/</code> 会得到一个名为 linux-source-3.16.0.tar.bz2的压缩文件。</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;然后跳转路径到<code>/usr/src/</code>下使用<code>sudo tar jvxf linux-source-3.16.0.tar.bz2</code>进行解压缩。会得到一个名为<code>linux-source-3.16.0</code>的文件夹。</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;进入<code>linux-source-3.16.0</code>文件会看到（有一些隐藏文件没有列出来，其中有一个名为<code>.config</code>的文件是一些配置信息，有兴趣可以使用vi .config查看其内容）</p>
-
-<p><img src="http://liuao.tech/images/2015032302.png" alt="images1" /></p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;接下来要进行配置、编译加载等（在该文件路径下，可以通过命令make help，查看其帮助信息）。
-&nbsp; &nbsp; &nbsp; &nbsp;首先是<code>sudo make oldconfig</code>进行配置（注意要使用root权限，否则会出错）。</p>
-
-<p><img src="http://liuao.tech/images/2015032303.png" alt="images1" /></p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;接着使用<code>sudo make bzImage</code>（这一步需要花费很长时间，就是在这一步虚拟机系统非常卡，我只能放弃，重新在我的Ubuntu系统下进行，接下来就不放截图了）。</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;然后使用<code>sudo make modules</code>（这一步也需要花费很长时间）。</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;最后使用<code>sudo make modules_install</code>。</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;通过上述的步骤就配置成功了，前后差不多需要花费三个小时左右。</p>
-
-<p>&nbsp; &nbsp; &nbsp; &nbsp;接下来就可以加载《Linux设备驱动程序》中的<code>Hello World</code>模块。</p></article>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -284,11 +238,7 @@
       </ul>
       
       <p class="post-copyright">
-<<<<<<< HEAD
-        ©2019 | liuao.tech | All rights reserved. This post was published <strong>2411</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
-=======
-        ©2019 | liuao.tech | All rights reserved. This post was published <strong>2054</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>2416</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
       </p>
     </footer>
     
@@ -297,11 +247,7 @@
   </section>
   
 <footer class="site-footer">
-<<<<<<< HEAD
   <p>© 2017-2021 月光晒谷</p>
-=======
-  <p>© 2017-2020 月光晒谷</p>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>

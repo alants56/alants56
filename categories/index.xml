@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-=======
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 月光晒谷</title>
@@ -11,14 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
-<<<<<<< HEAD
     <lastBuildDate>Thu, 05 Nov 2020 10:00:00 +0800</lastBuildDate><atom:link href="http://liuao.tech/categories/index.xml" rel="self" type="application/rss+xml" />
-=======
-    
-	<atom:link href="http://liuao.tech/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>思考感悟</title>
       <link>http://liuao.tech/categories/%E6%80%9D%E8%80%83%E6%84%9F%E6%82%9F/</link>
@@ -47,8 +36,4 @@
     </item>
     
   </channel>
-<<<<<<< HEAD
 </rss>
-=======
-</rss>
->>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
