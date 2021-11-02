@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Differential Privacy on 月光晒谷</title>
@@ -7,7 +11,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+<<<<<<< HEAD
     <lastBuildDate>Mon, 22 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://liuao.tech/tags/differential-privacy/index.xml" rel="self" type="application/rss+xml" />
+=======
+    <lastBuildDate>Mon, 22 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/differential-privacy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>Local Differential Privacy 相关论文</title>
       <link>http://liuao.tech/post/20190422/</link>
@@ -15,7 +27,12 @@
       
       <guid>http://liuao.tech/post/20190422/</guid>
       <description>&lt;h2 id=&#34;1-ldp相关基础论文&#34;&gt;1. LDP相关基础论文&lt;/h2&gt;
+<<<<<<< HEAD
 &lt;h4 id=&#34;11-rappor&#34;&gt;1.1 RAPPOR&lt;/h4&gt;</description>
+=======
+
+&lt;h4 id=&#34;1-1-rappor&#34;&gt;1.1 RAPPOR&lt;/h4&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -40,6 +57,10 @@ ICLR-17最佳论文作者Nicolas Papernot现场演讲：如何用PATE框架有�
       
       <guid>http://liuao.tech/post/20180812/</guid>
       <description>&lt;h2 id=&#34;2-基本术语&#34;&gt;2. 基本术语&lt;/h2&gt;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 &lt;p&gt;这一部分正式开始，给出了差分隐私的正式定义，并且列举了一些它的关键性质。&lt;/p&gt;</description>
     </item>
     
@@ -50,8 +71,16 @@ ICLR-17最佳论文作者Nicolas Papernot现场演讲：如何用PATE框架有�
       
       <guid>http://liuao.tech/post/20180706/</guid>
       <description>&lt;h2 id=&#34;1-差分隐私的承诺&#34;&gt;1. 差分隐私的承诺&lt;/h2&gt;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 &lt;p&gt;“差分隐私”描述的是一种由数据持有者或监管者所作出的对于数据学科的承诺：“允许你的数据应用于任意的研究或分析，即使是可以获取到其他的研究成果，数据集或是信息资源，你也不会因此而受到负面或其他方面的影响。”在最好的情况下，不需要借助于数据清洗空间，数据使用协议，数据保护计划，或其他受限制的查看，差分隐私数据库机制能够使得机密的数据被广泛地应用于精确的数据分析中。尽管如此，数据的有用性也会减少：信息恢复的基础规则表明对于许多问题过于精确的回答将会以一种特殊的方式泄漏隐私。基于差分隐私算法研究的目标是尽可能降低这种不可避免性。&lt;/p&gt;</description>
     </item>
     
   </channel>
+<<<<<<< HEAD
 </rss>
+=======
+</rss>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

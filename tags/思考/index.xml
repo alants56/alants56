@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>思考 on 月光晒谷</title>
@@ -7,14 +11,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+<<<<<<< HEAD
     <lastBuildDate>Thu, 05 Nov 2020 10:00:00 +0800</lastBuildDate><atom:link href="http://liuao.tech/tags/%E6%80%9D%E8%80%83/index.xml" rel="self" type="application/rss+xml" />
+=======
+    <lastBuildDate>Thu, 05 Nov 2020 10:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/%E6%80%9D%E8%80%83/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>被deadline驱动的我</title>
       <link>http://liuao.tech/post/20201105/</link>
       <pubDate>Thu, 05 Nov 2020 10:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20201105/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;      最近一年的我感觉对生活没了追求，就像在海上失去方向的船，不知道该开去哪里。感觉每天都糊里糊涂的，没有了读研以前那种对胜利的渴望，对任何事情都失去了兴趣，每天靠着各种deadline驱动着前进。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;最近一年的我感觉对生活没了追求，就像在海上失去方向的船，不知道该开去哪里。感觉每天都糊里糊涂的，没有了读研以前那种对胜利的渴望，对任何事情都失去了兴趣，每天靠着各种deadline驱动着前进。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -23,7 +39,11 @@
       <pubDate>Sun, 05 Jan 2020 10:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20200105/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;      2019年似乎没有很努力的学习，所有立下的Flag，不出意外都没有实现。虽然如此，但也并不是完全没有什么收获。在这一年，无论是在学术、生活等方面都取得了一些进展。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;2019年似乎没有很努力的学习，所有立下的Flag，不出意外都没有实现。虽然如此，但也并不是完全没有什么收获。在这一年，无论是在学术、生活等方面都取得了一些进展。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -32,7 +52,11 @@
       <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20191017/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       从七月份到九月底，主要参加了三个比赛：（1）安泰杯——跨境电商智能算法大赛；（2）全球数据智能大赛——广西水稻预测；（3）IEEE-CIS Fraud Detection。虽然最终的成绩都不是很好，但这几个比赛有值的总结的地方。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;从七月份到九月底，主要参加了三个比赛：（1）安泰杯——跨境电商智能算法大赛；（2）全球数据智能大赛——广西水稻预测；（3）IEEE-CIS Fraud Detection。虽然最终的成绩都不是很好，但这几个比赛有值的总结的地方。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -41,7 +65,11 @@
       <pubDate>Tue, 22 Jan 2019 14:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20190122/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;      2018年充满了得与失，得到了许多，失去的更多，但总的来说成长了。年初的时候，体会了面对生死的无可奈何，明白了人生总有些事情是努力无法改变的，所以应该珍惜现在所拥有的一切。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;2018年充满了得与失，得到了许多，失去的更多，但总的来说成长了。年初的时候，体会了面对生死的无可奈何，明白了人生总有些事情是努力无法改变的，所以应该珍惜现在所拥有的一切。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -50,7 +78,11 @@
       <pubDate>Mon, 25 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20180625/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       晚上睡不着，突然想了一些机器学习中的问题，发现似乎可以类比于生活。因为从某种程度来说，机器学习是模仿人类学习，那么反推回去，机器学习似乎也可以给生活或学习一些启示。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;晚上睡不着，突然想了一些机器学习中的问题，发现似乎可以类比于生活。因为从某种程度来说，机器学习是模仿人类学习，那么反推回去，机器学习似乎也可以给生活或学习一些启示。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -59,7 +91,11 @@
       <pubDate>Sat, 12 May 2018 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20180512/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;      从大学时就很喜欢看《今晚80后脱口秀》，再到之后喜欢上了《吐槽大会》和《脱口秀大会》。 “吐槽是门手艺，笑对需要勇气”，就源自于《吐槽大会》中的一句开场，也是我非常喜欢的一句话。大概是看到脱口秀演员吐槽了太多人（当然也包括他们自己），比如，李蛋经常嘲讽观众或是思文经常调侃她睡在上铺的兄弟，我也慢慢的接受了这种吐槽与自嘲的方式，也渐渐的用类似于吐槽的方式去看待自己的一些生活，当然我写出来的并是搞笑的段子，只是一些对自己的审视。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;从大学时就很喜欢看《今晚80后脱口秀》，再到之后喜欢上了《吐槽大会》和《脱口秀大会》。 “吐槽是门手艺，笑对需要勇气”，就源自于《吐槽大会》中的一句开场，也是我非常喜欢的一句话。大概是看到脱口秀演员吐槽了太多人（当然也包括他们自己），比如，李蛋经常嘲讽观众或是思文经常调侃她睡在上铺的兄弟，我也慢慢的接受了这种吐槽与自嘲的方式，也渐渐的用类似于吐槽的方式去看待自己的一些生活，当然我写出来的并是搞笑的段子，只是一些对自己的审视。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -68,7 +104,11 @@
       <pubDate>Sun, 31 Dec 2017 23:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20171231/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;      2017，一路坎坷，经历了许多让人很烦的事情（比如手机丢了等等），但是自己的心态在慢慢变好。虽然现在还不能做到“不以物喜，不以己悲”，但已经可以做到“不过分欢喜，也不过于忧愁”。当然2017也学到了许多东西，于是就在年末通过如下几个关键词总结一下。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;2017，一路坎坷，经历了许多让人很烦的事情（比如手机丢了等等），但是自己的心态在慢慢变好。虽然现在还不能做到“不以物喜，不以己悲”，但已经可以做到“不过分欢喜，也不过于忧愁”。当然2017也学到了许多东西，于是就在年末通过如下几个关键词总结一下。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -77,7 +117,11 @@
       <pubDate>Sun, 31 Dec 2017 14:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20171230/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       2017年，没有做多少事情，唯一一件就是考研。一开始决定要去考研是一时冲动，并没有考虑太多。等到了学校开始复习时，说实话有些后悔。一方面是看到要考的科目，基本上忘得差不多了；另一方面，也没有想好方向和学校。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 2017年，没有做多少事情，唯一一件就是考研。一开始决定要去考研是一时冲动，并没有考虑太多。等到了学校开始复习时，说实话有些后悔。一方面是看到要考的科目，基本上忘得差不多了；另一方面，也没有想好方向和学校。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -86,7 +130,11 @@
       <pubDate>Sun, 03 Sep 2017 16:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20170903/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       最近对一些东西或是有了新的认识，或是有一种还有这种操作的感觉。并且最近一段时间的状态比起六月份好太多了，应该是因为自己的格局在慢慢打开。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;最近对一些东西或是有了新的认识，或是有一种还有这种操作的感觉。并且最近一段时间的状态比起六月份好太多了，应该是因为自己的格局在慢慢打开。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -95,7 +143,11 @@
       <pubDate>Wed, 15 Mar 2017 01:59:59 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20170315/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       早起的鸟儿到底有没有虫子吃？大概只有鸟自己知道吧。最近在看一些英语相关的视频讲解，授课的老师谈起了拿破仑的一个观点：最悲哀的大概是那种愚蠢而又勤奋的人，在错误的道路上努力着，离自己的目标越来越远。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;早起的鸟儿到底有没有虫子吃？大概只有鸟自己知道吧。最近在看一些英语相关的视频讲解，授课的老师谈起了拿破仑的一个观点：最悲哀的大概是那种愚蠢而又勤奋的人，在错误的道路上努力着，离自己的目标越来越远。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -104,7 +156,11 @@
       <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20161223/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       2016，很忙碌的一年，经历了很多，也改变了许多。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;2016，很忙碌的一年，经历了很多，也改变了许多。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -113,7 +169,11 @@
       <pubDate>Tue, 04 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20161004/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       某天突然开始又有些迷茫，感觉生活突然没有了目标，也没有了动力。每一周都是以相同的模式度过，固定的时间做固定的事情，没有任何变化，也没有任何起伏。究其原因，感觉生活没有了成就感，还有自己的努力无法解决问题，太过强依赖于别人。每天只能等待别人，由于自己的性格原因，这样的结果是内心产生了焦虑。为了减缓这种焦虑，只能去转移一些注意力。每天会很晚才去睡觉，这样每天上午起床都是闹钟响起时，而不是因为想一些事情自己醒来。每天留给自己的睡眠时间少一些，可以很快的入睡，并且睡的会很死。这样感觉可以保证睡眠的质量。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;某天突然开始又有些迷茫，感觉生活突然没有了目标，也没有了动力。每一周都是以相同的模式度过，固定的时间做固定的事情，没有任何变化，也没有任何起伏。究其原因，感觉生活没有了成就感，还有自己的努力无法解决问题，太过强依赖于别人。每天只能等待别人，由于自己的性格原因，这样的结果是内心产生了焦虑。为了减缓这种焦虑，只能去转移一些注意力。每天会很晚才去睡觉，这样每天上午起床都是闹钟响起时，而不是因为想一些事情自己醒来。每天留给自己的睡眠时间少一些，可以很快的入睡，并且睡的会很死。这样感觉可以保证睡眠的质量。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -122,7 +182,11 @@
       <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20161003/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       前些天，看到某论坛上一份关于谈论拖延的帖子，感觉写的挺好的。于是乎反思了一下自己，发现自己是一名中度“拖延症患者”。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;前些天，看到某论坛上一份关于谈论拖延的帖子，感觉写的挺好的。于是乎反思了一下自己，发现自己是一名中度“拖延症患者”。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -131,7 +195,11 @@
       <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20150123/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;        本文算是我对自己近两个月找工作的一个自我总结，也算是对以后工作生活的一种勉励吧。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 本文算是我对自己近两个月找工作的一个自我总结，也算是对以后工作生活的一种勉励吧。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -140,7 +208,11 @@
       <pubDate>Thu, 22 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20150122/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       国庆过后，开始认真对待找工作了。每天会留意学校发布招聘信息的网站，每天也会去逛逛睿思，看上面有没有有用的信息。当然自习还是得继续，不过国庆期间想通了以后只找软件相关的工作。国庆前投了一份简历给YY，一直没有信息。其实一开始很看重YY的一个关于C++开发的岗位，因为自己比较喜欢C++，感觉其非常的强大。当然在大学期间也花费了相当长的时间去学习C++，对自己的C++水平还是有一定的自信的。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;国庆过后，开始认真对待找工作了。每天会留意学校发布招聘信息的网站，每天也会去逛逛睿思，看上面有没有有用的信息。当然自习还是得继续，不过国庆期间想通了以后只找软件相关的工作。国庆前投了一份简历给YY，一直没有信息。其实一开始很看重YY的一个关于C++开发的岗位，因为自己比较喜欢C++，感觉其非常的强大。当然在大学期间也花费了相当长的时间去学习C++，对自己的C++水平还是有一定的自信的。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -149,7 +221,11 @@
       <pubDate>Wed, 21 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20150121/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;        真正开始决定找工作是大约去年八月中旬，是六级成绩出来的那一天。因为六级只考了400分，没能通过，没法保研，也不想去考，最终决定找工作。也是那天去了学校，本打算去学校先去准备一下，做做简历，还有就是复习一下基础知识。刚到学校没有心情去学习，最终开学前的几天都在宿舍呆着，只去了一次图书管。其余的时间就是上上网打打游戏，忘了要去找工作。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 真正开始决定找工作是大约去年八月中旬，是六级成绩出来的那一天。因为六级只考了400分，没能通过，没法保研，也不想去考，最终决定找工作。也是那天去了学校，本打算去学校先去准备一下，做做简历，还有就是复习一下基础知识。刚到学校没有心情去学习，最终开学前的几天都在宿舍呆着，只去了一次图书管。其余的时间就是上上网打打游戏，忘了要去找工作。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -158,8 +234,16 @@
       <pubDate>Tue, 01 Jan 2008 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20080101/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;        有句话叫“月光晒谷”，其实月光是晒不了谷的，可是却能够晾晒人的灵魂。在现代社会里，我们需要钢铁般的意志，求得生存发展;同时，也需要温柔的月光，去爱、去体恤……&lt;/p&gt;</description>
     </item>
     
   </channel>
 </rss>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 有句话叫“月光晒谷”，其实月光是晒不了谷的，可是却能够晾晒人的灵魂。在现代社会里，我们需要钢铁般的意志，求得生存发展;同时，也需要温柔的月光，去爱、去体恤……&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

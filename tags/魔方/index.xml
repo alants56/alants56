@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>魔方 on 月光晒谷</title>
@@ -7,15 +11,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+<<<<<<< HEAD
     <lastBuildDate>Sat, 07 Jan 2017 12:12:12 +0800</lastBuildDate><atom:link href="http://liuao.tech/tags/%E9%AD%94%E6%96%B9/index.xml" rel="self" type="application/rss+xml" />
+=======
+    <lastBuildDate>Sat, 07 Jan 2017 12:12:12 +0800</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/%E9%AD%94%E6%96%B9/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>三阶魔方盲解</title>
       <link>http://liuao.tech/post/20170107/</link>
       <pubDate>Sat, 07 Jan 2017 12:12:12 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20170107/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       最近看了一段别人盲解三阶魔方的视频，学习了一番，目前可以使用盲解的方式进行还原，但距离真正盲解还有段距离。在未学习盲解之前，感觉三阶魔方那么多方块，盲解时，很难记清楚各种情况。但真正将其进行分解开，然后记忆，发现其实并没有想象中那么难。接下来就谈一下我自己的一些理解。&lt;/p&gt;</description>
     </item>
     
   </channel>
 </rss>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;最近看了一段别人盲解三阶魔方的视频，学习了一番，目前可以使用盲解的方式进行还原，但距离真正盲解还有段距离。在未学习盲解之前，感觉三阶魔方那么多方块，盲解时，很难记清楚各种情况。但真正将其进行分解开，然后记忆，发现其实并没有想象中那么难。接下来就谈一下我自己的一些理解。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C on 月光晒谷</title>
@@ -7,14 +11,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+<<<<<<< HEAD
     <lastBuildDate>Fri, 16 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="http://liuao.tech/tags/c/index.xml" rel="self" type="application/rss+xml" />
+=======
+    <lastBuildDate>Fri, 16 Dec 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>C语言可变参函数</title>
       <link>http://liuao.tech/post/20161216/</link>
       <pubDate>Fri, 16 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20161216/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       在C语言中，函数的参数是可变长的。虽然在一般的应用程序中不会去定义可变参数的函数，但是我们经常会使用标准库提供的可变参数函数。最典型的就是printf函数，它的声明如下：&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;在C语言中，函数的参数是可变长的。虽然在一般的应用程序中不会去定义可变参数的函数，但是我们经常会使用标准库提供的可变参数函数。最典型的就是printf函数，它的声明如下：&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -23,8 +39,16 @@
       <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20161202/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       当对C与C++有一定的理解之后，很容易明白：C++是一门面向对象的语言，而C语言则是面向过程的语言。那什么是面向对象、什么是面向过程？其实面向对象与面向过程，只是一种将要模拟的事件抽象出来进行编程的思想。面向过程，主要关注的是事件如何发展；面向对象，主要关注事件中存在的事物以及如何操作这些事物来模拟事件。&lt;/p&gt;</description>
     </item>
     
   </channel>
 </rss>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;当对C与C++有一定的理解之后，很容易明白：C++是一门面向对象的语言，而C语言则是面向过程的语言。那什么是面向对象、什么是面向过程？其实面向对象与面向过程，只是一种将要模拟的事件抽象出来进行编程的思想。面向过程，主要关注的是事件如何发展；面向对象，主要关注事件中存在的事物以及如何操作这些事物来模拟事件。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

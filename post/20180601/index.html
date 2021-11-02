@@ -26,7 +26,11 @@
 
   
   
+<<<<<<< HEAD
   <meta name="description" content=" 朴素贝叶斯是基于贝叶斯公式和属性条件独立假设的一种分类方式。它是一种“生成式模型”，先通过样本估计先验概率，然后用它来求出后验概率。
+=======
+  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;朴素贝叶斯是基于贝叶斯公式和属性条件独立假设的一种分类方式。它是一种“生成式模型”，先通过样本估计先验概率，然后用它来求出后验概率。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
 
   
@@ -34,7 +38,11 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@gohugoio">
     <meta name="twitter:title" content="朴素贝叶斯">
+<<<<<<< HEAD
     <meta name="twitter:description" content=" 朴素贝叶斯是基于贝叶斯公式和属性条件独立假设的一种分类方式。它是一种“生成式模型”，先通过样本估计先验概率，然后用它来求出后验概率。
+=======
+    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;朴素贝叶斯是基于贝叶斯公式和属性条件独立假设的一种分类方式。它是一种“生成式模型”，先通过样本估计先验概率，然后用它来求出后验概率。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
     <meta name="twitter:image" content="/images/avatar.png">
   
@@ -42,7 +50,11 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="朴素贝叶斯">
+<<<<<<< HEAD
   <meta property="og:description" content=" 朴素贝叶斯是基于贝叶斯公式和属性条件独立假设的一种分类方式。它是一种“生成式模型”，先通过样本估计先验概率，然后用它来求出后验概率。
+=======
+  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;朴素贝叶斯是基于贝叶斯公式和属性条件独立假设的一种分类方式。它是一种“生成式模型”，先通过样本估计先验概率，然后用它来求出后验概率。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
   <meta property="og:url" content="http://liuao.tech/post/20180601/">
   <meta property="og:image" content="/images/avatar.png">
@@ -50,7 +62,11 @@
 
 
 
+<<<<<<< HEAD
 <meta name="generator" content="Hugo 0.83.1">
+=======
+<meta name="generator" content="Hugo 0.53">
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 
 
 <link rel="canonical" href="http://liuao.tech/post/20180601/">
@@ -212,6 +228,7 @@
       <h1 class="post-title">朴素贝叶斯</h1>
       <p class="post-meta">@月光晒谷 · Jun 1, 2018 · 1 min read</p>
     </header>
+<<<<<<< HEAD
     <article class="post-content"><p>      朴素贝叶斯是基于贝叶斯公式和属性条件独立假设的一种分类方式。它是一种“生成式模型”，先通过样本估计先验概率，然后用它来求出后验概率。</p>
 <p>      要理解朴素贝叶斯，首先需要理解贝叶斯公式，而贝叶斯公式可以通过乘法公式和全概率公式推导出来（如下所示）。</p>
 <p><img src="http://liuao.tech/images/naiveBayes0.png" alt="naiveBayes0"></p>
@@ -226,6 +243,35 @@
 <p>       1. 概率论与数理统计（第四版）       盛骤 等著</p>
 <p>       2. 机器学习                                       周志华 著</p>
 <p>       3. 统计学习方法                               李航 著</p></article>
+=======
+    <article class="post-content"><p>&nbsp; &nbsp; &nbsp;&nbsp;朴素贝叶斯是基于贝叶斯公式和属性条件独立假设的一种分类方式。它是一种“生成式模型”，先通过样本估计先验概率，然后用它来求出后验概率。</p>
+
+<p>&nbsp; &nbsp; &nbsp;&nbsp;要理解朴素贝叶斯，首先需要理解贝叶斯公式，而贝叶斯公式可以通过乘法公式和全概率公式推导出来（如下所示）。</p>
+
+<p><img src="http://liuao.tech/images/naiveBayes0.png" alt="naiveBayes0" /></p>
+
+<p>&nbsp; &nbsp; &nbsp;&nbsp;接下来我们借用上述贝叶斯公式来分析一个有关数据集D的k分类问题（如下所示）。</p>
+
+<p><img src="http://liuao.tech/images/naiveBayes1.png" alt="naiveBayes1" /></p>
+
+<p>&nbsp; &nbsp; &nbsp;&nbsp;对于该问题，我们根据贝叶斯公式得出一个贝叶斯分类器，它最终目的是根据测试集中的属性(x1,x2,&hellip;,xn)，判断出该组属性最有可能的分类y。P(yi)的概率可通过数据集D中y出现的频率近似估计出来。而对于不同的y=yi，上述公式中P(x1,x2,&hellip;,xn)是相同的，则可以无需计算P(x1,x2,&hellip;,xn)。</p>
+
+<p>&nbsp; &nbsp; &nbsp;&nbsp;接下来需要计算P(x1,x2,&hellip;,xn|yi),但联合概率很难求出来。为了简化这一问题，我们假设属性条件独立，这样P(x1,x2,&hellip;,xn|yi)就可以通过如下公式计算出来，而其中的P(xj|yi)可通过数据集D中的数据估计出来。也是因为这个假设，该方法得名为naive Bayes。</p>
+
+<p><img src="http://liuao.tech/images/naiveBayes2.png" alt="naiveBayes2" /></p>
+
+<p>&nbsp; &nbsp; &nbsp;&nbsp;另外需要注意的是，在估计P(xj|yi)时，若属性xj为离散值，可通过出现频率来估计；但若为连续值，则可通过假设其服从某一分布，然后通过计算其概率密度函数来估计。</p>
+
+<hr />
+
+<p>参考文档：</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;1. 概率论与数理统计（第四版）&nbsp; &nbsp; &nbsp; &nbsp;盛骤 等著</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;2. 机器学习 &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;周志华 著</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;3. 统计学习方法&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;李航 著</p></article>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -237,7 +283,11 @@
       </ul>
       
       <p class="post-copyright">
+<<<<<<< HEAD
         ©2019 | liuao.tech | All rights reserved. This post was published <strong>1245</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+=======
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>888</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
       </p>
     </footer>
     
@@ -246,7 +296,11 @@
   </section>
   
 <footer class="site-footer">
+<<<<<<< HEAD
   <p>© 2017-2021 月光晒谷</p>
+=======
+  <p>© 2017-2020 月光晒谷</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>

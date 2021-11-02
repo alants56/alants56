@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>面向对象 on 月光晒谷</title>
@@ -7,15 +11,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+<<<<<<< HEAD
     <lastBuildDate>Fri, 02 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="http://liuao.tech/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/index.xml" rel="self" type="application/rss+xml" />
+=======
+    <lastBuildDate>Fri, 02 Dec 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>用C语言实现面向对象编程</title>
       <link>http://liuao.tech/post/20161202/</link>
       <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20161202/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       当对C与C++有一定的理解之后，很容易明白：C++是一门面向对象的语言，而C语言则是面向过程的语言。那什么是面向对象、什么是面向过程？其实面向对象与面向过程，只是一种将要模拟的事件抽象出来进行编程的思想。面向过程，主要关注的是事件如何发展；面向对象，主要关注事件中存在的事物以及如何操作这些事物来模拟事件。&lt;/p&gt;</description>
     </item>
     
   </channel>
 </rss>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;当对C与C++有一定的理解之后，很容易明白：C++是一门面向对象的语言，而C语言则是面向过程的语言。那什么是面向对象、什么是面向过程？其实面向对象与面向过程，只是一种将要模拟的事件抽象出来进行编程的思想。面向过程，主要关注的是事件如何发展；面向对象，主要关注事件中存在的事物以及如何操作这些事物来模拟事件。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

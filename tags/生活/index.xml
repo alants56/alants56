@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>生活 on 月光晒谷</title>
@@ -7,14 +11,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+<<<<<<< HEAD
     <lastBuildDate>Thu, 05 Nov 2020 10:00:00 +0800</lastBuildDate><atom:link href="http://liuao.tech/tags/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
+=======
+    <lastBuildDate>Thu, 05 Nov 2020 10:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>被deadline驱动的我</title>
       <link>http://liuao.tech/post/20201105/</link>
       <pubDate>Thu, 05 Nov 2020 10:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20201105/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;      最近一年的我感觉对生活没了追求，就像在海上失去方向的船，不知道该开去哪里。感觉每天都糊里糊涂的，没有了读研以前那种对胜利的渴望，对任何事情都失去了兴趣，每天靠着各种deadline驱动着前进。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;最近一年的我感觉对生活没了追求，就像在海上失去方向的船，不知道该开去哪里。感觉每天都糊里糊涂的，没有了读研以前那种对胜利的渴望，对任何事情都失去了兴趣，每天靠着各种deadline驱动着前进。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -23,7 +39,11 @@
       <pubDate>Sun, 05 Jan 2020 10:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20200105/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;      2019年似乎没有很努力的学习，所有立下的Flag，不出意外都没有实现。虽然如此，但也并不是完全没有什么收获。在这一年，无论是在学术、生活等方面都取得了一些进展。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;2019年似乎没有很努力的学习，所有立下的Flag，不出意外都没有实现。虽然如此，但也并不是完全没有什么收获。在这一年，无论是在学术、生活等方面都取得了一些进展。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -32,7 +52,11 @@
       <pubDate>Tue, 22 Jan 2019 14:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20190122/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;      2018年充满了得与失，得到了许多，失去的更多，但总的来说成长了。年初的时候，体会了面对生死的无可奈何，明白了人生总有些事情是努力无法改变的，所以应该珍惜现在所拥有的一切。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;2018年充满了得与失，得到了许多，失去的更多，但总的来说成长了。年初的时候，体会了面对生死的无可奈何，明白了人生总有些事情是努力无法改变的，所以应该珍惜现在所拥有的一切。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -41,7 +65,11 @@
       <pubDate>Sat, 12 May 2018 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20180512/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;      从大学时就很喜欢看《今晚80后脱口秀》，再到之后喜欢上了《吐槽大会》和《脱口秀大会》。 “吐槽是门手艺，笑对需要勇气”，就源自于《吐槽大会》中的一句开场，也是我非常喜欢的一句话。大概是看到脱口秀演员吐槽了太多人（当然也包括他们自己），比如，李蛋经常嘲讽观众或是思文经常调侃她睡在上铺的兄弟，我也慢慢的接受了这种吐槽与自嘲的方式，也渐渐的用类似于吐槽的方式去看待自己的一些生活，当然我写出来的并是搞笑的段子，只是一些对自己的审视。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;从大学时就很喜欢看《今晚80后脱口秀》，再到之后喜欢上了《吐槽大会》和《脱口秀大会》。 “吐槽是门手艺，笑对需要勇气”，就源自于《吐槽大会》中的一句开场，也是我非常喜欢的一句话。大概是看到脱口秀演员吐槽了太多人（当然也包括他们自己），比如，李蛋经常嘲讽观众或是思文经常调侃她睡在上铺的兄弟，我也慢慢的接受了这种吐槽与自嘲的方式，也渐渐的用类似于吐槽的方式去看待自己的一些生活，当然我写出来的并是搞笑的段子，只是一些对自己的审视。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -50,7 +78,11 @@
       <pubDate>Sun, 31 Dec 2017 23:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20171231/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;      2017，一路坎坷，经历了许多让人很烦的事情（比如手机丢了等等），但是自己的心态在慢慢变好。虽然现在还不能做到“不以物喜，不以己悲”，但已经可以做到“不过分欢喜，也不过于忧愁”。当然2017也学到了许多东西，于是就在年末通过如下几个关键词总结一下。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;2017，一路坎坷，经历了许多让人很烦的事情（比如手机丢了等等），但是自己的心态在慢慢变好。虽然现在还不能做到“不以物喜，不以己悲”，但已经可以做到“不过分欢喜，也不过于忧愁”。当然2017也学到了许多东西，于是就在年末通过如下几个关键词总结一下。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -59,7 +91,11 @@
       <pubDate>Sun, 31 Dec 2017 14:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20171230/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       2017年，没有做多少事情，唯一一件就是考研。一开始决定要去考研是一时冲动，并没有考虑太多。等到了学校开始复习时，说实话有些后悔。一方面是看到要考的科目，基本上忘得差不多了；另一方面，也没有想好方向和学校。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; 2017年，没有做多少事情，唯一一件就是考研。一开始决定要去考研是一时冲动，并没有考虑太多。等到了学校开始复习时，说实话有些后悔。一方面是看到要考的科目，基本上忘得差不多了；另一方面，也没有想好方向和学校。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -68,7 +104,11 @@
       <pubDate>Sun, 03 Sep 2017 16:00:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20170903/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       最近对一些东西或是有了新的认识，或是有一种还有这种操作的感觉。并且最近一段时间的状态比起六月份好太多了，应该是因为自己的格局在慢慢打开。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;最近对一些东西或是有了新的认识，或是有一种还有这种操作的感觉。并且最近一段时间的状态比起六月份好太多了，应该是因为自己的格局在慢慢打开。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -77,7 +117,11 @@
       <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20161223/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       2016，很忙碌的一年，经历了很多，也改变了许多。&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;2016，很忙碌的一年，经历了很多，也改变了许多。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -86,8 +130,16 @@
       <pubDate>Sun, 23 Aug 2015 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20150823/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;          最近三个多月没有写博客，真是罪过啊！一方面是比较忙，另一方面是没有学太多新东西，不知道该写些什么。今天周末，是来部门的第一个星期天。好久没写了，也不知道该起个什么标题，就借用最近我酒正准备组建的战队名。现在算是完成了一次转变，从学生到职场的转变，虽还没有完全褪去学生的青涩，但已习惯现在的生活。每天早起去挤地铁，每天晚上回来继续挤地铁。&lt;/p&gt;</description>
     </item>
     
   </channel>
 </rss>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;   最近三个多月没有写博客，真是罪过啊！一方面是比较忙，另一方面是没有学太多新东西，不知道该写些什么。今天周末，是来部门的第一个星期天。好久没写了，也不知道该起个什么标题，就借用最近我酒正准备组建的战队名。现在算是完成了一次转变，从学生到职场的转变，虽还没有完全褪去学生的青涩，但已习惯现在的生活。每天早起去挤地铁，每天晚上回来继续挤地铁。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

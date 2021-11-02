@@ -26,7 +26,11 @@
 
   
   <meta name="author" content="月光晒谷">
+<<<<<<< HEAD
   <meta name="description" content=" 由于Linux内核支持对称多处理器(SMP)，并且支持内核抢占，这样可以让多个进程并发的执行。当然这也带来了一些影响，就是当多个进程可以对相同的数据进行访问和操作时，会产生一些意料之外的结果。例如，在火车站的售票系统中，多个窗口发售相同车次的车票。当只有最后一张票时，多个窗口同时查询数据库（类似多处理器），发现有一张票，若此时同时出售，就会出现一张票被出售多次的现象。通常称这为竞争条件，而火车票的剩余数则为临界区。那内核如何避免这种现象发生，即防止竞争条件，就是解决内核同步问题。
+=======
+  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;由于Linux内核支持对称多处理器(SMP)，并且支持内核抢占，这样可以让多个进程并发的执行。当然这也带来了一些影响，就是当多个进程可以对相同的数据进行访问和操作时，会产生一些意料之外的结果。例如，在火车站的售票系统中，多个窗口发售相同车次的车票。当只有最后一张票时，多个窗口同时查询数据库（类似多处理器），发现有一张票，若此时同时出售，就会出现一张票被出售多次的现象。通常称这为竞争条件，而火车票的剩余数则为临界区。那内核如何避免这种现象发生，即防止竞争条件，就是解决内核同步问题。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
 
   
@@ -34,7 +38,11 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@gohugoio">
     <meta name="twitter:title" content="LKD学习笔记——内核同步">
+<<<<<<< HEAD
     <meta name="twitter:description" content=" 由于Linux内核支持对称多处理器(SMP)，并且支持内核抢占，这样可以让多个进程并发的执行。当然这也带来了一些影响，就是当多个进程可以对相同的数据进行访问和操作时，会产生一些意料之外的结果。例如，在火车站的售票系统中，多个窗口发售相同车次的车票。当只有最后一张票时，多个窗口同时查询数据库（类似多处理器），发现有一张票，若此时同时出售，就会出现一张票被出售多次的现象。通常称这为竞争条件，而火车票的剩余数则为临界区。那内核如何避免这种现象发生，即防止竞争条件，就是解决内核同步问题。
+=======
+    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;由于Linux内核支持对称多处理器(SMP)，并且支持内核抢占，这样可以让多个进程并发的执行。当然这也带来了一些影响，就是当多个进程可以对相同的数据进行访问和操作时，会产生一些意料之外的结果。例如，在火车站的售票系统中，多个窗口发售相同车次的车票。当只有最后一张票时，多个窗口同时查询数据库（类似多处理器），发现有一张票，若此时同时出售，就会出现一张票被出售多次的现象。通常称这为竞争条件，而火车票的剩余数则为临界区。那内核如何避免这种现象发生，即防止竞争条件，就是解决内核同步问题。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
     <meta name="twitter:image" content="/images/avatar.png">
   
@@ -42,7 +50,11 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="LKD学习笔记——内核同步">
+<<<<<<< HEAD
   <meta property="og:description" content=" 由于Linux内核支持对称多处理器(SMP)，并且支持内核抢占，这样可以让多个进程并发的执行。当然这也带来了一些影响，就是当多个进程可以对相同的数据进行访问和操作时，会产生一些意料之外的结果。例如，在火车站的售票系统中，多个窗口发售相同车次的车票。当只有最后一张票时，多个窗口同时查询数据库（类似多处理器），发现有一张票，若此时同时出售，就会出现一张票被出售多次的现象。通常称这为竞争条件，而火车票的剩余数则为临界区。那内核如何避免这种现象发生，即防止竞争条件，就是解决内核同步问题。
+=======
+  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;由于Linux内核支持对称多处理器(SMP)，并且支持内核抢占，这样可以让多个进程并发的执行。当然这也带来了一些影响，就是当多个进程可以对相同的数据进行访问和操作时，会产生一些意料之外的结果。例如，在火车站的售票系统中，多个窗口发售相同车次的车票。当只有最后一张票时，多个窗口同时查询数据库（类似多处理器），发现有一张票，若此时同时出售，就会出现一张票被出售多次的现象。通常称这为竞争条件，而火车票的剩余数则为临界区。那内核如何避免这种现象发生，即防止竞争条件，就是解决内核同步问题。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
   <meta property="og:url" content="http://liuao.tech/post/20161208/">
   <meta property="og:image" content="/images/avatar.png">
@@ -50,7 +62,11 @@
 
 
 
+<<<<<<< HEAD
 <meta name="generator" content="Hugo 0.83.1">
+=======
+<meta name="generator" content="Hugo 0.53">
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 
 
 <link rel="canonical" href="http://liuao.tech/post/20161208/">
@@ -212,9 +228,17 @@
       <h1 class="post-title">LKD学习笔记——内核同步</h1>
       <p class="post-meta">@月光晒谷 · Dec 8, 2016 · 1 min read</p>
     </header>
+<<<<<<< HEAD
     <article class="post-content"><p>       由于Linux内核支持对称多处理器(SMP)，并且支持内核抢占，这样可以让多个进程并发的执行。当然这也带来了一些影响，就是当多个进程可以对相同的数据进行访问和操作时，会产生一些意料之外的结果。例如，在火车站的售票系统中，多个窗口发售相同车次的车票。当只有最后一张票时，多个窗口同时查询数据库（类似多处理器），发现有一张票，若此时同时出售，就会出现一张票被出售多次的现象。通常称这为竞争条件，而火车票的剩余数则为临界区。那内核如何避免这种现象发生，即防止竞争条件，就是解决内核同步问题。</p>
 <p>       最简单的一种方式是，避免共享数据。这样不会有临界区，也肯定不会有竞争条件。这显然是不现实的，最常见的共享就是硬件资源。这种方式并不能完全解决同步问题，只能是我们在代码实现上避免使用全局变量，减少临界区，从而避免竞争条件。</p>
 <p>       在Linux中，提供了一种数据和操作——原子数据和原子操作。对于原子数据的访问和操作都是原子操作，同一时间只能有一次执行，并且执行过程不可分割。将上述的售票过程作为一个原子操作，就不会产生一张车票被多次出售的情况。</p>
+=======
+    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp;由于Linux内核支持对称多处理器(SMP)，并且支持内核抢占，这样可以让多个进程并发的执行。当然这也带来了一些影响，就是当多个进程可以对相同的数据进行访问和操作时，会产生一些意料之外的结果。例如，在火车站的售票系统中，多个窗口发售相同车次的车票。当只有最后一张票时，多个窗口同时查询数据库（类似多处理器），发现有一张票，若此时同时出售，就会出现一张票被出售多次的现象。通常称这为竞争条件，而火车票的剩余数则为临界区。那内核如何避免这种现象发生，即防止竞争条件，就是解决内核同步问题。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;最简单的一种方式是，避免共享数据。这样不会有临界区，也肯定不会有竞争条件。这显然是不现实的，最常见的共享就是硬件资源。这种方式并不能完全解决同步问题，只能是我们在代码实现上避免使用全局变量，减少临界区，从而避免竞争条件。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;在Linux中，提供了一种数据和操作——原子数据和原子操作。对于原子数据的访问和操作都是原子操作，同一时间只能有一次执行，并且执行过程不可分割。将上述的售票过程作为一个原子操作，就不会产生一张车票被多次出售的情况。</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">asm</span><span style="color:#f92672">/</span>atomic.h<span style="color:#f92672">&gt;</span>
 <span style="color:#75715e">/*
 </span><span style="color:#75715e"> *原子整数操作：允许对一个整数进行原子操作
@@ -230,15 +254,23 @@
 </span><span style="color:#75715e"> *
 </span><span style="color:#75715e"> **/</span>
  <span style="color:#66d9ef">void</span> set_bit(<span style="color:#66d9ef">int</span> nr, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>addr);
+<<<<<<< HEAD
  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">clear_bit</span>(<span style="color:#66d9ef">int</span> nr, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>addr);
 </code></pre></div><p>       另外一种方式是，对于临界区，建立一种访问和操作的规则：对临界区进行加锁，只允许拥有锁的进程进行处理，而锁的实现方式则根据临界区和其操作不同而不同。Linux中有如下的方式实现加锁机制。</p>
 <p>       1）自旋锁，在同一时间，只允许一个可执行线程持有。当一个执行线程试图获取一个已经被持有的自旋锁时，该执行线程会一直进行忙循环旋转——等待锁重新可用。即获取自旋锁时，不会导致线程睡眠。</p>
+=======
+ <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">clear_bit</span>(<span style="color:#66d9ef">int</span> nr, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>addr);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;另外一种方式是，对于临界区，建立一种访问和操作的规则：对临界区进行加锁，只允许拥有锁的进程进行处理，而锁的实现方式则根据临界区和其操作不同而不同。Linux中有如下的方式实现加锁机制。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;1）自旋锁，在同一时间，只允许一个可执行线程持有。当一个执行线程试图获取一个已经被持有的自旋锁时，该执行线程会一直进行忙循环旋转——等待锁重新可用。即获取自旋锁时，不会导致线程睡眠。</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#f92672">&lt;</span>linux<span style="color:#f92672">/</span>spinlock.h<span style="color:#f92672">&gt;</span>
 
 DEFINE_SPINLOCK(mr_lock);
 
 spin_lock(<span style="color:#f92672">&amp;</span>mr_lock);
 
+<<<<<<< HEAD
 spin_unlock(<span style="color:#f92672">&amp;</span>mr_lock);
 </code></pre></div><p>       2）信号量，是由Dijkstra提出的，通过P、V原子操作（Proberen和Vershogen，荷兰语，测试操作和增加操作），来实现信号量机制。如果一个线程试图获取一个已经被完全占用的信号量时，信号量操作会使其进入一个等待队列睡眠。当有可用的信号量被释放时，信号量操作会将其唤醒。信号量是有一个使用者数量(usage count)，即同时允许几个线程同时访问信号量（对信号量的P、V操作属于原子操作）。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">asm</span><span style="color:#f92672">/</span>semaphore.h<span style="color:#f92672">&gt;</span>
@@ -247,6 +279,16 @@ spin_unlock(<span style="color:#f92672">&amp;</span>mr_lock);
 raw_spinlock_t		lock;
 <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>		count;
 <span style="color:#66d9ef">struct</span> list_head	wait_list;
+=======
+spin_unlock(<span style="color:#f92672">&amp;</span>mr_lock);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;2）信号量，是由Dijkstra提出的，通过P、V原子操作（Proberen和Vershogen，荷兰语，测试操作和增加操作），来实现信号量机制。如果一个线程试图获取一个已经被完全占用的信号量时，信号量操作会使其进入一个等待队列睡眠。当有可用的信号量被释放时，信号量操作会将其唤醒。信号量是有一个使用者数量(usage count)，即同时允许几个线程同时访问信号量（对信号量的P、V操作属于原子操作）。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">asm</span><span style="color:#f92672">/</span>semaphore.h<span style="color:#f92672">&gt;</span>
+
+<span style="color:#66d9ef">struct</span> semaphore {
+raw_spinlock_t      lock;
+<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>        count;
+<span style="color:#66d9ef">struct</span> list_head    wait_list;
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 };
 
 sema_init(<span style="color:#66d9ef">struct</span> semaphore <span style="color:#f92672">*</span>, <span style="color:#66d9ef">int</span>);
@@ -268,16 +310,26 @@ sema_init(<span style="color:#66d9ef">struct</span> semaphore <span style="color
 <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">down</span>(<span style="color:#66d9ef">struct</span> semaphore <span style="color:#f92672">*</span>sem)
 {
     <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<<<<<<< HEAD
 	<span style="color:#66d9ef">if</span> (sem<span style="color:#f92672">-&gt;</span>count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
 		sem<span style="color:#f92672">-&gt;</span>count<span style="color:#f92672">--</span>;
 	} <span style="color:#66d9ef">else</span> { 
 	    res <span style="color:#f92672">=</span> add_wait_list(sem);     
 	}
 	<span style="color:#66d9ef">return</span> res;
+=======
+    <span style="color:#66d9ef">if</span> (sem<span style="color:#f92672">-&gt;</span>count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+        sem<span style="color:#f92672">-&gt;</span>count<span style="color:#f92672">--</span>;
+    } <span style="color:#66d9ef">else</span> { 
+        res <span style="color:#f92672">=</span> add_wait_list(sem);     
+    }
+    <span style="color:#66d9ef">return</span> res;
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 }
 
 <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">up</span>(<span style="color:#66d9ef">struct</span> semaphore <span style="color:#f92672">*</span>sem)
 {
+<<<<<<< HEAD
 	<span style="color:#66d9ef">if</span> (list_empty(<span style="color:#f92672">&amp;</span>sem<span style="color:#f92672">-&gt;</span>wait_list))
 		sem<span style="color:#f92672">-&gt;</span>count<span style="color:#f92672">++</span>;
 	<span style="color:#66d9ef">else</span>
@@ -294,24 +346,56 @@ mutex_unlock(<span style="color:#f92672">&amp;</span>mutex);
 <span style="color:#66d9ef">struct</span> completion {
 	<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> done;
 	wait_queue_head_t wait;
+=======
+    <span style="color:#66d9ef">if</span> (list_empty(<span style="color:#f92672">&amp;</span>sem<span style="color:#f92672">-&gt;</span>wait_list))
+        sem<span style="color:#f92672">-&gt;</span>count<span style="color:#f92672">++</span>;
+    <span style="color:#66d9ef">else</span>
+        rm_wait_list(sem);  
+}</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;3）互斥体,当信号量的使用者数量为1时，为互斥体。互斥体是一种特殊的信号量，在同一时间只允许一个线程持有该信号量。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">DEFINE_MUTEX(mutex);
+mutex_init(<span style="color:#f92672">&amp;</span>mutex);
+mutex_lock(<span style="color:#f92672">&amp;</span>mutex);
+mutex_unlock(<span style="color:#f92672">&amp;</span>mutex);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;4）完成变量，如果内核中一个任务需要发出信号通知另一任务发生了某个特定事件，利用完成变量是使两个任务得以同步的简单方法。当子进程执行或退出式，vfork()就是使用完成变量唤醒父进程。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#f92672">&lt;</span>linux<span style="color:#f92672">/</span>completion.h<span style="color:#f92672">&gt;</span>
+
+<span style="color:#66d9ef">struct</span> completion {
+    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> done;
+    wait_queue_head_t wait;
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 };
  
 init_completion(<span style="color:#66d9ef">struct</span> completion <span style="color:#f92672">*</span>);
 wait_for_completion(<span style="color:#66d9ef">struct</span> completion <span style="color:#f92672">*</span>);
+<<<<<<< HEAD
 complete(<span style="color:#66d9ef">struct</span> completion <span style="color:#f92672">*</span>);
 </code></pre></div><p>       5）顺序锁，主要用于读写共享，同一时间只能运行一个线程进行写操作，但可以运行多个线程读操作。当写线程获取顺序锁时，序列号加1（序列号初始化为0），写操作完成释放时序列号再加1。当有读线程获取顺序锁时先获取序列号，读操作完成时，再次获取序列号，若两个值相同，则表示进行读取过程未写操作。在内核中，对于jiffies_64变量的操作就是使用顺序锁完成的。</p>
+=======
+complete(<span style="color:#66d9ef">struct</span> completion <span style="color:#f92672">*</span>);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;5）顺序锁，主要用于读写共享，同一时间只能运行一个线程进行写操作，但可以运行多个线程读操作。当写线程获取顺序锁时，序列号加1（序列号初始化为0），写操作完成释放时序列号再加1。当有读线程获取顺序锁时先获取序列号，读操作完成时，再次获取序列号，若两个值相同，则表示进行读取过程未写操作。在内核中，对于jiffies_64变量的操作就是使用顺序锁完成的。</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">/*
 </span><span style="color:#75715e"> * 在32位系统时，对变量jiffies_64不能原子访问其两个32位变量。
 </span><span style="color:#75715e"> *
 </span><span style="color:#75715e"> **/</span>   
 write_seqlock(<span style="color:#f92672">&amp;</span>xtime_lock);
 jiffies_64 <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+<<<<<<< HEAD
 write_sequlock(<span style="color:#f92672">&amp;</span>xtime_lock);
 </code></pre></div><p>       另外可以通过禁止内核抢占，来避免竞争条件发生。在某些情况下，并不需要自旋锁，当仍需要关闭内核抢占。例如：每个处理器的数据，由于只能被该处理器访问，因此只需要禁止内核抢占就可以避免竞争条件发生。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">preempt_disable();
 <span style="color:#75715e">/*此处执行的代码，禁止抢占*/</span>
 preempt_enable();
 </code></pre></div><p>       在使用锁机制时要注意：多个线程竞争一个或多个资源时，可能会产生死锁的状态——每个线程都在等待资源，但资源都已经被线程相互占用，所有线程都在等待其它线程释放资源，从而导致死锁的状态。常用的避免死锁的方式：按顺序加锁；不要重复请求同一个锁；设计力求简单，不要使用复杂的加锁方案，避免死锁。</p></article>
+=======
+write_sequlock(<span style="color:#f92672">&amp;</span>xtime_lock);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;另外可以通过禁止内核抢占，来避免竞争条件发生。在某些情况下，并不需要自旋锁，当仍需要关闭内核抢占。例如：每个处理器的数据，由于只能被该处理器访问，因此只需要禁止内核抢占就可以避免竞争条件发生。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">preempt_disable();
+<span style="color:#75715e">/*此处执行的代码，禁止抢占*/</span>
+preempt_enable();</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;在使用锁机制时要注意：多个线程竞争一个或多个资源时，可能会产生死锁的状态——每个线程都在等待资源，但资源都已经被线程相互占用，所有线程都在等待其它线程释放资源，从而导致死锁的状态。常用的避免死锁的方式：按顺序加锁；不要重复请求同一个锁；设计力求简单，不要使用复杂的加锁方案，避免死锁。</p></article>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -325,7 +409,11 @@ preempt_enable();
       </ul>
       
       <p class="post-copyright">
+<<<<<<< HEAD
         ©2019 | liuao.tech | All rights reserved. This post was published <strong>1785</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+=======
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1428</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
       </p>
     </footer>
     
@@ -334,7 +422,11 @@ preempt_enable();
   </section>
   
 <footer class="site-footer">
+<<<<<<< HEAD
   <p>© 2017-2021 月光晒谷</p>
+=======
+  <p>© 2017-2020 月光晒谷</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>

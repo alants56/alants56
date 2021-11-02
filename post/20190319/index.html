@@ -26,7 +26,11 @@
 
   
   <meta name="author" content="月光晒谷">
+<<<<<<< HEAD
   <meta name="description" content=" 通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。
+=======
+  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
 
   
@@ -34,7 +38,11 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@gohugoio">
     <meta name="twitter:title" content="极大似然估计与贝叶斯估计">
+<<<<<<< HEAD
     <meta name="twitter:description" content=" 通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。
+=======
+    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
     <meta name="twitter:image" content="/images/avatar.png">
   
@@ -42,7 +50,11 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="极大似然估计与贝叶斯估计">
+<<<<<<< HEAD
   <meta property="og:description" content=" 通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。
+=======
+  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
   <meta property="og:url" content="http://liuao.tech/post/20190319/">
   <meta property="og:image" content="/images/avatar.png">
@@ -50,7 +62,11 @@
 
 
 
+<<<<<<< HEAD
 <meta name="generator" content="Hugo 0.83.1">
+=======
+<meta name="generator" content="Hugo 0.53">
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 
 
 <link rel="canonical" href="http://liuao.tech/post/20190319/">
@@ -212,6 +228,7 @@
       <h1 class="post-title">极大似然估计与贝叶斯估计</h1>
       <p class="post-meta">@月光晒谷 · Mar 19, 2019 · 1 min read</p>
     </header>
+<<<<<<< HEAD
     <article class="post-content"><p>       通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。</p>
 <p>       极大似然估计的主要思想是：把待估计的参数看为确定的量，只是取值未知，其最佳估计是使得产生已知样本的概率值最大时的参数取值。贝叶斯估计的主要思想是：把待估计的参数看成是符合某种先验概率分布的随机变量，对样本进行观测的过程就是把先验概率转化为后验概率密度的过程，这样通过现有的样本信息修正对于参数的估计值。</p>
 <p>       接下来通过一个实例来阐述极大似然估计和贝叶斯估计。设样本为$T=\{(x_1,y_1),$ $(x_2,y_2),&hellip;, $ $(x_N,y_N)\}$，其中$x_i \in R$，$y_i \in \{+1, -1\}$，$i=1,2,&hellip;,N$。使用贝叶斯作为分类器，则需要求如下后验概率：</p>
@@ -251,6 +268,73 @@ $$</p>
 <hr>
 <p>1.参考文档：</p>
 <p>       [1]. 模式分类              Richard O.Duda 等著       李宏东 等译</p></article>
+=======
+    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp;通过贝叶斯等方式实现分类器时，需要首先得到先验概率以及类条件概率密度。但在实际的应用中，先验概率与类条件概率密度并不能直接获得，它们都需要通过估计的方式来求得一个近似解。若先验概率的分布形式已知（或可以假设为某个分布），但分布的参数未知，则可以通过极大似然或者贝叶斯来获得对于参数的估计。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;极大似然估计的主要思想是：把待估计的参数看为确定的量，只是取值未知，其最佳估计是使得产生已知样本的概率值最大时的参数取值。贝叶斯估计的主要思想是：把待估计的参数看成是符合某种先验概率分布的随机变量，对样本进行观测的过程就是把先验概率转化为后验概率密度的过程，这样通过现有的样本信息修正对于参数的估计值。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;接下来通过一个实例来阐述极大似然估计和贝叶斯估计。设样本为$T=\{(x_1,y_1),$ $(x_2,y_2),&hellip;, $ $(x_N,y_N)\}$，其中$x_i \in R$，$y_i \in \{+1, -1\}$，$i=1,2,&hellip;,N$。使用贝叶斯作为分类器，则需要求如下后验概率：</p>
+
+<p>$$P(y^{(k)}|x)= \frac {p(x|y^{(k)})P(y^{(k)})}{\sum_{j} p(x|y^{(j)})P(y^{(j)})} \quad $$</p>
+
+<p>注：$P(y^{(k)})$表示$P(y=y^{(k)})$的概率，$y^{(k)}$表示具体分类，可以为$+1$或$-1$，$p(x)$表示$x$点的概率密度</p>
+
+<p>要求解上式的后验概率$P(y^{(k)}|x)$则需要先求类条件概率密度$p(x|y^{(k)})$。若预先知道$p(x|y^{(k)})$ $ \sim $ $ N(\mu ,\sigma^{2}_{0} )$（或假设其服从某个分布，参数未知），并且仅有参数$\mu$未知（两个参数都未知的情况类似）。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;若使用<strong>极大似然估计</strong>，设$\mu$为一个确定的量，它的最佳估计值是使得出现样本情况时的最大概率时的取值。最大概率用一个如下的似然函数来表示：</p>
+
+<p>$$L(\mu) = \prod _{i=1} ^{n} p(x_i|y^{(k)})\quad $$</p>
+
+<p>其中上式中$n$表示标签为$y^{(k)}$的样本数，$x_i$表示标签为$y^{(k)}$时的样本。我们要求上式最大时参数$\mu$的取值，由于上式为多项相乘，可以请先取对数，然后求极值。</p>
+
+<p>$$ln L(\mu) = \sum _{i=1} ^{n} ln p(x_i|y^{(k)})= \sum _{i=1} ^{n}[-ln \sqrt{2\pi}\sigma_{0}-\frac{(x_i - \mu)^{2}}{2\sigma^{2}_{0}}]$$</p>
+
+<p>由于上式为凸函数，可以通过求导，并令导数为0得到极值点。因此有如下等式：</p>
+
+<p>$$\frac{\partial lnL(\mu)}{\partial \mu}=- \frac{1}{\sigma^{2}_{0}} \sum_{i=1}^{n}(x_i - \mu) = \frac{1}{\sigma^{2}_{0}}(n\mu-\sum_{i=1}^{n}x_i) = \frac{1}{\sigma^{2}_{0}}(n\mu-n\overline{x}^{(k)})=0$$</p>
+
+<p>最终得到$\mu$的最佳估计值为$\hat \mu = \overline{x}^{(k)}$，由此可以得到类条件概率密度函数$p(x|y^{(k)})$ $ \sim $ $ N( \overline{x}^{(k)},\sigma^{2}_{0} )$。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;若使用<strong>贝叶斯估计</strong>，设$\mu$为一个随机变量，则$p(x|\mu)$ $\sim$ $N(\mu,\sigma_{0}^{2})$，它的概率密度函数已知（或假设其服从某个已知分布）：$p(\mu)$ $\sim$ $N(\mu _{1}, \sigma _{1} ^{2})$，其中$\mu _{1}$与$ \sigma _{1}^{2}$为已知量。。由贝叶斯公式可以由如下等式：</p>
+
+<p>$$p(\mu|(x_1,x_2,&hellip;,x_n))= \frac{p((x_1,x_2,&hellip;,x_n)|\mu)p(\mu)}{\int p((x_1,x_2,&hellip;,x_n)|\mu)p(\mu)du}$$</p>
+
+<p>其中上式中$x_1,x_2,&hellip;,x_n$表示标签为$y^{(k)}$时的样本，上式的分母为一个不依赖于参数的值，可将其计为$\lambda$，由于样本是独立同分布，则可将概率密度函数带入得到如下等式：</p>
+
+<p>$$
+\begin{align}
+p(\mu|(x_1,x_2,&hellip;,x_n))
+&amp;= \lambda p((x_1,x_2,&hellip;,x_n)|\mu)p(\mu) \\\<br />
+&amp;= \lambda \prod _{i=1} ^{n}p(x_{i}|\mu)p(\mu) \\\<br />
+&amp;=\lambda&rsquo; exp(-\frac{1}{2}((\frac{n}{\sigma_{0} ^{2}} + \frac{1}{\sigma_{1} ^{2}}) \mu ^{2}- 2(\frac{1}{\sigma_{0} ^{2}} \sum _{i=1} ^{n} x_{i} + \frac{\mu_{1}}{\sigma_{1}^{2}})\mu ))
+\end{align}
+$$</p>
+
+<p>由上式可知$p(\mu|(x_1,x_2,&hellip;,x_n))$ 服从正态分布，设$p(\mu|(x_1,x_2,&hellip;,x_n))$ $\sim$ $N(\mu_{k} , \sigma_{k}^{2})$，则：</p>
+
+<p>$$
+\begin{align}
+p(\mu|(x_1,x_2,&hellip;,x_n)) &amp;= \frac{1}{\sqrt{(2 \pi)} \sigma_{k}} exp (-\frac{(\mu - \mu_{k})^{2}}{2 \sigma_{k} ^{2}}) \\\<br />
+&amp;= \lambda&rsquo; exp(-\frac{1}{2} (\frac{1}{\sigma_{k} ^{2}}\mu^{2} - 2\frac{\mu_{k}}{\sigma_{k} ^{2}}\mu))
+\end{align}
+$$</p>
+
+<p>以上两个等式对应项相等可得：</p>
+
+<p>$$\mu_{k} = (\frac{n \sigma_{1}^{2}}{n \sigma_{1}^{2} + \sigma_{0}^{2}}) \overline{x}^{(k)} + \frac{\sigma_{0}^{2}}{n\sigma_{1}^{2} + \sigma_{0}^{2}}\mu_{1}$$</p>
+
+<p>$$\sigma_{k}^{2} =  \frac{\sigma_{1}^{2}\sigma_{0}^{2}}{n\sigma_{1}^{2} + \sigma_{0}^{2}}$$</p>
+
+<p>接下来我们可以通过如下等式求得类条件概率密度：</p>
+
+<p>$$p(x|y^{(k)}) = \int p(x|\mu)p(\mu|(x_1,x_2,&hellip;,x_n))d\mu$$</p>
+
+<hr />
+
+<p>1.参考文档：</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;[1]. 模式分类&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Richard O.Duda 等著&nbsp; &nbsp; &nbsp; &nbsp;李宏东 等译</p></article>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -260,7 +344,11 @@ $$</p>
       </ul>
       
       <p class="post-copyright">
+<<<<<<< HEAD
         ©2019 | liuao.tech | All rights reserved. This post was published <strong>954</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+=======
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>597</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
       </p>
     </footer>
     
@@ -269,7 +357,11 @@ $$</p>
   </section>
   
 <footer class="site-footer">
+<<<<<<< HEAD
   <p>© 2017-2021 月光晒谷</p>
+=======
+  <p>© 2017-2020 月光晒谷</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>

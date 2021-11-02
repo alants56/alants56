@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on 月光晒谷</title>
@@ -7,14 +11,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+<<<<<<< HEAD
     <lastBuildDate>Thu, 01 Aug 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://liuao.tech/tags/python/index.xml" rel="self" type="application/rss+xml" />
+=======
+    <lastBuildDate>Thu, 01 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>Pandas.DataFrame 数据处理</title>
       <link>http://liuao.tech/post/20190801/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20190801/</guid>
+<<<<<<< HEAD
       <description>&lt;h4 id=&#34;1-创建pandasdataframe&#34;&gt;1. 创建pandas.DataFrame&lt;/h4&gt;
+=======
+      <description>&lt;h4 id=&#34;1-创建pandas-dataframe&#34;&gt;1. 创建pandas.DataFrame&lt;/h4&gt;
+
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 &lt;ul&gt;
 &lt;li&gt;(1) 创建空的df，然后进行填充&lt;/li&gt;
 &lt;/ul&gt;</description>
@@ -26,8 +43,15 @@
       <pubDate>Sun, 21 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20190421/</guid>
+<<<<<<< HEAD
       <description>&lt;h3 id=&#34;1python读写txt文件&#34;&gt;1.Python读写TXT文件&lt;/h3&gt;
 &lt;h4 id=&#34;11-写txt文件&#34;&gt;1.1 写txt文件：&lt;/h4&gt;
+=======
+      <description>&lt;h3 id=&#34;1-python读写txt文件&#34;&gt;1.Python读写TXT文件&lt;/h3&gt;
+
+&lt;h4 id=&#34;1-1-写txt文件&#34;&gt;1.1 写txt文件：&lt;/h4&gt;
+
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 &lt;p&gt;使用&lt;code&gt;open(&#39;output.txt&#39;, &#39;w&#39;)&lt;/code&gt;以写的方式打开文件（若文件不存在则创建该文件），使用&lt;code&gt;file.write()&lt;/code&gt;写入文件，其中参数必须为&lt;code&gt;str&lt;/code&gt;字符串。&lt;/p&gt;</description>
     </item>
     
@@ -37,6 +61,7 @@
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20180905/</guid>
+<<<<<<< HEAD
       <description>&lt;h3 id=&#34;1内置类型&#34;&gt;1.内置类型&lt;/h3&gt;
 &lt;p&gt;1）整数&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;123&lt;/span&gt;
@@ -47,3 +72,15 @@
     
   </channel>
 </rss>
+=======
+      <description>&lt;h3 id=&#34;1-内置类型&#34;&gt;1.内置类型&lt;/h3&gt;
+
+&lt;p&gt;1）整数&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;123&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(a)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(type(a))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

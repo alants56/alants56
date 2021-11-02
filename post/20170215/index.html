@@ -26,7 +26,11 @@
 
   
   <meta name="author" content="月光晒谷">
+<<<<<<< HEAD
   <meta name="description" content=" 中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。
+=======
+  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
 
   
@@ -34,7 +38,11 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@gohugoio">
     <meta name="twitter:title" content="Linux中断上下部">
+<<<<<<< HEAD
     <meta name="twitter:description" content=" 中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。
+=======
+    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
     <meta name="twitter:image" content="/images/avatar.png">
   
@@ -42,7 +50,11 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="Linux中断上下部">
+<<<<<<< HEAD
   <meta property="og:description" content=" 中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。
+=======
+  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
   <meta property="og:url" content="http://liuao.tech/post/20170215/">
   <meta property="og:image" content="/images/avatar.png">
@@ -50,7 +62,11 @@
 
 
 
+<<<<<<< HEAD
 <meta name="generator" content="Hugo 0.83.1">
+=======
+<meta name="generator" content="Hugo 0.53">
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 
 
 <link rel="canonical" href="http://liuao.tech/post/20170215/">
@@ -212,11 +228,23 @@
       <h1 class="post-title">Linux中断上下部</h1>
       <p class="post-meta">@月光晒谷 · Feb 15, 2017 · 2 min read</p>
     </header>
+<<<<<<< HEAD
     <article class="post-content"><p>       中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。</p>
 <p>       中断处理程序有一个限制条件，中断处理程序不能进入睡眠状态，即它不能调用任何有可能会导致睡眠的函数。原因是：中断处理程序运行在中断上下文中，中断上下文与进程无关，它并不是一个调度实体，如果将其睡眠，将无法唤醒（根本原因：设计如此）。</p>
 <p>       为了快速响应中断，中断处理程序应该尽可能快速处理，否则将有可能影响到下一个中断的处理。但在某些情况下，中断处理程序需要处理一些费时的任务甚至可能会导致睡眠，因此内核开发者引入了中断上下部的概念：在中断上部处理紧急的任务，然后调用中断下部；而一些费时的或需要睡眠的部分交由中断下部进行。</p>
 <p>       在中断上半部一般处理一些硬件操作，在结束前调用中断的下半部，在上半部是不允许进入睡眠状态的，因此任何的可能导致睡眠的函数在上半部是不能被使用的。对于中断的下半部，在2.6版本内核常用的两种实现机制为：tasklet和workqueue。</p>
 <p>       tasklet是借助软中断的方式来实现的，tasklet的调度函数tasklet_schedule()或tasklet_hi_schedule()，通过触发软中断TASKLET_SOFTIRQ或HI_SOFTIRQ,从而唤起相应的软中断来处理下半部分。这样在处理下半部时，上半部可以处理下一次的中断事件。同样的在软中断中也是不能调用可能引起睡眠的函数，它可以延缓处理下半部，也可以与下一次上半部并发处理。</p>
+=======
+    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp;中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;中断处理程序有一个限制条件，中断处理程序不能进入睡眠状态，即它不能调用任何有可能会导致睡眠的函数。原因是：中断处理程序运行在中断上下文中，中断上下文与进程无关，它并不是一个调度实体，如果将其睡眠，将无法唤醒（根本原因：设计如此）。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;为了快速响应中断，中断处理程序应该尽可能快速处理，否则将有可能影响到下一个中断的处理。但在某些情况下，中断处理程序需要处理一些费时的任务甚至可能会导致睡眠，因此内核开发者引入了中断上下部的概念：在中断上部处理紧急的任务，然后调用中断下部；而一些费时的或需要睡眠的部分交由中断下部进行。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;在中断上半部一般处理一些硬件操作，在结束前调用中断的下半部，在上半部是不允许进入睡眠状态的，因此任何的可能导致睡眠的函数在上半部是不能被使用的。对于中断的下半部，在2.6版本内核常用的两种实现机制为：tasklet和workqueue。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;tasklet是借助软中断的方式来实现的，tasklet的调度函数tasklet_schedule()或tasklet_hi_schedule()，通过触发软中断TASKLET_SOFTIRQ或HI_SOFTIRQ,从而唤起相应的软中断来处理下半部分。这样在处理下半部时，上半部可以处理下一次的中断事件。同样的在软中断中也是不能调用可能引起睡眠的函数，它可以延缓处理下半部，也可以与下一次上半部并发处理。</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">/*
 </span><span style="color:#75715e">**   按键驱动程序：通过中断（下部通过tasklet）实现的部分源码。
 </span><span style="color:#75715e">*/</span>
@@ -298,8 +326,13 @@ module_init(button_init);
 module_exit(button_exit);
 
 MODULE_LICENSE(<span style="color:#e6db74">&#34;GPL&#34;</span>);
+<<<<<<< HEAD
 MODULE_AUTHOR(<span style="color:#e6db74">&#34;alants&#34;</span>);
 </code></pre></div><p>       workqueue则是通过将下半部交由一个内核线程去处理，这样中断的下半部就是在进程的上下文中执行。因此使用workqueue的方式实现的下半部是可以进入睡眠的。workqueue的调度是通过接口schedule_work()来操作的，schedule_work()所进行的实际操作就是将当前的下半部的相关结构体work_struct添加到当前的work_list中，等待内核线程调用。</p>
+=======
+MODULE_AUTHOR(<span style="color:#e6db74">&#34;alants&#34;</span>);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;workqueue则是通过将下半部交由一个内核线程去处理，这样中断的下半部就是在进程的上下文中执行。因此使用workqueue的方式实现的下半部是可以进入睡眠的。workqueue的调度是通过接口schedule_work()来操作的，schedule_work()所进行的实际操作就是将当前的下半部的相关结构体work_struct添加到当前的work_list中，等待内核线程调用。</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">/*
 </span><span style="color:#75715e">**   按键驱动程序：通过中断（下部通过workqueue）实现的部分源码。
 </span><span style="color:#75715e">*/</span>
@@ -382,8 +415,13 @@ module_init(button_init);
 module_exit(button_exit);
 
 MODULE_LICENSE(<span style="color:#e6db74">&#34;GPL&#34;</span>);
+<<<<<<< HEAD
 MODULE_AUTHOR(<span style="color:#e6db74">&#34;alants&#34;</span>);
 </code></pre></div><p>       从上述两种按键驱动中断实现方式来看，workqueue和tasklet的使用似乎没有很大的区别，但是在实际使用中要根据中断下半部分具体的处理内容（例如，是否会进入睡眠）来考虑下半部采用哪种机制。</p></article>
+=======
+MODULE_AUTHOR(<span style="color:#e6db74">&#34;alants&#34;</span>);</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;从上述两种按键驱动中断实现方式来看，workqueue和tasklet的使用似乎没有很大的区别，但是在实际使用中要根据中断下半部分具体的处理内容（例如，是否会进入睡眠）来考虑下半部采用哪种机制。</p></article>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -397,7 +435,11 @@ MODULE_AUTHOR(<span style="color:#e6db74">&#34;alants&#34;</span>);
       </ul>
       
       <p class="post-copyright">
+<<<<<<< HEAD
         ©2019 | liuao.tech | All rights reserved. This post was published <strong>1715</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+=======
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1358</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
       </p>
     </footer>
     
@@ -406,7 +448,11 @@ MODULE_AUTHOR(<span style="color:#e6db74">&#34;alants&#34;</span>);
   </section>
   
 <footer class="site-footer">
+<<<<<<< HEAD
   <p>© 2017-2021 月光晒谷</p>
+=======
+  <p>© 2017-2020 月光晒谷</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -8,14 +9,38 @@
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
     <lastBuildDate>Sun, 15 Jan 2017 01:15:00 +0800</lastBuildDate><atom:link href="http://liuao.tech/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vim on 月光晒谷</title>
+    <link>http://liuao.tech/tags/vim/</link>
+    <description>Recent content in Vim on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Sun, 15 Jan 2017 01:15:00 +0800</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>vim练级攻略</title>
       <link>http://liuao.tech/post/20170114/</link>
       <pubDate>Sun, 15 Jan 2017 01:15:00 +0800</pubDate>
       
       <guid>http://liuao.tech/post/20170114/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;       vim（vi improved）是一款功能强大并且高效的文本编辑与文本查看工具，算得上是Unix/Linux中的上古神器。vim特有的输入模式，可以通过全键盘操作完成各种编辑工作。现在的我算是一个初级的vim党，在Linux下完全使用vim；而在Windows下一般也会使用GVim作为编辑工具，阅读代码会使用SourceInsight+GVim。&lt;/p&gt;</description>
     </item>
     
   </channel>
 </rss>
+=======
+      <description>&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;vim（vi improved）是一款功能强大并且高效的文本编辑与文本查看工具，算得上是Unix/Linux中的上古神器。vim特有的输入模式，可以通过全键盘操作完成各种编辑工作。现在的我算是一个初级的vim党，在Linux下完全使用vim；而在Windows下一般也会使用GVim作为编辑工具，阅读代码会使用SourceInsight+GVim。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4

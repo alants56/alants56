@@ -26,7 +26,11 @@
 
   
   
+<<<<<<< HEAD
   <meta name="description" content=" 曾经写过一篇关《Linux数据结构之链表》的文章，在这篇文章中，只是简单的分析了如何通过链表内元素的指针获取链表的指针，并没有深究。关于这个contain_of宏，我有一些想法和疑问，这也是我写这篇文章的原因。
+=======
+  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;曾经写过一篇关《Linux数据结构之链表》的文章，在这篇文章中，只是简单的分析了如何通过链表内元素的指针获取链表的指针，并没有深究。关于这个contain_of宏，我有一些想法和疑问，这也是我写这篇文章的原因。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
 
   
@@ -34,7 +38,11 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@gohugoio">
     <meta name="twitter:title" content="再论container_of宏">
+<<<<<<< HEAD
     <meta name="twitter:description" content=" 曾经写过一篇关《Linux数据结构之链表》的文章，在这篇文章中，只是简单的分析了如何通过链表内元素的指针获取链表的指针，并没有深究。关于这个contain_of宏，我有一些想法和疑问，这也是我写这篇文章的原因。
+=======
+    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;曾经写过一篇关《Linux数据结构之链表》的文章，在这篇文章中，只是简单的分析了如何通过链表内元素的指针获取链表的指针，并没有深究。关于这个contain_of宏，我有一些想法和疑问，这也是我写这篇文章的原因。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
     <meta name="twitter:image" content="/images/avatar.png">
   
@@ -42,7 +50,11 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="再论container_of宏">
+<<<<<<< HEAD
   <meta property="og:description" content=" 曾经写过一篇关《Linux数据结构之链表》的文章，在这篇文章中，只是简单的分析了如何通过链表内元素的指针获取链表的指针，并没有深究。关于这个contain_of宏，我有一些想法和疑问，这也是我写这篇文章的原因。
+=======
+  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;曾经写过一篇关《Linux数据结构之链表》的文章，在这篇文章中，只是简单的分析了如何通过链表内元素的指针获取链表的指针，并没有深究。关于这个contain_of宏，我有一些想法和疑问，这也是我写这篇文章的原因。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
   <meta property="og:url" content="http://liuao.tech/post/20160116/">
   <meta property="og:image" content="/images/avatar.png">
@@ -50,7 +62,11 @@
 
 
 
+<<<<<<< HEAD
 <meta name="generator" content="Hugo 0.83.1">
+=======
+<meta name="generator" content="Hugo 0.53">
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 
 
 <link rel="canonical" href="http://liuao.tech/post/20160116/">
@@ -212,6 +228,7 @@
       <h1 class="post-title">再论container_of宏</h1>
       <p class="post-meta">@月光晒谷 · Jan 16, 2016 · 2 min read</p>
     </header>
+<<<<<<< HEAD
     <article class="post-content"><p>       曾经写过一篇关<a href="http://liuao.tech/post/20150404/index.html">《Linux数据结构之链表》</a>的文章，在这篇文章中，只是简单的分析了如何通过链表内元素的指针获取链表的指针，并没有深究。关于这个<code>contain_of</code>宏，我有一些想法和疑问，这也是我写这篇文章的原因。</p>
 <p>       首先简单谈一下它的原理：在C语言中，结构体的成员在内存中所处的地址是一整块的，<code>container_of</code>宏通过指向成员的指针以及成员相对于结构体开始地址的偏移大小来计算出该结构体的指针。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#define offsetof(TYPE, MEMBER) \
@@ -228,6 +245,25 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#define container_of_1(ptr, type, member) \
 </span><span style="color:#75715e">        ((type *)((char *)(ptr) - offsetof(type, member)))
 </span></code></pre></div><p>       为了验证我的“优化”是否可行，于是编写了如下的测试程序。</p>
+=======
+    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp;曾经写过一篇关<a href="http://liuao.tech/post/20150404/index.html">《Linux数据结构之链表》</a>的文章，在这篇文章中，只是简单的分析了如何通过链表内元素的指针获取链表的指针，并没有深究。关于这个<code>contain_of</code>宏，我有一些想法和疑问，这也是我写这篇文章的原因。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;首先简单谈一下它的原理：在C语言中，结构体的成员在内存中所处的地址是一整块的，<code>container_of</code>宏通过指向成员的指针以及成员相对于结构体开始地址的偏移大小来计算出该结构体的指针。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#define offsetof(TYPE, MEMBER) \
+</span><span style="color:#75715e"></span>    ((size_t) <span style="color:#f92672">&amp;</span>((TYPE <span style="color:#f92672">*</span>)<span style="color:#ae81ff">0</span>)<span style="color:#f92672">-&gt;</span>MEMBER)
+
+<span style="color:#75715e">#define container_of(ptr, type, member) \
+</span><span style="color:#75715e"></span>        ({<span style="color:#66d9ef">const</span> typeof(((type <span style="color:#f92672">*</span>)<span style="color:#ae81ff">0</span>)<span style="color:#f92672">-&gt;</span>member) <span style="color:#f92672">*</span>__ptr <span style="color:#f92672">=</span> (ptr);          \
+          (type <span style="color:#f92672">*</span>)((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>) __ptr <span style="color:#f92672">-</span> offsetof(type, member));})</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;当我分析到<code>({const typeof(((type *)0)-&gt;member) *__ptr = (ptr)</code>这行代码时，觉得可以将其“优化”一下，不需要用<code>typeof(((type *)0)-&gt;member）</code>，直接可以通过求<code>ptr</code>指向的类型来定义一个指针。那么就可以将<code>container_of</code>宏改写为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#define container_of_2(ptr, type, member) \
+</span><span style="color:#75715e"></span>        ({typeof(<span style="color:#f92672">*</span>(ptr)) <span style="color:#f92672">*</span> __ptr <span style="color:#f92672">=</span> (ptr); \
+         (type <span style="color:#f92672">*</span>)((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>) __ptr <span style="color:#f92672">-</span> offsetof(type, member));})</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;当分析到<code>(type *)((char *) __ptr - offsetof(type, member))</code>这行代码时，让我似乎感觉第一步定义的指针似乎不需要，于是最终将<code>container_of</code>宏“优化”成如下。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#define container_of_1(ptr, type, member) \
+</span><span style="color:#75715e"></span>        ((type <span style="color:#f92672">*</span>)((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)(ptr) <span style="color:#f92672">-</span> offsetof(type, member)))</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;为了验证我的“优化”是否可行，于是编写了如下的测试程序。</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">struct</span> al_list_head{
     <span style="color:#66d9ef">struct</span> al_list_head <span style="color:#f92672">*</span>next, <span style="color:#f92672">*</span>prev;
 };
@@ -263,6 +299,7 @@
         printf(<span style="color:#e6db74">&#34;value = %c</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,p2<span style="color:#f92672">-&gt;</span>c);
 
         <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+<<<<<<< HEAD
 }
 </code></pre></div><p>经过测试，可以正常的运行。</p>
 <p>       为了进一步分析上述<code>main</code>函数里面的操作步骤，通过<code>gcc</code>将其转化成汇编，这样可以清晰的看出底层的具体操作过程。</p>
@@ -302,6 +339,49 @@
 <span style="color:#a6e22e">movl</span>	%eax, <span style="color:#ae81ff">44</span>(%esp)
 </code></pre></div><p>       通过汇编代码，可以很明显的看出<code>container_of</code>与<code>container_of_2</code>在汇编层面上是没有任何区别的。而<code>container_of_1</code>宏是要比<code>container_of</code>宏少一步操作，也减少了一个变量。</p>
 <p>       分析到这，我是有一些疑问的。当我阅读Linux内核的一些源码时，发现其实有些是多余的操作，为什么没有进行优化？另外，我写的<code>container_of_1</code>宏是否真的是一种不错的选择？<code>container_of_1</code>宏是一个很简单的宏，我相信那些Linux内核编写者肯定是可以想出来的，他们使用<code>container_of</code>宏也会有他们的道理的。但这些问题，我还没有能力做出合理的解释，这也是我接下来要学习和探索的地方。</p></article>
+=======
+}</code></pre></div>
+<p>经过测试，可以正常的运行。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;为了进一步分析上述<code>main</code>函数里面的操作步骤，通过<code>gcc</code>将其转化成汇编，这样可以清晰的看出底层的具体操作过程。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm"><span style="color:#75715e">;main函数的部分汇编代码
+</span><span style="color:#75715e">;初始化
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">movl</span>    <span style="color:#66d9ef">$1</span>, <span style="color:#ae81ff">48</span>(%esp)
+<span style="color:#a6e22e">movl</span>    <span style="color:#66d9ef">$1</span>, <span style="color:#ae81ff">52</span>(%esp)
+<span style="color:#a6e22e">fldl</span>    <span style="color:#66d9ef">.LC0</span>
+<span style="color:#a6e22e">fstpl</span>   <span style="color:#ae81ff">56</span>(%esp)
+<span style="color:#a6e22e">movb</span>    <span style="color:#66d9ef">$65</span>, <span style="color:#ae81ff">64</span>(%esp)
+<span style="color:#a6e22e">movl</span>    <span style="color:#66d9ef">$0</span>, <span style="color:#ae81ff">68</span>(%esp)
+<span style="color:#a6e22e">movl</span>    <span style="color:#66d9ef">$0</span>, <span style="color:#ae81ff">72</span>(%esp)
+<span style="color:#a6e22e">movl</span>    <span style="color:#66d9ef">$10</span>, <span style="color:#ae81ff">76</span>(%esp)
+
+<span style="color:#75715e">;ptr=&amp;mynode.node
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">leal</span>    <span style="color:#ae81ff">48</span>(%esp), %eax
+<span style="color:#a6e22e">addl</span>    <span style="color:#66d9ef">$20</span>, %eax
+<span style="color:#a6e22e">movl</span>    %eax, <span style="color:#ae81ff">24</span>(%esp)
+
+<span style="color:#75715e">;p = container_of(ptr, struct al_node, node);
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">movl</span>    <span style="color:#ae81ff">24</span>(%esp), %eax
+<span style="color:#a6e22e">movl</span>    %eax, <span style="color:#ae81ff">28</span>(%esp)
+<span style="color:#a6e22e">movl</span>    <span style="color:#ae81ff">28</span>(%esp), %eax  
+<span style="color:#66d9ef">subl</span>    <span style="color:#66d9ef">$20</span>, %eax
+<span style="color:#a6e22e">movl</span>    %eax, <span style="color:#ae81ff">32</span>(%esp)
+
+<span style="color:#75715e">;p1 = container_of_1(ptr, struct al_node, node);
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">movl</span>    <span style="color:#ae81ff">24</span>(%esp), %eax
+<span style="color:#a6e22e">subl</span>    <span style="color:#66d9ef">$20</span>, %eax
+<span style="color:#a6e22e">movl</span>    %eax, <span style="color:#ae81ff">36</span>(%esp)
+
+<span style="color:#75715e">;p2 = container_of_2(ptr, struct al_node, node);
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">movl</span>    <span style="color:#ae81ff">24</span>(%esp), %eax
+<span style="color:#a6e22e">movl</span>    %eax, <span style="color:#ae81ff">40</span>(%esp)
+<span style="color:#a6e22e">movl</span>    <span style="color:#ae81ff">40</span>(%esp), %eax
+<span style="color:#a6e22e">subl</span>    <span style="color:#66d9ef">$20</span>, %eax
+<span style="color:#a6e22e">movl</span>    %eax, <span style="color:#ae81ff">44</span>(%esp)</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;通过汇编代码，可以很明显的看出<code>container_of</code>与<code>container_of_2</code>在汇编层面上是没有任何区别的。而<code>container_of_1</code>宏是要比<code>container_of</code>宏少一步操作，也减少了一个变量。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;分析到这，我是有一些疑问的。当我阅读Linux内核的一些源码时，发现其实有些是多余的操作，为什么没有进行优化？另外，我写的<code>container_of_1</code>宏是否真的是一种不错的选择？<code>container_of_1</code>宏是一个很简单的宏，我相信那些Linux内核编写者肯定是可以想出来的，他们使用<code>container_of</code>宏也会有他们的道理的。但这些问题，我还没有能力做出合理的解释，这也是我接下来要学习和探索的地方。</p></article>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <footer class="post-footer">
       
       <ul class="post-tags">
@@ -315,7 +395,11 @@
       </ul>
       
       <p class="post-copyright">
+<<<<<<< HEAD
         ©2019 | liuao.tech | All rights reserved. This post was published <strong>2112</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+=======
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1755</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
       </p>
     </footer>
     
@@ -324,7 +408,11 @@
   </section>
   
 <footer class="site-footer">
+<<<<<<< HEAD
   <p>© 2017-2021 月光晒谷</p>
+=======
+  <p>© 2017-2020 月光晒谷</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>

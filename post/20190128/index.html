@@ -26,7 +26,11 @@
 
   
   <meta name="author" content="月光晒谷">
+<<<<<<< HEAD
   <meta name="description" content=" 分支定界法（branch and bound）是一种求解离散数据组合的最优化问题。该算法执行的效率取决于你所找的问题解空间的上下界，如果找到一个很紧凑的上下界进行剪枝操作，该算法的执行效率会非常高，因此它是最有可能在多项式时间内求解NP问题的算法。
+=======
+  <meta name="description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;分支定界法（branch and bound）是一种求解离散数据组合的最优化问题。该算法执行的效率取决于你所找的问题解空间的上下界，如果找到一个很紧凑的上下界进行剪枝操作，该算法的执行效率会非常高，因此它是最有可能在多项式时间内求解NP问题的算法。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
 
   
@@ -34,7 +38,11 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@gohugoio">
     <meta name="twitter:title" content="分支定界">
+<<<<<<< HEAD
     <meta name="twitter:description" content=" 分支定界法（branch and bound）是一种求解离散数据组合的最优化问题。该算法执行的效率取决于你所找的问题解空间的上下界，如果找到一个很紧凑的上下界进行剪枝操作，该算法的执行效率会非常高，因此它是最有可能在多项式时间内求解NP问题的算法。
+=======
+    <meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;分支定界法（branch and bound）是一种求解离散数据组合的最优化问题。该算法执行的效率取决于你所找的问题解空间的上下界，如果找到一个很紧凑的上下界进行剪枝操作，该算法的执行效率会非常高，因此它是最有可能在多项式时间内求解NP问题的算法。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
     <meta name="twitter:image" content="/images/avatar.png">
   
@@ -42,7 +50,11 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="分支定界">
+<<<<<<< HEAD
   <meta property="og:description" content=" 分支定界法（branch and bound）是一种求解离散数据组合的最优化问题。该算法执行的效率取决于你所找的问题解空间的上下界，如果找到一个很紧凑的上下界进行剪枝操作，该算法的执行效率会非常高，因此它是最有可能在多项式时间内求解NP问题的算法。
+=======
+  <meta property="og:description" content="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;分支定界法（branch and bound）是一种求解离散数据组合的最优化问题。该算法执行的效率取决于你所找的问题解空间的上下界，如果找到一个很紧凑的上下界进行剪枝操作，该算法的执行效率会非常高，因此它是最有可能在多项式时间内求解NP问题的算法。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
   <meta property="og:url" content="http://liuao.tech/post/20190128/">
   <meta property="og:image" content="/images/avatar.png">
@@ -50,7 +62,11 @@
 
 
 
+<<<<<<< HEAD
 <meta name="generator" content="Hugo 0.83.1">
+=======
+<meta name="generator" content="Hugo 0.53">
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 
 
 <link rel="canonical" href="http://liuao.tech/post/20190128/">
@@ -212,14 +228,22 @@
       <h1 class="post-title">分支定界</h1>
       <p class="post-meta">@月光晒谷 · Jan 28, 2019 · 1 min read</p>
     </header>
+<<<<<<< HEAD
     <article class="post-content"><p>       分支定界法（branch and bound）是一种求解离散数据组合的最优化问题。该算法执行的效率取决于你所找的问题解空间的上下界，如果找到一个很紧凑的上下界进行剪枝操作，该算法的执行效率会非常高，因此它是最有可能在多项式时间内求解NP问题的算法。</p>
 <p>使用分支定界算法的一般步骤为：</p>
+=======
+    <article class="post-content"><p>&nbsp; &nbsp; &nbsp; &nbsp;分支定界法（branch and bound）是一种求解离散数据组合的最优化问题。该算法执行的效率取决于你所找的问题解空间的上下界，如果找到一个很紧凑的上下界进行剪枝操作，该算法的执行效率会非常高，因此它是最有可能在多项式时间内求解NP问题的算法。</p>
+
+<p>使用分支定界算法的一般步骤为：</p>
+
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <ul>
 <li>构造一棵搜索树，该搜索树指的是所有解空间，因此通过遍历该搜索树可以遍历到所有的解；</li>
 <li>构造问题解的上下界，上界一般为之前求出的最优解，下界为无约束条件下当前搜索路径的最优解，上下界的主要作用是对搜索树进行剪枝；</li>
 <li>通过回溯法遍历搜索树，并且不断更新上下界，如果当前解的下界已经超过上界，则进行剪枝；</li>
 <li>遍历结束时，所求的解为最优解。</li>
 </ul>
+<<<<<<< HEAD
 <p>接下来通过一个实例来讲解分支定界算法：</p>
 <blockquote>
 <p>某公司于乙城市的销售点急需一批成品，该公司成品生产基地在甲城市。 甲城市与乙城市之间共有 n 座城市，互相以公路连通。甲城市、乙城市以及其它各城市之间的公路连通情况及每段公路的长度由矩阵M1 给出。 每段公路均由地方政府收取不同额度的养路费等费用， 具体数额由矩阵 M2 给出。 请给出在需付养路费总额不超过 1500 的情况下，该公司货车运送其产品从甲城市到乙城市的最短运送路线。(题目来源：北航研究生算法课)</p>
@@ -228,6 +252,23 @@
 <p><img src="http://liuao.tech/images/branchandbound.png" alt="branch and bound"></p>
 <p>       然后分析该问题解的上下界：搜索路径的上界为当前已经求出的满足条件的最短路径长度。搜索路径的下界为当前路径长度与无约束条件下路径终点到城市乙的最短路径长度之和。若上界大于下界，则可以继续搜索；若上界小于下界，则表示无更优解，此时可进行剪枝操作。其中无约束条件下的任意点到城市乙的最短路径长度可以使用Dijkstra或Floyd算法预先求出。</p>
 <p>       最后通过深度优先遍历该搜索树，以及通过上下界进行剪枝对该问题进行求解。如下是该问题的Python实现，程序运行的结果为：最终的路径为0-2-7-10-14-20-22-25-31-36-38-44-46-49，该路径长度为464，所需要的总的养路费为1448。程序运行的总时间大约为0.01s。如果有兴趣可以将该解的上下界修改为更宽的上下界，可以很明显的看出程序的运行时间增加。</p>
+=======
+
+<p>接下来通过一个实例来讲解分支定界算法：</p>
+
+<blockquote>
+<p>某公司于乙城市的销售点急需一批成品，该公司成品生产基地在甲城市。 甲城市与乙城市之间共有 n 座城市，互相以公路连通。甲城市、乙城市以及其它各城市之间的公路连通情况及每段公路的长度由矩阵M1 给出。 每段公路均由地方政府收取不同额度的养路费等费用， 具体数额由矩阵 M2 给出。 请给出在需付养路费总额不超过 1500 的情况下，该公司货车运送其产品从甲城市到乙城市的最短运送路线。(题目来源：北航研究生算法课)</p>
+</blockquote>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;首先构造一棵搜索树，该搜索树并不需要显示的构建，而是在搜索过程中所遵循的一种搜索规则。对于上述问题，以甲城市为根节点构建二叉树，其它节点由剩余城市表示，树的左子树表示当前路径包含该父节点，树的右子树表示当前路径不包含该父节点。如图所示该搜索路径所表示的实际路径为1-3-4，即路径中不包含城市2。</p>
+
+<p><img src="http://liuao.tech/images/branchandbound.png" alt="branch and bound" /></p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;然后分析该问题解的上下界：搜索路径的上界为当前已经求出的满足条件的最短路径长度。搜索路径的下界为当前路径长度与无约束条件下路径终点到城市乙的最短路径长度之和。若上界大于下界，则可以继续搜索；若上界小于下界，则表示无更优解，此时可进行剪枝操作。其中无约束条件下的任意点到城市乙的最短路径长度可以使用Dijkstra或Floyd算法预先求出。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;最后通过深度优先遍历该搜索树，以及通过上下界进行剪枝对该问题进行求解。如下是该问题的Python实现，程序运行的结果为：最终的路径为0-2-7-10-14-20-22-25-31-36-38-44-46-49，该路径长度为464，所需要的总的养路费为1448。程序运行的总时间大约为0.01s。如果有兴趣可以将该解的上下界修改为更宽的上下界，可以很明显的看出程序的运行时间增加。</p>
+
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <p>注：该问题的数据和代码可以在我的<a href="https://github.com/alants56/algorithm/tree/master/branchandbound">GitHub</a>中获取。</p></article>
     <footer class="post-footer">
       
@@ -240,7 +281,11 @@
       </ul>
       
       <p class="post-copyright">
+<<<<<<< HEAD
         ©2019 | liuao.tech | All rights reserved. This post was published <strong>1004</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+=======
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>647</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
       </p>
     </footer>
     
@@ -249,7 +294,11 @@
   </section>
   
 <footer class="site-footer">
+<<<<<<< HEAD
   <p>© 2017-2021 月光晒谷</p>
+=======
+  <p>© 2017-2020 月光晒谷</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>

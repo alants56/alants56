@@ -26,7 +26,11 @@
 
   
   <meta name="author" content="月光晒谷">
+<<<<<<< HEAD
   <meta name="description" content="Tensor  Tensor是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用tf.Tensor来定义，tf.Tensor有两个很重要的属性：数据类型（dtype, 例如 tf.float32、tf.int32或tf.string）和形状（shape，例如shape=(2,2)）。
+=======
+  <meta name="description" content="Tensor &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Tensor是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用tf.Tensor来定义，tf.Tensor有两个很重要的属性：数据类型（dtype, 例如 tf.float32、tf.int32或tf.string）和形状（shape，例如shape=(2,2)）。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
 
   
@@ -34,7 +38,11 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@gohugoio">
     <meta name="twitter:title" content="TensorFlow学习笔记——Tensor">
+<<<<<<< HEAD
     <meta name="twitter:description" content="Tensor  Tensor是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用tf.Tensor来定义，tf.Tensor有两个很重要的属性：数据类型（dtype, 例如 tf.float32、tf.int32或tf.string）和形状（shape，例如shape=(2,2)）。
+=======
+    <meta name="twitter:description" content="Tensor &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Tensor是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用tf.Tensor来定义，tf.Tensor有两个很重要的属性：数据类型（dtype, 例如 tf.float32、tf.int32或tf.string）和形状（shape，例如shape=(2,2)）。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
     <meta name="twitter:image" content="/images/avatar.png">
   
@@ -42,7 +50,11 @@
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="TensorFlow学习笔记——Tensor">
+<<<<<<< HEAD
   <meta property="og:description" content="Tensor  Tensor是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用tf.Tensor来定义，tf.Tensor有两个很重要的属性：数据类型（dtype, 例如 tf.float32、tf.int32或tf.string）和形状（shape，例如shape=(2,2)）。
+=======
+  <meta property="og:description" content="Tensor &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Tensor是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用tf.Tensor来定义，tf.Tensor有两个很重要的属性：数据类型（dtype, 例如 tf.float32、tf.int32或tf.string）和形状（shape，例如shape=(2,2)）。
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 ">
   <meta property="og:url" content="http://liuao.tech/post/20190529/">
   <meta property="og:image" content="/images/avatar.png">
@@ -50,7 +62,11 @@
 
 
 
+<<<<<<< HEAD
 <meta name="generator" content="Hugo 0.83.1">
+=======
+<meta name="generator" content="Hugo 0.53">
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 
 
 <link rel="canonical" href="http://liuao.tech/post/20190529/">
@@ -213,6 +229,7 @@
       <p class="post-meta">@月光晒谷 · May 29, 2019 · 1 min read</p>
     </header>
     <article class="post-content"><h2 id="tensor">Tensor</h2>
+<<<<<<< HEAD
 <p>       <code>Tensor</code>是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用<code>tf.Tensor</code>来定义，<code>tf.Tensor</code>有两个很重要的属性：数据类型（<code>dtype</code>, 例如 <code>tf.float32</code>、<code>tf.int32</code>或<code>tf.string</code>）和形状（<code>shape</code>，例如<code>shape=(2,2)</code>）。</p>
 <p>       <code>tf.Tensor</code>所包含的主要的<code>Tensor</code>有四种：<code>tf.constant</code>，<code>tf.Variable</code>，<code>tf.placeholder</code>与<code>tf.SparseTensor</code>。在这四种变量中，只有<code>tf.Variable</code>的值是可以改变的，因此在运行过程中只能使用<code>tf.Variable</code>来表示中间结果。</p>
 <p>       <code>tf.Tensor</code>的阶（Rank）表示了该对象的维度，而不同的阶表示的是不同的数学量，具体的含义如下表所示：</p>
@@ -231,35 +248,110 @@
  [<span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span>]]
 </code></pre></div><h3 id="2-tfvariable">2. tf.Variable</h3>
 <p>       <code>tf.Variable</code>是一种变量（张量），它的值在运行过程中可以改变，因此模型参数的类型一般都为<code>tf.Variable</code>。<code>tf.Variable</code>的获取有两种方式：第一种是使用<code>tf.Variable()</code>直接定义变量，需要在定义中指定变量的初值和变量所代表的数据类型（如，tf.float32, tf.int32）；</p>
+=======
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;<code>Tensor</code>是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用<code>tf.Tensor</code>来定义，<code>tf.Tensor</code>有两个很重要的属性：数据类型（<code>dtype</code>, 例如 <code>tf.float32</code>、<code>tf.int32</code>或<code>tf.string</code>）和形状（<code>shape</code>，例如<code>shape=(2,2)</code>）。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;<code>tf.Tensor</code>所包含的主要的<code>Tensor</code>有四种：<code>tf.constant</code>，<code>tf.Variable</code>，<code>tf.placeholder</code>与<code>tf.SparseTensor</code>。在这四种变量中，只有<code>tf.Variable</code>的值是可以改变的，因此在运行过程中只能使用<code>tf.Variable</code>来表示中间结果。</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;<code>tf.Tensor</code>的阶（Rank）表示了该对象的维度，而不同的阶表示的是不同的数学量，具体的含义如下表所示：</p>
+
+<table class="is-centered is-striped is-bordered is-narrow">
+  <tr>
+    <th>阶(Rank)</th>
+    <th>数学量（Math entity）</th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>标量（Scalar）</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>向量（Vector）</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>矩阵（Matrix）</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>3维张量（3-Tensor）</td>
+  </tr>
+  <tr>
+    <td>n</td>
+    <td>n维张量（n-Tensor）</td>
+  </tr>
+</table>
+
+<h3 id="1-tf-constant">1. tf.constant</h3>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;<code>tf.constant</code>表示的是一个常量（张量），在定义时需要进行初始化（如下所示），在计算过程中它的值不能发生改变。要注意的是，它虽然表示的是常量，但只有在运行时才会给它赋初值。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">c1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>], shape<span style="color:#f92672">=</span>[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>], dtype<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>int32)
+<span style="color:#66d9ef">print</span>(c1)</code></pre></div>
+<p>如下输出结果所示，如果直接进行输出，只会显示出该张量的一些属性信息。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Tensor(<span style="color:#e6db74">&#34;Const:0&#34;</span>, shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>), dtype<span style="color:#f92672">=</span>int32)</code></pre></div>
+<p>只有在运行时，才可以查看该张量的值，具体运行方法如下：首先定义一个会话sess，然后使用会话sess的run方法运行。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sess <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Session()
+<span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(c1))</code></pre></div>
+<p>最终的输出结果如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[[<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span>]
+ [<span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span>]]</code></pre></div>
+<h3 id="2-tf-variable">2. tf.Variable</h3>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;<code>tf.Variable</code>是一种变量（张量），它的值在运行过程中可以改变，因此模型参数的类型一般都为<code>tf.Variable</code>。<code>tf.Variable</code>的获取有两种方式：第一种是使用<code>tf.Variable()</code>直接定义变量，需要在定义中指定变量的初值和变量所代表的数据类型（如，tf.float32, tf.int32）；</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">v2 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Variable(<span style="color:#ae81ff">3.14</span>, tf<span style="color:#f92672">.</span>float32)
 <span style="color:#66d9ef">print</span>(v2)
 sess <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Session()
 sess<span style="color:#f92672">.</span>run(tf<span style="color:#f92672">.</span>global_variables_initializer())
+<<<<<<< HEAD
 <span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(v2))
 </code></pre></div><p>输出结果如下所示：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&lt;</span>tf<span style="color:#f92672">.</span>Variable <span style="color:#e6db74">&#39;Variable_1:0&#39;</span> shape<span style="color:#f92672">=</span>() dtype<span style="color:#f92672">=</span>float32_ref<span style="color:#f92672">&gt;</span>
 <span style="color:#ae81ff">3.14</span>
 </code></pre></div><p>第二种方式是使用<code>tf.get_variable()</code>来获取一个<code>tf.Variable</code>变量，需要指定变量名，形状，类型，以及初始化相关的量。</p>
+=======
+<span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(v2))</code></pre></div>
+<p>输出结果如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&lt;</span>tf<span style="color:#f92672">.</span>Variable <span style="color:#e6db74">&#39;Variable_1:0&#39;</span> shape<span style="color:#f92672">=</span>() dtype<span style="color:#f92672">=</span>float32_ref<span style="color:#f92672">&gt;</span>
+<span style="color:#ae81ff">3.14</span></code></pre></div>
+<p>第二种方式是使用<code>tf.get_variable()</code>来获取一个<code>tf.Variable</code>变量，需要指定变量名，形状，类型，以及初始化相关的量。</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">v3 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>get_variable(<span style="color:#e6db74">&#34;v2&#34;</span>, shape<span style="color:#f92672">=</span>[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>], dtype<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>int32, initializer<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>zeros_initializer)
 v4 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>get_variable(<span style="color:#e6db74">&#34;v4&#34;</span>, dtype<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>int32, initializer<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">9</span>], shape<span style="color:#f92672">=</span>[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>]))
 sess <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Session()
 sess<span style="color:#f92672">.</span>run(tf<span style="color:#f92672">.</span>global_variables_initializer())
 <span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(v3))
+<<<<<<< HEAD
 <span style="color:#66d9ef">print</span>(v4<span style="color:#f92672">.</span>eval(sess))
 </code></pre></div><p>输出结果如下所示：</p>
+=======
+<span style="color:#66d9ef">print</span>(v4<span style="color:#f92672">.</span>eval(sess))</code></pre></div>
+<p>输出结果如下所示：</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[[[<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]
   [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]]
  [[<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]
   [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]]]
 [[<span style="color:#ae81ff">3</span> <span style="color:#ae81ff">5</span>]
+<<<<<<< HEAD
  [<span style="color:#ae81ff">7</span> <span style="color:#ae81ff">9</span>]]
 </code></pre></div><p>要注意的是，在使用<code>tf.Variable</code>变量时，首先要使用初始化函数将<code>tf.Variable</code>变量进行初始化。一种简单的方式如上所示，使用<code>sess.run(tf.global_variables_initializer())</code>进行所有的<code>tf.Variable</code>变量的初始化。</p>
 <h3 id="3-tfplaceholder">3. tf.placeholder</h3>
 <p>       <code>tf.placeholder</code>是一种可以在运行时指定初值的张量，如在训练一个模型时，可以使用<code>tf.placeholder</code>类型的数据来动态的指定训练集。该类型的数据定义和初始化如下所示：首先定义一个<code>tf.placeholder</code>量，指定其数据类型和形状；在运行时，通过一个feed_dict的参数来指定其初值。</p>
+=======
+ [<span style="color:#ae81ff">7</span> <span style="color:#ae81ff">9</span>]]</code></pre></div>
+<p>要注意的是，在使用<code>tf.Variable</code>变量时，首先要使用初始化函数将<code>tf.Variable</code>变量进行初始化。一种简单的方式如上所示，使用<code>sess.run(tf.global_variables_initializer())</code>进行所有的<code>tf.Variable</code>变量的初始化。</p>
+
+<h3 id="3-tf-placeholder">3. tf.placeholder</h3>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;<code>tf.placeholder</code>是一种可以在运行时指定初值的张量，如在训练一个模型时，可以使用<code>tf.placeholder</code>类型的数据来动态的指定训练集。该类型的数据定义和初始化如下所示：首先定义一个<code>tf.placeholder</code>量，指定其数据类型和形状；在运行时，通过一个feed_dict的参数来指定其初值。</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">p1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>placeholder(tf<span style="color:#f92672">.</span>float32, shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>))
 data1 <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>]]
 
 sess <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Session()
+<<<<<<< HEAD
 <span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(p1, feed_dict<span style="color:#f92672">=</span>{p1: data1}))
 
 </code></pre></div><p>输出结果如下所示：</p>
@@ -271,22 +363,48 @@ sess <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>
  [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">0</span>]
  [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]]
 </code></pre></div><p>       则可以通过一个<code>tf.SparseTensor</code>来表示。<code>tf.SparseTensor</code>类型的张量是通过指定索引值所对应数值的方式来进行初始化的。如果要将该张量输出为一个完整的形式时，需要使用<code>tf.sparse_tensor_to_dense()</code>来实现。</p>
+=======
+<span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(p1, feed_dict<span style="color:#f92672">=</span>{p1: data1}))</code></pre></div>
+<p>输出结果如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">[[<span style="color:#ae81ff">1.</span> <span style="color:#ae81ff">2.</span>]
+ [<span style="color:#ae81ff">3.</span> <span style="color:#ae81ff">4.</span>]]</code></pre></div>
+<h3 id="4-tf-sparsetensor">4. tf.SparseTensor</h3>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;<code>tf.SparseTensor</code>是一种用来表示稀疏张量的类型，如果需要定义一个如下的张量，</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">[[<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]
+ [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">0</span>]
+ [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]]</code></pre></div>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;则可以通过一个<code>tf.SparseTensor</code>来表示。<code>tf.SparseTensor</code>类型的张量是通过指定索引值所对应数值的方式来进行初始化的。如果要将该张量输出为一个完整的形式时，需要使用<code>tf.sparse_tensor_to_dense()</code>来实现。</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">s <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>SparseTensor(indices<span style="color:#f92672">=</span>[[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]], values<span style="color:#f92672">=</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], dense_shape<span style="color:#f92672">=</span>[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>])
 sess <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Session()
 <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Sparse:&#34;</span>)
 <span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(s))
 <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Dense:&#34;</span>)
+<<<<<<< HEAD
 <span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(tf<span style="color:#f92672">.</span>sparse_tensor_to_dense(s)))
 </code></pre></div><p>输出结果如下所示：</p>
+=======
+<span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(tf<span style="color:#f92672">.</span>sparse_tensor_to_dense(s)))</code></pre></div>
+<p>输出结果如下所示：</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">Sparse:
 SparseTensorValue(indices<span style="color:#f92672">=</span>array([[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>],
        [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]], dtype<span style="color:#f92672">=</span>int64), values<span style="color:#f92672">=</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]), dense_shape<span style="color:#f92672">=</span>array([<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], dtype<span style="color:#f92672">=</span>int64))
 Dense:
 [[<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]
  [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">0</span>]
+<<<<<<< HEAD
  [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]]
 </code></pre></div><hr>
 <h4 id="参考文档">参考文档：</h4>
+=======
+ [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]]</code></pre></div>
+<hr />
+
+<h4 id="参考文档">参考文档：</h4>
+
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 <p><a href="https://www.tensorflow.org/guide">https://www.tensorflow.org/guide</a></p></article>
     <footer class="post-footer">
       
@@ -297,7 +415,11 @@ Dense:
       </ul>
       
       <p class="post-copyright">
+<<<<<<< HEAD
         ©2019 | liuao.tech | All rights reserved. This post was published <strong>883</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+=======
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>526</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
       </p>
     </footer>
     
@@ -306,7 +428,11 @@ Dense:
   </section>
   
 <footer class="site-footer">
+<<<<<<< HEAD
   <p>© 2017-2021 月光晒谷</p>
+=======
+  <p>© 2017-2020 月光晒谷</p>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
   <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
   
 </footer>

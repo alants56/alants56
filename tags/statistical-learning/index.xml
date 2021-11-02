@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -8,14 +9,36 @@
     <language>zh-CN</language>
     <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
     <lastBuildDate>Wed, 13 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://liuao.tech/tags/statistical-learning/index.xml" rel="self" type="application/rss+xml" />
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statistical Learning on 月光晒谷</title>
+    <link>http://liuao.tech/tags/statistical-learning/</link>
+    <description>Recent content in Statistical Learning on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Wed, 13 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://liuao.tech/tags/statistical-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     <item>
       <title>统计学习方法——学习笔记之感知机</title>
       <link>http://liuao.tech/post/20180613/</link>
       <pubDate>Wed, 13 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20180613/</guid>
+<<<<<<< HEAD
       <description>&lt;h4 id=&#34;1感知机模型&#34;&gt;1.感知机模型&lt;/h4&gt;
 &lt;p&gt;       感知机：假设输入空间为X，输出空间为Y，其中Y=｛+1，-1｝。由输入空间到输出空间的如下函数f(x),称为感知机。其中，w和b为感知机模型参数，w为权重值，b为偏置，sign为符号函数。&lt;/p&gt;</description>
+=======
+      <description>&lt;h4 id=&#34;1-感知机模型&#34;&gt;1.感知机模型&lt;/h4&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;感知机：假设输入空间为X，输出空间为Y，其中Y=｛+1，-1｝。由输入空间到输出空间的如下函数f(x),称为感知机。其中，w和b为感知机模型参数，w为权重值，b为偏置，sign为符号函数。&lt;/p&gt;</description>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
     </item>
     
     <item>
@@ -24,13 +47,28 @@
       <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://liuao.tech/post/20180612/</guid>
+<<<<<<< HEAD
       <description>&lt;h4 id=&#34;1统计学习&#34;&gt;1.统计学习&lt;/h4&gt;
 &lt;p&gt;       赫尔伯特·西蒙曾对学习给出以下定义：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;如果一个系统能够通过执行某个过程改进它的性能，这就是学习。&lt;/p&gt;
 &lt;/blockquote&gt;
+=======
+      <description>&lt;h4 id=&#34;1-统计学习&#34;&gt;1.统计学习&lt;/h4&gt;
+
+&lt;p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;赫尔伯特·西蒙曾对学习给出以下定义：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;如果一个系统能够通过执行某个过程改进它的性能，这就是学习。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
 &lt;p&gt;统计学习就是计算机系统通过运用数据及统计方法提高系统性能的机器学习。&lt;/p&gt;</description>
     </item>
     
   </channel>
+<<<<<<< HEAD
 </rss>
+=======
+</rss>
+>>>>>>> 8b354e16e78089a5f69cf9d8ac9efb9fd5b31ce4
