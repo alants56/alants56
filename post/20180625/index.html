@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>关于机器学习的一些杂谈</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  <meta name="description" content=" 晚上睡不着，突然想了一些机器学习中的问题，发现似乎可以类比于生活。因为从某种程度来说，机器学习是模仿人类学习，那么反推回去，机器学习似乎也可以给生活或学习一些启示。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="关于机器学习的一些杂谈">
+    <meta name="twitter:description" content=" 晚上睡不着，突然想了一些机器学习中的问题，发现似乎可以类比于生活。因为从某种程度来说，机器学习是模仿人类学习，那么反推回去，机器学习似乎也可以给生活或学习一些启示。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="关于机器学习的一些杂谈">
+  <meta property="og:description" content=" 晚上睡不着，突然想了一些机器学习中的问题，发现似乎可以类比于生活。因为从某种程度来说，机器学习是模仿人类学习，那么反推回去，机器学习似乎也可以给生活或学习一些启示。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20180625/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.83.1">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20180625/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">关于机器学习的一些杂谈</h1>
+      <p class="post-meta">@月光晒谷 · Jun 25, 2018 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>       晚上睡不着，突然想了一些机器学习中的问题，发现似乎可以类比于生活。因为从某种程度来说，机器学习是模仿人类学习，那么反推回去，机器学习似乎也可以给生活或学习一些启示。</p>
+<p>       机器学习中的损失函数，是用来衡量一个机器学习模型的好坏程度。通常机器学习的过程就是不断的使得损失函数减少的过程。对于生活与学习来说，就是我们对于一件事情的期望或者自己最终要实现的目标。我们最想做的就是不断的缩小与目标的差距，最终实现目标。</p>
+<p>       机器学习中模型参数的初值，一般是随机化赋值或用全零进行初始化。在机器学习过程中，好的初值可以减少机器学习迭代的次数；而不好的初值可能会导致最终无法达到全局最优解（当然也取决于你选择求解最优问题的算法）。比如，求解一个非凸问题的全局最优解，若我们使用梯度下降法求解，可能因为初值选择的位置不同，会得到局部最优解或者全局最优解。这就好比一个人在某些方面与生俱来的天赋，似乎并不需要过多的训练就可以比平常的人对于该方面做的要好。而有些人没有很好的天赋，经过了很长时间的训练也取得了很不错的成绩。当然还有一些人很努力但表现出的结果并不好，类比于机器学习中的初值问题，可能他们的天赋与方法并不是很好，只能到达局部的最优，无法实现自我的超越。</p>
+<p>       机器学习中的深度神经网络(DNN)，是通过简单的神经元进行多层次的相连所得到的。它是对人的神经网络的模拟，但又并非完全是模拟人的神经网络的处理过程。DNN看似很简单，但只要赋予它初值，然后不断的训练，总能得到一定的结果。而我看到有一些科学家做过一些实验（一般讲深度神经网络的课程似乎都会引用这些实验），通过不断的训练以及辅助一些传感器，让舌头可以辨别颜色。而对于一种技能（比如某种语言的学习），只要反复的训练，最终都能到达一定的熟练程度。这正如人们所熟知的一万小时定律。</p>
+<p>       过拟合，是机器学习中一个令人头疼的问题，它指的是机器学习中得到的模型在训练集上具有非常好的性能，但是在测试集上性能却很差。与之相对应的是欠拟合，它指的是在训练集和测试集上性能都很差。在生活中，每当出现一种新兴的事物，年轻人往往要比老年人接收的快些。大概是因为对于新事物相当于机器学习中的测试集，老年人的生活阅历已经很多了，他们可能会处于过拟合的状态。他们对于该事物的预期比该事物本身的结果要差很多，此时若他们不肯改变自己固有的一些思想，就会很难接新事物。相较于年轻人，他们则处于欠拟合的状态，但是由于预期与结果都不好，他们则更容易主动改变思想，从而接受新事物。</p>
+<p>       生活中，还有一种类似过拟合的情况，比如父母与子女，经常会意见不合。虽然子女继承了父母的基因，但这只是初值可能类似。但由于父母所成长的年代与子女的成长年代有很大的不同，即训练集不同。对于一件事情，可能就是因为父母的过拟合与子女的过拟合导致两代人之间的代沟。</p>
+<p>       那么，机器学习中的一些问题对我们生活有什么启示？通常，解决某一个机器学习的问题一般的步骤为：</p>
+<blockquote>
+</blockquote>
+<ul>
+<li>模型选择</li>
+<li>策略选择</li>
+<li>算法实现</li>
+<li>不断训练获取最优解</li>
+</ul>
+<p>而我们做事的一般步骤也是如此：</p>
+<blockquote>
+</blockquote>
+<ul>
+<li>目标一致</li>
+<li>方法恰当</li>
+<li>持之以恒</li>
+</ul>
+<p>       还有，关于机器学习中的过拟合现象，一般改善的方法：增加训练集的数据或是正则化。增加训练集的数据，就是要让模型尽可能的考虑到更多的情况；而正则化，则是通过增加惩罚项，使得选择尽可能简单的模型，因为简单的模型往往具有更好的范性。而对于我们的生活和学习来说，为了避免“过拟合”的现象，我们应该学会去接纳一些“新兴”的事物，而不是固守自己的想法。另外，我们也可以尽可能的让自己的生活更简单些,或许就不会有那么多的不愉快了。正如Unix设计哲学中的KISS准则：“Keep it simple, stupid!”</p>
+<p>       当然，本文纯属个人想法，仅供参考。</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/%E6%9D%82%E8%B0%88"><span class="tag">杂谈</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/%E6%80%9D%E8%80%83"><span class="tag">思考</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1221</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2021 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

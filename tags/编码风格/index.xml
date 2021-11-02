@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>编码风格 on 月光晒谷</title>
+    <link>http://liuao.tech/tags/%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC/</link>
+    <description>Recent content in 编码风格 on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Sun, 06 Mar 2016 00:00:00 +0000</lastBuildDate><atom:link href="http://liuao.tech/tags/%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux内核代码风格【转自linux源码文档】</title>
+      <link>http://liuao.tech/post/20160306/</link>
+      <pubDate>Sun, 06 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20160306/</guid>
+      <description>&lt;p&gt;       这是一个简短的文档，描述了linux内核的首选代码风格。代码风格是因人而异的，而且我
+不愿意把我的观点强加给任何人，不过这里所讲述的是我必须要维护的代码所遵守的风格，
+并且我也希望绝大多数其他代码也能遵守这个风格。请在写代码时至少考虑一下本文所述的
+风格。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

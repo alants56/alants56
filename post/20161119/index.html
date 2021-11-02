@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>LKD学习笔记——进程管理01</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  <meta name="description" content="1.进程
+ 进程是处于执行期间的程序以及执行该程序需要资源的总称。在操作系统中，提供了两种虚拟机制：虚拟处理器和虚拟内存。这两种抽象机制目的是让进程&amp;quot;独立&amp;quot;享有处理器以及整个内存资源。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="LKD学习笔记——进程管理01">
+    <meta name="twitter:description" content="1.进程
+ 进程是处于执行期间的程序以及执行该程序需要资源的总称。在操作系统中，提供了两种虚拟机制：虚拟处理器和虚拟内存。这两种抽象机制目的是让进程&amp;quot;独立&amp;quot;享有处理器以及整个内存资源。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LKD学习笔记——进程管理01">
+  <meta property="og:description" content="1.进程
+ 进程是处于执行期间的程序以及执行该程序需要资源的总称。在操作系统中，提供了两种虚拟机制：虚拟处理器和虚拟内存。这两种抽象机制目的是让进程&amp;quot;独立&amp;quot;享有处理器以及整个内存资源。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20161119/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.83.1">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20161119/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">LKD学习笔记——进程管理01</h1>
+      <p class="post-meta">@月光晒谷 · Nov 19, 2016 · 2 min read</p>
+    </header>
+    <article class="post-content"><p>1.进程</p>
+<p>       进程是处于执行期间的程序以及执行该程序需要资源的总称。在操作系统中，提供了两种虚拟机制：虚拟处理器和虚拟内存。这两种抽象机制目的是让进程&quot;独立&quot;享有处理器以及整个内存资源。</p>
+<p>       线程是进程活动中的对象，每个线程拥有独立的程序计数器、进程栈和一组进程寄存器。内核调度的对象是线程，而不是进程。在Linux中进程与线程并不特殊区分，线程只是一种特殊的进程。</p>
+<p>2.进程描述符</p>
+<p>       进程描述符，指的是包含完整描述一个进程所有资源的数据结构。该结构体struct task_struct定义如下，在32位机器上，它大约会有1.7K字节，原因是它包含了一个进程所有资源的信息。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">linux<span style="color:#f92672">/</span>sched.h   
+<span style="color:#66d9ef">struct</span> task_struct {
+    <span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">long</span> state;	<span style="color:#75715e">/* -1 unrunnable, 0 runnable, &gt;0 stopped */</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>stack;
+    atomic_t usage;
+    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> flags;	<span style="color:#75715e">/* per process flags, defined below */</span>
+    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> ptrace;
+    ...
+    <span style="color:#66d9ef">struct</span> list_head tasks;
+    ...
+    <span style="color:#75715e">/*
+</span><span style="color:#75715e">	 * pointers to (original) parent process, youngest child, younger sibling,
+</span><span style="color:#75715e">	 * older sibling, respectively.  (p-&gt;father can be replaced with
+</span><span style="color:#75715e">	 * p-&gt;real_parent-&gt;pid)
+</span><span style="color:#75715e">	 */</span>
+	<span style="color:#66d9ef">struct</span> task_struct __rcu <span style="color:#f92672">*</span>real_parent; <span style="color:#75715e">/* real parent process */</span>
+	<span style="color:#66d9ef">struct</span> task_struct __rcu <span style="color:#f92672">*</span>parent; <span style="color:#75715e">/* recipient of SIGCHLD, wait4() reports */</span>
+	<span style="color:#75715e">/*
+</span><span style="color:#75715e">	 * children/sibling forms the list of my natural children
+</span><span style="color:#75715e">	 */</span>
+    <span style="color:#66d9ef">struct</span> list_head children;	<span style="color:#75715e">/* list of my children */</span>
+    <span style="color:#66d9ef">struct</span> list_head sibling;	<span style="color:#75715e">/* linkage in my parent&#39;s children list */</span>
+    ...
+};
+</code></pre></div><p>       内核将进程会放置在一个双向循环链表的任务队列中。因此可以通过如下方式，遍历所有进程。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#define for_each_process(p) \
+</span><span style="color:#75715e">	for (p = &amp;init_task ; (p = next_task(p)) != &amp;init_task ; )
+</span><span style="color:#75715e"></span>
+for_each_process(task) {
+    printk(<span style="color:#e6db74">&#34;%s[%d]</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, taks<span style="color:#f92672">-&gt;</span>comm, task<span style="color:#f92672">-&gt;</span>pid);
+}    
+</code></pre></div><p>       为了方便，引入一个新的结构体struct thread_info。该结构体位于在栈的底端（或顶端）。在x86系统中，可以通过把栈指针的后13（栈的大小为8K时）个有效位屏蔽掉，计算thread_info的偏移，进而可以很方便的得到task_struct的地址。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">asm</span><span style="color:#f92672">/</span>thread_info.h
+<span style="color:#66d9ef">struct</span> thread_info {
+	<span style="color:#66d9ef">struct</span> task_struct	<span style="color:#f92672">*</span>task;		<span style="color:#75715e">/* main task structure */</span>
+	__u32			flags;		<span style="color:#75715e">/* low level flags */</span>
+	__u32			status;		<span style="color:#75715e">/* thread synchronous flags */</span>
+	__u32			cpu;		<span style="color:#75715e">/* current CPU */</span>
+	<span style="color:#66d9ef">int</span>			saved_preempt_count;
+	mm_segment_t		addr_limit;
+	<span style="color:#66d9ef">void</span> __user		<span style="color:#f92672">*</span>sysenter_return;
+	<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>		sig_on_uaccess_error:<span style="color:#ae81ff">1</span>;
+	<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>		uaccess_err:<span style="color:#ae81ff">1</span>;	<span style="color:#75715e">/* uaccess failed */</span>
+};
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm"><span style="color:#75715e">;current_thread_info()函数中，计算thread_info的地址
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">movl</span> <span style="color:#960050;background-color:#1e0010">&amp;</span>-<span style="color:#ae81ff">8192</span>, %eax
+<span style="color:#a6e22e">andl</span>  %esp, %eax
+
+<span style="color:#a6e22e">current_thread_info</span>()-<span style="color:#960050;background-color:#1e0010">&gt;</span><span style="color:#66d9ef">task</span>
+</code></pre></div><p>3.进程状态</p>
+<p>       在进程描述符的state域描述了进程所处的状态，在系统中，进程必然处于如下5中状态中的一种。需要注意的是TASK_RUNNING，指的是该进程可以执行，而并不是正在执行。TASK_INTERRUPTIBLE与TASK_UNINTERRUPTIBLE，指的是进程正在睡眠，区别在于是否可以通过信号提前唤醒。</p>
+<p>       1）TASK_RUNNING（可执行）进程是可执行的；正在执行或者正在运行队列中等待执行。</p>
+<p>       2）TASK_INTERRUPTIBLE（可中断）进程正在睡眠，等待某些条件的达成；也会因为接收到信号而提前被唤醒投入运行。</p>
+<p>       3）TASK_UNINTERRUPTIBLE（不可中断）进程正在睡眠，等待某些条件的达成；不会因为接收到信号而提前被唤醒投入运行。</p>
+<p>       4）TASK_ZOMBIE（僵死）进程已经结束，父进程未调用wait4()系统调用，子进程的进程描述符仍然保留着。</p>
+<p>       5）TASK_STOPPED（停止）进程没有投入运行、也不能投入运行。在调试期间接收到任何信号都会进入这种状态。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">linux<span style="color:#f92672">/</span>sched.h
+<span style="color:#75715e">#define TASK_RUNNING		0
+</span><span style="color:#75715e">#define TASK_INTERRUPTIBLE	1
+</span><span style="color:#75715e">#define TASK_UNINTERRUPTIBLE	2
+</span><span style="color:#75715e">#define __TASK_STOPPED		4
+</span><span style="color:#75715e"></span>
+set_task_state(current, state)
+set_current_state(state)
+</code></pre></div><p>4.进程家族树</p>
+<p>       Linux进程中存在一个明显的继承关系。所有的进程都是PID为1的init进程的后代。系统中每个进程都有一个父进程。而每个进程可以有零个或多个子进程。
+拥有相同父进程的所有进程被称为兄弟。</p>
+<p>       在进程描述符中，每个进程都有一个parent指针，一个children链表以及一个sibling兄弟链表。可以通过如下方式遍历当前进程的子进程（若对下述链表操作有疑问，可参考我之前写的一篇文章<a href="http://liuao.tech/post/20150404">Linux内核数据结构之链表</a>）。注意，父进程的children-&gt;next指向的是子进程的sibling变量，而并不是子进程的children变量（如下图，pid为1的进程是其它所有2-n的父进程，即pid为2-n的进程互为兄弟进程）。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#define list_for_each(pos, head) \
+</span><span style="color:#75715e">    for (pos = (head)-&gt;next; pos != (head); pos = pos-&gt;next)
+</span><span style="color:#75715e"></span>
+list_for_each(list, <span style="color:#f92672">&amp;</span>current<span style="color:#f92672">-&gt;</span>children) {
+    <span style="color:#75715e">/*
+</span><span style="color:#75715e">    **error:
+</span><span style="color:#75715e">    **    task = list_entry(list, struct task_struct, children); 
+</span><span style="color:#75715e">    */</span>
+    task <span style="color:#f92672">=</span> list_entry(list, <span style="color:#66d9ef">struct</span> task_struct, sibling); 
+}
+</code></pre></div><p><img src="http://liuao.tech/images/LKD0201.png" alt="LKD02"></p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/linux"><span class="tag">Linux</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/%E5%86%85%E6%A0%B8"><span class="tag">内核</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="tag">学习笔记</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1804</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2021 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

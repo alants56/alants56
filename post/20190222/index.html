@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>支持向量机SVM(一)</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="月光晒谷">
+  <meta name="description" content=" 支持向量机（Support Vector Machines SVM）是一种二分类模型，它的目标是在特征空间中寻找对于所有样本距离最大的超平面。与感知机不同的是，在线性可分的情况下，SVM可以得到唯一的解。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="支持向量机SVM(一)">
+    <meta name="twitter:description" content=" 支持向量机（Support Vector Machines SVM）是一种二分类模型，它的目标是在特征空间中寻找对于所有样本距离最大的超平面。与感知机不同的是，在线性可分的情况下，SVM可以得到唯一的解。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="支持向量机SVM(一)">
+  <meta property="og:description" content=" 支持向量机（Support Vector Machines SVM）是一种二分类模型，它的目标是在特征空间中寻找对于所有样本距离最大的超平面。与感知机不同的是，在线性可分的情况下，SVM可以得到唯一的解。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20190222/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.83.1">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20190222/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">支持向量机SVM(一)</h1>
+      <p class="post-meta">@月光晒谷 · Feb 22, 2019 · 2 min read</p>
+    </header>
+    <article class="post-content"><p>       支持向量机（Support Vector Machines SVM）是一种二分类模型，它的目标是在特征空间中寻找对于所有样本距离最大的超平面。与感知机不同的是，在线性可分的情况下，SVM可以得到唯一的解。</p>
+<p>       假设训练集样本为：$T= \{(x_{1},y_{1}),(x_{2},y_{2}), &hellip; ,(x_{N},y_{N}) \}$，其中$x_{i}$ $ \in $ $\mathbb R^{n}$表示样本的属性，$y_{i}$ $\in$ $ \{ +1, -1\}$表示样本的标签，$i=1,2,&hellip;,N$。</p>
+<p>       设SVM所求的超平面为$w \cdot x + b = 0$ 其中$w \in \mathbb R^{n}$，$b \in \mathbb R$，定义某个样本点$(x_{i}, y_{i})$到超平面$w \cdot x + b = 0$的距离为：</p>
+<p>$$d_{i} =   \frac{y_{i}(w \cdot x_{i} + b)}{\parallel w \parallel}$$</p>
+<p>令$d = \min d_{i} $， $i=1,2,&hellip;,N$,则SVM的目标函数为：
+$$\begin{cases}
+\ \max \qquad d \\\<br>
+\ s.t. \qquad \frac{y_{i}(w \cdot x_{i} + b)}{\parallel w \parallel} \geq d \qquad i=1,2,&hellip;,N \end{cases}$$</p>
+<p>令$ d = \frac{\hat d} {\parallel w \parallel}$，则上式可化为：
+$$\begin{cases}
+\ \max \qquad \frac{\hat d} {\parallel w \parallel} \\\<br>
+\ s.t. \qquad y_{i}(w \cdot x_{i} + b) \geq \hat d \qquad i=1,2,&hellip;,N \end{cases}$$</p>
+<p>       由于超平面$w \cdot x + b = 0$可以对其参数进行任意大小的缩放，即对于任意的标量$\lambda$，都有$\lambda(w \cdot x)$ $ + \lambda b = 0$，$\hat d$为一个标量，它的大小对于最终的参数求解并无影响，因此可以令$\hat d = 1$。并且$\max \frac{1}{\parallel w \parallel}$等价于$\min \frac{1}{2}\parallel w \parallel^{2}$。因此上式等价为：</p>
+<p>$$\begin{cases}
+\ \min \qquad \frac{1} {2}\parallel w\parallel^{2} \\\<br>
+\ s.t. \qquad y_{i}(w \cdot x_{i} + b) \geq 1 \qquad i=1,2,&hellip;,N \end{cases} \qquad (1)$$</p>
+<p>       接下来可以通过拉格朗日对偶性，求解该问题的对偶问题，从而得到原始问题的最优解。引入拉格朗日因子$\lambda _ {i} \geq 0, i=1,2,&hellip;,N$，则拉格朗日函数为：</p>
+<p>$$L(w,b,\lambda) = \frac{1} {2}\parallel w\parallel^{2} + \sum_{i=1}^{N} \lambda _ {i}(1-y_{i}(w \cdot x_{i} + b)) \qquad (2)$$</p>
+<p>由于$\lambda _ {i} ( 1-y_{i}(w \cdot x_{i} + b)) \leq 0, i=1,2,&hellip;,N$，因此
+$$\frac{1} {2}\parallel w \parallel^{2} \geq L(w,b,\lambda)，等号成立的条件为：\sum_{i=1}^{N} \lambda _ {i}(1-y_{i}(w \cdot x_{i} + b)) = 0 \qquad (3)$$</p>
+<p>所以(1)可以等价为：</p>
+<p>$$\min\limits_{w,b} \max\limits_{\lambda} L(w,b,\lambda)  \qquad (4) $$</p>
+<p>根据拉格朗日对偶性，上述等式的对偶问题是极大极小问题：</p>
+<p>$$\max\limits_{\lambda} \min\limits_{w,b}  L(w,b,\lambda) \qquad (5)$$</p>
+<p>对于上式，先求解$\min\limits_{w,b}  L(w,b,\lambda)$.首先对其关于$w$与$b$分别求偏导，并令其为0：</p>
+<p>$$\frac{\partial L}{\partial w} = w - \sum_{i=1}^{N} \lambda_{i}y_{i}x_{i}=0 \qquad \frac{\partial L}{\partial b} = -  \sum_{i=1}^{N}\lambda_{i}y_{i}=0$$</p>
+<p>则：</p>
+<p>$$w = \sum_{i=1}^{N} \lambda_{i}y_{i}x_{i} \qquad \sum_{i=1}^{N}\lambda_{i}y_{i}=0 \qquad (6)$$</p>
+<p>将上述结果带入到拉格朗日函数可得：</p>
+<p>$$L(w,b,\lambda) = - \frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\lambda_{i}\lambda_{j}y_{i}y_{j}(x_{i} \cdot x_{j}) + \sum_{i=1}^{N} \lambda _{i} \qquad (7)$$</p>
+<p>则(5)可以化为：</p>
+<p>$$\begin{cases}
+\ \max \qquad - \frac{1}{2} \sum_{i=1}^{N}\sum_{j=1}^{N}\lambda_{i}\lambda_{j}y_{i}y_{j}(x_{i} \cdot x_{j}) + \sum_{i=1}^{N} \lambda _{i} \\\\\\<br>
+\ s.t.\qquad \sum_{i=1}^{N}\lambda_{i}y_{i}=0 ,\qquad\lambda_{i} \geq 0 \qquad i=1,2,&hellip;,N \end{cases} \qquad (8)$$</p>
+<p>       通过上式可以求出原始问题的对偶优化问题，求解该问题可以借用序列最小化算法（Sequential minimal optimization SMO）。使用对偶问题求解带来的一大好处是：在求解中只使用了原始样本属性的内积形式$x_{i} \cdot x_{j}$，这为之后引入核函数提供了很大的便利。</p>
+<p>       另外考虑(3)中的等号成立的条件，由此可知：</p>
+<p>$$\begin{cases}
+\ 当 y_{i}(w \cdot x_{i} + b) &gt; 1 时，\lambda_{i} = 0\\\<br>
+\ 当 y_{i}(w \cdot x_{i} + b) = 1 时，\lambda_{i} \geq 0 \end{cases} \qquad (9)$$</p>
+<p>因此只有样本$i$满足：$y_{i}(w \cdot x_{i} + b) = 1$时，该样本对于最终的结果才会有影响。这些样本处于边界位置，被称为__支持向量__。</p>
+<p>       通过(8)可以解出$\lambda_{i}(i=1,2,&hellip;,N)$的值，然后将其带入(6)中，可以解出参数$w$的解。另外当$\lambda_{j} &gt; 0$时，对应的样本点为支持向量，该点满足条件：$y_{j}(w \cdot x_{j} + b) = 1$。将参数$w$的解带入该条件中，可以得出参数$b$的解。因此最终的解形式为：</p>
+<p>$$\begin{cases}
+\ w = \sum_{i=1}^{N} \lambda_{i}y_{i}x_{i}\\\\\<br>
+\ b = y_{j} - \sum_{i=1}^{N} \lambda_{i}y_{i}(x_{i} \cdot x_{j}) \qquad \lambda_{j} &gt; 0 \end{cases} \qquad (10)$$</p>
+<hr>
+<p>1.参考文档：</p>
+<p>       [1]. 统计学习方法              李航 著</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/machine-learning"><span class="tag">Machine Learning</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/svm"><span class="tag">SVM</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>978</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2021 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

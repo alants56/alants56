@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>数据挖掘比赛总结（10.17）</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  <meta name="description" content=" 从七月份到九月底，主要参加了三个比赛：（1）安泰杯——跨境电商智能算法大赛；（2）全球数据智能大赛——广西水稻预测；（3）IEEE-CIS Fraud Detection。虽然最终的成绩都不是很好，但这几个比赛有值的总结的地方。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="数据挖掘比赛总结（10.17）">
+    <meta name="twitter:description" content=" 从七月份到九月底，主要参加了三个比赛：（1）安泰杯——跨境电商智能算法大赛；（2）全球数据智能大赛——广西水稻预测；（3）IEEE-CIS Fraud Detection。虽然最终的成绩都不是很好，但这几个比赛有值的总结的地方。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="数据挖掘比赛总结（10.17）">
+  <meta property="og:description" content=" 从七月份到九月底，主要参加了三个比赛：（1）安泰杯——跨境电商智能算法大赛；（2）全球数据智能大赛——广西水稻预测；（3）IEEE-CIS Fraud Detection。虽然最终的成绩都不是很好，但这几个比赛有值的总结的地方。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20191017/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.83.1">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20191017/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">数据挖掘比赛总结（10.17）</h1>
+      <p class="post-meta">@月光晒谷 · Oct 17, 2019 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>       从七月份到九月底，主要参加了三个比赛：（1）安泰杯——跨境电商智能算法大赛；（2）全球数据智能大赛——广西水稻预测；（3）IEEE-CIS Fraud Detection。虽然最终的成绩都不是很好，但这几个比赛有值的总结的地方。</p>
+<h4 id="1-安泰杯跨境电商智能算法大赛初赛411960复赛361960">1. 安泰杯——跨境电商智能算法大赛（初赛：41/1960；复赛：36/1960）</h4>
+<p>       这个比赛算是我参加的第一个数据挖掘的比赛，也花费了许多的时间和精力。虽然没能获奖，但收获还是颇丰的。该比赛是一个推荐类的比赛，数据量相对比较大。刚开始时，由于没有学习过推荐类的算法，对于那么多数据无从下手，用了最简单粗暴的数据处理方式，然后基于数据处理的结果使用逻辑回归做分类推荐，结果算法跑了很久都没有输出。之后就开始读相关的文献和书籍，一边学习一边实践。在初赛时，主要使用了基于用户的协同过滤和基于商品的协同过滤算法，虽然这两个算法比较简单，但如果不做数据的简化，我所使用的机器仍无法跑起来（内存不够）。最终基于商品的协同过滤算法可以实现0.09的得分。</p>
+<p>       在初赛的中期，一位大佬开源了一个简单的baseline：主要思想是推荐用户最近购买的商品。该baseline的得分是0.1568，榜单前一百也都成了0.1568+，而我也被挤出来前100。而后，只能基于该baseline进行提升，原因是要进复赛需要取得前100。经过无数次的尝试后，终于基于用户最近购买商品、商品的类别信息、热门商品购买信息通过一些规则的方式突破了baseline，也将初赛的得分定格在了0.1582(41名)。</p>
+<p>       在复赛的时候，由于复购率更高，因此一开始就采取了与初赛类似的方式，得分为0.5878。之后尝试通过商品类别Embedding的方式（DeepWalk算法）提分，结果并没有提高。加之当时的时间原因（有其他事件），导致放弃了继续进行探索，最终复赛的名次为36名。</p>
+<h4 id="2-全球数据智能大赛广西水稻预测初赛32719复赛48719">2. 全球数据智能大赛——广西水稻预测（初赛：32/719；复赛：48/719）</h4>
+<p>       这个比赛一开始并没有打算投入时间和精力去做，只是看到该比赛的数据量较少，不需要太多的内存就可以使用各种模型。因此在初赛出榜的前一天随意做了EDA，然后用LightGBM进行预测。没想到第二天出分，竟是榜首，接下来的几天里，尝试了各种模型以及完善EDA，分数也有些许的提高，也一直处于榜首的位置。但是随着时间的增加，越来越多的大佬开始动手，我的名次也从榜首慢慢跌出了首页。由于一直没有好的线下和线上一致的验证方式，导致每次线下分数的提高都不能保证线上的得分。</p>
+<p>       另外这个比赛的复赛只有一次测评机会，并且初赛和复赛预测的数据分布并不一定相同，导致比赛具有很大的随机性。复赛结果的提交，我选择了与初赛最好成绩相同的模型进行预测，最终的结果并不好（初赛：32/719；复赛：48/719）。</p>
+<p>       关于这比赛有一个trick，是复赛结束时在比赛群里看到的：在复赛预测的数据中有一年的标签是个很强的噪点（某个县的2017年产量晚稻的产量由于降水等因素导致非常低）。若发现使用这个trick，复赛的模型会比较好一些。但是这个trick是我没有发现的，原因是自己没有做好EDA，也没有相关比赛的经验。</p>
+<h4 id="3-ieee-cis-fraud-detectionprivate-leaderboard21476381">3. IEEE-CIS Fraud Detection（Private Leaderboard：2147/6381）</h4>
+<p>       这个比赛是从一个Kaggle竞赛相关的公众号上得知的，上面有关于该比赛的基本的一些EDA方法。对于该比赛，一开始采用了自己的EDA方式，做了一些简单的数据的编码、去噪、填充等操作，然后使用LightGBM进行分类预测，最终线上的AUC大约为0.90，这距离别人的分数还有很大的差距。之后，就尝试了别人的EDA方式以及模型的参数，分数确实提升了不少，但距离前排还有很大差距。由于时间的问题，没有进一步跟进，只是尝试融合别人的结果。虽然public score不断提分，但是最终的private score分数掉了很多。</p>
+<p>       比赛结束后，看到前排关于自己方法的总结中，有一个关于Magic Feature：他们团队使用了一个一般都会丢弃的UID，从而使得他们的模型非常好。</p>
+<h4 id="总结">总结</h4>
+<p>关于这几次数据挖掘比赛，我认为比较重要的几个方面是：（1）EDA很重要，通常使用的模型都是相同的，参数的调整也是有限的，而不同的EDA往往会使得结果出现很大的波动；（2）对于训练集数据，要进行数据分析，剔除一些影响训练模型的离群点（噪声点），方法是进行十折交叉验证，挑出结果较差的某一折，分析验证集数据；（3）对于时间跨度较长的比赛，要能够坚持，即使大佬众多，提分无望，也要尝试不断提分。</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/%E6%80%9D%E8%80%83"><span class="tag">思考</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>742</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2021 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 月光晒谷</title>
+    <link>http://liuao.tech/tags/</link>
+    <description>Recent content in Tags on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Thu, 05 Nov 2020 10:00:00 +0800</lastBuildDate><atom:link href="http://liuao.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>工作</title>
+      <link>http://liuao.tech/tags/%E5%B7%A5%E4%BD%9C/</link>
+      <pubDate>Thu, 05 Nov 2020 10:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E5%B7%A5%E4%BD%9C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>思考</title>
+      <link>http://liuao.tech/tags/%E6%80%9D%E8%80%83/</link>
+      <pubDate>Thu, 05 Nov 2020 10:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E6%80%9D%E8%80%83/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>生活</title>
+      <link>http://liuao.tech/tags/%E7%94%9F%E6%B4%BB/</link>
+      <pubDate>Thu, 05 Nov 2020 10:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E7%94%9F%E6%B4%BB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>杂谈</title>
+      <link>http://liuao.tech/tags/%E6%9D%82%E8%B0%88/</link>
+      <pubDate>Sat, 14 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E6%9D%82%E8%B0%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>随笔</title>
+      <link>http://liuao.tech/tags/%E9%9A%8F%E7%AC%94/</link>
+      <pubDate>Sat, 14 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E9%9A%8F%E7%AC%94/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pandas</title>
+      <link>http://liuao.tech/tags/pandas/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/pandas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>http://liuao.tech/tags/python/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TensorFlow</title>
+      <link>http://liuao.tech/tags/tensorflow/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/tensorflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Differential Privacy</title>
+      <link>http://liuao.tech/tags/differential-privacy/</link>
+      <pubDate>Mon, 22 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/differential-privacy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Local Differential Privacy</title>
+      <link>http://liuao.tech/tags/local-differential-privacy/</link>
+      <pubDate>Mon, 22 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/local-differential-privacy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Mining</title>
+      <link>http://liuao.tech/tags/data-mining/</link>
+      <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/data-mining/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine learning</title>
+      <link>http://liuao.tech/tags/machine-learning/</link>
+      <pubDate>Tue, 19 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SVM</title>
+      <link>http://liuao.tech/tags/svm/</link>
+      <pubDate>Fri, 22 Feb 2019 20:20:20 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/svm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>algorithm</title>
+      <link>http://liuao.tech/tags/algorithm/</link>
+      <pubDate>Mon, 28 Jan 2019 12:12:12 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>branch and bound</title>
+      <link>http://liuao.tech/tags/branch-and-bound/</link>
+      <pubDate>Mon, 28 Jan 2019 12:12:12 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/branch-and-bound/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>statistical learning</title>
+      <link>http://liuao.tech/tags/statistical-learning/</link>
+      <pubDate>Wed, 13 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/statistical-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>naive Bayes</title>
+      <link>http://liuao.tech/tags/naive-bayes/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/naive-bayes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>logistic regression</title>
+      <link>http://liuao.tech/tags/logistic-regression/</link>
+      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/logistic-regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Convolutional Neural Network</title>
+      <link>http://liuao.tech/tags/convolutional-neural-network/</link>
+      <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/convolutional-neural-network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linear regression</title>
+      <link>http://liuao.tech/tags/linear-regression/</link>
+      <pubDate>Wed, 02 May 2018 14:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/linear-regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>English</title>
+      <link>http://liuao.tech/tags/english/</link>
+      <pubDate>Fri, 02 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/english/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gradient Descent</title>
+      <link>http://liuao.tech/tags/gradient-descent/</link>
+      <pubDate>Fri, 29 Dec 2017 23:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/gradient-descent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wordpress</title>
+      <link>http://liuao.tech/tags/wordpress/</link>
+      <pubDate>Tue, 16 May 2017 17:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/wordpress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bmp</title>
+      <link>http://liuao.tech/tags/bmp/</link>
+      <pubDate>Sun, 02 Apr 2017 01:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/bmp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>http://liuao.tech/tags/linux/</link>
+      <pubDate>Wed, 15 Feb 2017 23:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>中断</title>
+      <link>http://liuao.tech/tags/%E4%B8%AD%E6%96%AD/</link>
+      <pubDate>Wed, 15 Feb 2017 23:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E4%B8%AD%E6%96%AD/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>内核</title>
+      <link>http://liuao.tech/tags/%E5%86%85%E6%A0%B8/</link>
+      <pubDate>Wed, 15 Feb 2017 23:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E5%86%85%E6%A0%B8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vim</title>
+      <link>http://liuao.tech/tags/vim/</link>
+      <pubDate>Sun, 15 Jan 2017 01:15:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>魔方</title>
+      <link>http://liuao.tech/tags/%E9%AD%94%E6%96%B9/</link>
+      <pubDate>Sat, 07 Jan 2017 12:12:12 +0800</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E9%AD%94%E6%96%B9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C</title>
+      <link>http://liuao.tech/tags/c/</link>
+      <pubDate>Fri, 16 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>驱动</title>
+      <link>http://liuao.tech/tags/%E9%A9%B1%E5%8A%A8/</link>
+      <pubDate>Sat, 10 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E9%A9%B1%E5%8A%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>学习笔记</title>
+      <link>http://liuao.tech/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 08 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>面向对象</title>
+      <link>http://liuao.tech/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Fri, 02 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>编码风格</title>
+      <link>http://liuao.tech/tags/%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC/</link>
+      <pubDate>Sun, 06 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>转载</title>
+      <link>http://liuao.tech/tags/%E8%BD%AC%E8%BD%BD/</link>
+      <pubDate>Sun, 06 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E8%BD%AC%E8%BD%BD/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数据结构</title>
+      <link>http://liuao.tech/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Sat, 16 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>USB</title>
+      <link>http://liuao.tech/tags/usb/</link>
+      <pubDate>Fri, 24 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/usb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu kylin</title>
+      <link>http://liuao.tech/tags/ubuntu-kylin/</link>
+      <pubDate>Sun, 25 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/tags/ubuntu-kylin/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

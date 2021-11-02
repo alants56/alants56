@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bmp on 月光晒谷</title>
+    <link>http://liuao.tech/tags/bmp/</link>
+    <description>Recent content in bmp on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Sun, 02 Apr 2017 01:00:00 +0800</lastBuildDate><atom:link href="http://liuao.tech/tags/bmp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bmp图片的编码规则</title>
+      <link>http://liuao.tech/post/20170402/</link>
+      <pubDate>Sun, 02 Apr 2017 01:00:00 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170402/</guid>
+      <description>&lt;p&gt;       前些天看到一幅gif图片，大致是一个程序员通过绘图工具绘出一幅bmp图片，然后用文本文件打开，可以看出其实他是写的C++版的helloworld程序。当真正了解了bmp图片的编码规则时，就可以很清楚知道这是如何实现的。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

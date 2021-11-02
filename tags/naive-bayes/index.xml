@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>naive Bayes on 月光晒谷</title>
+    <link>http://liuao.tech/tags/naive-bayes/</link>
+    <description>Recent content in naive Bayes on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Fri, 01 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://liuao.tech/tags/naive-bayes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>朴素贝叶斯</title>
+      <link>http://liuao.tech/post/20180601/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20180601/</guid>
+      <description>&lt;p&gt;      朴素贝叶斯是基于贝叶斯公式和属性条件独立假设的一种分类方式。它是一种“生成式模型”，先通过样本估计先验概率，然后用它来求出后验概率。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

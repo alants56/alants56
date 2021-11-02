@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Linux中断上下部</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="月光晒谷">
+  <meta name="description" content=" 中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="Linux中断上下部">
+    <meta name="twitter:description" content=" 中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Linux中断上下部">
+  <meta property="og:description" content=" 中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20170215/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.83.1">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20170215/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Linux中断上下部</h1>
+      <p class="post-meta">@月光晒谷 · Feb 15, 2017 · 2 min read</p>
+    </header>
+    <article class="post-content"><p>       中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。</p>
+<p>       中断处理程序有一个限制条件，中断处理程序不能进入睡眠状态，即它不能调用任何有可能会导致睡眠的函数。原因是：中断处理程序运行在中断上下文中，中断上下文与进程无关，它并不是一个调度实体，如果将其睡眠，将无法唤醒（根本原因：设计如此）。</p>
+<p>       为了快速响应中断，中断处理程序应该尽可能快速处理，否则将有可能影响到下一个中断的处理。但在某些情况下，中断处理程序需要处理一些费时的任务甚至可能会导致睡眠，因此内核开发者引入了中断上下部的概念：在中断上部处理紧急的任务，然后调用中断下部；而一些费时的或需要睡眠的部分交由中断下部进行。</p>
+<p>       在中断上半部一般处理一些硬件操作，在结束前调用中断的下半部，在上半部是不允许进入睡眠状态的，因此任何的可能导致睡眠的函数在上半部是不能被使用的。对于中断的下半部，在2.6版本内核常用的两种实现机制为：tasklet和workqueue。</p>
+<p>       tasklet是借助软中断的方式来实现的，tasklet的调度函数tasklet_schedule()或tasklet_hi_schedule()，通过触发软中断TASKLET_SOFTIRQ或HI_SOFTIRQ,从而唤起相应的软中断来处理下半部分。这样在处理下半部时，上半部可以处理下一次的中断事件。同样的在软中断中也是不能调用可能引起睡眠的函数，它可以延缓处理下半部，也可以与下一次上半部并发处理。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">/*
+</span><span style="color:#75715e">**   按键驱动程序：通过中断（下部通过tasklet）实现的部分源码。
+</span><span style="color:#75715e">*/</span>
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/input.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/module.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/init.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;asm/irq.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;asm/io.h&gt; </span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;mach/irqs.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/interrupt.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/gpio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> input_dev <span style="color:#f92672">*</span>button_dev;
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bottom_interrupt</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> t)
+{
+        printk(KERN_INFO <span style="color:#e6db74">&#34;This bottom part by tasklet!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+}
+
+DECLARE_TASKLET(button_tasklet, bottom_interrupt, <span style="color:#ae81ff">0</span>);
+
+<span style="color:#66d9ef">static</span> irqreturn_t <span style="color:#a6e22e">button_interrupt</span>(<span style="color:#66d9ef">int</span> irq, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>dev)
+{
+        printk(KERN_INFO <span style="color:#e6db74">&#34;This top part!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        tasklet_schedule(<span style="color:#f92672">&amp;</span>button_tasklet);
+        <span style="color:#66d9ef">return</span> IRQ_HANDLED;
+}
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> __init <span style="color:#a6e22e">button_init</span>(<span style="color:#66d9ef">void</span>)
+{
+        <span style="color:#66d9ef">int</span> ret;
+        ret <span style="color:#f92672">=</span> gpio_request(S5PV210_GPH0(<span style="color:#ae81ff">2</span>), <span style="color:#e6db74">&#34;GPH0_2&#34;</span>);
+        <span style="color:#66d9ef">if</span> (ret) {
+                printk(KERN_ERR <span style="color:#e6db74">&#34;gpio request failed!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+                <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>EBUSY;
+        }
+        s3c_gpio_cfgpin(S5PV210_GPH0(<span style="color:#ae81ff">2</span>), S3C_GPIO_SFN(<span style="color:#ae81ff">0x0f</span>));
+
+        <span style="color:#66d9ef">if</span> (request_irq(IRQ_EINT2, button_interrupt,
+                        IRQF_TRIGGER_FALLING<span style="color:#f92672">|</span>IRQF_TRIGGER_RISING, <span style="color:#e6db74">&#34;button-x210&#34;</span>, NULL)) {
+                printk(KERN_ERR <span style="color:#e6db74">&#34;irq request failed!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+                ret <span style="color:#f92672">=</span>  <span style="color:#f92672">-</span>EBUSY;
+                <span style="color:#66d9ef">goto</span> request_irq_error;
+        }
+
+        button_dev <span style="color:#f92672">=</span> input_allocate_device();
+        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>button_dev) {
+                printk(KERN_ERR <span style="color:#e6db74">&#34;allocate input device failed!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+                ret <span style="color:#f92672">=</span>  <span style="color:#f92672">-</span>ENOMEM;
+                <span style="color:#66d9ef">goto</span> allocate_error;
+        }
+        set_bit(EV_KEY, button_dev<span style="color:#f92672">-&gt;</span>evbit);
+        set_bit(KEY_LEFT, button_dev<span style="color:#f92672">-&gt;</span>keybit);
+
+        ret <span style="color:#f92672">=</span> input_register_device(button_dev);
+        <span style="color:#66d9ef">if</span> (ret) {
+                printk(KERN_ERR <span style="color:#e6db74">&#34;register input device failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+                <span style="color:#66d9ef">goto</span> register_error;
+        }
+
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+register_error:
+        input_free_device(button_dev);
+allocate_error:
+        free_irq(IRQ_EINT2, NULL);
+request_irq_error:
+        gpio_free(S5PV210_GPH0(<span style="color:#ae81ff">2</span>));
+        <span style="color:#66d9ef">return</span> ret;
+}
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> __exit <span style="color:#a6e22e">button_exit</span>(<span style="color:#66d9ef">void</span>)
+{
+        input_free_device(button_dev);
+        free_irq(IRQ_EINT2, NULL);
+        gpio_free(S5PV210_GPH0(<span style="color:#ae81ff">2</span>));
+}
+
+module_init(button_init);
+module_exit(button_exit);
+
+MODULE_LICENSE(<span style="color:#e6db74">&#34;GPL&#34;</span>);
+MODULE_AUTHOR(<span style="color:#e6db74">&#34;alants&#34;</span>);
+</code></pre></div><p>       workqueue则是通过将下半部交由一个内核线程去处理，这样中断的下半部就是在进程的上下文中执行。因此使用workqueue的方式实现的下半部是可以进入睡眠的。workqueue的调度是通过接口schedule_work()来操作的，schedule_work()所进行的实际操作就是将当前的下半部的相关结构体work_struct添加到当前的work_list中，等待内核线程调用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">/*
+</span><span style="color:#75715e">**   按键驱动程序：通过中断（下部通过workqueue）实现的部分源码。
+</span><span style="color:#75715e">*/</span>
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/input.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/module.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/init.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;asm/irq.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;asm/io.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;mach/irqs.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/interrupt.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/gpio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> input_dev <span style="color:#f92672">*</span>button_dev;
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bottom_interrupt</span>(<span style="color:#66d9ef">struct</span> work_struct <span style="color:#f92672">*</span>work)
+{      
+        printk(KERN_INFO <span style="color:#e6db74">&#34;This bottom part by workqueue!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+}
+
+DECLARE_WORK(button_work, bottom_interrupt);
+
+<span style="color:#66d9ef">static</span> irqreturn_t <span style="color:#a6e22e">button_interrupt</span>(<span style="color:#66d9ef">int</span> irq, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>dev)
+{
+        printk(KERN_INFO <span style="color:#e6db74">&#34;This top part!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        schedule_work(<span style="color:#f92672">&amp;</span>button_work);
+        <span style="color:#66d9ef">return</span> IRQ_HANDLED;
+}
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> __init <span style="color:#a6e22e">button_init</span>(<span style="color:#66d9ef">void</span>)
+{
+        <span style="color:#66d9ef">int</span> ret;
+        ret <span style="color:#f92672">=</span> gpio_request(S5PV210_GPH0(<span style="color:#ae81ff">2</span>), <span style="color:#e6db74">&#34;GPH0_2&#34;</span>);
+        <span style="color:#66d9ef">if</span> (ret) {
+                printk(KERN_ERR <span style="color:#e6db74">&#34;gpio request failed!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+                <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>EBUSY;
+        }
+        s3c_gpio_cfgpin(S5PV210_GPH0(<span style="color:#ae81ff">2</span>), S3C_GPIO_SFN(<span style="color:#ae81ff">0x0f</span>));
+
+        <span style="color:#66d9ef">if</span> (request_irq(IRQ_EINT2, button_interrupt,
+                        IRQF_TRIGGER_FALLING<span style="color:#f92672">|</span>IRQF_TRIGGER_RISING, <span style="color:#e6db74">&#34;button-x210&#34;</span>, NULL)) {
+                printk(KERN_ERR <span style="color:#e6db74">&#34;irq request failed!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+                ret <span style="color:#f92672">=</span>  <span style="color:#f92672">-</span>EBUSY;
+                <span style="color:#66d9ef">goto</span> irq_request_error;
+        }
+
+        button_dev <span style="color:#f92672">=</span> input_allocate_device();
+        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>button_dev) {
+                printk(KERN_ERR <span style="color:#e6db74">&#34;allocate input device failed!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+                ret <span style="color:#f92672">=</span>  <span style="color:#f92672">-</span>ENOMEM;
+                <span style="color:#66d9ef">goto</span> allocate_error;
+        }
+        set_bit(EV_KEY, button_dev<span style="color:#f92672">-&gt;</span>evbit);
+        set_bit(KEY_LEFT, button_dev<span style="color:#f92672">-&gt;</span>keybit);
+
+        ret <span style="color:#f92672">=</span> input_register_device(button_dev);
+        <span style="color:#66d9ef">if</span> (ret) {
+                printk(KERN_ERR <span style="color:#e6db74">&#34;register input device failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+                <span style="color:#66d9ef">goto</span> register_error;
+        }
+
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+register_error:
+        input_free_device(button_dev);
+allocate_error:
+        free_irq(IRQ_EINT2, NULL);
+irq_request_error:
+        gpio_free(S5PV210_GPH0(<span style="color:#ae81ff">2</span>));
+        <span style="color:#66d9ef">return</span> ret;
+}
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> __exit <span style="color:#a6e22e">button_exit</span>(<span style="color:#66d9ef">void</span>)
+{
+        input_unregister_device(button_dev);
+        input_free_device(button_dev);
+        free_irq(IRQ_EINT2, NULL);
+        gpio_free(S5PV210_GPH0(<span style="color:#ae81ff">2</span>));
+}
+
+module_init(button_init);
+module_exit(button_exit);
+
+MODULE_LICENSE(<span style="color:#e6db74">&#34;GPL&#34;</span>);
+MODULE_AUTHOR(<span style="color:#e6db74">&#34;alants&#34;</span>);
+</code></pre></div><p>       从上述两种按键驱动中断实现方式来看，workqueue和tasklet的使用似乎没有很大的区别，但是在实际使用中要根据中断下半部分具体的处理内容（例如，是否会进入睡眠）来考虑下半部采用哪种机制。</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/linux"><span class="tag">Linux</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/%E5%86%85%E6%A0%B8"><span class="tag">内核</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/%E4%B8%AD%E6%96%AD"><span class="tag">中断</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1715</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2021 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

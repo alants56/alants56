@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>LKD学习笔记——进程管理02</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="月光晒谷">
+  <meta name="description" content="1.进程创建
+ Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="LKD学习笔记——进程管理02">
+    <meta name="twitter:description" content="1.进程创建
+ Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LKD学习笔记——进程管理02">
+  <meta property="og:description" content="1.进程创建
+ Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20161120/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.83.1">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20161120/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">LKD学习笔记——进程管理02</h1>
+      <p class="post-meta">@月光晒谷 · Nov 20, 2016 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>1.进程创建</p>
+<p>       Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。</p>
+<p>       fork采用了写时拷贝(copy-on-write)，即在创建子进程时，并不立即将父进程的数据直接拷贝给子进程，而是父子进程以只读的方式共享一份数据（这里的数据并不是进程描述符）。只有在需要写入数据时，数据才会被复制。如果fork后，立即调用了exec，则无需复制。这样可以减少无意义的拷贝操作。</p>
+<p>       Linux中通过clone实现fork操作，而clone则是调用的do_fork()完成进程的创建。如下是do_fork()实现的伪代码，从代码中可以很直观的看出：thread_info位于栈的底端（顶端），这样可以很方便的通过当前栈的指针获取thread_info的指针，从而确定当前task_struct的指针。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">kernel<span style="color:#f92672">/</span>fork.c
+    do_fork() <span style="color:#f92672">:</span>
+    <span style="color:#ae81ff">1.</span>copy_process();                                <span style="color:#75715e">/*根据父进程，创建子进程的进程描述符*/</span>
+            <span style="color:#ae81ff">1.</span>do_task_struct();                      <span style="color:#75715e">/*创建内核栈与thread_info、task_struct*/</span>
+                    <span style="color:#ae81ff">1.</span>tsk <span style="color:#f92672">=</span> alloc_task_struct_node();      
+                    <span style="color:#ae81ff">2.</span>ti <span style="color:#f92672">=</span> alloc_thread_info_node(); <span style="color:#75715e">/*会创建一个栈，thread_info位于栈低*/</span>
+                    <span style="color:#ae81ff">3.</span>arch_dup_task_struct();
+                    <span style="color:#ae81ff">4.</span>tsk<span style="color:#f92672">-&gt;</span>stack <span style="color:#f92672">=</span> ti;
+            <span style="color:#ae81ff">2.</span>xxx_init_task();                       <span style="color:#75715e">/*初始化task_struct*/</span>
+            <span style="color:#ae81ff">3.</span>copy_xxx();                            <span style="color:#75715e">/*根据传递的参数标志，更新task_struct的flag成员*/</span>
+    <span style="color:#ae81ff">2.</span>get_task_pid();                                <span style="color:#75715e">/*获取pid*/</span>
+    <span style="color:#ae81ff">3.</span>wake_up_new_task();                            <span style="color:#75715e">/*唤醒子进程*/</span>
+    <span style="color:#ae81ff">4.</span><span style="color:#66d9ef">return</span> pid;                                    <span style="color:#75715e">/*返回pid*/</span>
+</code></pre></div><p>       vfork和fork的功能相同，除了不拷贝父进程的页表项。子进程作为父进程的一个单独的线程在它的地址空间里运行，父进程被阻塞，直到子进程退出或执行exec()。子进程不能向地址空间写入。</p>
+<p>       在linux中，线程其实是一种特殊的进程，它被视为一个与其它进程共享某些资源的进程。线程拥有自己的task_struct，因此在内核中它看起来是一个普通的进程。这样创建一个线程与创建一个进程没有太大区别，通过传递给clone()，不同的参数实现。</p>
+<p>       因此可以通过传递给clone()不同的参数，来实现fork(),vfork()、以及线程的创建。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">clone(CLONE_SIGHAND, <span style="color:#ae81ff">0</span>);
+clone(CLONE_VFORK <span style="color:#f92672">|</span> CLONE_VM <span style="color:#f92672">|</span> CLONE_SIGHAND, <span style="color:#ae81ff">0</span>);
+clone(CLONE_VM <span style="color:#f92672">|</span> CLONE_FS <span style="color:#f92672">|</span> CLONE_FILES <span style="color:#f92672">|</span> CLONE_SIGHAND, <span style="color:#ae81ff">0</span>);
+</code></pre></div><p>2.进程终结</p>
+<p>       进程的终结，一般是通过调用exit结束。而exit则是通过调用do_exit()完成的。要注意的是，进程结束时，需要为其子进程寻找一个父进程（线程组其他进程或init进程），而进程本身会进入TASK_ZOMBIE状态。该进程会等待其父进程调用wait4()，删除其进程描述符以及一些独享的资源。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">kernel<span style="color:#f92672">/</span>exit.c
+do_exit()
+    <span style="color:#ae81ff">1.</span>exit_signals();		<span style="color:#75715e">/*tsk-&gt;flags |= PF_EXITING*/</span>
+    <span style="color:#ae81ff">2.</span>exit_xxx();			<span style="color:#75715e">/*释放各种资源*/</span>
+    <span style="color:#ae81ff">3.</span>exit_notify();		<span style="color:#75715e">/*将子进程的父进程设置为线程组其他线程或init进程，并将进程状态改为TASK_ZOMBIE*/</span>
+</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/linux"><span class="tag">Linux</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/%E5%86%85%E6%A0%B8"><span class="tag">内核</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="tag">学习笔记</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1803</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2021 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

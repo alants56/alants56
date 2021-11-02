@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>LAMP&#43;Wordpress环境搭建</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="月光晒谷">
+  <meta name="description" content=" 对于一个新手来说，要建立一个小型的网站，LAMP&#43;Wordpress是一个很不错的选择。LAMP指的是Linux、Apache、MySQL与PHP，搭建好LAMP&#43;Wordpress的环境后，就可以通过Wordpress来在线建立并管理网站。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="LAMP&#43;Wordpress环境搭建">
+    <meta name="twitter:description" content=" 对于一个新手来说，要建立一个小型的网站，LAMP&#43;Wordpress是一个很不错的选择。LAMP指的是Linux、Apache、MySQL与PHP，搭建好LAMP&#43;Wordpress的环境后，就可以通过Wordpress来在线建立并管理网站。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LAMP&#43;Wordpress环境搭建">
+  <meta property="og:description" content=" 对于一个新手来说，要建立一个小型的网站，LAMP&#43;Wordpress是一个很不错的选择。LAMP指的是Linux、Apache、MySQL与PHP，搭建好LAMP&#43;Wordpress的环境后，就可以通过Wordpress来在线建立并管理网站。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20170516/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.83.1">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20170516/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">LAMP&#43;Wordpress环境搭建</h1>
+      <p class="post-meta">@月光晒谷 · May 16, 2017 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>       对于一个新手来说，要建立一个小型的网站，LAMP+Wordpress是一个很不错的选择。LAMP指的是Linux、Apache、MySQL与PHP，搭建好LAMP+Wordpress的环境后，就可以通过Wordpress来在线建立并管理网站。</p>
+<p>       如果你的服务器是租的商业服务器的话，一般情况下，LAMP的环境是已经搭建好了的，若没有搭建可通过简单的几个安装命令就可以安装配置成功。</p>
+<pre><code>Ubuntu17.04下的安装步骤：
+
+
+1.apache安装
+
+    sudo apt-get install apache2  
+    注意：
+    若使用apt-get安装时出错，可能是你的系统没有更新到最新的源，可以通过如下命令更新后尝试重新安装
+    sudo apt-get update
+
+2.php相关安装
+
+    sudo apt-get install php7.0
+    sudo apt-get install libapache2-mod-php （apapche2支持PHP所需要的库）
+
+3.mysql相关安装
+
+    sudo apt-get install mysql-server
+    sudo apt-get install phpmyadmin
+    注意：
+    在安装mysql时，需要设置mysql的root密码
+
+4.为wordpress创建单独用户与数据库：
+
+    登录：mysql -p -u root
+    创建用户：CREATE USER 'wordpress'@'localhost' IDENTIFIED BY 'password';
+    为该用户设置操作权限：GRANT ALL ON *.* TO 'wordpress'@'localhost';
+    退出：exit
+    重新登录：mysql -p -u wordpress
+    为wordpress创建数据库：CREATE DATABASE wordpress;
+</code></pre>
+<p>       接下来就是安装和配置Wordpress。Wordpress只需要将源代码下载到服务器上，然后放到指定的路径下就可以了，而配置只需要在Wordpress目录下更改wp-config.php文件。</p>
+<pre><code>5.Wordpress的安装
+
+    sudo tar -zxvf wordpress            （解压Wordpress文件）
+    sudo cp -r ./wordpress /var/www/html
+    将Wordpress拷贝到指定的路径下，改路径是apache默认访问的路径，可以在/etc/apache2/sites-available/000-default.conf 文件中查看到默认的路径，在Ubuntu下的apache配置的是/var/www/html
+
+6.Wordpress的配置
+
+    默认情况下，在Wordpress文件夹中，有一份名为wp-config-simple.php的文件，需要在相同路径拷贝一份，并重命名为wp-config.php。
+    该文件需要配置的主要有两部分：一是数据库用户名、密码、为wordpress单独建立的数据库名称；二是wordpress身份认真需要的键值，该键值可以直接访问wp-config.php提供的密钥生成链接获取，然后更改wp-config.php中的相关项。
+    
+7.其它
+
+    配置好上述环境后，就可以通过浏览器访问wordpress默认提供的网页了(网址：服务器IP/wordpress)。然后你可以设置你的管理网站的用户名和密码，通过此用户之后很方便的在线管理网站。若你的环境没有配置成功，你访问该地址时，wordpress为为你检测出你的问题，然后根据提示查看是哪一部分没有配置成功。
+</code></pre>
+<p>       当上述的相关的安装和配置完成时，访问时会显示如下的页面，你可以根据你的喜好更换主题（当然这些主题有免费的也有付费的），也可以很方便的管理你的网站，包括安装一些wordpress插件来扩充网站的功能。具体操作细节可以参考<a href="https://codex.wordpress.org/zh-cn:Main_Page">wordpress官方给出的帮助文档</a>。</p>
+<p><img src="http://liuao.tech/images/wordpress.png" alt="wordpress"></p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/wordpress"><span class="tag">Wordpress</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1625</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2021 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

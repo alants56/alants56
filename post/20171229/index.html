@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>王者荣耀评分机制之梯度下降算法分析(二)</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="月光晒谷">
+  <meta name="description" content=" 通过上一篇文章，我们可以发现游戏的评分机制不仅和KDA有关，还受其它因素影响。于是重新定义一个模型如下：
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="王者荣耀评分机制之梯度下降算法分析(二)">
+    <meta name="twitter:description" content=" 通过上一篇文章，我们可以发现游戏的评分机制不仅和KDA有关，还受其它因素影响。于是重新定义一个模型如下：
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="王者荣耀评分机制之梯度下降算法分析(二)">
+  <meta property="og:description" content=" 通过上一篇文章，我们可以发现游戏的评分机制不仅和KDA有关，还受其它因素影响。于是重新定义一个模型如下：
+">
+  <meta property="og:url" content="http://liuao.tech/post/20171229/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.83.1">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20171229/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">王者荣耀评分机制之梯度下降算法分析(二)</h1>
+      <p class="post-meta">@月光晒谷 · Dec 29, 2017 · 6 min read</p>
+    </header>
+    <article class="post-content"><p>       通过上一篇文章，我们可以发现游戏的评分机制不仅和KDA有关，还受其它因素影响。于是重新定义一个模型如下：</p>
+<p><img src="http://liuao.tech/images/model2.png" alt="model2"></p>
+<p>       相应的定义损失函数L（Loss function）如下,我们只需要求出a、b、c、d、e、f、g和s使得L函数最小即可。</p>
+<p><img src="http://liuao.tech/images/lossf2.png" alt="lossf2"></p>
+<p>       接下来就按照上一篇文章所给出的梯度下降算法，求出最佳的a、b、c、d、e、f、g和s即可。需要注意的是L关于s的偏导数与其它的偏导数有区别。具体的偏导数如下：</p>
+<p><img src="http://liuao.tech/images/algorithm2.png" alt="algorithm2"></p>
+<p>       最后就是通过编程来实现了，我这里使用的是C语言（如附录中完整的C语言程序）。当我看到在训练集（Training data）中训练出来的模型计算出来的最终结果时，有些兴奋，发现计算的结果非常接近于实际的评分（loss只有4.6）。</p>
+<p><img src="http://liuao.tech/images/result2.png" alt="result2"></p>
+<p>      可是使用最终的模型在测试集（Testing data）中测试时，发现结果还是有一些偏差（loss超过了57）。这说明得出的模型还不够完善，可能还有一些因素没有考虑进去（如推塔数、击杀大小龙、三杀、四杀、五杀、超神等等），并且测训练集只用了30组数据。</p>
+<p><img src="http://liuao.tech/images/result3.png" alt="result3"></p>
+<p>      另外，梯度下降算法可能得出来的只是局部的最小值，并非全局最小值。因为我们是求L函数的偏导数为0的点，而L函数可能会出现多个偏导数为0的点。还有一方面因素是数据精度的问题，Training data中的评分S并非真实游戏中计算得出来的，而是取了小数点后一位。但是，目前所得出来的模型已经可以说明一些问题了：每一次死亡所扣掉的分数，相当于大约两个击杀所获得的分数，或是三至四个助攻所获得的分数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">//计算结果：
+</span><span style="color:#75715e"></span>S<span style="color:#f92672">=</span><span style="color:#ae81ff">2.688904</span><span style="color:#f92672">+</span><span style="color:#ae81ff">0.203089</span><span style="color:#f92672">*</span>K<span style="color:#f92672">-</span><span style="color:#ae81ff">0.413427</span><span style="color:#f92672">*</span>D<span style="color:#f92672">+</span><span style="color:#ae81ff">0.121452</span><span style="color:#f92672">*</span>A<span style="color:#f92672">+</span><span style="color:#ae81ff">0.138244</span><span style="color:#f92672">*</span>O<span style="color:#f92672">+</span><span style="color:#ae81ff">0.090832</span><span style="color:#f92672">*</span>H<span style="color:#f92672">+</span><span style="color:#ae81ff">0.010111</span><span style="color:#f92672">*</span>M<span style="color:#f92672">+</span><span style="color:#ae81ff">0.010000</span><span style="color:#f92672">*</span>P
+</code></pre></div><p>      </p>
+<hr>
+<p>计算源代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> TA <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>;
+
+<span style="color:#75715e">//training data 数据来源：游戏中最近6场获胜方数据
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> K[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">14</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">3</span>};
+<span style="color:#66d9ef">float</span> D[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">7</span>};
+<span style="color:#66d9ef">float</span> A[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">15</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">17</span>,<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">12</span>};
+<span style="color:#66d9ef">float</span> S[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">4.9</span>,<span style="color:#ae81ff">12.8</span>,<span style="color:#ae81ff">8.2</span>,<span style="color:#ae81ff">10.0</span>,<span style="color:#ae81ff">8.2</span>, <span style="color:#ae81ff">10.4</span>,<span style="color:#ae81ff">5.6</span>,<span style="color:#ae81ff">8.4</span>,<span style="color:#ae81ff">6.4</span>,<span style="color:#ae81ff">7.6</span>, <span style="color:#ae81ff">13.3</span>,<span style="color:#ae81ff">7.3</span>,<span style="color:#ae81ff">9.4</span>,<span style="color:#ae81ff">8.2</span>,<span style="color:#ae81ff">6.8</span>, <span style="color:#ae81ff">7.7</span>,<span style="color:#ae81ff">12.9</span>,<span style="color:#ae81ff">7.9</span>,<span style="color:#ae81ff">8.4</span>,<span style="color:#ae81ff">8.5</span>, <span style="color:#ae81ff">7.5</span>,<span style="color:#ae81ff">13.4</span>,<span style="color:#ae81ff">7.1</span>,<span style="color:#ae81ff">6.5</span>,<span style="color:#ae81ff">8.1</span>, <span style="color:#ae81ff">8.9</span>,<span style="color:#ae81ff">6.4</span>,<span style="color:#ae81ff">7.9</span>,<span style="color:#ae81ff">9.7</span>,<span style="color:#ae81ff">6.9</span>};
+<span style="color:#66d9ef">float</span> O[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">8.0</span>,<span style="color:#ae81ff">40.7</span>,<span style="color:#ae81ff">18.2</span>,<span style="color:#ae81ff">15.5</span>,<span style="color:#ae81ff">17.6</span>, <span style="color:#ae81ff">30.6</span>,<span style="color:#ae81ff">20.5</span>,<span style="color:#ae81ff">15.8</span>,<span style="color:#ae81ff">15.9</span>,<span style="color:#ae81ff">17.1</span>, <span style="color:#ae81ff">32.7</span>,<span style="color:#ae81ff">12.6</span>,<span style="color:#ae81ff">20.7</span>,<span style="color:#ae81ff">14.8</span>,<span style="color:#ae81ff">19.1</span>, <span style="color:#ae81ff">19.2</span>,<span style="color:#ae81ff">30.6</span>,<span style="color:#ae81ff">15.8</span>,<span style="color:#ae81ff">19.1</span>,<span style="color:#ae81ff">15.4</span>, <span style="color:#ae81ff">17.7</span>,<span style="color:#ae81ff">34.8</span>,<span style="color:#ae81ff">20.2</span>,<span style="color:#ae81ff">12.7</span>,<span style="color:#ae81ff">14.6</span>, <span style="color:#ae81ff">23.9</span>,<span style="color:#ae81ff">15.2</span>,<span style="color:#ae81ff">14.9</span>,<span style="color:#ae81ff">27.5</span>,<span style="color:#ae81ff">18.5</span>};
+<span style="color:#66d9ef">float</span> H[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">12.8</span>,<span style="color:#ae81ff">25.1</span>,<span style="color:#ae81ff">16.1</span>,<span style="color:#ae81ff">27.5</span>,<span style="color:#ae81ff">18.6</span>, <span style="color:#ae81ff">16.6</span>,<span style="color:#ae81ff">17.3</span>,<span style="color:#ae81ff">29.7</span>,<span style="color:#ae81ff">20.0</span>,<span style="color:#ae81ff">16.5</span>, <span style="color:#ae81ff">20.7</span>,<span style="color:#ae81ff">12.9</span>,<span style="color:#ae81ff">14.4</span>,<span style="color:#ae81ff">21.8</span>,<span style="color:#ae81ff">30.2</span>, <span style="color:#ae81ff">20.5</span>,<span style="color:#ae81ff">15.5</span>,<span style="color:#ae81ff">16.8</span>,<span style="color:#ae81ff">28.7</span>,<span style="color:#ae81ff">18.5</span>, <span style="color:#ae81ff">17.4</span>,<span style="color:#ae81ff">19.5</span>,<span style="color:#ae81ff">17.4</span>,<span style="color:#ae81ff">15.0</span>,<span style="color:#ae81ff">30.7</span>, <span style="color:#ae81ff">12.7</span>,<span style="color:#ae81ff">14.5</span>,<span style="color:#ae81ff">40.0</span>,<span style="color:#ae81ff">18.7</span>,<span style="color:#ae81ff">14.1</span>};
+<span style="color:#66d9ef">float</span> M[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">17.6</span>,<span style="color:#ae81ff">23.7</span>,<span style="color:#ae81ff">17.5</span>,<span style="color:#ae81ff">17.9</span>,<span style="color:#ae81ff">23.3</span>, <span style="color:#ae81ff">19.1</span>,<span style="color:#ae81ff">16.7</span>,<span style="color:#ae81ff">21.6</span>,<span style="color:#ae81ff">20.5</span>,<span style="color:#ae81ff">22.1</span>, <span style="color:#ae81ff">24.2</span>,<span style="color:#ae81ff">21.9</span>,<span style="color:#ae81ff">19.0</span>,<span style="color:#ae81ff">19.7</span>,<span style="color:#ae81ff">15.3</span>, <span style="color:#ae81ff">16.4</span>,<span style="color:#ae81ff">26.5</span>,<span style="color:#ae81ff">21.3</span>,<span style="color:#ae81ff">15.6</span>,<span style="color:#ae81ff">20.3</span>, <span style="color:#ae81ff">22.1</span>,<span style="color:#ae81ff">28.8</span>,<span style="color:#ae81ff">16.1</span>,<span style="color:#ae81ff">15.5</span>,<span style="color:#ae81ff">17.5</span>, <span style="color:#ae81ff">22.4</span>,<span style="color:#ae81ff">17.9</span>,<span style="color:#ae81ff">16.8</span>,<span style="color:#ae81ff">23.1</span>,<span style="color:#ae81ff">19.7</span>};
+<span style="color:#66d9ef">float</span> P[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">15.4</span>,<span style="color:#ae81ff">65.4</span>,<span style="color:#ae81ff">42.3</span>,<span style="color:#ae81ff">57.7</span>,<span style="color:#ae81ff">42.3</span>, <span style="color:#ae81ff">65.5</span>,<span style="color:#ae81ff">41.4</span>,<span style="color:#ae81ff">48.3</span>,<span style="color:#ae81ff">34.5</span>,<span style="color:#ae81ff">55.2</span>, <span style="color:#ae81ff">84.2</span>,<span style="color:#ae81ff">36.8</span>,<span style="color:#ae81ff">57.9</span>,<span style="color:#ae81ff">26.3</span>,<span style="color:#ae81ff">21.1</span>, <span style="color:#ae81ff">48.6</span>,<span style="color:#ae81ff">56.8</span>,<span style="color:#ae81ff">37.8</span>,<span style="color:#ae81ff">59.5</span>,<span style="color:#ae81ff">40.5</span>, <span style="color:#ae81ff">51.7</span>,<span style="color:#ae81ff">79.3</span>,<span style="color:#ae81ff">37.9</span>,<span style="color:#ae81ff">41.4</span>,<span style="color:#ae81ff">44.8</span>, <span style="color:#ae81ff">61.5</span>,<span style="color:#ae81ff">46.2</span>,<span style="color:#ae81ff">65.4</span>,<span style="color:#ae81ff">65.4</span>,<span style="color:#ae81ff">57.7</span>};
+
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">gradienta</span>(<span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b, <span style="color:#66d9ef">float</span> c,<span style="color:#66d9ef">float</span> d, <span style="color:#66d9ef">float</span> e, <span style="color:#66d9ef">float</span> f, <span style="color:#66d9ef">float</span> g, <span style="color:#66d9ef">float</span> s)
+{
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> ( ; i <span style="color:#f92672">&lt;</span> TA; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">float</span> tmp <span style="color:#f92672">=</span> S[i] <span style="color:#f92672">-</span> a<span style="color:#f92672">*</span>K[i] <span style="color:#f92672">-</span> b<span style="color:#f92672">*</span>D[i] <span style="color:#f92672">-</span> c<span style="color:#f92672">*</span>A[i] <span style="color:#f92672">-</span> d<span style="color:#f92672">*</span>O[i] <span style="color:#f92672">-</span> e<span style="color:#f92672">*</span>H[i] <span style="color:#f92672">-</span> f<span style="color:#f92672">*</span>M[i] <span style="color:#f92672">-</span> g<span style="color:#f92672">*</span>P[i] <span style="color:#f92672">-</span> s;
+        sum <span style="color:#f92672">+=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> K[i] <span style="color:#f92672">*</span> tmp;
+    }
+    <span style="color:#66d9ef">return</span> sum;
+}
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">gradientb</span>(<span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b, <span style="color:#66d9ef">float</span> c,<span style="color:#66d9ef">float</span> d, <span style="color:#66d9ef">float</span> e, <span style="color:#66d9ef">float</span> f, <span style="color:#66d9ef">float</span> g, <span style="color:#66d9ef">float</span> s)
+{
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> ( ; i <span style="color:#f92672">&lt;</span> TA; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">float</span> tmp <span style="color:#f92672">=</span> S[i] <span style="color:#f92672">-</span> a<span style="color:#f92672">*</span>K[i] <span style="color:#f92672">-</span> b<span style="color:#f92672">*</span>D[i] <span style="color:#f92672">-</span> c<span style="color:#f92672">*</span>A[i] <span style="color:#f92672">-</span> d<span style="color:#f92672">*</span>O[i] <span style="color:#f92672">-</span> e<span style="color:#f92672">*</span>H[i] <span style="color:#f92672">-</span> f<span style="color:#f92672">*</span>M[i] <span style="color:#f92672">-</span> g<span style="color:#f92672">*</span>P[i] <span style="color:#f92672">-</span> s;
+        sum <span style="color:#f92672">+=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> D[i] <span style="color:#f92672">*</span> tmp;
+    }
+    <span style="color:#66d9ef">return</span> sum;
+}
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">gradientc</span>(<span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b, <span style="color:#66d9ef">float</span> c,<span style="color:#66d9ef">float</span> d, <span style="color:#66d9ef">float</span> e, <span style="color:#66d9ef">float</span> f, <span style="color:#66d9ef">float</span> g, <span style="color:#66d9ef">float</span> s)
+{
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> ( ; i <span style="color:#f92672">&lt;</span> TA; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">float</span> tmp <span style="color:#f92672">=</span> S[i] <span style="color:#f92672">-</span> a<span style="color:#f92672">*</span>K[i] <span style="color:#f92672">-</span> b<span style="color:#f92672">*</span>D[i] <span style="color:#f92672">-</span> c<span style="color:#f92672">*</span>A[i] <span style="color:#f92672">-</span> d<span style="color:#f92672">*</span>O[i] <span style="color:#f92672">-</span> e<span style="color:#f92672">*</span>H[i] <span style="color:#f92672">-</span> f<span style="color:#f92672">*</span>M[i] <span style="color:#f92672">-</span> g<span style="color:#f92672">*</span>P[i] <span style="color:#f92672">-</span> s;
+        sum <span style="color:#f92672">+=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> A[i] <span style="color:#f92672">*</span> tmp;
+    }
+    <span style="color:#66d9ef">return</span> sum;
+}
+
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">gradientd</span>(<span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b, <span style="color:#66d9ef">float</span> c,<span style="color:#66d9ef">float</span> d, <span style="color:#66d9ef">float</span> e, <span style="color:#66d9ef">float</span> f, <span style="color:#66d9ef">float</span> g, <span style="color:#66d9ef">float</span> s)
+{
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> ( ; i <span style="color:#f92672">&lt;</span> TA; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">float</span> tmp <span style="color:#f92672">=</span> S[i] <span style="color:#f92672">-</span> a<span style="color:#f92672">*</span>K[i] <span style="color:#f92672">-</span> b<span style="color:#f92672">*</span>D[i] <span style="color:#f92672">-</span> c<span style="color:#f92672">*</span>A[i] <span style="color:#f92672">-</span> d<span style="color:#f92672">*</span>O[i] <span style="color:#f92672">-</span> e<span style="color:#f92672">*</span>H[i] <span style="color:#f92672">-</span> f<span style="color:#f92672">*</span>M[i] <span style="color:#f92672">-</span> g<span style="color:#f92672">*</span>P[i] <span style="color:#f92672">-</span> s;
+        sum <span style="color:#f92672">+=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> O[i] <span style="color:#f92672">*</span> tmp;
+    }
+    <span style="color:#66d9ef">return</span> sum;
+}
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">gradiente</span>(<span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b, <span style="color:#66d9ef">float</span> c,<span style="color:#66d9ef">float</span> d, <span style="color:#66d9ef">float</span> e, <span style="color:#66d9ef">float</span> f, <span style="color:#66d9ef">float</span> g, <span style="color:#66d9ef">float</span> s)
+{
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> ( ; i <span style="color:#f92672">&lt;</span> TA; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">float</span> tmp <span style="color:#f92672">=</span> S[i] <span style="color:#f92672">-</span> a<span style="color:#f92672">*</span>K[i] <span style="color:#f92672">-</span> b<span style="color:#f92672">*</span>D[i] <span style="color:#f92672">-</span> c<span style="color:#f92672">*</span>A[i] <span style="color:#f92672">-</span> d<span style="color:#f92672">*</span>O[i] <span style="color:#f92672">-</span> e<span style="color:#f92672">*</span>H[i] <span style="color:#f92672">-</span> f<span style="color:#f92672">*</span>M[i] <span style="color:#f92672">-</span> g<span style="color:#f92672">*</span>P[i] <span style="color:#f92672">-</span> s;
+        sum <span style="color:#f92672">+=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> H[i] <span style="color:#f92672">*</span> tmp;
+    }
+    <span style="color:#66d9ef">return</span> sum;
+}
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">gradientf</span>(<span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b, <span style="color:#66d9ef">float</span> c,<span style="color:#66d9ef">float</span> d, <span style="color:#66d9ef">float</span> e, <span style="color:#66d9ef">float</span> f, <span style="color:#66d9ef">float</span> g, <span style="color:#66d9ef">float</span> s)
+{
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> ( ; i <span style="color:#f92672">&lt;</span> TA; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">float</span> tmp <span style="color:#f92672">=</span> S[i] <span style="color:#f92672">-</span> a<span style="color:#f92672">*</span>K[i] <span style="color:#f92672">-</span> b<span style="color:#f92672">*</span>D[i] <span style="color:#f92672">-</span> c<span style="color:#f92672">*</span>A[i] <span style="color:#f92672">-</span> d<span style="color:#f92672">*</span>O[i] <span style="color:#f92672">-</span> e<span style="color:#f92672">*</span>H[i] <span style="color:#f92672">-</span> f<span style="color:#f92672">*</span>M[i] <span style="color:#f92672">-</span> g<span style="color:#f92672">*</span>P[i] <span style="color:#f92672">-</span> s;
+        sum <span style="color:#f92672">+=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> M[i] <span style="color:#f92672">*</span> tmp;
+    }
+    <span style="color:#66d9ef">return</span> sum;
+}
+
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">gradientg</span>(<span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b, <span style="color:#66d9ef">float</span> c,<span style="color:#66d9ef">float</span> d, <span style="color:#66d9ef">float</span> e, <span style="color:#66d9ef">float</span> f, <span style="color:#66d9ef">float</span> g, <span style="color:#66d9ef">float</span> s)
+{
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> ( ; i <span style="color:#f92672">&lt;</span> TA; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">float</span> tmp <span style="color:#f92672">=</span> S[i] <span style="color:#f92672">-</span> a<span style="color:#f92672">*</span>K[i] <span style="color:#f92672">-</span> b<span style="color:#f92672">*</span>D[i] <span style="color:#f92672">-</span> c<span style="color:#f92672">*</span>A[i] <span style="color:#f92672">-</span> d<span style="color:#f92672">*</span>O[i] <span style="color:#f92672">-</span> e<span style="color:#f92672">*</span>H[i] <span style="color:#f92672">-</span> f<span style="color:#f92672">*</span>M[i] <span style="color:#f92672">-</span> g<span style="color:#f92672">*</span>P[i] <span style="color:#f92672">-</span> s;
+        sum <span style="color:#f92672">+=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> P[i] <span style="color:#f92672">*</span> tmp;
+    }
+    <span style="color:#66d9ef">return</span> sum;
+}
+
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">gradients</span>(<span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b, <span style="color:#66d9ef">float</span> c,<span style="color:#66d9ef">float</span> d, <span style="color:#66d9ef">float</span> e, <span style="color:#66d9ef">float</span> f, <span style="color:#66d9ef">float</span> g, <span style="color:#66d9ef">float</span> s)
+{
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> ( ; i <span style="color:#f92672">&lt;</span> TA; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">float</span> tmp <span style="color:#f92672">=</span> S[i] <span style="color:#f92672">-</span> a<span style="color:#f92672">*</span>K[i] <span style="color:#f92672">-</span> b<span style="color:#f92672">*</span>D[i] <span style="color:#f92672">-</span> c<span style="color:#f92672">*</span>A[i] <span style="color:#f92672">-</span> d<span style="color:#f92672">*</span>O[i] <span style="color:#f92672">-</span> e<span style="color:#f92672">*</span>H[i] <span style="color:#f92672">-</span> f<span style="color:#f92672">*</span>M[i] <span style="color:#f92672">-</span> g<span style="color:#f92672">*</span>P[i] <span style="color:#f92672">-</span> s;
+        sum <span style="color:#f92672">+=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> tmp;
+    }
+    <span style="color:#66d9ef">return</span> sum;
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">outputKDAS</span>(<span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b, <span style="color:#66d9ef">float</span> c,<span style="color:#66d9ef">float</span> d, <span style="color:#66d9ef">float</span> e, <span style="color:#66d9ef">float</span> f, <span style="color:#66d9ef">float</span> g, <span style="color:#66d9ef">float</span> s)
+{
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> ( ; i <span style="color:#f92672">&lt;</span> TA; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">float</span> tmp <span style="color:#f92672">=</span>  a<span style="color:#f92672">*</span>K[i] <span style="color:#f92672">+</span> b<span style="color:#f92672">*</span>D[i] <span style="color:#f92672">+</span> c<span style="color:#f92672">*</span>A[i] <span style="color:#f92672">+</span> d<span style="color:#f92672">*</span>O[i] <span style="color:#f92672">+</span> e<span style="color:#f92672">*</span>H[i] <span style="color:#f92672">+</span> f<span style="color:#f92672">*</span>M[i] <span style="color:#f92672">+</span> g<span style="color:#f92672">*</span>P[i] <span style="color:#f92672">+</span> s;
+        printf(<span style="color:#e6db74">&#34;%4.1f: %4.0f, %4.0f, %4.0f, %4.1f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, tmp, K[i], D[i], A[i], S[i]);
+    }
+}
+
+
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">loss</span>(<span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b, <span style="color:#66d9ef">float</span> c,<span style="color:#66d9ef">float</span> d, <span style="color:#66d9ef">float</span> e, <span style="color:#66d9ef">float</span> f, <span style="color:#66d9ef">float</span> g, <span style="color:#66d9ef">float</span> s)
+{
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> ( ; i <span style="color:#f92672">&lt;</span> TA; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">float</span> tmp <span style="color:#f92672">=</span>  a<span style="color:#f92672">*</span>K[i] <span style="color:#f92672">+</span> b<span style="color:#f92672">*</span>D[i] <span style="color:#f92672">+</span> c<span style="color:#f92672">*</span>A[i] <span style="color:#f92672">+</span> d<span style="color:#f92672">*</span>O[i] <span style="color:#f92672">+</span> e<span style="color:#f92672">*</span>H[i] <span style="color:#f92672">+</span> f<span style="color:#f92672">*</span>M[i] <span style="color:#f92672">+</span> g<span style="color:#f92672">*</span>P[i]  <span style="color:#f92672">+</span> s <span style="color:#f92672">-</span> S[i];
+        sum <span style="color:#f92672">+=</span> (tmp <span style="color:#f92672">*</span> tmp);
+    }
+    <span style="color:#66d9ef">return</span> sum;
+}
+
+
+<span style="color:#66d9ef">float</span> step1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.000001</span>;
+<span style="color:#66d9ef">float</span> step2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.000001</span>;
+<span style="color:#66d9ef">float</span> step3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.000001</span>;
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+
+    <span style="color:#66d9ef">float</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">float</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">float</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">float</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>;
+    <span style="color:#66d9ef">float</span> e <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>;
+    <span style="color:#66d9ef">float</span> f <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>;
+    <span style="color:#66d9ef">float</span> g <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>;
+    <span style="color:#66d9ef">float</span> s <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+
+    <span style="color:#66d9ef">float</span> ga <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> gb <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> gc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> gd <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> ge <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> gf <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> gg <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> gs <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+
+    <span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000000</span>;
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> ( ; i <span style="color:#f92672">&lt;</span> t; <span style="color:#f92672">++</span>i) {
+        ga <span style="color:#f92672">=</span> gradienta(a,b,c,d,e,f,g,s);
+        gb <span style="color:#f92672">=</span> gradientb(a,b,c,d,e,f,g,s);
+        gc <span style="color:#f92672">=</span> gradientc(a,b,c,d,e,f,g,s);
+        gd <span style="color:#f92672">=</span> gradientd(a,b,c,d,e,f,g,s);
+        ge <span style="color:#f92672">=</span> gradiente(a,b,c,d,e,f,g,s);
+        gf <span style="color:#f92672">=</span> gradientf(a,b,c,d,e,f,g,s);
+        gg <span style="color:#f92672">=</span> gradientg(a,b,c,d,e,f,g,s);
+        gs <span style="color:#f92672">=</span> gradients(a,b,c,d,e,f,g,s);
+
+        a <span style="color:#f92672">=</span> a <span style="color:#f92672">-</span> step1 <span style="color:#f92672">*</span> ga ;
+        b <span style="color:#f92672">=</span> b <span style="color:#f92672">-</span> step1 <span style="color:#f92672">*</span> gb ;
+        c <span style="color:#f92672">=</span> c <span style="color:#f92672">-</span> step1 <span style="color:#f92672">*</span> gc ;
+        d <span style="color:#f92672">=</span> d <span style="color:#f92672">-</span> step2 <span style="color:#f92672">*</span> gd ;
+        e <span style="color:#f92672">=</span> e <span style="color:#f92672">-</span> step2 <span style="color:#f92672">*</span> ge ;
+        f <span style="color:#f92672">=</span> f <span style="color:#f92672">-</span> step2 <span style="color:#f92672">*</span> gf ;
+        f <span style="color:#f92672">=</span> g <span style="color:#f92672">-</span> step2 <span style="color:#f92672">*</span> gg ;
+        s <span style="color:#f92672">=</span> s <span style="color:#f92672">-</span> step3 <span style="color:#f92672">*</span> gs ;
+        printf(<span style="color:#e6db74">&#34;%d:S= %f+%fK+%fD+%fA+%fO+%fH+%fM+%fP</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,i,s,a,b,c,d,e,f,g);
+    };
+    printf(<span style="color:#e6db74">&#34;result: S= %f+%fK+%fD+%fA+%fO+%fH+%fM+%fP, loss = %f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,s,a,b,c,d,e,f,g,loss(a,b,c,d,e,f,g,s));
+    printf(<span style="color:#e6db74">&#34;ga = %f,gb = %f,gc = %f,gd = %f,ge = %f,gf = %f,gg=%f,gs=%f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,a,b,c,d,e,f,g,s);
+    outputKDAS(a,b,c,d,e,f,g,s);
+
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>测试源代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> TA <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>;
+
+<span style="color:#75715e">//testing data 数据来源：任意6名好友（不同段位）游戏中获胜方数据
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> K[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">16</span>,<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">20</span>,<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">14</span>};
+<span style="color:#66d9ef">float</span> D[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">7</span>};
+<span style="color:#66d9ef">float</span> A[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">19</span>,<span style="color:#ae81ff">24</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">15</span>,<span style="color:#ae81ff">13</span>,<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">17</span>,<span style="color:#ae81ff">15</span>,<span style="color:#ae81ff">17</span>,<span style="color:#ae81ff">13</span>};
+<span style="color:#66d9ef">float</span> S[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">6.0</span>,<span style="color:#ae81ff">5.6</span>,<span style="color:#ae81ff">7.6</span>,<span style="color:#ae81ff">13.9</span>,<span style="color:#ae81ff">2.4</span>, <span style="color:#ae81ff">8.5</span>,<span style="color:#ae81ff">5.8</span>,<span style="color:#ae81ff">9.7</span>,<span style="color:#ae81ff">10.1</span>,<span style="color:#ae81ff">5.7</span>, <span style="color:#ae81ff">10.8</span>,<span style="color:#ae81ff">8.5</span>,<span style="color:#ae81ff">9.1</span>,<span style="color:#ae81ff">5.7</span>,<span style="color:#ae81ff">12.1</span>, <span style="color:#ae81ff">6.5</span>,<span style="color:#ae81ff">8.4</span>,<span style="color:#ae81ff">5.4</span>,<span style="color:#ae81ff">9.0</span>,<span style="color:#ae81ff">6.4</span>, <span style="color:#ae81ff">12.6</span>,<span style="color:#ae81ff">11.2</span>,<span style="color:#ae81ff">7.7</span>,<span style="color:#ae81ff">9.1</span>,<span style="color:#ae81ff">11.3</span>, <span style="color:#ae81ff">5.2</span>,<span style="color:#ae81ff">7.2</span>,<span style="color:#ae81ff">8.4</span>,<span style="color:#ae81ff">9.1</span>,<span style="color:#ae81ff">11.6</span>};
+<span style="color:#66d9ef">float</span> O[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">16.2</span>,<span style="color:#ae81ff">17.2</span>,<span style="color:#ae81ff">18.6</span>,<span style="color:#ae81ff">39.2</span>,<span style="color:#ae81ff">8.8</span>, <span style="color:#ae81ff">21.1</span>,<span style="color:#ae81ff">8.4</span>,<span style="color:#ae81ff">28.2</span>,<span style="color:#ae81ff">29.7</span>,<span style="color:#ae81ff">12.6</span>, <span style="color:#ae81ff">24.3</span>,<span style="color:#ae81ff">13.6</span>,<span style="color:#ae81ff">20.5</span>,<span style="color:#ae81ff">11.9</span>,<span style="color:#ae81ff">29.7</span>, <span style="color:#ae81ff">17.4</span>,<span style="color:#ae81ff">20.7</span>,<span style="color:#ae81ff">15.2</span>,<span style="color:#ae81ff">28.5</span>,<span style="color:#ae81ff">18.2</span>, <span style="color:#ae81ff">25.7</span>,<span style="color:#ae81ff">22.7</span>,<span style="color:#ae81ff">16.4</span>,<span style="color:#ae81ff">16.7</span>,<span style="color:#ae81ff">18.5</span>, <span style="color:#ae81ff">14.8</span>,<span style="color:#ae81ff">18.9</span>,<span style="color:#ae81ff">21.0</span>,<span style="color:#ae81ff">17.7</span>,<span style="color:#ae81ff">27.6</span>};
+<span style="color:#66d9ef">float</span> H[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">14.8</span>,<span style="color:#ae81ff">18.8</span>,<span style="color:#ae81ff">24.1</span>,<span style="color:#ae81ff">29.8</span>,<span style="color:#ae81ff">12.5</span>, <span style="color:#ae81ff">23.2</span>,<span style="color:#ae81ff">30.5</span>,<span style="color:#ae81ff">15.5</span>,<span style="color:#ae81ff">12.3</span>,<span style="color:#ae81ff">18.5</span>, <span style="color:#ae81ff">25.2</span>,<span style="color:#ae81ff">25.9</span>,<span style="color:#ae81ff">22.2</span>,<span style="color:#ae81ff">12.8</span>,<span style="color:#ae81ff">13.9</span>, <span style="color:#ae81ff">19.4</span>,<span style="color:#ae81ff">26.4</span>,<span style="color:#ae81ff">14.9</span>,<span style="color:#ae81ff">19.5</span>,<span style="color:#ae81ff">19.8</span>, <span style="color:#ae81ff">18.2</span>,<span style="color:#ae81ff">30.4</span>,<span style="color:#ae81ff">14.8</span>,<span style="color:#ae81ff">19.7</span>,<span style="color:#ae81ff">16.9</span>, <span style="color:#ae81ff">18.4</span>,<span style="color:#ae81ff">11.2</span>,<span style="color:#ae81ff">15.2</span>,<span style="color:#ae81ff">36.6</span>,<span style="color:#ae81ff">18.6</span>};
+<span style="color:#66d9ef">float</span> M[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">18.3</span>,<span style="color:#ae81ff">19.7</span>,<span style="color:#ae81ff">16.9</span>,<span style="color:#ae81ff">26.0</span>,<span style="color:#ae81ff">19.1</span>, <span style="color:#ae81ff">21.5</span>,<span style="color:#ae81ff">15.0</span>,<span style="color:#ae81ff">18.7</span>,<span style="color:#ae81ff">23.8</span>,<span style="color:#ae81ff">21.1</span>, <span style="color:#ae81ff">21.9</span>,<span style="color:#ae81ff">17.8</span>,<span style="color:#ae81ff">19.3</span>,<span style="color:#ae81ff">17.4</span>,<span style="color:#ae81ff">23.7</span>, <span style="color:#ae81ff">23.5</span>,<span style="color:#ae81ff">20.0</span>,<span style="color:#ae81ff">17.9</span>,<span style="color:#ae81ff">21.2</span>,<span style="color:#ae81ff">17.4</span>, <span style="color:#ae81ff">20.2</span>,<span style="color:#ae81ff">21.4</span>,<span style="color:#ae81ff">17.1</span>,<span style="color:#ae81ff">18.2</span>,<span style="color:#ae81ff">23.1</span>, <span style="color:#ae81ff">23.1</span>,<span style="color:#ae81ff">18.4</span>,<span style="color:#ae81ff">19.7</span>,<span style="color:#ae81ff">16.8</span>,<span style="color:#ae81ff">22.1</span>};
+<span style="color:#66d9ef">float</span> P[] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">50.0</span>,<span style="color:#ae81ff">22.7</span>,<span style="color:#ae81ff">59.1</span>,<span style="color:#ae81ff">72.7</span>,<span style="color:#ae81ff">13.6</span>, <span style="color:#ae81ff">46.2</span>,<span style="color:#ae81ff">53.8</span>,<span style="color:#ae81ff">74.4</span>,<span style="color:#ae81ff">56.4</span>,<span style="color:#ae81ff">53.8</span>, <span style="color:#ae81ff">58.3</span>,<span style="color:#ae81ff">55.6</span>,<span style="color:#ae81ff">50.0</span>,<span style="color:#ae81ff">36.1</span>,<span style="color:#ae81ff">66.7</span>, <span style="color:#ae81ff">31.0</span>,<span style="color:#ae81ff">52.4</span>,<span style="color:#ae81ff">28.6</span>,<span style="color:#ae81ff">61.9</span>,<span style="color:#ae81ff">57.1</span>, <span style="color:#ae81ff">54.2</span>,<span style="color:#ae81ff">45.8</span>,<span style="color:#ae81ff">29.2</span>,<span style="color:#ae81ff">37.5</span>,<span style="color:#ae81ff">50.0</span>, <span style="color:#ae81ff">37.2</span>,<span style="color:#ae81ff">53.5</span>,<span style="color:#ae81ff">53.5</span>,<span style="color:#ae81ff">60.5</span>,<span style="color:#ae81ff">62.8</span>};
+
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">loss</span>(<span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b, <span style="color:#66d9ef">float</span> c,<span style="color:#66d9ef">float</span> d, <span style="color:#66d9ef">float</span> e, <span style="color:#66d9ef">float</span> f, <span style="color:#66d9ef">float</span> g, <span style="color:#66d9ef">float</span> s)
+{
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">float</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> ( ; i <span style="color:#f92672">&lt;</span> TA; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">float</span> tmp <span style="color:#f92672">=</span>  a<span style="color:#f92672">*</span>K[i] <span style="color:#f92672">+</span> b<span style="color:#f92672">*</span>D[i] <span style="color:#f92672">+</span> c<span style="color:#f92672">*</span>A[i] <span style="color:#f92672">+</span> d<span style="color:#f92672">*</span>O[i] <span style="color:#f92672">+</span> e<span style="color:#f92672">*</span>H[i] <span style="color:#f92672">+</span> f<span style="color:#f92672">*</span>M[i] <span style="color:#f92672">+</span> g<span style="color:#f92672">*</span>P[i]  <span style="color:#f92672">+</span> s <span style="color:#f92672">-</span> S[i];
+        sum <span style="color:#f92672">+=</span> (tmp <span style="color:#f92672">*</span> tmp);
+    }
+    <span style="color:#66d9ef">return</span> sum;
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">outputKDAS</span>(<span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b, <span style="color:#66d9ef">float</span> c,<span style="color:#66d9ef">float</span> d, <span style="color:#66d9ef">float</span> e, <span style="color:#66d9ef">float</span> f, <span style="color:#66d9ef">float</span> g, <span style="color:#66d9ef">float</span> s)
+{
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> ( ; i <span style="color:#f92672">&lt;</span> TA; <span style="color:#f92672">++</span>i) {
+        <span style="color:#66d9ef">float</span> tmp <span style="color:#f92672">=</span>  a<span style="color:#f92672">*</span>K[i] <span style="color:#f92672">+</span> b<span style="color:#f92672">*</span>D[i] <span style="color:#f92672">+</span> c<span style="color:#f92672">*</span>A[i] <span style="color:#f92672">+</span> d<span style="color:#f92672">*</span>O[i] <span style="color:#f92672">+</span> e<span style="color:#f92672">*</span>H[i] <span style="color:#f92672">+</span> f<span style="color:#f92672">*</span>M[i] <span style="color:#f92672">+</span> g<span style="color:#f92672">*</span>P[i] <span style="color:#f92672">+</span> s;
+        printf(<span style="color:#e6db74">&#34;%4.1f: %4.0f, %4.0f, %4.0f, %4.1f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, tmp, K[i], D[i], A[i], S[i]);
+    }
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    <span style="color:#75715e">//2.688904+0.203089K+-0.413427D+0.121452A+0.138244O+0.090832H+0.010111M+0.010000P
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">float</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.203089</span>;
+    <span style="color:#66d9ef">float</span> b <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">0.413427</span>;
+    <span style="color:#66d9ef">float</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.121452</span>;
+    <span style="color:#66d9ef">float</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.138244</span>;
+    <span style="color:#66d9ef">float</span> e <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.090832</span>;
+    <span style="color:#66d9ef">float</span> f <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.010111</span>;
+    <span style="color:#66d9ef">float</span> g <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.010000</span>;
+    <span style="color:#66d9ef">float</span> s <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.688904</span>;
+    printf(<span style="color:#e6db74">&#34;testing data:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    outputKDAS(a,b,c,d,e,f,g,s);
+    printf(<span style="color:#e6db74">&#34;Loss = %f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,loss(a,b,c,d,e,f,g,s));
+
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/machine-learning"><span class="tag">Machine Learning</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/gradient-descent"><span class="tag">Gradient Descent</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1398</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2021 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

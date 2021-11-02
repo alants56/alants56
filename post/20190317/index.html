@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>非参数估计——Parzen窗方法与k近邻估计</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  <meta name="description" content=" 在做分类问题时，有时候需要使用样本的概率密度函数来求其后验概率。但是很多情况下并不知道其概率密度函数的形式（即样本的分布未知），此时就需要对样本进行非参数估计，来求解其概率密度函数。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="非参数估计——Parzen窗方法与k近邻估计">
+    <meta name="twitter:description" content=" 在做分类问题时，有时候需要使用样本的概率密度函数来求其后验概率。但是很多情况下并不知道其概率密度函数的形式（即样本的分布未知），此时就需要对样本进行非参数估计，来求解其概率密度函数。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="非参数估计——Parzen窗方法与k近邻估计">
+  <meta property="og:description" content=" 在做分类问题时，有时候需要使用样本的概率密度函数来求其后验概率。但是很多情况下并不知道其概率密度函数的形式（即样本的分布未知），此时就需要对样本进行非参数估计，来求解其概率密度函数。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20190317/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.83.1">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20190317/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">非参数估计——Parzen窗方法与k近邻估计</h1>
+      <p class="post-meta">@月光晒谷 · Mar 17, 2019 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>       在做分类问题时，有时候需要使用样本的概率密度函数来求其后验概率。但是很多情况下并不知道其概率密度函数的形式（即样本的分布未知），此时就需要对样本进行非参数估计，来求解其概率密度函数。</p>
+<p>       求解未知分布样本的概率密度函数的一种方法是：$n$个样本点中，在某点周围取一个区间$R_{n}$，计算区间$R_{n}$的体积$V_{n}$以及落在$R_{n}$中的样本的个数$k_{n}$，然后就可以求出该点处的概率密度：</p>
+<p>$$p(\boldsymbol{x})=\frac{(k_{n}/n)}{V_{n}}\quad \quad \quad(1)$$</p>
+<p>       Parzen窗方法就是一种非参数估计的方法，它的主要思想是选取一个窗函数$\varphi(\boldsymbol{u})$，通过该窗函数来统计落在所取区间中的样本个数$k_{n}$，然后通过公式(1)得到某个点的概率密度。一种窗函数$\varphi(\boldsymbol{u})$定义如下：</p>
+<p>$$\varphi(\boldsymbol{u})= \begin{cases}
+\ 1  \qquad |u_{j}| \leq 0.5;  \qquad j = 1,&hellip;,d  \\\\<br>
+\ 0  \qquad 其它 \end{cases}$$</p>
+<p>其中$d$表示空间的维度。若取区间$R_{n}$为一个超立方体，它的边长为$h_{n}$，则可以通过如下表达式计算$k_{n}$：</p>
+<p>$$k_{n} = \sum _{i=1} ^{n}\varphi(\frac {\boldsymbol{x}- \boldsymbol{x_{i}}}{h_{n}})$$</p>
+<p>因此样本中某点$\boldsymbol{x}$处的概率密度为：</p>
+<p>$$p(\boldsymbol{x}) = \frac{1}{n} \sum _{i=1} ^{n} \frac{1}{h^d _{n}} \varphi(\frac {\boldsymbol{x}- \boldsymbol{x_{i}}}{h_{n}})$$</p>
+<p>       Parzen窗方法的代码实现如下，其中参数$Data$为样本总体，$X$为需要求概率密度的点坐标，$h$为参数，$d$为样本空间的维度，$f$为窗函数$\varphi(\boldsymbol{u})$。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Parzen</span>(Data, X, h, d, f) :
+    Prob <span style="color:#f92672">=</span> []
+    n <span style="color:#f92672">=</span> len(Data)
+    <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> X :
+        p <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
+        <span style="color:#66d9ef">for</span> s <span style="color:#f92672">in</span> Data :
+            p <span style="color:#f92672">+=</span> f((s<span style="color:#f92672">-</span>x)<span style="color:#f92672">/</span>h)
+        Prob<span style="color:#f92672">.</span>append(p <span style="color:#f92672">/</span> (n <span style="color:#f92672">*</span> (h<span style="color:#f92672">**</span>d)))
+    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array(Prob) 
+</code></pre></div><p>如下代码是上述$\varphi(\boldsymbol{u})$函数的实现，即判断当前样本点是否落在了所取的超立方体空间中：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">cube</span>(u) :
+    T <span style="color:#f92672">=</span> abs(u)
+    <span style="color:#66d9ef">if</span> all(t <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0.5</span> <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> T) :
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">else</span> :
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><p>       窗函数$\varphi(\boldsymbol{u})$的形式可以有很多方式，但必须满足如下的性质，以此保证最终求解的概率密度函数是合理的。</p>
+<p>$$\varphi(\boldsymbol{u}) \geq 0 \quad 以及 \quad  \int \varphi(\boldsymbol{u})d\boldsymbol{u} = 1$$</p>
+<p>例如当样本空间为一维时，我们可以也定义窗函数是一个高斯函数：</p>
+<p>$$\varphi(\boldsymbol{u})= \frac{1}{\sqrt{2 \pi}}  e^{-u^{2}/2}$$</p>
+<p>       Parzen窗方法是给定区间的范围$h_{n}$，求落在区间的样本点个数$k_{n}$，以此估计概率密度。除了Parzen窗方法外，k近邻估计也可以实现对概率密度函数的估计，与Parzen窗方法不同的是，k近邻估计是先给定要取的样本点的个数$k_{n}$，然后求点$\boldsymbol{x}$附近包含$k_{n}$个样本的区间的范围$h_{n}$，最后通过公式(1)求解概率密度。如下是k近邻估计的实现代码，其中参数$f$为求解两个点直接距离的函数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">knn</span>(Data, X, kn, d, f) :
+    t <span style="color:#f92672">=</span> kn <span style="color:#f92672">/</span> len(Data)
+    Prob <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> X :
+        dis <span style="color:#f92672">=</span> []
+        <span style="color:#66d9ef">for</span> s <span style="color:#f92672">in</span> Data :
+            dis<span style="color:#f92672">.</span>append(f(x,s))
+        dis<span style="color:#f92672">.</span>sort()
+    	v <span style="color:#f92672">=</span> (dis[kn] <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">**</span> d
+        Prob<span style="color:#f92672">.</span>append(t<span style="color:#f92672">/</span>v)
+    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array(Prob)
+</code></pre></div><p>        下图是通过Parzen窗方法和k近邻估计对某个样本（二维正态分布样本随机采样获得）概率密度函数的估计结果。</p>
+<p><img src="http://liuao.tech/images/nonparam_2d.png" alt="nonparam"></p>
+<p>以上两种非参数估计的Python实现可以在我的<a href="https://github.com/alants56/MachineLearning/tree/master/Nonparam">GitHub</a>中获取到。</p>
+<hr>
+<p>1.参考文档：</p>
+<p>       [1]. 模式分类              Richard O.Duda 等著       李宏东 等译</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/machine-learning"><span class="tag">Machine Learning</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>956</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2021 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

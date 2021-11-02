@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>手写数字识别（一）</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  <meta name="description" content=" 手写数字识别是属于机器学习中的分类问题，它有许多的机器学习的算法可以解决，如SVM，CNN等。最近在Kaggle上看到这一问题，并且恰巧之前有学过一些卷积神经网络（Convolutional Neural Network），于是打算用Python写一个简单CNN，实现手写数字识别器。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="手写数字识别（一）">
+    <meta name="twitter:description" content=" 手写数字识别是属于机器学习中的分类问题，它有许多的机器学习的算法可以解决，如SVM，CNN等。最近在Kaggle上看到这一问题，并且恰巧之前有学过一些卷积神经网络（Convolutional Neural Network），于是打算用Python写一个简单CNN，实现手写数字识别器。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="手写数字识别（一）">
+  <meta property="og:description" content=" 手写数字识别是属于机器学习中的分类问题，它有许多的机器学习的算法可以解决，如SVM，CNN等。最近在Kaggle上看到这一问题，并且恰巧之前有学过一些卷积神经网络（Convolutional Neural Network），于是打算用Python写一个简单CNN，实现手写数字识别器。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20180504/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.83.1">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20180504/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">手写数字识别（一）</h1>
+      <p class="post-meta">@月光晒谷 · May 4, 2018 · 3 min read</p>
+    </header>
+    <article class="post-content"><p>      手写数字识别是属于机器学习中的分类问题，它有许多的机器学习的算法可以解决，如SVM，CNN等。最近在<a href="https://www.kaggle.com">Kaggle</a>上看到这一问题，并且恰巧之前有学过一些卷积神经网络（Convolutional Neural Network），于是打算用Python写一个简单CNN，实现手写数字识别器。</p>
+<p>      首先建立一个手写识别器的模型（如下图），它由输入层（input），采样层（max pooling），特征提取层（convolution）和连接层（connected）构成。</p>
+<p><img src="http://liuao.tech/images/DR0.png" alt="DR0"></p>
+<p>      手写数字的数据来源于Kaggle上的题目：<a href="https://www.kaggle.com/c/digit-recognizer">Digit Recognizer</a>。它的每一项数据是由一个28<em>28个像素点组成。因此我们可将输入层的数据定义为一个28</em>28的矩阵A，然后通过处理矩阵A来最终判断它可能代表哪一个数字。</p>
+<p><img src="http://liuao.tech/images/digit.png" alt="digit"></p>
+<p>      一般情况下，一张图片缩小一定的倍数是不会影响到识别的。而考虑到输入的每一个矩阵A需要处理的数据有784项。在训练时，这么多数据需要很长时间才能处理完。因此我们可以先做一次采样，将28<em>28的矩阵A转化为一个14</em>14的矩阵B，这样需要处理的数据就缩减为原来的1/4。即，max pooling层所做的就是采样，它的具体实现算法如下图，取每个2*2矩阵中最大的那个数。</p>
+<p><img src="http://liuao.tech/images/DR1.png" alt="DR1"></p>
+<p>      对于convolution层，它做的主要工作是对图片的某一个特征进行提取。具体的算法如下图，对数据矩阵B特定部分与特征矩阵F进行相乘（卷积运算），若原始数据与特征矩阵越匹配，则计算出的结果越大。通过不同的特征矩阵F分别提起出图片的不同特征，而F类似是一个滤波器，只留下特定的信息。在不同的问题中，特征矩阵F一般是不同的，可以通过对数据的不断学习，得出一些比较好的特征矩阵F。但是在下面所实现的Python代码中，直接定义了四个值固定的特征矩阵,而并没有通过学习得到特征矩阵F，主要是简化实现CNN的代码。</p>
+<p><img src="http://liuao.tech/images/DR2.png" alt="DR2"></p>
+<p>      当特征提取完成后，我们可以根据提取的数据进行分类了。即我们通过connected层计算出来分类结果。connected内部的结构如下图所示，它有十个神经元分别表示0到9，它们各自都有144个输入，通过144个输入与不同的权值计算，然后通过一个激励函数得出结果，结果最高的那个神经元的序号为手写数字识别的最终输出。</p>
+<p><img src="http://liuao.tech/images/DR3.png" alt="DR3"></p>
+<p>      我们对图中的结构通过数学公式来定义，输入x与输出y之间的关系如下式。因此，需要机器学习的就是参数w和参数b。对于这两个参数可以借用梯度下降的算法来实现。首先定义损失函数E，然后需要分别对w和b求导，最后根据导数值不断更新参数w和b，使得损失函数E取到最小值。</p>
+<p><img src="http://liuao.tech/images/DR4.png" alt="DR4"></p>
+<p>      通过Python实现上述模型，使用Kaggle上<a href="https://www.kaggle.com/c/digit-recognizer">Digit Recognizer</a>的训练集进行学习，最终在训练集上得到的正确率为86.04%。在Kaggle上的测试集所得到的正确率为85.37%。对于上述模型，有几个方面可以进一步优化，从而提高正确率：一是特征矩阵可以通过机器学习的方式来进行选择,此时需要借用一些算法计算梯度来更新特征矩阵，如BP算法；二是可以增加多层convolution和max pooling层；三是本模型中的connected层只有一层结构，可以增加多层神经元，而在一般CNN中Fully Connected Feedforward Network层，就是通过多层神经网络来实现。</p>
+<p><img src="http://liuao.tech/images/DRS.png" alt="DRS"></p>
+<hr>
+<p>源代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> math
+<span style="color:#f92672">import</span> pandas
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">max_num</span>(a,b) :
+        <span style="color:#66d9ef">if</span> a <span style="color:#f92672">&gt;</span> b :
+                <span style="color:#66d9ef">return</span> a
+        <span style="color:#66d9ef">else</span> :
+                <span style="color:#66d9ef">return</span> b
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">max_pooling</span>(A, n) :
+        B <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((n,n))
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n) :
+                <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(n) :
+                        a <span style="color:#f92672">=</span> max_num(A[<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>i] [ j<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>],  A[<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>i] [ j<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>])
+                        b <span style="color:#f92672">=</span> max_num(A[<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] [ j<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>], A[<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> ] [j<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>])
+                        B[i,j] <span style="color:#f92672">=</span> max_num(a,b)
+        <span style="color:#66d9ef">return</span> B
+        
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">converlution</span>(A, B, n, s) :
+        C <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((n,n))
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n) :
+                <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(n) :
+                        C[i][j] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum(A[i:i<span style="color:#f92672">+</span>s, j:j<span style="color:#f92672">+</span>s] <span style="color:#f92672">*</span> B)
+        <span style="color:#66d9ef">return</span> C
+     
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sigmoid</span>(x) :
+        c <span style="color:#f92672">=</span> math<span style="color:#f92672">.</span>e<span style="color:#f92672">**</span>(<span style="color:#f92672">-</span>x)
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> c)
+        
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f_sigmoid</span>(y) :
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(y)) :
+                y[i] <span style="color:#f92672">=</span> sigmoid(y[i])
+        <span style="color:#66d9ef">return</span> y
+        
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">cnetwork</span>(x, w, b) :
+        y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">10</span>)
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>) :
+                <span style="color:#66d9ef">for</span> h <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">144</span>) :
+                        y[i] <span style="color:#f92672">+=</span> x[h] <span style="color:#f92672">*</span> w[h][i] 
+                y[i] <span style="color:#f92672">+=</span> b[i]        
+        y <span style="color:#f92672">=</span> f_sigmoid(y)
+        <span style="color:#66d9ef">return</span> y
+ 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">max_array</span>(y) :
+        n <span style="color:#f92672">=</span> len(y)
+        t <span style="color:#f92672">=</span> y[<span style="color:#ae81ff">0</span>]
+        j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n) :
+                <span style="color:#66d9ef">if</span> t <span style="color:#f92672">&lt;</span> y[i] :
+                        t <span style="color:#f92672">=</span> y[i]
+                        j <span style="color:#f92672">=</span> i
+        <span style="color:#66d9ef">return</span> j               
+         
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_w</span>(w, step, z, y, r) :
+        d <span style="color:#f92672">=</span> y <span style="color:#f92672">-</span> r
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">144</span>) :
+                <span style="color:#66d9ef">for</span> h <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>) :
+                        <span style="color:#75715e">#并未乘上sigmoid的导数值</span>
+                        <span style="color:#75715e">#原因是sigmoid函数除了在0附近的导数之外，其余地方的导数都很小，导致收敛会非常慢，而sigmoid的导数都大于零，因此忽略其数值</span>
+                        w[i][h] <span style="color:#f92672">=</span> w[i][h] <span style="color:#f92672">-</span> step <span style="color:#f92672">*</span> d[h] <span style="color:#f92672">*</span> x[i]
+        <span style="color:#66d9ef">return</span> w
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_b</span>(b, step, y, r) :
+        d <span style="color:#f92672">=</span> y <span style="color:#f92672">-</span> r
+        <span style="color:#66d9ef">for</span> h <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>) :
+                b[h] <span style="color:#f92672">=</span> b[h] <span style="color:#f92672">-</span> step <span style="color:#f92672">*</span> d[h]
+        <span style="color:#66d9ef">return</span> b
+        
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span> :
+        
+        step1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>
+        step2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>
+        data <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</span>DataFrame(pandas<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;train.csv&#34;</span>))
+        Y <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">0</span>]
+        X <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">1</span>:]
+        num <span style="color:#f92672">=</span> len(Y) 
+        
+    
+        f1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>],[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>],[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>]])
+        f2 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>],[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>],[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]])
+        f3 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>],[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>],[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]])   
+        f4 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>],[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>],[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]])   
+     
+        w <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random((<span style="color:#ae81ff">144</span>, <span style="color:#ae81ff">10</span>))
+        b <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random(<span style="color:#ae81ff">10</span>)
+        
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Training ...&#34;</span>)
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>) :
+                <span style="color:#66d9ef">print</span>(j)
+                <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(num) :
+                        A <span style="color:#f92672">=</span> max_pooling(X[i,:]<span style="color:#f92672">.</span>reshape((<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>)), <span style="color:#ae81ff">14</span>)
+                        B1 <span style="color:#f92672">=</span> converlution(A, f1, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">3</span>)
+                        B2 <span style="color:#f92672">=</span> converlution(A, f2, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">3</span>)
+                        B3 <span style="color:#f92672">=</span> converlution(A, f3, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">3</span>)
+                        B4 <span style="color:#f92672">=</span> converlution(A, f4, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">3</span>)
+                        C1 <span style="color:#f92672">=</span> max_pooling(B1, <span style="color:#ae81ff">6</span>)
+                        C2 <span style="color:#f92672">=</span> max_pooling(B2, <span style="color:#ae81ff">6</span>)
+                        C3 <span style="color:#f92672">=</span> max_pooling(B3, <span style="color:#ae81ff">6</span>)
+                        C4 <span style="color:#f92672">=</span> max_pooling(B4, <span style="color:#ae81ff">6</span>)
+                        x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>append(np<span style="color:#f92672">.</span>append(C1<span style="color:#f92672">.</span>flatten(),C2<span style="color:#f92672">.</span>flatten()), np<span style="color:#f92672">.</span>append(C3<span style="color:#f92672">.</span>flatten(),C4<span style="color:#f92672">.</span>flatten()))
+                        y <span style="color:#f92672">=</span> cnetwork(x, w, b)                            
+                        r <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">10</span>)
+                        r[Y[i]] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                        b <span style="color:#f92672">=</span> update_b(b, step1, y,r)
+                        w <span style="color:#f92672">=</span> update_w(w, step2, x, y,r)
+                step1 <span style="color:#f92672">=</span> step1<span style="color:#f92672">/</span><span style="color:#ae81ff">10</span>
+                step2 <span style="color:#f92672">=</span> step2<span style="color:#f92672">/</span><span style="color:#ae81ff">10</span>
+                
+        error <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(num) :
+                A <span style="color:#f92672">=</span> max_pooling(X[j,:]<span style="color:#f92672">.</span>reshape((<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>)), <span style="color:#ae81ff">14</span>)
+                B1 <span style="color:#f92672">=</span> converlution(A, f1, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">3</span>)
+                B2 <span style="color:#f92672">=</span> converlution(A, f2, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">3</span>)
+                B3 <span style="color:#f92672">=</span> converlution(A, f3, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">3</span>)
+                B4 <span style="color:#f92672">=</span> converlution(A, f4, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">3</span>)
+                C1 <span style="color:#f92672">=</span> max_pooling(B1, <span style="color:#ae81ff">6</span>)
+                C2 <span style="color:#f92672">=</span> max_pooling(B2, <span style="color:#ae81ff">6</span>)
+                C3 <span style="color:#f92672">=</span> max_pooling(B3, <span style="color:#ae81ff">6</span>)
+                C4 <span style="color:#f92672">=</span> max_pooling(B4, <span style="color:#ae81ff">6</span>)
+                x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>append(np<span style="color:#f92672">.</span>append(C1<span style="color:#f92672">.</span>flatten(),C2<span style="color:#f92672">.</span>flatten()), np<span style="color:#f92672">.</span>append(C3<span style="color:#f92672">.</span>flatten(),C4<span style="color:#f92672">.</span>flatten()))
+                y <span style="color:#f92672">=</span> cnetwork(x, w, b)                                          
+                <span style="color:#66d9ef">if</span> Y[j] <span style="color:#f92672">!=</span> max_array(y) :
+                        error <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+                        
+                        
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;error:&#34;</span>)
+        <span style="color:#66d9ef">print</span>(error)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Scored:&#34;</span>)                       
+        <span style="color:#66d9ef">print</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span> error<span style="color:#f92672">/</span>num) 
+
+         
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Testing ...&#34;</span>)
+        test <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</span>DataFrame(pandas<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;test.csv&#34;</span>))
+        T <span style="color:#f92672">=</span> test<span style="color:#f92672">.</span>values
+        num <span style="color:#f92672">=</span> len(T)
+        id <span style="color:#f92672">=</span> []
+        label <span style="color:#f92672">=</span> []
+        <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(num) :
+                A <span style="color:#f92672">=</span> max_pooling(T[k,:]<span style="color:#f92672">.</span>reshape((<span style="color:#ae81ff">28</span>,<span style="color:#ae81ff">28</span>)), <span style="color:#ae81ff">14</span>)
+                B1 <span style="color:#f92672">=</span> converlution(A, f1, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">3</span>)
+                B2 <span style="color:#f92672">=</span> converlution(A, f2, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">3</span>)
+                B3 <span style="color:#f92672">=</span> converlution(A, f3, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">3</span>)
+                B4 <span style="color:#f92672">=</span> converlution(A, f4, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">3</span>)
+                C1 <span style="color:#f92672">=</span> max_pooling(B1, <span style="color:#ae81ff">6</span>)
+                C2 <span style="color:#f92672">=</span> max_pooling(B2, <span style="color:#ae81ff">6</span>)
+                C3 <span style="color:#f92672">=</span> max_pooling(B3, <span style="color:#ae81ff">6</span>)
+                C4 <span style="color:#f92672">=</span> max_pooling(B4, <span style="color:#ae81ff">6</span>)
+                x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>append(np<span style="color:#f92672">.</span>append(C1<span style="color:#f92672">.</span>flatten(),C2<span style="color:#f92672">.</span>flatten()), np<span style="color:#f92672">.</span>append(C3<span style="color:#f92672">.</span>flatten(),C4<span style="color:#f92672">.</span>flatten()))
+                y <span style="color:#f92672">=</span> cnetwork(x, w, b)                                          
+                id<span style="color:#f92672">.</span>append(k<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
+                label<span style="color:#f92672">.</span>append(max_array(y))
+        
+        save <span style="color:#f92672">=</span> pandas<span style="color:#f92672">.</span>DataFrame({<span style="color:#e6db74">&#39;ImageId&#39;</span>: id, <span style="color:#e6db74">&#39;Label&#39;</span>: label})
+        save<span style="color:#f92672">.</span>to_csv(<span style="color:#e6db74">&#39;submission.csv&#39;</span>,index <span style="color:#f92672">=</span> False,)
+</code></pre></div></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/machine-learning"><span class="tag">Machine Learning</span></a></li>
+        
+          <li><a href="http://liuao.tech/tags/convolutional-neural-network"><span class="tag">Convolutional Neural Network</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1273</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2021 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

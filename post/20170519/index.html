@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>模式匹配算法KMP</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="月光晒谷">
+  <meta name="description" content=" 在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="模式匹配算法KMP">
+    <meta name="twitter:description" content=" 在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="模式匹配算法KMP">
+  <meta property="og:description" content=" 在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：
+">
+  <meta property="og:url" content="http://liuao.tech/post/20170519/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.83.1">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20170519/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">模式匹配算法KMP</h1>
+      <p class="post-meta">@月光晒谷 · May 25, 2017 · 1 min read</p>
+    </header>
+    <article class="post-content"><p>       在字符串的操作中，对于子串的定位运算称为模式匹配。在没有进行任何优化和预先处理的情况下，查找str字符串中子串sub的的算法为：</p>
+<p>       (1)初始化字符串str和sub的两个索引i=0,j=0；(2)比较str和sub中的i和j所索引的字符；（3）若相同，i和j分别加1，继续执行第二步；（4）若不同，则将i赋值为i-j+1，j赋值为0，继续执行第二步（如下图，即将str相对于sub向前移动一位，然后继续重新比较对应的字符）；（5）最终，若索引j到达了sub的末尾时，则字符串str包含子串sub，返回sub在str中的起始位置i-len_sub；（6）否则str字符串中未出现sub子串，返回-1。具体的算法使用C语言实现如下：</p>
+<p><img src="http://liuao.tech/images/nkmp.png" alt="nkmp"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_sub_pos</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>str, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>sub)
+{
+        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">int</span> str_len <span style="color:#f92672">=</span> strlen(str);
+        <span style="color:#66d9ef">int</span> sub_len <span style="color:#f92672">=</span> strlen(sub);
+        <span style="color:#66d9ef">while</span>(i <span style="color:#f92672">&lt;</span> str_len <span style="color:#f92672">&amp;&amp;</span> j <span style="color:#f92672">&lt;</span> sub_len) {
+                <span style="color:#66d9ef">if</span> (str[i] <span style="color:#f92672">==</span> sub[j]) {
+                        <span style="color:#f92672">++</span>i;
+                        <span style="color:#f92672">++</span>j;
+                } <span style="color:#66d9ef">else</span> {
+                        i <span style="color:#f92672">=</span> i<span style="color:#f92672">-</span>j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
+                        j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+                }
+        }
+        <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">==</span> sub_len) {
+                <span style="color:#66d9ef">return</span> (i <span style="color:#f92672">-</span> sub_len);
+        } <span style="color:#66d9ef">else</span> {
+                <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+        }
+}
+</code></pre></div><p>       模式匹配算法KMP是一种预先对子串进行处理而实现优化的算法。KMP算法的思想是：当i=k，j=m，两个索引对应的字符不相同时，不需要回退i，而直接根据子串sub的特性，回退j即可。原因是：此时字符串str第k个索引之前的长度为m的字符串与字符串sub的前m个字符，已经做过比较，并且是相同的，我们只需要在sub字符串的前m-1个字符中找到另一个索引值next，保证字符串str第k个索引之前的长度为next的字符串和字符串sub的前next个字符相同，这样接下来比较i=k，而j=next处的字符即可。这里的next值只与sub字符串以及sub当前的索引值j有关，我们可以预先对sub字符串进行预处理，得到所有next的值，这样可以减少因回退i而增加的比较次数，从而优化匹配算法。</p>
+<p><img src="http://liuao.tech/images/kmp.png" alt="kmp"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_sub_pos_kmp</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>str, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>sub)
+{
+        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">int</span> next[SUB_MAX_LEN];
+        <span style="color:#66d9ef">int</span> str_len <span style="color:#f92672">=</span> strlen(str);
+        <span style="color:#66d9ef">int</span> sub_len <span style="color:#f92672">=</span> strlen(sub);
+        get_next(sub, next);
+        <span style="color:#66d9ef">while</span>(i <span style="color:#f92672">&lt;</span> str_len <span style="color:#f92672">&amp;&amp;</span> j <span style="color:#f92672">&lt;</span> sub_len) {
+                <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> str[i] <span style="color:#f92672">==</span> sub[j]) {
+                        <span style="color:#f92672">++</span>i;
+                        <span style="color:#f92672">++</span>j;
+                } <span style="color:#66d9ef">else</span> {
+                        j <span style="color:#f92672">=</span> next[j];
+                }
+        }        
+        <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">==</span> sub_len) {
+                <span style="color:#66d9ef">return</span> (i <span style="color:#f92672">-</span> sub_len); 
+        } <span style="color:#66d9ef">else</span> {
+                <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+        }
+}
+</code></pre></div><p>       那如何获取sub字符串的next值？可以通过类似递归的方式实现，首先当j=0时，next[j]=-1，表示当比较sub的第0个字符不相同时，无需next[0]值辅助，显然当j=1时，next[j]=0，表示当比较sub第1个字符不相同时，接下来比较sub的第j=next[j]，即j=0的情况。接下来假设当j=m时，next[j]=n,表示sub的前n个字符与索引m之前的前n个字符是相同的，此时：若sub[j+1]==sub[n+1],则sub的前n+1个字符与索引m+1之前的前n+1个字符是相同的，即next[j+1]=n+1;若sub[j+1]！=sub[n+1]，则sub的前n+1个字符与索引m+1之前的前n+1个字符不相同，接下来需要在前n个字符中寻找next[j]的值，即j=next[j],继续寻找。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">get_next</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>sub, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>next)
+{
+        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+        <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> strlen(sub);
+        next[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+        
+        <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> len) {
+                <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> sub[i] <span style="color:#f92672">==</span> sub[j]) {
+                        next[<span style="color:#f92672">++</span>i] <span style="color:#f92672">=</span> <span style="color:#f92672">++</span>j;         
+                } <span style="color:#66d9ef">else</span> {
+                        j <span style="color:#f92672">=</span> next[j];
+                }
+                
+        }
+}
+</code></pre></div><hr>
+<p>参考文档：</p>
+<p>       1. 数据结构（C语言版） 严蔚敏 吴伟民 著</p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/algorithm"><span class="tag">Algorithm</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>1616</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2021 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>

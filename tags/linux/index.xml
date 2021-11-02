@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on 月光晒谷</title>
+    <link>http://liuao.tech/tags/linux/</link>
+    <description>Recent content in Linux on 月光晒谷</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>©2019 | liuao.tech | All rights reserved. </copyright>
+    <lastBuildDate>Wed, 15 Feb 2017 23:59:59 +0800</lastBuildDate><atom:link href="http://liuao.tech/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux中断上下部</title>
+      <link>http://liuao.tech/post/20170215/</link>
+      <pubDate>Wed, 15 Feb 2017 23:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170215/</guid>
+      <description>&lt;p&gt;       中断是一种处理异步事件的机制。中断源触发中断信号，内核检测到当前的中断事件需要处理，则暂停当前的运行进程，转而去处理中断事件。用于处理中断事件的函数称为中断处理程序，中断处理程序的入口地址一般存放在内存中的固定位置，这样方便内核查找各个中断所对应的中断处理程序。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux设备模型小结——模块与框架</title>
+      <link>http://liuao.tech/post/20170207/</link>
+      <pubDate>Wed, 08 Feb 2017 23:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170207/</guid>
+      <description>&lt;p&gt;       在Linux内核中，模块化的设计是非常普遍的。Linux内核的一大优点就是支持模块的动态加载与移除。这让驱动的开发和调试变得相当容易，并且在实际的使用中也是非常方便的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux设备模型小结——总线</title>
+      <link>http://liuao.tech/post/20170131/</link>
+      <pubDate>Tue, 31 Jan 2017 23:59:59 +0800</pubDate>
+      
+      <guid>http://liuao.tech/post/20170131/</guid>
+      <description>&lt;p&gt;       最近一直在读Linux设备模型相关的内容，包括LKD和LDD相关的章节，也在读相关的内核源码（2.6.35）。从一开始的迷迷糊糊，到现在似乎看到了一些轮廓，因为这部分对于我来说有些抽象，决定写下目前的理解作为阶段总结。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux字符设备驱动实现——scull</title>
+      <link>http://liuao.tech/post/20161210/</link>
+      <pubDate>Sat, 10 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161210/</guid>
+      <description>&lt;p&gt;       在Linux Device Driver这本书中讲述了一个scull驱动的实现，虽然这个例子是一个很简单的字符驱动程序，但对于初学者者来说，还是有些复杂。我将其修改了一下：将该设备模型改为在内存中固定大小且连续的区域（去掉原书中复杂的数据结构），可以对其进行打开、写入数据、读出数据等操作。接下来将描述该字符设备驱动的实现过程，以及如何使用该设备。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LKD学习笔记——内核同步</title>
+      <link>http://liuao.tech/post/20161208/</link>
+      <pubDate>Thu, 08 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161208/</guid>
+      <description>&lt;p&gt;       由于Linux内核支持对称多处理器(SMP)，并且支持内核抢占，这样可以让多个进程并发的执行。当然这也带来了一些影响，就是当多个进程可以对相同的数据进行访问和操作时，会产生一些意料之外的结果。例如，在火车站的售票系统中，多个窗口发售相同车次的车票。当只有最后一张票时，多个窗口同时查询数据库（类似多处理器），发现有一张票，若此时同时出售，就会出现一张票被出售多次的现象。通常称这为竞争条件，而火车票的剩余数则为临界区。那内核如何避免这种现象发生，即防止竞争条件，就是解决内核同步问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LKD学习笔记——进程管理02</title>
+      <link>http://liuao.tech/post/20161120/</link>
+      <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161120/</guid>
+      <description>&lt;p&gt;1.进程创建&lt;/p&gt;
+&lt;p&gt;       Linux/Unix中进程创建分为两部分：1）fork()，拷贝当前进程，创建一个子进程。（父进程与子进程的区别只有PID、PPID和某些资源和统计量）;2）exec()，读取可执行的文件并将其载入地址空间开始运行。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LKD学习笔记——进程管理01</title>
+      <link>http://liuao.tech/post/20161119/</link>
+      <pubDate>Sat, 19 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161119/</guid>
+      <description>&lt;p&gt;1.进程&lt;/p&gt;
+&lt;p&gt;       进程是处于执行期间的程序以及执行该程序需要资源的总称。在操作系统中，提供了两种虚拟机制：虚拟处理器和虚拟内存。这两种抽象机制目的是让进程&amp;quot;独立&amp;quot;享有处理器以及整个内存资源。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LKD学习笔记——基础知识学习</title>
+      <link>http://liuao.tech/post/20161113/</link>
+      <pubDate>Sun, 13 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161113/</guid>
+      <description>&lt;p&gt;       虽然LKD这本书非常适合初学者学习Linux内核，但要读懂它，还是需要一些基础知识的。如果仅是了解一些Linux命令，以及一些计算机的基本知识，学习这本书时也是会很吃力的。接下来要分享我个人认为需要的基础知识，以及自己的学习路线。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LKD学习笔记——工欲善其事必先利其器</title>
+      <link>http://liuao.tech/post/20161106/</link>
+      <pubDate>Sun, 06 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20161106/</guid>
+      <description>&lt;p&gt;       LKD即Linux Kernel Development，一本介绍Linux内核的经典入门之作。大学期间，曾经多次研读该书，但总感觉自己没有真正理解其中的内容。究其原因主要是当时是以了解知道为目的，而不是理解运用为目的；另外只是在图书馆或自习室去读书，而未对照着源码进行通读。一直想着有一天可以读懂Linux内核，因此现在计划从LKD开始，每周会抽出一点时间，从零开始去学习linux内核，也会将自己的学习过程以及心得记录下来。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>再论container_of宏</title>
+      <link>http://liuao.tech/post/20160116/</link>
+      <pubDate>Sat, 16 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20160116/</guid>
+      <description>&lt;p&gt;       曾经写过一篇关&lt;a href=&#34;http://liuao.tech/post/20150404/index.html&#34;&gt;《Linux数据结构之链表》&lt;/a&gt;的文章，在这篇文章中，只是简单的分析了如何通过链表内元素的指针获取链表的指针，并没有深究。关于这个&lt;code&gt;contain_of&lt;/code&gt;宏，我有一些想法和疑问，这也是我写这篇文章的原因。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux内核数据结构之链表</title>
+      <link>http://liuao.tech/post/20150404/</link>
+      <pubDate>Sat, 04 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20150404/</guid>
+      <description>&lt;p&gt;之所以要写本文，主要是当我看到Linux内核中链表的设计，让我叹为观止。Linux实现的方式与众不同，它不是将数据结构塞入链表中，而是将链表节点塞入数据结构中。在Linux源码中，链表在头文&amp;lt;linux/list.h&amp;gt;  中声明。它的节点的原型如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>配置Linux内核源码树</title>
+      <link>http://liuao.tech/post/20150323/</link>
+      <pubDate>Mon, 23 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20150323/</guid>
+      <description>&lt;p&gt;        最近正准备学习《Linux设备驱动程序》，需要搭建内核源码树。
+配置内核首先要下载源码，使用命令apt-cache  search linux-source查找源码（所有截图是在win7下的VirtualBox下）。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux新手应该了解的一些技巧</title>
+      <link>http://liuao.tech/post/20150126/</link>
+      <pubDate>Mon, 26 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://liuao.tech/post/20150126/</guid>
+      <description>&lt;p&gt;        对于任意一门学科，作为一名新手，我认为首先要学会最重要的一个技巧就是查找帮助文档。通过查找帮助，独立的解决问题，会很快的入门到一门学科里。当然对与linux来说，也不例外，帮助文档是很重要的一份学习资料。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

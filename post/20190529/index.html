@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>TensorFlow学习笔记——Tensor</title>
+
+  
+  
+  <link href="//cdn.jsdelivr.net" rel="dns-prefetch">
+  <link href="//cdnjs.cloudflare.com" rel="dns-prefetch">
+  
+  <link href="//at.alicdn.com" rel="dns-prefetch">
+  
+  <link href="//fonts.googleapis.com" rel="dns-prefetch">
+  <link href="//fonts.gstatic.com" rel="dns-prefetch">
+  
+  
+  
+  
+  
+
+  
+
+  
+  <meta name="author" content="月光晒谷">
+  <meta name="description" content="Tensor  Tensor是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用tf.Tensor来定义，tf.Tensor有两个很重要的属性：数据类型（dtype, 例如 tf.float32、tf.int32或tf.string）和形状（shape，例如shape=(2,2)）。
+">
+
+  
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@gohugoio">
+    <meta name="twitter:title" content="TensorFlow学习笔记——Tensor">
+    <meta name="twitter:description" content="Tensor  Tensor是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用tf.Tensor来定义，tf.Tensor有两个很重要的属性：数据类型（dtype, 例如 tf.float32、tf.int32或tf.string）和形状（shape，例如shape=(2,2)）。
+">
+    <meta name="twitter:image" content="/images/avatar.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="TensorFlow学习笔记——Tensor">
+  <meta property="og:description" content="Tensor  Tensor是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用tf.Tensor来定义，tf.Tensor有两个很重要的属性：数据类型（dtype, 例如 tf.float32、tf.int32或tf.string）和形状（shape，例如shape=(2,2)）。
+">
+  <meta property="og:url" content="http://liuao.tech/post/20190529/">
+  <meta property="og:image" content="/images/avatar.png">
+
+
+
+
+<meta name="generator" content="Hugo 0.83.1">
+
+
+<link rel="canonical" href="http://liuao.tech/post/20190529/">
+
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<meta http-equiv="Cache-Control" content="no-transform">
+
+
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="origin-when-cross-origin">
+
+
+
+
+
+
+
+<meta name="theme-color" content="#02b875">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="月光晒谷">
+<meta name="msapplication-tooltip" content="月光晒谷">
+<meta name='msapplication-navbutton-color' content="#02b875">
+<meta name="msapplication-TileColor" content="#02b875">
+<meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+<link rel="icon" href="http://liuao.tech/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://liuao.tech/icons/icon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://liuao.tech/icons/icon-32x32.png">
+<link rel="icon" sizes="192x192" href="http://liuao.tech/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="http://liuao.tech/icons/icon-152x152.png">
+<link rel="manifest" href="http://liuao.tech/manifest.json">
+
+
+<link rel="preload" href="http://liuao.tech/styles/main-rendered.min.css" as="style">
+
+
+<link rel="preload" href="https://fonts.googleapis.com/css?family=Lobster" as="style">
+<link rel="preload" href="http://liuao.tech/images/avatar.png" as="image">
+<link rel="preload" href="http://liuao.tech/images/grey-prism.svg" as="image">
+
+
+<style>
+  body {
+    background: rgb(244, 243, 241) url('/images/grey-prism.svg') repeat fixed;
+  }
+</style>
+<link rel="stylesheet" href="http://liuao.tech/styles/main-rendered.min.css">
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.2/dist/medium-zoom.min.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video-js.min.css">
+
+
+
+  
+  
+<!--[if lte IE 8]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ie8@1.1.2/dist/videojs-ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lte IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20180112/classList.min.js"></script>
+<![endif]-->
+
+
+</head>
+  <body>
+    <div class="suspension">
+      <a role="button" aria-label="Go to top" title="Go to top" class="to-top is-hide"><span class="icon icon-up" aria-hidden="true"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://liuao.tech/images/avatar.png" alt="Avatar">
+  
+  <h2 class="title">月光晒谷</h2>
+  
+  <p class="subtitle">Keep It Simple, Stupid !</p>
+  <button class="menu-toggle" type="button" aria-label="Main Menu" aria-expanded="false" tab-index="0">
+    <span class="icon icon-menu" aria-hidden="true"></span>
+  </button>
+
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+          
+          
+           is-active">
+          <a href="http://liuao.tech/">Home</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/tags/">Tags</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/links/">Links</a>
+        </li>
+      
+        <li class="menu-item
+          
+          
+          ">
+          <a href="http://liuao.tech/about/">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list"><li class="social-item">
+          <a href="mailto:alants56@163.com" title="Email" aria-label="Email">
+            <span class="icon icon-email" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//github.com/alants56" title="GitHub" aria-label="GitHub">
+	    <span class="icon icon-github" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="//weibo.com/yueguangshaigu" title="Weibo" aria-label="Weibo">
+            <span class="icon icon-weibo" aria-hidden="true"></span>
+          </a>
+        </li><li class="social-item">
+          <a href="http://liuao.tech/images/qrcode.jpg" title="Wechat" aria-label="Wechat">
+            <span class="icon icon-wechat" aria-hidden="true"></span>
+          </a>
+        </li></ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">TensorFlow学习笔记——Tensor</h1>
+      <p class="post-meta">@月光晒谷 · May 29, 2019 · 1 min read</p>
+    </header>
+    <article class="post-content"><h2 id="tensor">Tensor</h2>
+<p>       <code>Tensor</code>是TensorFlow对矢量和矩阵的一种高维度的泛化。它与传统编程语言中的数据类型是有区别的，它更像是一种计算中使用的节点，只有在计算（运行）时，才会将数据流入。在TensorFlow中，Tensor使用<code>tf.Tensor</code>来定义，<code>tf.Tensor</code>有两个很重要的属性：数据类型（<code>dtype</code>, 例如 <code>tf.float32</code>、<code>tf.int32</code>或<code>tf.string</code>）和形状（<code>shape</code>，例如<code>shape=(2,2)</code>）。</p>
+<p>       <code>tf.Tensor</code>所包含的主要的<code>Tensor</code>有四种：<code>tf.constant</code>，<code>tf.Variable</code>，<code>tf.placeholder</code>与<code>tf.SparseTensor</code>。在这四种变量中，只有<code>tf.Variable</code>的值是可以改变的，因此在运行过程中只能使用<code>tf.Variable</code>来表示中间结果。</p>
+<p>       <code>tf.Tensor</code>的阶（Rank）表示了该对象的维度，而不同的阶表示的是不同的数学量，具体的含义如下表所示：</p>
+<!-- raw HTML omitted -->
+<h3 id="1-tfconstant">1. tf.constant</h3>
+<p>       <code>tf.constant</code>表示的是一个常量（张量），在定义时需要进行初始化（如下所示），在计算过程中它的值不能发生改变。要注意的是，它虽然表示的是常量，但只有在运行时才会给它赋初值。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">c1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>], shape<span style="color:#f92672">=</span>[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>], dtype<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>int32)
+<span style="color:#66d9ef">print</span>(c1)
+</code></pre></div><p>如下输出结果所示，如果直接进行输出，只会显示出该张量的一些属性信息。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Tensor(<span style="color:#e6db74">&#34;Const:0&#34;</span>, shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>), dtype<span style="color:#f92672">=</span>int32)
+</code></pre></div><p>只有在运行时，才可以查看该张量的值，具体运行方法如下：首先定义一个会话sess，然后使用会话sess的run方法运行。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sess <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Session()
+<span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(c1))
+</code></pre></div><p>最终的输出结果如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[[<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span>]
+ [<span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span>]]
+</code></pre></div><h3 id="2-tfvariable">2. tf.Variable</h3>
+<p>       <code>tf.Variable</code>是一种变量（张量），它的值在运行过程中可以改变，因此模型参数的类型一般都为<code>tf.Variable</code>。<code>tf.Variable</code>的获取有两种方式：第一种是使用<code>tf.Variable()</code>直接定义变量，需要在定义中指定变量的初值和变量所代表的数据类型（如，tf.float32, tf.int32）；</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">v2 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Variable(<span style="color:#ae81ff">3.14</span>, tf<span style="color:#f92672">.</span>float32)
+<span style="color:#66d9ef">print</span>(v2)
+sess <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Session()
+sess<span style="color:#f92672">.</span>run(tf<span style="color:#f92672">.</span>global_variables_initializer())
+<span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(v2))
+</code></pre></div><p>输出结果如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&lt;</span>tf<span style="color:#f92672">.</span>Variable <span style="color:#e6db74">&#39;Variable_1:0&#39;</span> shape<span style="color:#f92672">=</span>() dtype<span style="color:#f92672">=</span>float32_ref<span style="color:#f92672">&gt;</span>
+<span style="color:#ae81ff">3.14</span>
+</code></pre></div><p>第二种方式是使用<code>tf.get_variable()</code>来获取一个<code>tf.Variable</code>变量，需要指定变量名，形状，类型，以及初始化相关的量。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">v3 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>get_variable(<span style="color:#e6db74">&#34;v2&#34;</span>, shape<span style="color:#f92672">=</span>[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>], dtype<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>int32, initializer<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>zeros_initializer)
+v4 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>get_variable(<span style="color:#e6db74">&#34;v4&#34;</span>, dtype<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>int32, initializer<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">9</span>], shape<span style="color:#f92672">=</span>[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>]))
+sess <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Session()
+sess<span style="color:#f92672">.</span>run(tf<span style="color:#f92672">.</span>global_variables_initializer())
+<span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(v3))
+<span style="color:#66d9ef">print</span>(v4<span style="color:#f92672">.</span>eval(sess))
+</code></pre></div><p>输出结果如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[[[<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]
+  [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]]
+ [[<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]
+  [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]]]
+[[<span style="color:#ae81ff">3</span> <span style="color:#ae81ff">5</span>]
+ [<span style="color:#ae81ff">7</span> <span style="color:#ae81ff">9</span>]]
+</code></pre></div><p>要注意的是，在使用<code>tf.Variable</code>变量时，首先要使用初始化函数将<code>tf.Variable</code>变量进行初始化。一种简单的方式如上所示，使用<code>sess.run(tf.global_variables_initializer())</code>进行所有的<code>tf.Variable</code>变量的初始化。</p>
+<h3 id="3-tfplaceholder">3. tf.placeholder</h3>
+<p>       <code>tf.placeholder</code>是一种可以在运行时指定初值的张量，如在训练一个模型时，可以使用<code>tf.placeholder</code>类型的数据来动态的指定训练集。该类型的数据定义和初始化如下所示：首先定义一个<code>tf.placeholder</code>量，指定其数据类型和形状；在运行时，通过一个feed_dict的参数来指定其初值。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">p1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>placeholder(tf<span style="color:#f92672">.</span>float32, shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>))
+data1 <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>]]
+
+sess <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Session()
+<span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(p1, feed_dict<span style="color:#f92672">=</span>{p1: data1}))
+
+</code></pre></div><p>输出结果如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">[[<span style="color:#ae81ff">1.</span> <span style="color:#ae81ff">2.</span>]
+ [<span style="color:#ae81ff">3.</span> <span style="color:#ae81ff">4.</span>]]
+</code></pre></div><h3 id="4-tfsparsetensor">4. tf.SparseTensor</h3>
+<p>       <code>tf.SparseTensor</code>是一种用来表示稀疏张量的类型，如果需要定义一个如下的张量，</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">[[<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]
+ [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">0</span>]
+ [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]]
+</code></pre></div><p>       则可以通过一个<code>tf.SparseTensor</code>来表示。<code>tf.SparseTensor</code>类型的张量是通过指定索引值所对应数值的方式来进行初始化的。如果要将该张量输出为一个完整的形式时，需要使用<code>tf.sparse_tensor_to_dense()</code>来实现。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">s <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>SparseTensor(indices<span style="color:#f92672">=</span>[[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]], values<span style="color:#f92672">=</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], dense_shape<span style="color:#f92672">=</span>[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>])
+sess <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Session()
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Sparse:&#34;</span>)
+<span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(s))
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Dense:&#34;</span>)
+<span style="color:#66d9ef">print</span>(sess<span style="color:#f92672">.</span>run(tf<span style="color:#f92672">.</span>sparse_tensor_to_dense(s)))
+</code></pre></div><p>输出结果如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">Sparse:
+SparseTensorValue(indices<span style="color:#f92672">=</span>array([[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>],
+       [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]], dtype<span style="color:#f92672">=</span>int64), values<span style="color:#f92672">=</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]), dense_shape<span style="color:#f92672">=</span>array([<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>], dtype<span style="color:#f92672">=</span>int64))
+Dense:
+[[<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]
+ [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">0</span>]
+ [<span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>]]
+</code></pre></div><hr>
+<h4 id="参考文档">参考文档：</h4>
+<p><a href="https://www.tensorflow.org/guide">https://www.tensorflow.org/guide</a></p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://liuao.tech/tags/tensorflow"><span class="tag">TensorFlow</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        ©2019 | liuao.tech | All rights reserved. This post was published <strong>883</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  
+<footer class="site-footer">
+  <p>© 2017-2021 月光晒谷</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank" rel="noopener">Nuo</a>.</p>
+  
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@15.0.0/dist/smooth-scroll.min.js"></script>
+
+
+
+<script async src="https://cdn.jsdelivr.net/npm/video.js@7.3.0/dist/video.min.js"></script>
+
+
+
+
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    },
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+
+
+<script src="http://liuao.tech/scripts/index.min.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('\/service-worker.js').then(function() {
+      console.log('[ServiceWorker] Registered');
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
